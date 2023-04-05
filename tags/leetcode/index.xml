@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LeetCode on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/leetcode/</link><description>Recent content in LeetCode on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/leetcode/index.xml" rel="self" type="application/rss+xml"/><item><title>LeetCode 1453. Maximum Number of Darts Inside of a Circular Dartboard</title><link>http://blog.pengyuc.com/posts/algo/lc-1453/</link><pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/algo/lc-1453/</guid><description>正在把之前沒做的一些題做一做，剛好看到了這題滿有趣的，因此決定寫篇文章。
+題目連結。
+$O(n^3)$ 數學解 這題就不討論暴力解了，這題用到了一些國中教的數學知識，做起來還是滿有趣的。
+以下提供的解法：
+枚舉所有點對 $(P, Q)$，找出與 $P$、$Q$ 相切的兩個圓 $C_1$ 和 $C_2$：$O(n^2)$ 檢查其它所有點是否在 $C_1$ 和 $C_2$ 間：$O(n)$ 總時間：$O(n^3)$ 所以此題的重點在於求出圓心 $C_1$ 和 $C_2$。
+示意圖 由圖中可得：
+$$ \begin{aligned} \alpha_1 + \theta &amp;amp;= \alpha_2 + \theta = 90^{\circ} \\ \alpha_1 &amp;amp;= \alpha_2 \\ \vartriangle AMC_1 &amp;amp; \cong \vartriangle BQP \end{aligned} $$
+又知：
+$$ \begin{aligned} \tan\alpha_1 &amp;amp;= \tan\alpha_2 = \frac{P_y - Q_y}{Q_x - P_x} \\ \alpha_1 &amp;amp;= \alpha_2 = \arctan (\frac{P_y - Q_y}{Q_x - P_x}) \end{aligned} $$</description></item></channel></rss>

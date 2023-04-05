@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Static Site Generator on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/static-site-generator/</link><description>Recent content in Static Site Generator on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 14 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/static-site-generator/index.xml" rel="self" type="application/rss+xml"/><item><title>Hexo Building</title><link>http://blog.pengyuc.com/posts/tech/hexo-building/</link><pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/tech/hexo-building/</guid><description>前言 近日有感沒有花些心思去整理平時的一些思緒、札記等等，於是決定要開始著手寫部落格。 在網路上查了許多資料後，決定使用 Hexo 所提供的服務，裡面也有 許多主題可供挑選，而我使用的這個是 NexT，一款由中國人所設計，非常 精緻典雅的主題。
+使用 Hexo 來建立個人網站 網誌中的第一篇文章，我想要談談我在使用 Hexo 建立個人網站時並 且發布到 GitHub Pages 時所遇到的問題，以及我是怎麼解 決的。
+環境需求 要開始使用 Hexo，必需先確保你的電腦有以下的插件：
+Git Node.js 安裝 Hexo 我們可以藉由 Node.js 輕鬆的安裝 Hexo：
+npm install hexo-cli -g 初始化倉庫（repository） 你必需先在你的 github 帳戶底下建立一個新的倉庫，名字必需是 &amp;lt;username&amp;gt;.github.io 或是 &amp;lt;username&amp;gt;.github.io/&amp;lt;project&amp;gt;，否則你將無法成功發 佈文章。
+初始化 Hexo 資料夾 再來，藉由以下指令初始化 Hexo 資料夾：
+hexo init &amp;lt;project&amp;gt; # create a Hexo project cd &amp;lt;project&amp;gt; # change directory npm install # update something &amp;lt;project&amp;gt; 的名稱有兩個選擇：
+和 GitHub 上的名稱（walkccc.</description></item></channel></rss>

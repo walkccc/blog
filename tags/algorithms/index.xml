@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Algorithms on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/algorithms/</link><description>Recent content in Algorithms on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/algorithms/index.xml" rel="self" type="application/rss+xml"/><item><title>LeetCode 1453. Maximum Number of Darts Inside of a Circular Dartboard</title><link>http://blog.pengyuc.com/posts/algo/lc-1453/</link><pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/algo/lc-1453/</guid><description>正在把之前沒做的一些題做一做，剛好看到了這題滿有趣的，因此決定寫篇文章。
+題目連結。
+$O(n^3)$ 數學解 這題就不討論暴力解了，這題用到了一些國中教的數學知識，做起來還是滿有趣的。
+以下提供的解法：
+枚舉所有點對 $(P, Q)$，找出與 $P$、$Q$ 相切的兩個圓 $C_1$ 和 $C_2$：$O(n^2)$ 檢查其它所有點是否在 $C_1$ 和 $C_2$ 間：$O(n)$ 總時間：$O(n^3)$ 所以此題的重點在於求出圓心 $C_1$ 和 $C_2$。
+示意圖 由圖中可得：
+$$ \begin{aligned} \alpha_1 + \theta &amp;amp;= \alpha_2 + \theta = 90^{\circ} \\ \alpha_1 &amp;amp;= \alpha_2 \\ \vartriangle AMC_1 &amp;amp; \cong \vartriangle BQP \end{aligned} $$
+又知：
+$$ \begin{aligned} \tan\alpha_1 &amp;amp;= \tan\alpha_2 = \frac{P_y - Q_y}{Q_x - P_x} \\ \alpha_1 &amp;amp;= \alpha_2 = \arctan (\frac{P_y - Q_y}{Q_x - P_x}) \end{aligned} $$</description></item><item><title>Digit DP</title><link>http://blog.pengyuc.com/posts/algo/digit-dp/</link><pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/algo/digit-dp/</guid><description>第一篇記錄算法的文章，來介紹下新學到的算法：Digit DP。
+暴力解 題目模版一般會長的像這樣：給定區間 $[L, R]$ 和一個函數 $f(x) \to \{\texttt{True}, \texttt{False}\}$，問在 $[L, R]$ 之間的正整數，滿足 $f(x)$ 的數量有多少？
+現在我們可以帶入一個真實的例子，在 $[L = 19, R = 9999]$ 區間，每一位數的總合為 $k = 23$ 的數字共有幾個？
+暴力解用 C++ 代碼演示如下：
+bool DigitSum(int num) { int sum = 0; while (num &amp;gt; 0) { sum += num % 10; num /= 10; } return sum; } int GetSatisfiedCount(int l, int r, int k) { int satisfied_count = 0; for (int num = l; num &amp;lt;= r; ++num) if (DigitSum(num) == k) ++satisfied_count; return satisfied_count; } constexpr int start = 19; constexpr int end = 9&amp;#39;999; constexpr int k = 23; std::cout &amp;lt;&amp;lt; GetSatisfiedCount(start, end, k); 而這樣的時間複雜度為：</description></item></channel></rss>

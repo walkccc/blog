@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CVPR on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/cvpr/</link><description>Recent content in CVPR on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 27 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/cvpr/index.xml" rel="self" type="application/rss+xml"/><item><title>論文筆記 Non-local Neural Networks</title><link>http://blog.pengyuc.com/posts/paper/paper-nonlocal-nn/</link><pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-nonlocal-nn/</guid><description>Paper Link ss Convolutional 和 recurrent operations 都是一次處理一個 local 鄰域，此篇 paper 提出了 non-local operations 的想法，目的就是要解決即使相距很遠的的 blocks，仍然 有可能是彼此有關聯的。
+1. Introduction 為什麼要使用深層神經網路？
+補捉 long-range dependencies
+可能是一個大家會常給出的答案。
+舉例來說：
+sequential data (e.g., in speech, language) 一般來說會採用 recurrent operations，也是為了達成 long-range dependency modeling image data 則常常採用深層的 convolutional operations 因為 convolutional 和 recurrent operations 都只會對 local 鄰域資料做運算（距離、 時間），因此要傳遞訊息到較遠處就只能透過重複地操作。
+重複地做 local operations 有幾個限制：
+計算上沒有效率 難以優化 non-local 特徵訊息傳遞不靈活 當然，CNN 和 RNN 的初衷本來就不是來處理 non-local 訊息的。
+本篇 paper 就是要解決上述問題，所以提出了 non-local operations 這個概念，直觀 來說：</description></item><item><title>論文筆記 PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link>http://blog.pengyuc.com/posts/paper/paper-pointnet/</link><pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-pointnet/</guid><description>Paper Link
+1. Introduction 這篇是 Stanford 在 CVPR 2017 所發表的 PointNet，從名字中可以知道是有關處理 3D 資 料的論文。全文目標就是要對點雲（point cloud）做各種分類，最關鍵的方法為：
+single symmetric function max pooling（解決無序性） Figure 1. Applications of PointNet. We propose a novel deep net architecture that consumes raw point cloud (set of points) without voxelization or rendering. It is a unified architecture that learns both global and local point features, providing a simple, efficient and effective approach for a number of 3D recognition tasks.</description></item><item><title>論文筆記 OctNet: Learning Deep 3D Representations at High Resolutions</title><link>http://blog.pengyuc.com/posts/paper/paper-octnet/</link><pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-octnet/</guid><description>Paper Link
+此篇 paper 的主要目的是要解決，但送進網路 training 的 3D 資料是稀疏的（sparse） ，用原本的描述方式會太耗費記憶體而難以實作，因為實際上很多地方都是沒有值的，本篇 paper 重點是：使用 octree 的方法來表示高解析度的「立體圖像」，卻又不失本來「完整 地」表示方式。
+1. Introduction 現有的 3D 網路架構，大多會用像類似 2D pixels 的表示方示，在 2D 我們稱之為 pixel，在 3D 的話就稱之為 voxel。同理，在 2D 世界的 convolution kernel 在 3D 就 會變成一個長方體，大小可能是 $3 \times 3 \times 3$ 之類。
+引述原 paper 中的描述：
+a dense and regular 3D voxel grid, and process this grid using 3D convolution and pooling operations.
+並且現今的 3D networks 受限於記憶體大小，數量級數通常大約在 $30^3$ voxels。
+從下圖中可以看到，OctNet 可以用「明顯較少」的位元數去表示到一模一樣的 notation（ 圖中每 1 個小正方型耗費的記憶體為 1 單位）</description></item><item><title>論文筆記 Pointwise Convolutional Neural Networks</title><link>http://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/</link><pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/</guid><description>Paper Link
+在這篇 paper 中，展示了使用 CNNs 去處理 3D point clouds，並且應用在 semantic segmentation 和 object recognition 中。
+MathWorks 官網有對 Semantic Segmantation 做了一個基礎 的介紹：
+分割（Segmantation）對於圖像分析任務非常重要。語義分割（Segmantic Segmantation） 描述了將圖片中的每個像素與類標籤（class label），例如：花、人、道路、天空、海洋 或汽車，相關聯的過程。
+1. Introduction 現有的深度學習在處理 3D 資料，像是體積、point clouds、或 multi-view 圖片仍有不少 困難。
+Volume representation 最能夠「完整地」描述一張圖片，直觀上也是最容易實做的，但 是礙於硬體資源（記憶體、容量等），所以不大可行。 Multi-view representation 雖然不是最真實的描述方式，但能夠透過事先訓練好的 2D 模型來加以實現。 Point clouds 不但資訊量較小，而且較為彈性，但 point clouds 與神經網路的應用還 未被深入挖掘，這也是此篇 paper 誕生的原因。 綜合來說，整篇 paper 的重點在於：
+A pointwise convolution operator that can output features at each point in a point cloud; Two pointwise convolutional neural networks for semantic scene segmentation and object recognition.</description></item><item><title>論文筆記 Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</title><link>http://blog.pengyuc.com/posts/paper/paper-realtime-pose-estimation/</link><pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-realtime-pose-estimation/</guid><description>Paper Link
+1. Introduction 這篇 paper 是卡內基美隆大學（Carnegie Mellon University）在 CVPR 2017 所發表的，論文中首先指出了 Pose Estimation 中三個具挑戰性的關鍵：
+一張圖片裡有多少人，而這些人擺什麼姿勢和人的大小？ 有幾個人是相互疊在一起（overlap）的，他們彼此摭蓋面積？ 無法即時（realtime） 另外論文中也提到了一些現有方法存在的瓶頸，現有方法主要是透過 top-down 的方式：
+person detector single-person pose estimation 來解決此類問題，而這很依賴效能，如果 person detector 失敗了，那方法就沒用了，另 外時間也是一項考驗。
+2. Method Figure 2:
+Fig. 2 給出了模型的整個處理過程：
+讀進一張圖片大小為 $w \times h$ 的圖片 $\textbf I$。
+送進 model VGG-19 的前 10 層 layer train 出大小一樣為 $w \times h$ 的 features $\textbf F$。
+再送進 paper 中提到的 model，會得到以下兩個：
+2D confidense maps $\textbf S = (\textbf S_1, \textbf S_2, \dots, \textbf S_J)$，其中 $J$ 代表 人體共有 $J$ 個部位（part）。</description></item></channel></rss>

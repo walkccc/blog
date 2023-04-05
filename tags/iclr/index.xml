@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ICLR on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/iclr/</link><description>Recent content in ICLR on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/iclr/index.xml" rel="self" type="application/rss+xml"/><item><title>論文筆記 Prioritized Experience Reply</title><link>http://blog.pengyuc.com/posts/paper/paper-exp-replay/</link><pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-exp-replay/</guid><description>Paper Link
+Experience replay 使得 RL agents 能夠記住並重用過去的經驗。
+以前的做法是，從 replay memory 中均勻的 sample experience transition。但這種方法 只根據他們最初被體驗到的頻率，而不管它們的重要性。
+在本文中，開發了一個優先驗體的框架，以便更頻繁地重放重要的 transition，從而更有 效地學習。
+本文表示，採用此種經驗回放的算法，能夠在 49 種遊戲中，打贏傳統算法 41 次。
+1 Introduction RL agents 在觀察到一連串的經驗時，增量地更新其參數。最簡單的做法，即：在更新後， 立刻扔掉到來的數據，但這有幾下兩種問題：
+強烈的相關性更性破壞了許多隨機梯度下降為基礎的演算法所假設的 i.i.d.。 快速的忘記罕見，但可能會再用到的經驗。 Experience replay 解決了上述問題：在一個 replay memory 中儲存 experience，通過混 合或多或少的最近經驗來更新就有可能破壞 temporal correlation，rare experience 將 會被用來不止一次更新，這就被用在 NeurIPS 2013 和 Nature 2015 的論文中。
+DQN 利用一個大的滑動窗口 replay memory，隨機的從中均勻採樣，平均重複訪問一個 transition 8 次。
+Experience replay 可以大量的降低需要去學習的經驗，而是用更多的計算和更多的 memory 來替換，這樣在計算資源上是比該 RL agents 和環境互動還便宜的。
+註：在這裡的一次 transition 指的是：agent 在環境中一次性的操作，即 tuple：</description></item></channel></rss>

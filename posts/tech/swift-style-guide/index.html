@@ -1,0 +1,709 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=content-type content="text/html"><meta name=viewport content="width=device-width,initial-scale=1"><title itemprop=name>Swift Style Guide | Blog | Peng-Yu Chen</title><meta property="og:title" content="Swift Style Guide | Blog | Peng-Yu Chen"><meta name=twitter:title content="Swift Style Guide | Blog | Peng-Yu Chen"><meta itemprop=name content="Swift Style Guide | Blog | Peng-Yu Chen"><meta name=application-name content="Swift Style Guide | Blog | Peng-Yu Chen"><meta property="og:site_name" content="Blog | Peng-Yu Chen"><meta name=description content><meta itemprop=description content><meta property="og:description" content><meta name=twitter:description content><meta property="og:locale" content="en-us"><meta name=language content="en-us"><meta itemprop=image content="http://blog.pengyuc.com/"><meta property="og:image" content="http://blog.pengyuc.com/"><meta name=twitter:image content="http://blog.pengyuc.com/"><meta name=twitter:image:src content="http://blog.pengyuc.com/"><meta property="og:type" content="article"><meta property="og:article:published_time" content="2019-05-26T00:00:00Z"><meta property="article:published_time" content="2019-05-26T00:00:00Z"><meta property="og:article:author" content="Peng yu chen"><meta property="article:author" content="Peng yu chen"><meta name=author content="Peng yu chen"><script defer type=application/ld+json>{"@context":"http://schema.org","@type":"Article","headline":"Swift Style Guide","author":{"@type":"Person","name":""},"datePublished":"2019-05-26","description":"","wordCount":4237,"mainEntityOfPage":"True","dateModified":"2019-05-26","image":{"@type":"imageObject","url":""},"publisher":{"@type":"Organization","name":"Blog | Peng-Yu Chen"}}</script><meta name=generator content="Hugo 0.111.3"><link rel=canonical href=http://blog.pengyuc.com/posts/tech/swift-style-guide/><link href=/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css rel=stylesheet><link href=/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css rel=stylesheet><link rel=apple-touch-icon sizes=180x180 href=/images/favicon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/images/favicon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/images/favicon/favicon-16x16.png><link rel=manifest href=/images/favicon/site.webmanifest><link rel=mask-icon href=/images/favicon/safari-pinned-tab.svg color=#5bbad5><link rel="shortcut icon" href=/images/favicon/favicon.ico><meta name=msapplication-TileColor content="#2b5797"><meta name=msapplication-config content="/images/favicon/browserconfig.xml"><meta name=theme-color content="#ffffff"><link rel=icon type=image/svg+xml href=/images/favicon/favicon.svg></head><body data-theme=light class=notransition><script src=http://blog.pengyuc.com/js/themeLoader.min.4e9e1a253d543bbfec02e7f2460d9621e719fd739dc8a5256faa91cda6e12e03.js></script><div class=navbar role=navigation><nav class=menu aria-label="Main Navigation"><a href=/ class=logo><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><title>Home</title><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a><input type=checkbox id=menu-trigger class=menu-trigger>
+<label for=menu-trigger><span class=menu-icon><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentcolor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7H3.40726"/><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488H3.49301"/><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"/><path stroke-linecap="round" stroke-linejoin="round" d="M.5 12.5V1.5c0-.552285.447715-1 1-1h11C13.0523.5 13.5.947715 13.5 1.5v11C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C.947715 13.5.5 13.0523.5 12.5z"/></svg></span></label><div class=trigger><ul class=trigger-container><li><a class=menu-link href=/>Home</a></li><li><a class="menu-link active" href=/posts/>Posts</a></li><li><a class=menu-link href=/about/>About</a></li><li class=menu-separator><span>|</span></li></ul><a id=mode href=#><svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1"><title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1=".5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1=".5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1"><title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1=".5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1=".5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg></a></div></nav></div><div class="wrapper post"><main class=page-content aria-label=Content><article><header class=header><h1 class=header-title>Swift Style Guide</h1><div class=post-meta><time datetime=2019-05-26T00:00:00+00:00 itemprop=datePublished>May 26, 2019</time></div></header><div class=page-content><h1 id=swift-style-guide>Swift Style Guide</h1><blockquote><p>Updated for Swift 5.0</p></blockquote><p>The goals are <strong>clarity</strong>, <strong>consistency</strong> and <strong>brevity</strong>, in that order.</p><ul><li><strong>Clarity</strong> at the point of use.</li><li>Codes should always be <strong>consistent</strong> within one data set. Pay attention to
+spelling and case; most frequent problems are with abbreviations.</li><li><strong>Clarity</strong> is more important than brevity.</li><li>Write a documentation comment.</li></ul><h1 id=references>References</h1><p>This guide mainly follows:</p><ul><li><a href=https://swift.org/documentation/api-design-guidelines/>Swift.org - API Design Guidelines</a></li><li><a href=https://github.com/raywenderlich/swift-style-guide>raywenderlich/swift-style-guide</a></li><li><a href=https://google.github.io/swift/>Swift Style Guide</a></li></ul><h1 id=formatting>Formatting</h1><h2 id=column-limit>Column Limit</h2><p>Swift code has a column limit of 100 characters. Except as noted below, any line
+that would exceed this limit must be line-wrapped as described in Line-Wrapping.</p><p><strong>Exceptions:</strong></p><ol><li>Lines where obeying the column limit is not possible without breaking a
+meaningful unit of text that should not be broken (for example, a long URL
+in a comment).</li><li><code>import</code> statements.</li><li>Code generated by another tool.</li></ol><h2 id=braces>Braces</h2><p>In general, braces follow Kernighan and Ritchie (K&amp;R) style for non-empty blocks
+with exceptions for Swift-specific constructs and rules:</p><ul><li>There <strong>is no</strong> line break before the opening brace (<code>{</code>).</li><li>There <strong>is a</strong> line break after the opening brace (<code>{</code>).</li><li>There <strong>is a</strong> line break before the closing brace (<code>}</code>).</li><li>There <strong>is a</strong> line break after the closing brace (<code>}</code>) <strong>iff</strong> that brace
+terminated a statement.<ul><li>Exceptions: <code>} else {</code></li></ul></li></ul><h2 id=semicolons>Semicolons</h2><p>Semicolons (<code>;</code>) are <strong>not used</strong>. The only location where a semicolon may
+appear is inside a string literal or a comment.</p><h2 id=one-statement-per-line>One Statement Per Line</h2><h2 id=line-wrapping>Line-Wrapping</h2><p>Google gives clear picture
+<a href=https://google.github.io/swift/#line-wrapping>here</a>. The key point is to be
+careful to judge <strong>breakable</strong> or <strong>unbreakable</strong> units.</p><ol><li>If the entire declaration, statement, or expression fits on one line, then
+do that.</li><li>Comma-delimited lists are only laid out in one direction: horizontally or
+vertically. In other words, all elements must fit on the same line, or each
+element must be on its own line. A horizontally-oriented list does not
+contain any line breaks, even before the first element or after the last
+element. Except in control flow statements, a vertically-oriented list
+contains a line break before the first element and after each element.</li><li>A continuation line starting with an unbreakable token sequence is indented
+at the same level as the original line.</li><li>A continuation line that is part of a vertically-oriented comma-delimited
+list is indented exactly +2 from the original line.</li><li>When an open curly brace (<code>{</code>) follows a line-wrapped declaration or
+expression, it is on the same line as the final continuation line unless
+that line is indented at +2 from the original line. In that case, the brace
+is placed on its own line, to avoid the continuation lines from blending
+visually with the body of the subsequent block.</li></ol><p>Some examples:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=kd>public</span> <span class=kd>func</span> <span class=nf>index</span><span class=p>&lt;</span><span class=n>Elements</span><span class=p>:</span> <span class=n>Collection</span><span class=p>,</span> <span class=n>Element</span><span class=p>&gt;(</span>
+</span></span><span class=line><span class=cl>  <span class=n>of</span> <span class=n>element</span><span class=p>:</span> <span class=n>Element</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=k>in</span> <span class=n>collection</span><span class=p>:</span> <span class=n>Elements</span>
+</span></span><span class=line><span class=cl><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>Elements</span><span class=p>.</span><span class=n>Index</span><span class=p>?</span>
+</span></span><span class=line><span class=cl><span class=k>where</span>
+</span></span><span class=line><span class=cl>  <span class=n>Elements</span><span class=p>.</span><span class=n>Element</span> <span class=p>==</span> <span class=n>Element</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=n>Element</span><span class=p>:</span> <span class=nb>Equatable</span> <span class=p>{</span>  <span class=c1>// AVOID.</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=n>current</span> <span class=k>in</span> <span class=n>elements</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=kd>public</span> <span class=kd>func</span> <span class=nf>index</span><span class=p>&lt;</span><span class=n>Elements</span><span class=p>:</span> <span class=n>Collection</span><span class=p>,</span> <span class=n>Element</span><span class=p>&gt;(</span>
+</span></span><span class=line><span class=cl>  <span class=n>of</span> <span class=n>element</span><span class=p>:</span> <span class=n>Element</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=k>in</span> <span class=n>collection</span><span class=p>:</span> <span class=n>Elements</span>
+</span></span><span class=line><span class=cl><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>Elements</span><span class=p>.</span><span class=n>Index</span><span class=p>?</span>
+</span></span><span class=line><span class=cl><span class=k>where</span>
+</span></span><span class=line><span class=cl>  <span class=n>Elements</span><span class=p>.</span><span class=n>Element</span> <span class=p>==</span> <span class=n>Element</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=n>Element</span><span class=p>:</span> <span class=nb>Equatable</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>  <span class=c1>// GOOD.</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=n>current</span> <span class=k>in</span> <span class=n>elements</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>For declarations that contain a where clause followed by generic constraints,
+additional rules apply:</p><p>If the generic constraint list exceeds the column limit when placed on the same
+line as the return type, then a line break is first inserted before the where
+keyword and the <code>where</code> keyword is indented at the same level as the original
+line. If the generic constraint list still exceeds the column limit after
+inserting the line break above, then the constraint list is oriented vertically
+with a line break after the <code>where</code> keyword and a line break after the final
+constraint.</p><h2 id=functions-calls>Functions Calls</h2><p>The followings are both good, choose one and stick to it consistently.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>index</span> <span class=p>=</span> <span class=n>index</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=n>of</span><span class=p>:</span> <span class=n>veryLongElementVariableName</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=k>in</span><span class=p>:</span> <span class=n>aCollectionOfElementsThatAlsoHappensToHaveALongName</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>index</span> <span class=p>=</span> <span class=n>index</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=n>of</span><span class=p>:</span> <span class=n>veryLongElementVariableName</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=k>in</span><span class=p>:</span> <span class=n>aCollectionOfElementsThatAlsoHappensToHaveALongName</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span></code></pre></div><h2 id=control-flow-statements>Control Flow Statements</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>cond1</span><span class=p>()</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl>   <span class=n>muchlongerCond2</span><span class=p>()</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl>   <span class=n>shortCond3</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>doSomething</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>cond1</span><span class=p>()</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl>   <span class=n>muchlongerCond2</span><span class=p>()</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl>   <span class=n>shortCond3</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>doSomething</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=k>guard</span> <span class=kd>let</span> <span class=nv>value</span> <span class=p>=</span> <span class=n>returnValue</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>      <span class=kd>let</span> <span class=nv>value2</span> <span class=p>=</span> <span class=n>returnValue2</span><span class=p>()</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>doSomething</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=k>guard</span> <span class=kd>let</span> <span class=nv>value</span> <span class=p>=</span> <span class=n>returnValue</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>      <span class=kd>let</span> <span class=nv>value2</span> <span class=p>=</span> <span class=n>returnValue2</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>doSomething</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 id=other-expressions>Other Expressions</h2><p>When there are multiple continuation lines, indentation may be varied in
+increments of +2 as needed.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>result</span> <span class=p>=</span> <span class=n>anExpression</span> <span class=o>+</span> <span class=n>thatIsMadeUpOf</span> <span class=o>*</span> <span class=n>aLargeNumber</span> <span class=o>+</span>
+</span></span><span class=line><span class=cl>    <span class=n>ofTerms</span> <span class=o>/</span> <span class=n>andTherefore</span> <span class=o>%</span> <span class=n>mustBeWrapped</span> <span class=o>+</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=n>andWeWill</span> <span class=o>-</span> <span class=n>keepMakingItLonger</span> <span class=o>*</span> <span class=n>soThatWeHave</span> <span class=o>/</span> <span class=n>aContrivedExample</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>result</span> <span class=p>=</span> <span class=n>anExpression</span> <span class=o>+</span> <span class=n>thatIsMadeUpOf</span> <span class=o>*</span> <span class=n>aLargeNumber</span> <span class=o>+</span>
+</span></span><span class=line><span class=cl>  <span class=n>ofTerms</span> <span class=o>/</span> <span class=n>andTherefore</span> <span class=o>%</span> <span class=n>mustBeWrapped</span> <span class=o>+</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>andWeWill</span> <span class=o>-</span> <span class=n>keepMakingItLonger</span> <span class=o>*</span> <span class=n>soThatWeHave</span> <span class=o>/</span> <span class=n>aContrivedExample</span><span class=p>)</span>
+</span></span></code></pre></div><h2 id=horizontal-whitespace>Horizontal Whitespace</h2><p>Here is common convention in most languages.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=n>x</span><span class=p>==</span><span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>y</span><span class=p>==</span><span class=mi>0</span><span class=p>)</span> <span class=o>||</span> <span class=n>z</span><span class=p>==</span><span class=mi>0</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=n>x</span> <span class=p>==</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>y</span> <span class=p>==</span> <span class=mi>0</span><span class=p>)</span> <span class=o>||</span> <span class=n>z</span> <span class=p>==</span> <span class=mi>0</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>nonNegativeCubes</span> <span class=p>=</span> <span class=n>numbers</span><span class=p>.</span><span class=bp>map</span> <span class=p>{</span> <span class=nv>$0</span> <span class=o>*</span> <span class=nv>$0</span> <span class=o>*</span> <span class=nv>$0</span> <span class=p>}.</span><span class=bp>filter</span> <span class=p>{</span> <span class=nv>$0</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>nonNegativeCubes</span> <span class=p>=</span> <span class=n>numbers</span><span class=p>.</span><span class=bp>map</span> <span class=p>{</span> <span class=nv>$0</span> <span class=o>*</span> <span class=nv>$0</span> <span class=o>*</span> <span class=nv>$0</span> <span class=p>}</span> <span class=p>.</span><span class=bp>filter</span> <span class=p>{</span> <span class=nv>$0</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>sum</span><span class=p>(</span><span class=kc>_</span> <span class=n>numbers</span><span class=p>:</span> <span class=p>[</span><span class=nb>Int</span><span class=p>])-&gt;</span><span class=nb>Int</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>sum</span><span class=p>(</span><span class=kc>_</span> <span class=n>numbers</span><span class=p>:</span> <span class=p>[</span><span class=nb>Int</span><span class=p>])</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>number</span> <span class=k>in</span> <span class=mi>1</span> <span class=p>...</span> <span class=mi>5</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>substring</span> <span class=p>=</span> <span class=n>string</span><span class=p>[</span><span class=n>index</span> <span class=p>..</span><span class=o>&lt;</span> <span class=n>string</span><span class=p>.</span><span class=n>endIndex</span><span class=p>]</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>number</span> <span class=k>in</span> <span class=mf>1.</span><span class=p>..</span><span class=mi>5</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>substring</span> <span class=p>=</span> <span class=n>string</span><span class=p>[</span><span class=n>index</span><span class=p>..&lt;</span><span class=n>string</span><span class=p>.</span><span class=n>endIndex</span><span class=p>]</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>numbers</span> <span class=p>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>numbers</span> <span class=p>=</span> <span class=p>[</span><span class=mi>1</span> <span class=p>,</span><span class=mi>2</span> <span class=p>,</span><span class=mi>3</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>numbers</span> <span class=p>=</span> <span class=p>[</span><span class=mi>1</span> <span class=p>,</span> <span class=mi>2</span> <span class=p>,</span> <span class=mi>3</span><span class=p>]</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>numbers</span> <span class=p>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>HashTable</span> <span class=p>:</span> <span class=n>Collection</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>AnyEquatable</span><span class=p>&lt;</span><span class=n>Wrapped</span> <span class=p>:</span> <span class=nb>Equatable</span><span class=p>&gt;</span> <span class=p>:</span> <span class=nb>Equatable</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>HashTable</span><span class=p>:</span> <span class=n>Collection</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>AnyEquatable</span><span class=p>&lt;</span><span class=n>Wrapped</span><span class=p>:</span> <span class=nb>Equatable</span><span class=p>&gt;:</span> <span class=nb>Equatable</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// ...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 id=horizontal-alignment>Horizontal Alignment</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>DataPoint</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nv>value</span><span class=p>:</span>        <span class=nb>Int</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nv>primaryColor</span><span class=p>:</span> <span class=n>UIColor</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>DataPoint</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nv>value</span><span class=p>:</span> <span class=nb>Int</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nv>primaryColor</span><span class=p>:</span> <span class=n>UIColor</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h1 id=naming>Naming</h1><h2 id=clarity>Clarity</h2><ul><li><p>Include all the words needed to avoid ambiguity.</p><p>Proper labeling can effectively reduce ambiguity.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>List</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>remove</span><span class=p>(</span><span class=n>position</span><span class=p>:</span> <span class=n>Index</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>Element</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>friends</span><span class=p>.</span><span class=n>remove</span><span class=p>(</span><span class=n>x</span><span class=p>)</span> <span class=c1>// unclear: are we removing x?</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>List</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>remove</span><span class=p>(</span><span class=n>at</span> <span class=n>position</span><span class=p>:</span> <span class=n>Index</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>Element</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>friends</span><span class=p>.</span><span class=n>remove</span><span class=p>(</span><span class=n>at</span><span class=p>:</span> <span class=n>x</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Omit needless words.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>removeElement</span><span class=p>(</span><span class=kc>_</span> <span class=n>member</span><span class=p>:</span> <span class=n>Element</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>Element</span><span class=p>?</span>
+</span></span><span class=line><span class=cl><span class=n>allViews</span><span class=p>.</span><span class=n>removeElement</span><span class=p>(</span><span class=n>cancelButton</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>remove</span><span class=p>(</span><span class=kc>_</span> <span class=n>member</span><span class=p>:</span> <span class=n>Element</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>Element</span><span class=p>?</span>
+</span></span><span class=line><span class=cl><span class=n>allViews</span><span class=p>.</span><span class=n>remove</span><span class=p>(</span><span class=n>cancelButton</span><span class=p>)</span>
+</span></span></code></pre></div><p>The naming <code>removeElement</code> is bad since the word <code>Element</code> doesn&rsquo;t increase
+the readibility.</p><p>Occasionally, it is necessary to repeat type information to avoid ambituity.
+However, in general it is better to use a word that describes a parameter&rsquo;s
+<em>role</em> rather than its type.</p></li><li><p>Name variables, parameters, and associated types according to their roles.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>string</span> <span class=p>=</span> <span class=s>&#34;Hello world&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>protocol</span> <span class=nc>ViewController</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>associatedtype</span> <span class=n>ViewType</span><span class=p>:</span> <span class=n>View</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>ProductLine</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>restock</span><span class=p>(</span><span class=n>from</span> <span class=n>widgetFactory</span><span class=p>:</span> <span class=n>WidetFactory</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>greeting</span> <span class=p>=</span> <span class=s>&#34;Hello world&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>protocol</span> <span class=nc>ViewController</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>associatedtype</span> <span class=n>ContentView</span><span class=p>:</span> <span class=n>View</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>ProductLine</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>restock</span><span class=p>(</span><span class=n>from</span> <span class=n>supplier</span><span class=p>:</span> <span class=n>WidetFactory</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><p>Compensate for weak type information.</p><p>To achieve clarity, precede each weakly typed parameter with a noun describing
+its role.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>add</span><span class=p>(</span><span class=kc>_</span> <span class=n>observer</span><span class=p>:</span> <span class=n>NSObject</span><span class=p>,</span> <span class=k>for</span> <span class=n>keyPath</span><span class=p>:</span> <span class=nb>String</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>grid</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>graphics</span><span class=p>)</span> <span class=c1>// vague</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>addObserver</span><span class=p>(</span><span class=kc>_</span> <span class=n>observer</span><span class=p>:</span> <span class=n>NSObject</span><span class=p>,</span> <span class=n>forKeyPath</span> <span class=n>path</span><span class=p>:</span> <span class=nb>String</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>grid</span><span class=p>.</span><span class=n>addObserver</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>forKeyPath</span><span class=p>:</span> <span class=n>graphics</span><span class=p>)</span> <span class=c1>// clear</span>
+</span></span></code></pre></div></li><li><p>Class prefixes are not needed.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>MAUICollectionViewController</span><span class=p>:</span> <span class=n>UICollectionViewController</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>UICollectionViewController</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span></code></pre></div><p>Why? Because what you&rsquo;ve declared is declared in current module, which is your
+current target. And <code>UICollectionViewController</code> from <code>UIKit</code> is declared in
+<code>UIKit</code> module.</p><p>How to use it within current module?</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>customController</span> <span class=p>=</span> <span class=n>UICollectionViewController</span><span class=p>()</span> <span class=c1>// your custom class</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>uikitController</span> <span class=p>=</span> <span class=n>UIKit</span><span class=p>.</span><span class=n>UICollectionViewController</span><span class=p>()</span> <span class=c1>// class from UIKit</span>
+</span></span></code></pre></div></li><li><p>When creating custom delegate methods, an unnamed first parameter should be
+the delegate source.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>didSelectName</span><span class=p>(</span><span class=n>namePicker</span><span class=p>:</span> <span class=n>NamePickerViewController</span><span class=p>,</span> <span class=n>name</span><span class=p>:</span> <span class=nb>String</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>namePickerShouldReload</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Bool</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>namePickerView</span><span class=p>(</span><span class=kc>_</span> <span class=n>namePickerView</span><span class=p>:</span> <span class=n>NamePickerView</span><span class=p>,</span> <span class=n>didSelectName</span> <span class=n>name</span><span class=p>:</span> <span class=nb>String</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>namePickerViewShouldReload</span><span class=p>(</span><span class=kc>_</span> <span class=n>namePickerView</span><span class=p>:</span> <span class=n>NamePickerView</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span>
+</span></span></code></pre></div></li><li><p>Use type infered context to write shorter, clean code.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>selector</span> <span class=p>=</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=n>UIColor</span><span class=p>.</span><span class=n>yellow</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>toView</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>view</span><span class=p>(</span><span class=n>forKey</span><span class=p>:</span> <span class=n>UITransitionContextViewKey</span><span class=p>.</span><span class=n>to</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>view</span> <span class=p>=</span> <span class=n>UIView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>.</span><span class=n>zero</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>selector</span> <span class=p>=</span> <span class=k>#selector</span><span class=p>(</span><span class=n>viewDidLoad</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=p>.</span><span class=n>yellow</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>toView</span> <span class=p>=</span> <span class=n>context</span><span class=p>.</span><span class=n>view</span><span class=p>(</span><span class=n>forKey</span><span class=p>:</span> <span class=p>.</span><span class=n>to</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>view</span> <span class=p>=</span> <span class=n>UIView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=p>.</span><span class=n>zero</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Generic type parameters should be descriptive, UpperCamelCase names.</p><p>When a type name doesn&rsquo;t have a meaningful relationship or role, use a
+traditional single uppercase letter such as <code>T</code>, <code>U</code>, or <code>V</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>Stack</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>write</span><span class=p>&lt;</span><span class=n>target</span><span class=p>:</span> <span class=n>OutputStream</span><span class=p>&gt;(</span><span class=n>to</span> <span class=n>target</span><span class=p>:</span> <span class=kr>inout</span> <span class=n>target</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>swap</span><span class=p>&lt;</span><span class=n>Thing</span><span class=p>&gt;(</span><span class=kc>_</span> <span class=n>a</span><span class=p>:</span> <span class=kr>inout</span> <span class=n>Thing</span><span class=p>,</span> <span class=kc>_</span> <span class=n>b</span><span class=p>:</span> <span class=kr>inout</span> <span class=n>Thing</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>Stack</span><span class=p>&lt;</span><span class=n>Element</span><span class=p>&gt;</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>write</span><span class=p>&lt;</span><span class=n>Target</span><span class=p>:</span> <span class=n>OutputStream</span><span class=p>&gt;(</span><span class=n>to</span> <span class=n>target</span><span class=p>:</span> <span class=kr>inout</span> <span class=n>Target</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>swap</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kc>_</span> <span class=n>a</span><span class=p>:</span> <span class=kr>inout</span> <span class=n>T</span><span class=p>,</span> <span class=kc>_</span> <span class=n>b</span><span class=p>:</span> <span class=kr>inout</span> <span class=n>T</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>If a computed property is read-only, omit the get clause.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>area</span><span class=p>:</span> <span class=nb>Double</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>get</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>width</span> <span class=o>*</span> <span class=n>height</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>area</span><span class=p>:</span> <span class=nb>Double</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=n>width</span> <span class=o>*</span> <span class=n>height</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><p>Use of <code>final</code> can sometimes clarify your intent and is worth the cost. In the
+below example, Box has a particular purpose and customization in a derived
+class is not intended. Marking it <code>final</code> makes that clear.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=kr>final</span> <span class=kd>class</span> <span class=nc>Box</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nv>value</span><span class=p>:</span> <span class=n>T</span>
+</span></span><span class=line><span class=cl>  <span class=kd>init</span><span class=p>(</span><span class=kc>_</span> <span class=n>value</span><span class=p>:</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kc>self</span><span class=p>.</span><span class=n>value</span> <span class=p>=</span> <span class=n>value</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=fluency>Fluency</h2><ul><li><p>Prefer grammatical English phrases.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=bp>insert</span><span class=p>(</span><span class=n>y</span><span class=p>,</span> <span class=n>position</span><span class=p>:</span> <span class=n>z</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=n>subViews</span><span class=p>(</span><span class=n>color</span><span class=p>:</span> <span class=n>y</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=n>nounCapitalize</span><span class=p>()</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=bp>insert</span><span class=p>(</span><span class=n>y</span><span class=p>,</span> <span class=n>at</span><span class=p>:</span> <span class=n>z</span><span class=p>)</span> <span class=c1>// x, insert y at z</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=n>subViews</span><span class=p>(</span><span class=n>havingColor</span><span class=p>:</span> <span class=n>y</span><span class=p>)</span> <span class=c1>// x&#39;s subviews having color y</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=n>capitalizingNouns</span><span class=p>()</span> <span class=c1>// x, capitalizing nouns</span>
+</span></span></code></pre></div></li><li><p>Begin names of factory methods with &ldquo;make&rdquo;.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=n>newIterator</span><span class=p>()</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>makeIterator</span><span class=p>()</span>
+</span></span></code></pre></div></li><li><p>The first argument to initializer and factory methods calls should not form a
+phrase.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>foreground</span> <span class=p>=</span> <span class=n>Color</span><span class=p>(</span><span class=n>havingRGBValuesRed</span><span class=p>:</span> <span class=mi>32</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mi>64</span><span class=p>,</span> <span class=n>andBlue</span><span class=p>:</span> <span class=mi>128</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>newPart</span> <span class=p>=</span> <span class=n>factory</span><span class=p>.</span><span class=n>makeWidget</span><span class=p>(</span><span class=n>havingGearCount</span><span class=p>:</span> <span class=mi>42</span><span class=p>,</span> <span class=n>andSpindleCount</span><span class=p>:</span> <span class=mi>14</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>ref</span> <span class=p>=</span> <span class=n>Link</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>destination</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>foreground</span> <span class=p>=</span> <span class=n>Color</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mi>32</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mi>64</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>128</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>newPart</span> <span class=p>=</span> <span class=n>factory</span><span class=p>.</span><span class=n>makeWidget</span><span class=p>(</span><span class=n>gears</span><span class=p>:</span> <span class=mi>42</span><span class=p>,</span> <span class=n>spindles</span><span class=p>:</span> <span class=mi>14</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>ref</span> <span class=p>=</span> <span class=n>Link</span><span class=p>(</span><span class=n>target</span><span class=p>:</span> <span class=n>destination</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Name Mutating/Nonmutating method pairs consistently.</p><p>Prefer to name the nonmutating variant using the verb&rsquo;s past participle
+(usually appending &ldquo;<strong>ed</strong>&rdquo;).</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=c1>// mutating</span>
+</span></span><span class=line><span class=cl><span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>reverse</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=bp>reverse</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// nonmutating: V-ed</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>reversed</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=kc>Self</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>y</span> <span class=p>=</span> <span class=n>x</span><span class=p>.</span><span class=n>reversed</span><span class=p>()</span>
+</span></span></code></pre></div></li><li><p>Name the nonmutating variant using the verb&rsquo;s present participle, by appending
+&ldquo;<strong>ing</strong>.&rdquo;</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=c1>// mutating</span>
+</span></span><span class=line><span class=cl><span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>stripNewlines</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=n>s</span><span class=p>.</span><span class=n>stripNewlines</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// nonmutating: V-ing</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>strippingNewlines</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>String</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>oneLine</span> <span class=p>=</span> <span class=n>t</span><span class=p>.</span><span class=n>strippingNewlines</span><span class=p>()</span>
+</span></span></code></pre></div><p>When the operation is naturally described by a noun, use the noun for the
+nonmutating method and apply the &ldquo;<strong>form</strong>&rdquo; prefix to name its mutating
+counterpart.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=c1>// mutating: form + N</span>
+</span></span><span class=line><span class=cl><span class=n>y</span><span class=p>.</span><span class=n>formUnion</span><span class=p>(</span><span class=n>z</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>c</span><span class=p>.</span><span class=n>formSuccessor</span><span class=p>(&amp;</span><span class=n>i</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// nonmutating</span>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=p>=</span> <span class=n>y</span><span class=p>.</span><span class=n>union</span><span class=p>(</span><span class=n>z</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>j</span> <span class=p>=</span> <span class=n>c</span><span class=p>.</span><span class=n>successor</span><span class=p>(</span><span class=n>i</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Uses of Boolean methods and properties should read as assertions about the
+receiver when the use is nonmutating.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=bp>isEmpty</span>
+</span></span><span class=line><span class=cl><span class=n>line1</span><span class=p>.</span><span class=n>intersects</span><span class=p>(</span><span class=n>line2</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Protocols that describe what something is should read as nouns (e.g.
+<code>Collection</code>).</p></li><li><p>Protocols that describe a capability should be named using the suffixes
+<code>able</code>, <code>ible</code>, or <code>ing</code> (e.g. <code>Equatable</code>, <code>ProgressReporting</code>).</p></li><li><p>The names of other types, properties, variables, and constants should read as
+nouns.</p></li></ul><h2 id=terminology>Terminology</h2><ul><li><p>Use US English spelling to match Apple&rsquo;s API.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>colour</span> <span class=p>=</span> <span class=s>&#34;yellow&#34;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>color</span> <span class=p>=</span> <span class=s>&#34;yellow&#34;</span>
+</span></span></code></pre></div></li><li><p>Avoid obscure terms.</p><p>Don&rsquo;t say &ldquo;epidermis&rdquo; if &ldquo;skin&rdquo; will serve your purpose.</p></li><li><p>Avoid abbreviations.</p><p>However, don&rsquo;t say
+<code>verticalPositionOnUnitCircleAtOriginOfEndOfRadiusWithAngle(x)</code> since <code>sin(x)</code>
+has been in common use.</p></li></ul><h1 id=conventions>Conventions</h1><h2 id=general-conventinos>General Conventinos</h2><ul><li><p>Document the complexity of any computed property that is not O(1).</p></li><li><p>Prefer methods and properties to free functions.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// When there&#39;s no obvious self</span>
+</span></span><span class=line><span class=cl><span class=bp>min</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>z</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// When the function is an unconstrained generic</span>
+</span></span><span class=line><span class=cl><span class=bp>print</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// When function syntax is part of the established domain notation</span>
+</span></span><span class=line><span class=cl><span class=n>sin</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Follow case convention.</p><ul><li>Names of types and protocols are <code>UpperCamelCase</code>.</li><li>Everything else if <code>lowerCamelCase</code>.</li></ul><p>Acronyms and initialisms that commonly appear as all upper case in American
+English should be uniformly up- or down-cased according to case conventions:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>utf8Bytes</span><span class=p>:</span> <span class=p>[</span><span class=nb>UTF8</span><span class=p>.</span><span class=n>CodeUnit</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>isRepresentableAsASCII</span> <span class=p>=</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>userSMTPServer</span><span class=p>:</span> <span class=n>SecureSMTPServer</span>
+</span></span></code></pre></div></li><li><p>Methods can share a base name.</p><blockquote><p>Overloading is good if the methods do essentially the same things.</p></blockquote><p>The following three all do the same things:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>Shape</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>contains</span><span class=p>(</span><span class=kc>_</span> <span class=n>other</span><span class=p>:</span> <span class=n>Point</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>contains</span><span class=p>(</span><span class=kc>_</span> <span class=n>other</span><span class=p>:</span> <span class=n>Shape</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>contains</span><span class=p>(</span><span class=kc>_</span> <span class=n>other</span><span class=p>:</span> <span class=n>LineSegment</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>And since geometric types and collections are separate domains, this is also
+fine in the same program:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>Collection</span> <span class=k>where</span> <span class=n>Element</span><span class=p>:</span> <span class=nb>Equatable</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>contains</span><span class=p>(</span><span class=kc>_</span> <span class=n>sought</span><span class=p>:</span> <span class=n>Element</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>However, these <code>index</code> methods have different semantics, and should have been
+named differently:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>Database</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// Rebuilds the database&#39;s search index</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>index</span><span class=p>()</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// Returns the `n`th row in the given table.</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>index</span><span class=p>(</span><span class=kc>_</span> <span class=n>n</span><span class=p>:</span> <span class=nb>Int</span><span class=p>,</span> <span class=n>inTable</span><span class=p>:</span> <span class=n>TableID</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>TableRow</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Avoid &ldquo;overloading on return type&rdquo;:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>Box</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>value</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Int</span><span class=p>?</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=kd>func</span> <span class=nf>value</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>String</span><span class=p>?</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=parameters>Parameters</h2><ul><li><p>Choose parameter names to serve documentation.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=c1>// Return an `Array` containing the elements of `self`</span>
+</span></span><span class=line><span class=cl><span class=c1>// that satisfy `includedInResult`.</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>filter</span><span class=p>(</span><span class=kc>_</span> <span class=n>includedInResult</span><span class=p>:</span> <span class=p>(</span><span class=n>Element</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=p>[</span><span class=n>Generator</span><span class=p>.</span><span class=n>Element</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Replace the range of elements indicated by `r` with</span>
+</span></span><span class=line><span class=cl><span class=c1>// the contents of `with`.</span>
+</span></span><span class=line><span class=cl><span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>replaceRange</span><span class=p>(</span><span class=kc>_</span> <span class=n>r</span><span class=p>:</span> <span class=nb>Range</span><span class=p>,</span> <span class=n>with</span><span class=p>:</span> <span class=p>[</span><span class=n>E</span><span class=p>])</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=c1>// Return an `Array` containing the elements of `self`</span>
+</span></span><span class=line><span class=cl><span class=c1>// that satisfy `predicate`.</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>filter</span><span class=p>(</span><span class=kc>_</span> <span class=n>predicate</span><span class=p>:</span> <span class=p>(</span><span class=n>Element</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=p>[</span><span class=n>Generator</span><span class=p>.</span><span class=n>Element</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Replace the given `subRange` of elements with `newElements`.</span>
+</span></span><span class=line><span class=cl><span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>replaceRange</span><span class=p>(</span><span class=kc>_</span> <span class=n>subRange</span><span class=p>:</span> <span class=nb>Range</span><span class=p>,</span> <span class=n>with</span> <span class=n>newElements</span><span class=p>:</span> <span class=p>[</span><span class=n>E</span><span class=p>])</span>
+</span></span></code></pre></div></li><li><p>Take advantage of defaulted parameters.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>order</span> <span class=p>=</span> <span class=n>lastName</span><span class=p>.</span><span class=n>compare</span><span class=p>(</span><span class=n>royalFamilyName</span><span class=p>,</span> <span class=n>options</span><span class=p>:</span> <span class=p>[],</span> <span class=n>range</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span> <span class=n>locale</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>order</span> <span class=p>=</span> <span class=n>lastName</span><span class=p>.</span><span class=n>compare</span><span class=p>(</span><span class=n>royalFamilyName</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Prefer to locate parameters with defaults toward the end.</p></li></ul><h2 id=argument-labels>Argument Labels</h2><ul><li><p>Omit all labels when arguments can&rsquo;t be usefully distinguished.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=bp>min</span><span class=p>(</span><span class=n>number1</span><span class=p>,</span> <span class=n>number2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>zip</span><span class=p>(</span><span class=n>sequence1</span><span class=p>,</span> <span class=n>sequence2</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>In initializers that perform value preserving type conversions, omit the first
+argument label.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=nb>Int64</span><span class=p>(</span><span class=n>someUInt32</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>When the first argument forms part of a prepositional phrase, give it an
+argument label.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=n>removeBoxes</span><span class=p>(</span><span class=n>havingLength</span><span class=p>:</span> <span class=mi>12</span><span class=p>)</span>
+</span></span></code></pre></div><p>An exception arises when the first two arguments represent parts of a single
+abstraction:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=n>a</span><span class=p>.</span><span class=n>move</span><span class=p>(</span><span class=n>toX</span><span class=p>:</span> <span class=n>b</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>c</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>a</span><span class=p>.</span><span class=n>fade</span><span class=p>(</span><span class=n>fromRed</span><span class=p>:</span> <span class=n>b</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>c</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=n>d</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>a</span><span class=p>.</span><span class=n>moveTo</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>b</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>c</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>a</span><span class=p>.</span><span class=n>fadeFrom</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=n>b</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>c</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=n>d</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Otherwise, if the first argument forms part of a grammatical phrase, omit its
+label.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>x</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>y</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=n>view</span><span class=p>.</span><span class=n>dismiss</span><span class=p>(</span><span class=kc>false</span><span class=p>)</span> <span class=c1>// Don&#39;t dismiss? Dismiss a Bool?</span>
+</span></span><span class=line><span class=cl><span class=n>words</span><span class=p>.</span><span class=bp>split</span><span class=p>(</span><span class=mi>12</span><span class=p>)</span> <span class=c1>// Split the number 12?</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>view</span><span class=p>.</span><span class=n>dismiss</span><span class=p>(</span><span class=n>animated</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>text</span> <span class=p>=</span> <span class=n>words</span><span class=p>.</span><span class=bp>split</span><span class=p>(</span><span class=n>maxSplits</span><span class=p>:</span> <span class=mi>12</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>studentByName</span> <span class=p>=</span> <span class=n>students</span><span class=p>.</span><span class=bp>sorted</span><span class=p>(</span><span class=n>isOrderedBefore</span><span class=p>:</span> <span class=n>Student</span><span class=p>.</span><span class=n>namePrecedes</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>Label all other argument</p></li></ul><h2 id=code-organization>Code Organization</h2><p>Use extensions to organize your code into logical blocks of functionality. Each
+extension should be set off with a <code>// MARK: -</code> comment to keep things
+well-organized.</p><h2 id=protocol-conformance>Protocol Conformance</h2><ul><li><p>In particular, when adding protocol conformance to a model, prefer adding a
+separate extension for the protocol methods.</p><p>This keeps the related methods grouped together with the protocol and can
+simplify instructions to add a protocol to a class with its associated
+methods.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>MyViewController</span><span class=p>:</span> <span class=n>UIViewController</span><span class=p>,</span> <span class=n>UITableViewDataSource</span><span class=p>,</span> <span class=n>UIScrollViewDelegate</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// all methods</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>MyViewController</span><span class=p>:</span> <span class=n>UIViewController</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// class stuff here</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// </span><span class=cs>MARK:</span><span class=c1> - UITableViewDataSource</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>MyViewController</span><span class=p>:</span> <span class=n>UITableViewDataSource</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// table view data source methods</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// </span><span class=cs>MARK:</span><span class=c1> - UIScrollViewDelegate</span>
+</span></span><span class=line><span class=cl><span class=kd>extension</span> <span class=nc>MyViewController</span><span class=p>:</span> <span class=n>UIScrollViewDelegate</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// scroll view delegate methods</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=comments>Comments</h2><ul><li><p>When they are needed, use comments to explain why a particular piece of code
+does something. Comments must be kept up-to-date or deleted.</p></li><li><p>Avoid block comments inline with code, as the code should be as
+self-documenting as possible. Exception: This does not apply to those comments
+used to generate documentation.</p></li><li><p>Avoid the use of C-style comments (<code>/* ... */</code>). Prefer the use of double-
+(<code>//</code>) or triple-slash (<code>///</code>).</p></li></ul><h2 id=function-declarations>Function Declarations</h2><ul><li><p>Keep short function declarations on one line including the opening brace.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>reticulateSplines</span><span class=p>(</span><span class=n>spline</span><span class=p>:</span> <span class=p>[</span><span class=nb>Double</span><span class=p>])</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// code goes here</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><p>For functions with lot&rsquo;s of parameters, put each parameter on a new line and
+add an extra indent on subsequent lines.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>reticulateSplines</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=n>spline</span><span class=p>:</span> <span class=p>[</span><span class=nb>Double</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>  <span class=n>adjustmentFactor</span><span class=p>:</span> <span class=nb>Double</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=n>translateConstant</span><span class=p>:</span> <span class=nb>Int</span><span class=p>,</span> <span class=n>comment</span><span class=p>:</span> <span class=nb>String</span>
+</span></span><span class=line><span class=cl><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// code goes here</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><p>Don&rsquo;t use <code>(Void)</code> to represent the lack of an input; simply use <code>()</code>. Use
+<code>Void</code> instead of <code>()</code> for closure and function outputs.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>updateConstraints</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=p>()</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>typealias</span> <span class=n>CompletionHandler</span> <span class=p>=</span> <span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=p>()</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>func</span> <span class=nf>updateConstraints</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>typealias</span> <span class=n>CompletionHandler</span> <span class=p>=</span> <span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span>
+</span></span></code></pre></div></li></ul><h2 id=function-calls>Function Calls</h2><ul><li><p>Mirror the style of function declarations at call sites.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>success</span> <span class=p>=</span> <span class=n>reticulateSplines</span><span class=p>(</span><span class=n>splines</span><span class=p>)</span>
+</span></span></code></pre></div></li><li><p>If the call site must be wrapped, put each parameter on a new line, indented
+one additional level.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>success</span> <span class=p>=</span> <span class=n>reticulateSplines</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=n>spline</span><span class=p>:</span> <span class=n>splines</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=n>adjustmentFactor</span><span class=p>:</span> <span class=mf>1.3</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=n>translateConstant</span><span class=p>:</span> <span class=mi>2</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=n>comment</span><span class=p>:</span> <span class=s>&#34;normalize the display&#34;</span><span class=p>)</span>
+</span></span></code></pre></div></li></ul><h2 id=closure-expressions>Closure Expressions</h2><ul><li><p>For single-expression closures where the context is clear, use implicit
+returns.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>attendeeList</span><span class=p>.</span><span class=bp>sort</span> <span class=p>{</span> <span class=n>a</span><span class=p>,</span> <span class=n>b</span> <span class=k>in</span>
+</span></span><span class=line><span class=cl>  <span class=n>a</span> <span class=o>&gt;</span> <span class=n>b</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=types>Types</h2><p>Constants are defined using the <code>let</code> keyword and variables with the var
+keyword. Always use <code>let</code> instead of <code>var</code> if the value of the variable will not
+change.</p><p><strong>Tip:</strong> A good technique is to define everything using let and only change it
+to var if the compiler complains!</p><ul><li><p>To declare a type property as a constant simply use <code>static let</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>e</span> <span class=p>=</span> <span class=mf>2.7182818</span> <span class=c1>// pollutes global namespace</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>root2</span> <span class=p>=</span> <span class=mf>1.414</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>hypotenuse</span> <span class=p>=</span> <span class=n>side</span> <span class=o>*</span> <span class=n>root2</span> <span class=c1>// what is root2?</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>enum</span> <span class=nc>Math</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>static</span> <span class=kd>let</span> <span class=nv>e</span> <span class=p>=</span> <span class=mf>2.7182818</span>
+</span></span><span class=line><span class=cl>  <span class=kd>static</span> <span class=kd>let</span> <span class=nv>root2</span> <span class=p>=</span> <span class=mf>1.414</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>hypotenuse</span> <span class=p>=</span> <span class=n>side</span> <span class=o>*</span> <span class=n>Math</span><span class=p>.</span><span class=n>root2</span>
+</span></span></code></pre></div></li></ul><h2 id=optionals>Optionals</h2><ul><li><p>Declare variables and function return types as optional with <code>?</code> where a <code>nil</code>
+value is acceptable.</p></li><li><p>Use implicitly unwrapped types declared with <code>!</code> only for instance variables
+that you know will be initialized later before use, such as subviews that will
+be set up in <code>viewDidLoad()</code>. Prefer optional binding to implicitly unwrapped
+optionals in most other cases.</p></li><li><p>When accessing an optional value, use optional chaining if the value is only
+accessed once or if there are many optionals in the chain:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=n>textContainer</span><span class=p>?.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
+</span></span></code></pre></div></li><li><p>Use optional binding when it&rsquo;s more convenient to unwrap once and perform
+multiple operations:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=k>if</span> <span class=kd>let</span> <span class=nv>textContainer</span> <span class=p>=</span> <span class=n>textContainer</span> <span class=p>{</span> <span class=p>...</span> <span class=p>}</span>
+</span></span></code></pre></div></li><li><p>When naming optional variables and properties, avoid naming them like
+<code>optionalString</code> or <code>maybeView</code> since their optional-ness is already in the
+type declaration.</p></li><li><p>For optional binding, shadow the original name whenever possible rather than
+using names like <code>unwrappedView</code> or <code>actualLabel</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>optionalSubview</span><span class=p>:</span> <span class=n>UIView</span><span class=p>?</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>volume</span><span class=p>:</span> <span class=nb>Double</span><span class=p>?</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=kd>let</span> <span class=nv>unwrappedSubview</span> <span class=p>=</span> <span class=n>optionalSubview</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>if</span> <span class=kd>let</span> <span class=nv>realVolume</span> <span class=p>=</span> <span class=n>volume</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// do something with unwrappedSubview and realVolume</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// another example</span>
+</span></span><span class=line><span class=cl><span class=n>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>2.0</span><span class=p>)</span> <span class=p>{</span> <span class=p>[</span><span class=kr>weak</span> <span class=kc>self</span><span class=p>]</span> <span class=k>in</span>
+</span></span><span class=line><span class=cl>  <span class=k>guard</span> <span class=kd>let</span> <span class=nv>strongSelf</span> <span class=p>=</span> <span class=kc>self</span> <span class=k>else</span> <span class=p>{</span> <span class=k>return</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=n>strongSelf</span><span class=p>.</span><span class=n>alpha</span> <span class=p>=</span> <span class=mf>1.0</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>subview</span><span class=p>:</span> <span class=n>UIView</span><span class=p>?</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>volume</span><span class=p>:</span> <span class=nb>Double</span><span class=p>?</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// later on...</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=kd>let</span> <span class=nv>subview</span> <span class=p>=</span> <span class=n>subview</span><span class=p>,</span> <span class=kd>let</span> <span class=nv>volume</span> <span class=p>=</span> <span class=n>volume</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// do something with unwrapped subview and volume</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// another example</span>
+</span></span><span class=line><span class=cl><span class=n>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>2.0</span><span class=p>)</span> <span class=p>{</span> <span class=p>[</span><span class=kr>weak</span> <span class=kc>self</span><span class=p>]</span> <span class=k>in</span>
+</span></span><span class=line><span class=cl>  <span class=k>guard</span> <span class=kd>let</span> <span class=nv>self</span> <span class=p>=</span> <span class=kc>self</span> <span class=k>else</span> <span class=p>{</span> <span class=k>return</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=kc>self</span><span class=p>.</span><span class=n>alpha</span> <span class=p>=</span> <span class=mf>1.0</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=lazy-initialization>Lazy Initialization</h2><ul><li><p>Consider using lazy initialization for finer grained control over object
+lifetime. This is especially true for <code>UIViewController</code> that loads views
+lazily. You can either use a closure that is immediately called <code>{ }()</code> or
+call a private factory method. Example:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=kr>lazy</span> <span class=kd>var</span> <span class=nv>locationManager</span> <span class=p>=</span> <span class=n>makeLocationManager</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>private</span> <span class=kd>func</span> <span class=nf>makeLocationManager</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=n>CLLocationManager</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nv>manager</span> <span class=p>=</span> <span class=n>CLLocationManager</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>  <span class=n>manager</span><span class=p>.</span><span class=n>desiredAccuracy</span> <span class=p>=</span> <span class=n>kCLLocationAccuracyBest</span>
+</span></span><span class=line><span class=cl>  <span class=n>manager</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+</span></span><span class=line><span class=cl>  <span class=n>manager</span><span class=p>.</span><span class=n>requestAlwaysAuthorization</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=n>manager</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><p><strong>Notes:</strong></p><ul><li><code>[unowned self]</code> is not required here. A retain cycle is not created.</li><li>Location manager has a side-effect for popping up UI to ask the user for
+permission so fine grain control makes sense here.</li></ul><h2 id=type-inference>Type Inference</h2><ul><li><p>Prefer compact code and let the compiler infer the type for constants or
+variables of single instances. Type inference is also appropriate for small,
+non-empty arrays and dictionaries. When required, specify the specific type
+such as <code>CGFloat</code> or <code>Int16</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>message</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=s>&#34;Click the button&#34;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>currentBounds</span><span class=p>:</span> <span class=n>CGRect</span> <span class=p>=</span> <span class=n>computeViewBounds</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>names</span> <span class=p>=</span> <span class=p>[</span><span class=nb>String</span><span class=p>]()</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>message</span> <span class=p>=</span> <span class=s>&#34;Click the button&#34;</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>currentBounds</span> <span class=p>=</span> <span class=n>computeViewBounds</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>names</span> <span class=p>=</span> <span class=p>[</span><span class=s>&#34;Mic&#34;</span><span class=p>,</span> <span class=s>&#34;Sam&#34;</span><span class=p>,</span> <span class=s>&#34;Christine&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>maximumWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mf>106.5</span>
+</span></span></code></pre></div></li></ul><h2 id=type-annotation-for-empty-arrays-and-dictionaries>Type Annotation for Empty Arrays and Dictionaries</h2><ul><li><p>For empty arrays and dictionaries, use type annotation. (For an array or
+dictionary assigned to a large, multi-line literal, use type annotation.)</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>//bad</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>names</span> <span class=p>=</span> <span class=p>[</span><span class=nb>String</span><span class=p>]()</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>lookup</span> <span class=p>=</span> <span class=p>[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>Int</span><span class=p>]()</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>names</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>]</span> <span class=p>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>lookup</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>Int</span><span class=p>]</span> <span class=p>=</span> <span class=p>[:]</span>
+</span></span></code></pre></div></li></ul><p><strong>NOTE</strong>: Following this guideline means picking descriptive names is even more
+important than before.</p><h2 id=syntactic-sugar>Syntactic Sugar</h2><ul><li><p>Prefer the shortcut versions of type declarations over the full generics
+syntax.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>deviceModels</span><span class=p>:</span> <span class=nb>Array</span><span class=p>&lt;</span><span class=nb>String</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>employees</span><span class=p>:</span> <span class=nb>Dictionary</span><span class=p>&lt;</span><span class=nb>Int</span><span class=p>,</span> <span class=nb>String</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>faxNumber</span><span class=p>:</span> <span class=nb>Optional</span><span class=p>&lt;</span><span class=nb>Int</span><span class=p>&gt;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>deviceModels</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>employees</span><span class=p>:</span> <span class=p>[</span><span class=nb>Int</span><span class=p>:</span> <span class=nb>String</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>faxNumber</span><span class=p>:</span> <span class=nb>Int</span><span class=p>?</span>
+</span></span></code></pre></div></li></ul><h2 id=functions-vs-methods>Functions vs Methods</h2><ul><li><p>Free functions, which aren&rsquo;t attached to a class or type, should be used
+sparingly. When possible, prefer to use a method instead of a free function.
+This aids in readability and discoverability.</p></li><li><p>Free functions are most appropriate when they aren&rsquo;t associated with any
+particular type or instance.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>sorted</span> <span class=p>=</span> <span class=n>mergeSort</span><span class=p>(</span><span class=n>items</span><span class=p>)</span>  <span class=c1>// hard to discover</span>
+</span></span><span class=line><span class=cl><span class=n>launch</span><span class=p>(&amp;</span><span class=n>rocket</span><span class=p>)</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>sorted</span> <span class=p>=</span> <span class=n>items</span><span class=p>.</span><span class=n>mergeSorted</span><span class=p>()</span>  <span class=c1>// easily discoverable</span>
+</span></span><span class=line><span class=cl><span class=n>rocket</span><span class=p>.</span><span class=n>launch</span><span class=p>()</span>  <span class=c1>// acts on the model</span>
+</span></span></code></pre></div></li><li><p>Free Function Exceptions</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=kd>let</span> <span class=nv>tuples</span> <span class=p>=</span> <span class=n>zip</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>)</span>  <span class=c1>// feels natural as a free function (symmetry)</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>value</span> <span class=p>=</span> <span class=bp>max</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>z</span><span class=p>)</span>  <span class=c1>// another free function that feels natural</span>
+</span></span></code></pre></div></li></ul><h2 id=memory-management>Memory Management</h2><p>Code (even non-production, tutorial demo code) should not create reference
+cycles. Analyze your object graph and prevent strong cycles with <code>weak</code> and
+<code>unowned</code> references. Alternatively, use value types (<code>struct</code>, <code>enum</code>) to
+prevent cycles altogether.</p><h2 id=extending-object-lifetime>Extending object lifetime</h2><ul><li><p>Extend object lifetime using the <code>[weak self]</code> and
+<code>guard let self = self else { return }</code> idiom. <code>[weak self]</code> is preferred to
+<code>[unowned self]</code> where it is not immediately obvious that <code>self</code> outlives the
+closure. Explicitly extending lifetime is preferred to optional chaining.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=c1>// might crash if self is released before response returns</span>
+</span></span><span class=line><span class=cl><span class=n>resource</span><span class=p>.</span><span class=n>request</span><span class=p>().</span><span class=n>onComplete</span> <span class=p>{</span> <span class=p>[</span><span class=kr>unowned</span> <span class=kc>self</span><span class=p>]</span> <span class=n>response</span> <span class=k>in</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nv>model</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>updateModel</span><span class=p>(</span><span class=n>response</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=kc>self</span><span class=p>.</span><span class=n>updateUI</span><span class=p>(</span><span class=n>model</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=c1>// deallocate could happen between updating the model and updating UI</span>
+</span></span><span class=line><span class=cl><span class=n>resource</span><span class=p>.</span><span class=n>request</span><span class=p>().</span><span class=n>onComplete</span> <span class=p>{</span> <span class=p>[</span><span class=kr>weak</span> <span class=kc>self</span><span class=p>]</span> <span class=n>response</span> <span class=k>in</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nv>model</span> <span class=p>=</span> <span class=kc>self</span><span class=p>?.</span><span class=n>updateModel</span><span class=p>(</span><span class=n>response</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=kc>self</span><span class=p>?.</span><span class=n>updateUI</span><span class=p>(</span><span class=n>model</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=n>resource</span><span class=p>.</span><span class=n>request</span><span class=p>().</span><span class=n>onComplete</span> <span class=p>{</span> <span class=p>[</span><span class=kr>weak</span> <span class=kc>self</span><span class=p>]</span> <span class=n>response</span> <span class=k>in</span>
+</span></span><span class=line><span class=cl>  <span class=k>guard</span> <span class=kd>let</span> <span class=nv>self</span> <span class=p>=</span> <span class=kc>self</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nv>model</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>updateModel</span><span class=p>(</span><span class=n>response</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=kc>self</span><span class=p>.</span><span class=n>updateUI</span><span class=p>(</span><span class=n>model</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=access-control>Access Control</h2><ul><li><p>Full access control annotation in tutorials can distract from the main topic
+and is not required. Using <code>private</code> and <code>fileprivate</code> appropriately, however,
+adds clarity and promotes encapsulation. Prefer <code>private</code> to <code>fileprivate</code>;
+use <code>fileprivate</code> only when the compiler insists.</p></li><li><p>Only explicitly use <code>open</code>, <code>public</code>, and <code>internal</code> when you require a full
+access control specification.</p></li><li><p>Use access control as the leading property specifier. The only things that
+should come before access control are the <code>static</code> specifier or attributes
+such as <code>@IBAction</code>, <code>@IBOutlet</code> and <code>@discardableResult</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=n>fileprivate</span> <span class=kd>let</span> <span class=nv>message</span> <span class=p>=</span> <span class=s>&#34;Great Scott!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>TimeMachine</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>lazy</span> <span class=kr>dynamic</span> <span class=kd>private</span> <span class=kd>var</span> <span class=nv>fluxCapacitor</span> <span class=p>=</span> <span class=n>FluxCapacitor</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>private</span> <span class=kd>let</span> <span class=nv>message</span> <span class=p>=</span> <span class=s>&#34;Great Scott!&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>TimeMachine</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>private</span> <span class=kr>dynamic</span> <span class=kr>lazy</span> <span class=kd>var</span> <span class=nv>fluxCapacitor</span> <span class=p>=</span> <span class=n>FluxCapacitor</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=control-flow>Control Flow</h2><ul><li><p>Prefer the <code>for-in</code> style of <code>for</code> loop over the <code>while-condition-increment</code>
+style.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>i</span> <span class=p>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>3</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=bp>print</span><span class=p>(</span><span class=s>&#34;Hello three times&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=n>i</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>i</span> <span class=p>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>attendeeList</span><span class=p>.</span><span class=bp>count</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nv>person</span> <span class=p>=</span> <span class=n>attendeeList</span><span class=p>[</span><span class=n>i</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>  <span class=bp>print</span><span class=p>(</span><span class=s>&#34;</span><span class=si>\(</span><span class=n>person</span><span class=si>)</span><span class=s> is at position #</span><span class=si>\(</span><span class=n>i</span><span class=si>)</span><span class=s>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=n>i</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=kc>_</span> <span class=k>in</span> <span class=mf>0.</span><span class=p>.&lt;</span><span class=mi>3</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=bp>print</span><span class=p>(</span><span class=s>&#34;Hello three times&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=n>index</span><span class=p>,</span> <span class=n>person</span><span class=p>)</span> <span class=k>in</span> <span class=n>attendeeList</span><span class=p>.</span><span class=n>enumerated</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=bp>print</span><span class=p>(</span><span class=s>&#34;</span><span class=si>\(</span><span class=n>person</span><span class=si>)</span><span class=s> is at position #</span><span class=si>\(</span><span class=n>index</span><span class=si>)</span><span class=s>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>index</span> <span class=k>in</span> <span class=bp>stride</span><span class=p>(</span><span class=n>from</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>to</span><span class=p>:</span> <span class=n>items</span><span class=p>.</span><span class=bp>count</span><span class=p>,</span> <span class=n>by</span><span class=p>:</span> <span class=mi>2</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=bp>print</span><span class=p>(</span><span class=n>index</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=n>index</span> <span class=k>in</span> <span class=p>(</span><span class=mf>0.</span><span class=p>..</span><span class=mi>3</span><span class=p>).</span><span class=n>reversed</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=bp>print</span><span class=p>(</span><span class=n>index</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><h2 id=ternary-operator>Ternary Operator</h2><ul><li><p>The Ternary operator, <code>?:</code> , should only be used when it increases clarity or
+code neatness. A single condition is usually all that should be evaluated.
+Evaluating multiple conditions is usually more understandable as an <code>if</code>
+statement or refactored into instance variables. In general, the best use of
+the ternary operator is during assignment of a variable and deciding which
+value to use.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=n>result</span> <span class=p>=</span> <span class=n>a</span> <span class=o>&gt;</span> <span class=n>b</span> <span class=p>?</span> <span class=n>x</span> <span class=p>=</span> <span class=n>c</span> <span class=o>&gt;</span> <span class=n>d</span> <span class=p>?</span> <span class=n>c</span> <span class=p>:</span> <span class=n>d</span> <span class=p>:</span> <span class=n>y</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>value</span> <span class=p>=</span> <span class=mi>5</span>
+</span></span><span class=line><span class=cl><span class=n>result</span> <span class=p>=</span> <span class=n>value</span> <span class=o>!=</span> <span class=mi>0</span> <span class=p>?</span> <span class=n>x</span> <span class=p>:</span> <span class=n>y</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>isHorizontal</span> <span class=p>=</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl><span class=n>result</span> <span class=p>=</span> <span class=n>isHorizontal</span> <span class=p>?</span> <span class=n>x</span> <span class=p>:</span> <span class=n>y</span>
+</span></span></code></pre></div></li></ul><h2 id=multi-line-string-literals>Multi-line String Literals</h2><ul><li><p>When building a long string literal, you&rsquo;re encouraged to use the multi-line
+string literal syntax. Open the literal on the same line as the assignment but
+do not include text on that line. Indent the text block one additional level.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>message</span> <span class=p>=</span> <span class=s>&#34;&#34;&#34;You cannot charge the flux \
+</span></span></span><span class=line><span class=cl><span class=s>  capacitor with a 9V battery.
+</span></span></span><span class=line><span class=cl><span class=s>  You must use a super-charger \
+</span></span></span><span class=line><span class=cl><span class=s>  which costs 10 credits. You currently \
+</span></span></span><span class=line><span class=cl><span class=s>  have </span><span class=si>\(</span><span class=n>credits</span><span class=si>)</span><span class=s> credits available.
+</span></span></span><span class=line><span class=cl><span class=s>  &#34;&#34;&#34;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>let</span> <span class=nv>message</span> <span class=p>=</span> <span class=s>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s>  You cannot charge the flux \
+</span></span></span><span class=line><span class=cl><span class=s>  capacitor with a 9V battery.
+</span></span></span><span class=line><span class=cl><span class=s>  You must use a super-charger \
+</span></span></span><span class=line><span class=cl><span class=s>  which costs 10 credits. You currently \
+</span></span></span><span class=line><span class=cl><span class=s>  have </span><span class=si>\(</span><span class=n>credits</span><span class=si>)</span><span class=s> credits available.
+</span></span></span><span class=line><span class=cl><span class=s>  &#34;&#34;&#34;</span>
+</span></span></code></pre></div></li></ul><h1 id=special-instructions>Special Instructions</h1><ul><li><p>Label tuple members and name closure parameters</p></li><li><p>Take extra care with unconstrained polymorphism</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// bad</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>Array</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// Inserts `newElement` at `self.endIndex`.</span>
+</span></span><span class=line><span class=cl>  <span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>append</span><span class=p>(</span><span class=kc>_</span> <span class=n>newElement</span><span class=p>:</span> <span class=n>Element</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// Inserts the contents of `newElements`, in order, at</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// `self.endIndex`.</span>
+</span></span><span class=line><span class=cl>  <span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>append</span><span class=p>(</span><span class=kc>_</span> <span class=n>newElements</span><span class=p>:</span> <span class=n>S</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>where</span> <span class=n>S</span><span class=p>.</span><span class=n>Generator</span><span class=p>.</span><span class=n>Element</span> <span class=p>==</span> <span class=n>Element</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>values</span><span class=p>:</span> <span class=p>[</span><span class=nb>Any</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=s>&#34;a&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=n>values</span><span class=p>.</span><span class=n>append</span><span class=p>([</span><span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>])</span> <span class=c1>// [1, &#34;a&#34;, [2, 3, 4]] or [1, &#34;a&#34;, 2, 3, 4]?</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-swift data-lang=swift><span class=line><span class=cl><span class=c1>// good</span>
+</span></span><span class=line><span class=cl><span class=kd>struct</span> <span class=nc>Array</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// Inserts `newElement` at `self.endIndex`.</span>
+</span></span><span class=line><span class=cl>  <span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>append</span><span class=p>(</span><span class=kc>_</span> <span class=n>newElement</span><span class=p>:</span> <span class=n>Element</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// Inserts the contents of `newElements`, in order, at</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// `self.endIndex`.</span>
+</span></span><span class=line><span class=cl>  <span class=kd>public</span> <span class=kr>mutating</span> <span class=kd>func</span> <span class=nf>append</span><span class=p>(</span><span class=n>contentsOf</span> <span class=n>newElements</span><span class=p>:</span> <span class=n>S</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>where</span> <span class=n>S</span><span class=p>.</span><span class=n>Generator</span><span class=p>.</span><span class=n>Element</span> <span class=p>==</span> <span class=n>Element</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nv>values</span><span class=p>:</span> <span class=p>[</span><span class=nb>Any</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=s>&#34;a&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=n>values</span><span class=p>.</span><span class=n>append</span><span class=p>([</span><span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>])</span> <span class=c1>// it&#39;s [1, &#34;a&#34;, [2, 3, 4]]!</span>
+</span></span></code></pre></div></li></ul></div></article></main></div><footer class=footer><span class=footer_item></span>&nbsp;<div class=footer_social-icons><a href=https://www.linkedin.com/in/pengyuc target=_blank rel="noopener noreferrer me" title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href=https://github.com/walkccc target=_blank rel="noopener noreferrer me" title=Github><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div><small class=footer_copyright>© 2023 Peng-Yu Chen.
+Powered by <a href=https://github.com/hugo-sid/hugo-blog-awesome target=_blank rel="noreferrer noopener">Hugo blog awesome</a>
+theme on
+<a href=https://gohugo.io target=_blank rel="noreferrer noopener">Hugo</a>.</small></footer><script src=http://blog.pengyuc.com/js/themeSwitchnMenu.min.2a402288242b6930b175a0722c267e2353055739b3975834df35e56d00dd8f50.js></script></body></html>

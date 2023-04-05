@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>paper on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/paper/</link><description>Recent content in paper on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 13 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/paper/index.xml" rel="self" type="application/rss+xml"/><item><title>論文筆記 Prioritized Experience Reply</title><link>http://blog.pengyuc.com/posts/paper/paper-exp-replay/</link><pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-exp-replay/</guid><description>Paper Link
+Experience replay 使得 RL agents 能夠記住並重用過去的經驗。
+以前的做法是，從 replay memory 中均勻的 sample experience transition。但這種方法 只根據他們最初被體驗到的頻率，而不管它們的重要性。
+在本文中，開發了一個優先驗體的框架，以便更頻繁地重放重要的 transition，從而更有 效地學習。
+本文表示，採用此種經驗回放的算法，能夠在 49 種遊戲中，打贏傳統算法 41 次。
+1 Introduction RL agents 在觀察到一連串的經驗時，增量地更新其參數。最簡單的做法，即：在更新後， 立刻扔掉到來的數據，但這有幾下兩種問題：
+強烈的相關性更性破壞了許多隨機梯度下降為基礎的演算法所假設的 i.i.d.。 快速的忘記罕見，但可能會再用到的經驗。 Experience replay 解決了上述問題：在一個 replay memory 中儲存 experience，通過混 合或多或少的最近經驗來更新就有可能破壞 temporal correlation，rare experience 將 會被用來不止一次更新，這就被用在 NeurIPS 2013 和 Nature 2015 的論文中。
+DQN 利用一個大的滑動窗口 replay memory，隨機的從中均勻採樣，平均重複訪問一個 transition 8 次。
+Experience replay 可以大量的降低需要去學習的經驗，而是用更多的計算和更多的 memory 來替換，這樣在計算資源上是比該 RL agents 和環境互動還便宜的。
+註：在這裡的一次 transition 指的是：agent 在環境中一次性的操作，即 tuple：</description></item><item><title>論文筆記 Video-to-Video Synthesis</title><link>http://blog.pengyuc.com/posts/paper/paper-vid2vid/</link><pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-vid2vid/</guid><description>Paper Link
+現在 image to image 的 tasks 已經是當紅炸子雞，NVIDIA 這回和 MIT CSAIL 直接更上 一層樓，開發出了 video to video 的轉換系統，並且能夠支援到 2K 的解析度，就讓我們 來看看這篇 vid2vid 吧！
+1 Introduction 建模和動態地重建視覺世界的能力對於構建 intelligent agents 是至關重要的。除了科學 興趣導向外，學習連續視覺經驗在計算機視覺、機器人和計算機圖形學中有廣泛的應用。
+Figure 1: Generating a photorealistic video from an input segmentation map video on Cityscapes. Top left: input. Top right: pix2pixHD. Bottom left: COVST. Bottom right: vid2vid (ours). 2 Related Work Generative Adversarial Networks (GANs) Generator 和 discriminator 要儘量達成 zero-sum。本篇 paper 使用的主要方法為 conditional GAN。此篇 paper 的方法不只是預測未來影片對當前觀察到圖片，並且在可操 作的語義表示上合成照片般逼真的影片，例如 segmentation masks、草圖、姿勢。</description></item><item><title>論文筆記 Computing Machinery and Intelligence</title><link>http://blog.pengyuc.com/posts/paper/paper-turing/</link><pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-turing/</guid><description>Paper Link
+今天是台灣九合一縣市長選舉隔天，決定要來看一篇 1950 年，由計算機科學之父 A.M. Turing 所寫的 Computing Machinery and Intelligence。
+這篇 paper 提出了電腦智能當中幾個重要的想法，數學描述不多，主要著重在理論上的描 述。
+圖靈測試（Turing test）是 AI 領域中，一項著名且具爭議的測試方法。這是以 Alan Turing 在 1950 第一份論文「運算機器與智能」（Computing Machinery and Intelligence）為基礎所設計的問答，目標在分辨機器是否具備人類所具有的智能 （Intelligence）。
+文本很長，又是 1950 年的英式英文，但我會試著去翻譯並整理這經典的 paper。
+1. The Imitation Game 首先圖靈提出了一個問題：
+&amp;ldquo;Can machines think?&amp;rdquo;
+這個應該要從主詞（machines）和動詞（think）的定義出發。
+但圖靈認為重新給 machines 和 think 定義是危險的，所以他選擇了提出另一個問題，而 這個問題和原問題緊密相關，最重要的是明確性。
+新的問題稱之為 imitation game（模仿遊戲）。需要三個人來玩這個遊戲：
+A：一個男人 B：一個女人 C：一個詢問人（男女皆可） C 待在一個與另外兩人隔離的屋子裡。
+遊戲的目標是：C 判斷出外面的人哪個是 A？哪個是 B？
+C 用標籤 X、Y 代表外面的兩個人。
+遊戲結束時，他要說出「X 是 A，Y 是 B」或者「X 是 B，Y 是 A」。</description></item><item><title>論文筆記 Non-local Neural Networks</title><link>http://blog.pengyuc.com/posts/paper/paper-nonlocal-nn/</link><pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-nonlocal-nn/</guid><description>Paper Link ss Convolutional 和 recurrent operations 都是一次處理一個 local 鄰域，此篇 paper 提出了 non-local operations 的想法，目的就是要解決即使相距很遠的的 blocks，仍然 有可能是彼此有關聯的。
+1. Introduction 為什麼要使用深層神經網路？
+補捉 long-range dependencies
+可能是一個大家會常給出的答案。
+舉例來說：
+sequential data (e.g., in speech, language) 一般來說會採用 recurrent operations，也是為了達成 long-range dependency modeling image data 則常常採用深層的 convolutional operations 因為 convolutional 和 recurrent operations 都只會對 local 鄰域資料做運算（距離、 時間），因此要傳遞訊息到較遠處就只能透過重複地操作。
+重複地做 local operations 有幾個限制：
+計算上沒有效率 難以優化 non-local 特徵訊息傳遞不靈活 當然，CNN 和 RNN 的初衷本來就不是來處理 non-local 訊息的。
+本篇 paper 就是要解決上述問題，所以提出了 non-local operations 這個概念，直觀 來說：</description></item><item><title>論文筆記 PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</title><link>http://blog.pengyuc.com/posts/paper/paper-pointnet++/</link><pubDate>Sun, 14 Oct 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-pointnet++/</guid><description>Paper Link
+1 Introduction PointNet 對局部特徵的處理並不完善，在 3D Object Part Segmentation 和 Semantic Segmentation in Scenes 中（即：需要得到每一個點的分數時），原方法是將全局特徵 concatenate 在單點特徵後面，中間忽略了局部特徵的步驟，於是作者提出了 PointNet++ 採用分層神經網路（hierarchical neural network）來對此改善。
+另外，點雲的密度是不固定的，因此作者也在 PointNet++ 中提出了密度適應的網路結 構。
+就全局來看，PointNet++ 比 PointNet 多了：
+局部特徵提取 密度適應網路 2 Problem Statement 假設 $X = (M, d)$ 是繼承歐基里德空間 $\mathbb R^n$ 的離散度量空間，
+其中：
+$M \subseteq \mathbb R^n$：點集 $d$：是距離度量。 另外，歐基里德空間中的 $M$ 密度在各處可能不均勻。我們感興趣的是學習 set function $f$，$f$ 的輸入為 $\mathcal X$（以及每個點的附加特徵）並產生重新劃分 $\mathcal X$ 的 semantic 訊息。
+3 Method 3.1 Review of PointNet [20]: A Universal Continuous Set Function Approximator 3.</description></item><item><title>論文筆記 PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link>http://blog.pengyuc.com/posts/paper/paper-pointnet/</link><pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-pointnet/</guid><description>Paper Link
+1. Introduction 這篇是 Stanford 在 CVPR 2017 所發表的 PointNet，從名字中可以知道是有關處理 3D 資 料的論文。全文目標就是要對點雲（point cloud）做各種分類，最關鍵的方法為：
+single symmetric function max pooling（解決無序性） Figure 1. Applications of PointNet. We propose a novel deep net architecture that consumes raw point cloud (set of points) without voxelization or rendering. It is a unified architecture that learns both global and local point features, providing a simple, efficient and effective approach for a number of 3D recognition tasks.</description></item><item><title>論文筆記 OctNet: Learning Deep 3D Representations at High Resolutions</title><link>http://blog.pengyuc.com/posts/paper/paper-octnet/</link><pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-octnet/</guid><description>Paper Link
+此篇 paper 的主要目的是要解決，但送進網路 training 的 3D 資料是稀疏的（sparse） ，用原本的描述方式會太耗費記憶體而難以實作，因為實際上很多地方都是沒有值的，本篇 paper 重點是：使用 octree 的方法來表示高解析度的「立體圖像」，卻又不失本來「完整 地」表示方式。
+1. Introduction 現有的 3D 網路架構，大多會用像類似 2D pixels 的表示方示，在 2D 我們稱之為 pixel，在 3D 的話就稱之為 voxel。同理，在 2D 世界的 convolution kernel 在 3D 就 會變成一個長方體，大小可能是 $3 \times 3 \times 3$ 之類。
+引述原 paper 中的描述：
+a dense and regular 3D voxel grid, and process this grid using 3D convolution and pooling operations.
+並且現今的 3D networks 受限於記憶體大小，數量級數通常大約在 $30^3$ voxels。
+從下圖中可以看到，OctNet 可以用「明顯較少」的位元數去表示到一模一樣的 notation（ 圖中每 1 個小正方型耗費的記憶體為 1 單位）</description></item><item><title>論文筆記 Pointwise Convolutional Neural Networks</title><link>http://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/</link><pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/</guid><description>Paper Link
+在這篇 paper 中，展示了使用 CNNs 去處理 3D point clouds，並且應用在 semantic segmentation 和 object recognition 中。
+MathWorks 官網有對 Semantic Segmantation 做了一個基礎 的介紹：
+分割（Segmantation）對於圖像分析任務非常重要。語義分割（Segmantic Segmantation） 描述了將圖片中的每個像素與類標籤（class label），例如：花、人、道路、天空、海洋 或汽車，相關聯的過程。
+1. Introduction 現有的深度學習在處理 3D 資料，像是體積、point clouds、或 multi-view 圖片仍有不少 困難。
+Volume representation 最能夠「完整地」描述一張圖片，直觀上也是最容易實做的，但 是礙於硬體資源（記憶體、容量等），所以不大可行。 Multi-view representation 雖然不是最真實的描述方式，但能夠透過事先訓練好的 2D 模型來加以實現。 Point clouds 不但資訊量較小，而且較為彈性，但 point clouds 與神經網路的應用還 未被深入挖掘，這也是此篇 paper 誕生的原因。 綜合來說，整篇 paper 的重點在於：
+A pointwise convolution operator that can output features at each point in a point cloud; Two pointwise convolutional neural networks for semantic scene segmentation and object recognition.</description></item><item><title>論文筆記 Highly-Economized Multi-View Binary Compression for Scalable Image Clustering</title><link>http://blog.pengyuc.com/posts/paper/paper-hsic/</link><pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-hsic/</guid><description>Paper Link
+講到 image clustering，就必需先來談談什麼是 cluster analysis（聚類分析），在維基 百科上給出了下列一段的定義：
+聚類分析（英語：Cluster analysis，亦稱為群集分析）是對於統計數據分析的一門技術 ，在許多領域受到廣泛應用，包括機器學習，數據挖掘，模式識別，圖像分析以及生物信 息。聚類是把相似的對象通過靜態分類的方法分成不同的組別或者更多的子集（subset） ，這樣讓在同一個子集中的成員對象都有相似的一些屬性，常見的包括在坐標系中更加短 的空間距離等。
+一般把數據聚類歸納為一種非監督式學習。
+為避免混淆，此篇文章一律使用原文 image clustering，而不多做無謂的翻譯。
+1 Introduction Image clustering 的主要目的為：
+發現圖片表示的自然和可解釋結構 將彼此相似的圖片分組到同一個群集中 現有的 clustering methods 主要有以下兩種：
+single-view image clustering (SVIC) multi-view image clustering (MVIC) 而現在 MVIC 較廣泛的被使用，因為他有「從單張圖片中提取多個不同特徵的靈活性」。
+再更細分下去，現有的 MVIC 可再被分成三類：
+multi-view spectral clusting multi-view subspace clustering multi-view matrix factorization 這是整個 paper 所提到的流程：
+透過 paper 中的方法，能夠將本來的資料從「歐基里德距離時間複雜度 $O(Nd)$」降到 「$O(1)$」（因為編碼成 Binary Codes 後只需做 XOR operations）！
+其中，
+$N$: data size（例如一張圖有幾個 pixels） $d$: dimension（例如使用 R、G、B 三個維度來描述一個 pixel） 另外補充一下 LBP 和 HOG 的用途：</description></item><item><title>論文筆記 Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</title><link>http://blog.pengyuc.com/posts/paper/paper-realtime-pose-estimation/</link><pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-realtime-pose-estimation/</guid><description>Paper Link
+1. Introduction 這篇 paper 是卡內基美隆大學（Carnegie Mellon University）在 CVPR 2017 所發表的，論文中首先指出了 Pose Estimation 中三個具挑戰性的關鍵：
+一張圖片裡有多少人，而這些人擺什麼姿勢和人的大小？ 有幾個人是相互疊在一起（overlap）的，他們彼此摭蓋面積？ 無法即時（realtime） 另外論文中也提到了一些現有方法存在的瓶頸，現有方法主要是透過 top-down 的方式：
+person detector single-person pose estimation 來解決此類問題，而這很依賴效能，如果 person detector 失敗了，那方法就沒用了，另 外時間也是一項考驗。
+2. Method Figure 2:
+Fig. 2 給出了模型的整個處理過程：
+讀進一張圖片大小為 $w \times h$ 的圖片 $\textbf I$。
+送進 model VGG-19 的前 10 層 layer train 出大小一樣為 $w \times h$ 的 features $\textbf F$。
+再送進 paper 中提到的 model，會得到以下兩個：
+2D confidense maps $\textbf S = (\textbf S_1, \textbf S_2, \dots, \textbf S_J)$，其中 $J$ 代表 人體共有 $J$ 個部位（part）。</description></item></channel></rss>

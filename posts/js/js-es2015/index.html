@@ -1,0 +1,598 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=content-type content="text/html"><meta name=viewport content="width=device-width,initial-scale=1"><title itemprop=name>ES2015 | Blog | Peng-Yu Chen</title><meta property="og:title" content="ES2015 | Blog | Peng-Yu Chen"><meta name=twitter:title content="ES2015 | Blog | Peng-Yu Chen"><meta itemprop=name content="ES2015 | Blog | Peng-Yu Chen"><meta name=application-name content="ES2015 | Blog | Peng-Yu Chen"><meta property="og:site_name" content="Blog | Peng-Yu Chen"><meta name=description content><meta itemprop=description content><meta property="og:description" content><meta name=twitter:description content><meta property="og:locale" content="en-us"><meta name=language content="en-us"><meta itemprop=image content="http://blog.pengyuc.com/"><meta property="og:image" content="http://blog.pengyuc.com/"><meta name=twitter:image content="http://blog.pengyuc.com/"><meta name=twitter:image:src content="http://blog.pengyuc.com/"><meta property="og:type" content="article"><meta property="og:article:published_time" content="2018-08-07T23:08:13Z"><meta property="article:published_time" content="2018-08-07T23:08:13Z"><meta property="og:article:author" content="Peng yu chen"><meta property="article:author" content="Peng yu chen"><meta name=author content="Peng yu chen"><script defer type=application/ld+json>{"@context":"http://schema.org","@type":"Article","headline":"ES2015","author":{"@type":"Person","name":""},"datePublished":"2018-08-07","description":"","wordCount":1988,"mainEntityOfPage":"True","dateModified":"2018-08-07","image":{"@type":"imageObject","url":""},"publisher":{"@type":"Organization","name":"Blog | Peng-Yu Chen"}}</script><meta name=generator content="Hugo 0.111.3"><link rel=canonical href=http://blog.pengyuc.com/posts/js/js-es2015/><link href=/sass/main.min.0eebb6db90b4ec9f4444ef402f08421ee056025ba860df3d749a9f299d472008.css rel=stylesheet><link href=/code-highlight.min.706d31975fec544a864cb7f0d847a73ea55ca1df91bf495fd12a177138d807cf.css rel=stylesheet><link rel=apple-touch-icon sizes=180x180 href=/images/favicon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/images/favicon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/images/favicon/favicon-16x16.png><link rel=manifest href=/images/favicon/site.webmanifest><link rel=mask-icon href=/images/favicon/safari-pinned-tab.svg color=#5bbad5><link rel="shortcut icon" href=/images/favicon/favicon.ico><meta name=msapplication-TileColor content="#2b5797"><meta name=msapplication-config content="/images/favicon/browserconfig.xml"><meta name=theme-color content="#ffffff"><link rel=icon type=image/svg+xml href=/images/favicon/favicon.svg></head><body data-theme=light class=notransition><script src=http://blog.pengyuc.com/js/themeLoader.min.4e9e1a253d543bbfec02e7f2460d9621e719fd739dc8a5256faa91cda6e12e03.js></script><div class=navbar role=navigation><nav class=menu aria-label="Main Navigation"><a href=/ class=logo><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><title>Home</title><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a><input type=checkbox id=menu-trigger class=menu-trigger>
+<label for=menu-trigger><span class=menu-icon><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" stroke="currentcolor" fill="none" viewBox="0 0 14 14"><title>Menu</title><path stroke-linecap="round" stroke-linejoin="round" d="M10.595 7H3.40726"/><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 3.51488H3.49301"/><path stroke-linecap="round" stroke-linejoin="round" d="M10.5096 10.4851H3.49301"/><path stroke-linecap="round" stroke-linejoin="round" d="M.5 12.5V1.5c0-.552285.447715-1 1-1h11C13.0523.5 13.5.947715 13.5 1.5v11C13.5 13.0523 13.0523 13.5 12.5 13.5H1.5C.947715 13.5.5 13.0523.5 12.5z"/></svg></span></label><div class=trigger><ul class=trigger-container><li><a class=menu-link href=/>Home</a></li><li><a class="menu-link active" href=/posts/>Posts</a></li><li><a class=menu-link href=/about/>About</a></li><li class=menu-separator><span>|</span></li></ul><a id=mode href=#><svg xmlns="http://www.w3.org/2000/svg" class="mode-sunny" width="21" height="21" viewBox="0 0 14 14" stroke-width="1"><title>LIGHT</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1=".5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1=".5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" class="mode-moon" width="21" height="21" viewBox="0 0 14 14" stroke-width="1"><title>DARK</title><g><circle cx="7" cy="7" r="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1=".5" x2="7" y2="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="2.4" x2="3.82" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1=".5" y1="7" x2="2.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="2.4" y1="11.6" x2="3.82" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1="13.5" x2="7" y2="11.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="11.6" x2="10.18" y2="10.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="13.5" y1="7" x2="11.5" y2="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.6" y1="2.4" x2="10.18" y2="3.82" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g></svg></a></div></nav></div><div class="wrapper post"><main class=page-content aria-label=Content><article><header class=header><h1 class=header-title>ES2015</h1><div class=post-meta><time datetime=2018-08-07T23:08:13+00:00 itemprop=datePublished>Aug 7, 2018</time></div></header><div class=page-content><p>在這篇文章中，會紀錄各種 ES2015 的標準！</p><h1 id=const><code>const</code></h1><p>由 <code>var</code> 宣告的變數，可重新賦值：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>var</span> <span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Jay&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Peng-Yu&#34;</span><span class=p>;</span> <span class=c1>// no problem here!
+</span></span></span></code></pre></div><p>而由 <code>const</code> 宣告的變數，不能被重新賦值，也不能被重新宣告：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Jay&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Peng-Yu&#34;</span><span class=p>;</span> <span class=c1>// TypeError
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Peng-Yu&#34;</span><span class=p>;</span> <span class=c1>// SyntaxError
+</span></span></span></code></pre></div><p>但是可以新增元素：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>numbers</span> <span class=o>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=nx>numbers</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=mi>10</span><span class=p>);</span> <span class=c1>// 5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>numbers</span><span class=p>;</span> <span class=c1>// [1, 2, 3, 4, 10]
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>numbers</span> <span class=o>=</span> <span class=s2>&#34;no!&#34;</span><span class=p>;</span> <span class=c1>// TypeError
+</span></span></span></code></pre></div><h1 id=let><code>let</code></h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>let</span> <span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Jay&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Peng-Yu&#34;</span><span class=p>;</span> <span class=c1>// no problems here!
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>let</span> <span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Peng-Yu&#34;</span><span class=p>;</span> <span class=c1>// SyntaxError
+</span></span></span></code></pre></div><p><code>let</code> 與 <code>const</code> 不同的是，可以重新賦與新值，但一樣無法重新宣告。</p><table><thead><tr><th style=text-align:center>method</th><th style=text-align:center><code>let</code></th><th style=text-align:center><code>const</code></th></tr></thead><tbody><tr><td style=text-align:center>reassign</td><td style=text-align:center>✔</td><td style=text-align:center>✖</td></tr><tr><td style=text-align:center>redeclare</td><td style=text-align:center>✖</td><td style=text-align:center>✖</td></tr></tbody></table><p><code>let</code> 有 scope 限制：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>myName</span> <span class=o>=</span> <span class=s2>&#34;Jay&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nx>myName</span> <span class=o>===</span> <span class=s2>&#34;Jay&#34;</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nx>funFact</span> <span class=o>=</span> <span class=s2>&#34;Plays the piano&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>funFact</span><span class=p>;</span> <span class=c1>// ReferenceError
+</span></span></span></code></pre></div><p>Hoisting with <code>let</code>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>helloJay</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>jay</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>jay</span> <span class=o>=</span> <span class=s2>&#34;ME!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>helloJay</span><span class=p>();</span> <span class=c1>// undefined
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>helloJay</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>jay</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>let</span> <span class=nx>jay</span> <span class=o>=</span> <span class=s2>&#34;ME!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>helloJay</span><span class=p>();</span> <span class=c1>// ReferenceError
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kd>var</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=mi>5</span><span class=p>;</span> <span class=o>++</span><span class=nx>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>i</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=mi>1000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 5 (five times)
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=mi>5</span><span class=p>;</span> <span class=o>++</span><span class=nx>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>i</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=mi>1000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 0
+</span></span></span><span class=line><span class=cl><span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=c1>// 2
+</span></span></span><span class=line><span class=cl><span class=c1>// 3
+</span></span></span><span class=line><span class=cl><span class=c1>// 4
+</span></span></span></code></pre></div><h1 id=template-strings>Template Strings</h1><p>ES2015 對於字串的處理也有較優的方式，舊的寫法易出錯，新的標準清楚明了</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>firstName</span> <span class=o>=</span> <span class=s2>&#34;Jay&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>lastName</span> <span class=o>=</span> <span class=s2>&#34;Chen&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;Hello &#34;</span> <span class=o>+</span> <span class=nx>firstName</span> <span class=o>+</span> <span class=s2>&#34; &#34;</span> <span class=o>+</span> <span class=nx>lastName</span><span class=p>);</span> <span class=c1>// error prone!
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`Hello </span><span class=si>${</span><span class=nx>firstName</span><span class=si>}</span><span class=sb> </span><span class=si>${</span><span class=nx>lastName</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span> <span class=c1>// much nicer!
+</span></span></span></code></pre></div><p>對於多行字串也沒問題：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=sb>`
+</span></span></span><span class=line><span class=cl><span class=sb>Hello
+</span></span></span><span class=line><span class=cl><span class=sb>How
+</span></span></span><span class=line><span class=cl><span class=sb>Nice
+</span></span></span><span class=line><span class=cl><span class=sb>Is
+</span></span></span><span class=line><span class=cl><span class=sb>This!
+</span></span></span><span class=line><span class=cl><span class=sb>`</span><span class=p>;</span> <span class=c1>// works well!
+</span></span></span></code></pre></div><h1 id=arrow-functions>Arrow Functions</h1><p>接下來就要介紹 ES2015 中，我認為最讚的箭頭函數！它能大副的縮短程式碼行數，但一開
+始要花點時間去習慣。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>a</span> <span class=o>+</span> <span class=nx>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 將 &#39;function&#39; keyword 取代成 &#39;=&gt;&#39;
+</span></span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>a</span> <span class=o>+</span> <span class=nx>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// One-line arrow functions
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>a</span> <span class=o>+</span> <span class=nx>b</span><span class=p>;</span>
+</span></span></code></pre></div><p>讓我們來試試用箭頭函數，重新改寫一些程式碼：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>].</span><span class=nx>map</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>val</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>val</span> <span class=o>*</span> <span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>});</span> <span class=c1>// [2, 4, 6]
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>].</span><span class=nx>map</span><span class=p>((</span><span class=nx>val</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>val</span> <span class=o>*</span> <span class=mi>2</span><span class=p>);</span> <span class=c1>// [2, 4, 6]
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>doubleAndFilter</span><span class=p>(</span><span class=nx>arr</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>arr</span>
+</span></span><span class=line><span class=cl>    <span class=p>.</span><span class=nx>map</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>val</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>return</span> <span class=nx>val</span> <span class=o>*</span> <span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>})</span>
+</span></span><span class=line><span class=cl>    <span class=p>.</span><span class=nx>filter</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>val</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>return</span> <span class=nx>val</span> <span class=o>%</span> <span class=mi>3</span> <span class=o>===</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>doubleAndFilter</span> <span class=o>=</span> <span class=p>(</span><span class=nx>arr</span><span class=p>)</span> <span class=p>=&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>arr</span><span class=p>.</span><span class=nx>map</span><span class=p>((</span><span class=nx>val</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>val</span> <span class=o>*</span> <span class=mi>2</span><span class=p>).</span><span class=nx>filter</span><span class=p>((</span><span class=nx>num</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>num</span> <span class=o>%</span> <span class=mi>3</span> <span class=o>===</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>doubleAndFilter</span><span class=p>([</span><span class=mi>5</span><span class=p>,</span> <span class=mi>10</span><span class=p>,</span> <span class=mi>15</span><span class=p>,</span> <span class=mi>20</span><span class=p>]);</span> <span class=c1>// [30]
+</span></span></span></code></pre></div><p>箭頭函數（arrow functions）和一般 functions 的差別在於他們沒有自己的 <code>this</code> 關鍵
+字。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>firstName</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayHi</span><span class=o>:</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`Hello </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>firstName</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=mi>1000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>me</span><span class=p>.</span><span class=nx>sayHi</span><span class=p>();</span> <span class=c1>// &#39;Hello undefined&#39;
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>firstName</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayHi</span><span class=o>:</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setTimeout</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>      <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`Hello </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>firstName</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=p>}.</span><span class=nx>bind</span><span class=p>(</span><span class=k>this</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>      <span class=mi>1000</span>
+</span></span><span class=line><span class=cl>    <span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>me</span><span class=p>.</span><span class=nx>sayHi</span><span class=p>();</span> <span class=c1>// &#39;Hello Jay&#39;
+</span></span></span></code></pre></div><p>箭頭函式因為沒有自己的 <code>this</code>，所以 <code>this</code> 會直接指向離他最近的物件（me）</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>firstName</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// why can&#39;t we use an arrow function here?
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nx>sayHi</span><span class=o>:</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setTimeout</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=sb>`Hello </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>firstName</span><span class=si>}</span><span class=sb>`</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=mi>1000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>me</span><span class=p>.</span><span class=nx>sayHi</span><span class=p>();</span> <span class=c1>// &#39;Hello Jay&#39;
+</span></span></span></code></pre></div><p>若我們將 <code>function()</code> 換成 <code>() =></code> 會導致 <code>sayHi</code> 沒有自己的 <code>this</code>，如此一來
+<code>this</code> 就不在是指到 <code>me</code>！</p><p>接下來就來看看更多 ES2015 比 ES5 更棒的地方！</p><h1 id=default-parameters>Default Parameters</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>add</span><span class=p>(</span><span class=nx>a</span> <span class=o>=</span> <span class=mi>10</span><span class=p>,</span> <span class=nx>b</span> <span class=o>=</span> <span class=mi>20</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>a</span> <span class=o>+</span> <span class=nx>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>add</span><span class=p>();</span> <span class=c1>// 30
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>add</span><span class=p>(</span><span class=mi>20</span><span class=p>);</span> <span class=c1>// 40
+</span></span></span></code></pre></div><h1 id=for--of><code>for</code> &mldr; <code>of</code></h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>arr</span> <span class=o>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kr>const</span> <span class=nx>val</span> <span class=k>of</span> <span class=nx>arr</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=c1>// 2
+</span></span></span><span class=line><span class=cl><span class=c1>// 3
+</span></span></span><span class=line><span class=cl><span class=c1>// 4
+</span></span></span><span class=line><span class=cl><span class=c1>// 5
+</span></span></span></code></pre></div><h1 id=rest>Rest</h1><p><code>rest</code> 總是回傳一個陣列</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>printRest</span><span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>,</span> <span class=p>...</span><span class=nx>c</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>b</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>c</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>printRest</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=c1>// 2
+</span></span></span><span class=line><span class=cl><span class=c1>// [3, 4, 5]
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>sumArguments</span> <span class=o>=</span> <span class=p>(...</span><span class=nx>args</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>args</span><span class=p>.</span><span class=nx>reduce</span><span class=p>((</span><span class=nx>acc</span><span class=p>,</span> <span class=nx>next</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>acc</span> <span class=o>+</span> <span class=nx>next</span><span class=p>);</span>
+</span></span></code></pre></div><h1 id=spread>Spread</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>arr1</span> <span class=o>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>arr2</span> <span class=o>=</span> <span class=p>[</span><span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>,</span> <span class=mi>6</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>arr3</span> <span class=o>=</span> <span class=p>[</span><span class=mi>7</span><span class=p>,</span> <span class=mi>8</span><span class=p>,</span> <span class=mi>9</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>combined</span> <span class=o>=</span> <span class=p>[...</span><span class=nx>arr1</span><span class=p>,</span> <span class=p>...</span><span class=nx>arr2</span><span class=p>,</span> <span class=p>...</span><span class=nx>arr3</span><span class=p>];</span>
+</span></span></code></pre></div><h2 id=spread-instead-of-apply>Spread instead of <code>apply</code></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>arr</span> <span class=o>=</span> <span class=p>[</span><span class=mi>3</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>5</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=nb>Math</span><span class=p>.</span><span class=nx>max</span><span class=p>(</span><span class=nx>arr</span><span class=p>);</span> <span class=c1>// NaN
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>Math</span><span class=p>.</span><span class=nx>max</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=k>this</span><span class=p>,</span> <span class=nx>arr</span><span class=p>);</span> <span class=c1>// 5
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nb>Math</span><span class=p>.</span><span class=nx>max</span><span class=p>(...</span><span class=nx>arr</span><span class=p>);</span> <span class=c1>// 5
+</span></span></span></code></pre></div><h1 id=object-shorthand-notation>Object Shorthand Notation</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>firstName</span> <span class=o>=</span> <span class=s2>&#34;Jay&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>lastName</span> <span class=o>=</span> <span class=s2>&#34;Chen&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>firstName</span><span class=o>:</span> <span class=nx>firstName</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>lastName</span><span class=o>:</span> <span class=nx>lastName</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>firstName</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>lastName</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><h1 id=object-methods>Object Methods</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayHello</span><span class=o>:</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s2>&#34;Hello!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015 - do NOT use arrow functions here!
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayHello</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s2>&#34;Hello!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><h1 id=computed-property-names>Computed Property Names</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>firstName</span> <span class=o>=</span> <span class=s2>&#34;Jay&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl><span class=nx>me</span><span class=p>[</span><span class=nx>firstName</span><span class=p>]</span> <span class=o>=</span> <span class=s2>&#34;That&#39;s me!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>boy</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=p>[</span><span class=nx>firstName</span><span class=p>]</span><span class=o>:</span> <span class=s2>&#34;That&#39;s me!&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>me</span><span class=p>.</span><span class=nx>Jay</span><span class=p>;</span> <span class=c1>// &#34;That&#39;s me!&#34;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>boy</span><span class=p>.</span><span class=nx>Jay</span><span class=p>;</span> <span class=c1>// &#34;That&#39;s me!&#34;
+</span></span></span></code></pre></div><h1 id=object-destructuring>Object Destructuring</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>firstName</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>lastName</span><span class=o>:</span> <span class=s2>&#34;Chen&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>firstName</span> <span class=o>=</span> <span class=nx>me</span><span class=p>.</span><span class=nx>firstName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>lastName</span> <span class=o>=</span> <span class=nx>me</span><span class=p>.</span><span class=nx>lastName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=p>{</span> <span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span> <span class=p>}</span> <span class=o>=</span> <span class=nx>me</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>firstName</span><span class=p>;</span> <span class=c1>// &#39;Jay&#39;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>lastName</span><span class=p>;</span> <span class=c1>// &#39;Chen&#39;
+</span></span></span></code></pre></div><h2 id=rename-destructured-variables>Rename destructured variables</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=p>{</span> <span class=nx>firstName</span><span class=o>:</span> <span class=nx>first</span><span class=p>,</span> <span class=nx>lastName</span><span class=o>:</span> <span class=nx>last</span> <span class=p>}</span> <span class=o>=</span> <span class=nx>me</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>first</span><span class=p>;</span> <span class=c1>// &#39;Jay&#39;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>last</span><span class=p>;</span> <span class=c1>// &#39;Chen&#39;
+</span></span></span></code></pre></div><h2 id=default-values-with-an-object>Default values with an object</h2><p>在 ES2015 中，若沒有任何參數傳入，那麼 destructured object 就是預設參數：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>createMyself</span><span class=p>(</span><span class=nx>options</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>options</span> <span class=o>=</span> <span class=nx>options</span> <span class=o>||</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>name</span> <span class=o>=</span> <span class=nx>options</span><span class=p>.</span><span class=nx>name</span> <span class=o>||</span> <span class=p>{</span> <span class=nx>first</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span><span class=p>,</span> <span class=nx>last</span><span class=o>:</span> <span class=s2>&#34;Chen&#34;</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>isHilarious</span> <span class=o>=</span> <span class=nx>options</span><span class=p>.</span><span class=nx>isHilarious</span> <span class=o>||</span> <span class=kc>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>[</span><span class=nx>name</span><span class=p>.</span><span class=nx>first</span><span class=p>,</span> <span class=nx>name</span><span class=p>.</span><span class=nx>last</span><span class=p>,</span> <span class=nx>isHilarious</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>createMyself</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>  <span class=nx>name</span> <span class=o>=</span> <span class=p>{</span> <span class=nx>first</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span><span class=p>,</span> <span class=nx>last</span><span class=o>:</span> <span class=s2>&#34;Chen&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nx>isHilarious</span> <span class=o>=</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> <span class=o>=</span> <span class=p>{})</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>[</span><span class=nx>name</span><span class=p>.</span><span class=nx>first</span><span class=p>,</span> <span class=nx>name</span><span class=p>.</span><span class=nx>last</span><span class=p>,</span> <span class=nx>isHilarious</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>createMyself</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=c1>// [&#39;Jay&#39;, &#39;Chen&#39;, false]
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=nx>createMyself</span><span class=p>({</span> <span class=nx>isHilarious</span><span class=o>:</span> <span class=kc>true</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=c1>// [&#39;Jay&#39;, &#39;Chen&#39;, true]
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=nx>createMyself</span><span class=p>({</span> <span class=nx>name</span><span class=o>:</span> <span class=p>{</span> <span class=nx>first</span><span class=o>:</span> <span class=s2>&#34;Dog&#34;</span><span class=p>,</span> <span class=nx>last</span><span class=o>:</span> <span class=s2>&#34;Peng&#34;</span> <span class=p>}</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=c1>// [&#39;Dog&#39;, &#39;Peng&#39;, false]
+</span></span></span></code></pre></div><h2 id=object-fields-as-parameters>Object fields as parameters</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>displayInfo</span><span class=p>(</span><span class=nx>obj</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>[</span><span class=nx>obj</span><span class=p>.</span><span class=nx>name</span><span class=p>,</span> <span class=nx>obj</span><span class=p>.</span><span class=nx>favColor</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015 - Very common in React!
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>displayInfo</span><span class=p>({</span> <span class=nx>name</span><span class=p>,</span> <span class=nx>favColor</span> <span class=p>})</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>[</span><span class=nx>name</span><span class=p>,</span> <span class=nx>favColor</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>me</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>favColor</span><span class=o>:</span> <span class=s2>&#34;White&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>displayInfo</span><span class=p>(</span><span class=nx>me</span><span class=p>);</span> <span class=c1>// [&#39;Jay&#39;, &#39;White&#39;]
+</span></span></span></code></pre></div><h1 id=array-destructuring>Array Destructuring</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>arr</span> <span class=o>=</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>a</span> <span class=o>=</span> <span class=nx>arr</span><span class=p>[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>b</span> <span class=o>=</span> <span class=nx>arr</span><span class=p>[</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>c</span> <span class=o>=</span> <span class=nx>arr</span><span class=p>[</span><span class=mi>2</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=p>[</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>,</span> <span class=nx>c</span><span class=p>]</span> <span class=o>=</span> <span class=nx>arr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=p>;</span> <span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>b</span><span class=p>;</span> <span class=c1>// 2
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>c</span><span class=p>;</span> <span class=c1>// 3
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>returnNumbers</span><span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>[</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>first</span> <span class=o>=</span> <span class=nx>returnNumbers</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>10</span><span class=p>)[</span><span class=mi>0</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>second</span> <span class=o>=</span> <span class=nx>returnNumbers</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>10</span><span class=p>)[</span><span class=mi>1</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>[</span><span class=nx>first</span><span class=p>,</span> <span class=nx>second</span><span class=p>]</span> <span class=o>=</span> <span class=nx>returnNumbers</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>10</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>first</span><span class=p>;</span> <span class=c1>// 5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>second</span><span class=p>;</span> <span class=c1>// 10
+</span></span></span></code></pre></div><h1 id=swapping-values>Swapping Values</h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>swap</span><span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>temp</span> <span class=o>=</span> <span class=nx>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>a</span> <span class=o>=</span> <span class=nx>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>b</span> <span class=o>=</span> <span class=nx>temp</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>[</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>swap</span><span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>([</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>]</span> <span class=o>=</span> <span class=p>[</span><span class=nx>b</span><span class=p>,</span> <span class=nx>a</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>swap</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>5</span><span class=p>);</span> <span class=c1>// [5,10]
+</span></span></span></code></pre></div><h1 id=class><code>class</code></h1><ul><li>在 ES2015 後，為新的保留字</li><li>不能被重新宣告</li><li>沒有 hoist</li><li>仍使用 <code>new</code> 關鍵字</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>Student</span><span class=p>(</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>this</span><span class=p>.</span><span class=nx>firstName</span> <span class=o>=</span> <span class=nx>firstName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>this</span><span class=p>.</span><span class=nx>lastName</span> <span class=o>=</span> <span class=nx>lastName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>Student</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>sayHello</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=sb>`Hello </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>firstName</span><span class=si>}</span><span class=sb> </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>lastName</span><span class=si>}</span><span class=sb>`</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>Student</span><span class=p>.</span><span class=nx>isStudent</span> <span class=o>=</span> <span class=kd>function</span> <span class=p>(</span><span class=nx>obj</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>obj</span><span class=p>.</span><span class=nx>constructor</span> <span class=o>===</span> <span class=nx>Student</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>class</span> <span class=nx>Student</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>constructor</span><span class=p>(</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>firstName</span> <span class=o>=</span> <span class=nx>firstName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>lastName</span> <span class=o>=</span> <span class=nx>lastName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayHello</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=sb>`Hello </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>firstName</span><span class=si>}</span><span class=sb> </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>lastName</span><span class=si>}</span><span class=sb>`</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=kr>static</span> <span class=nx>isStudent</span><span class=p>(</span><span class=nx>obj</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>obj</span><span class=p>.</span><span class=nx>constructor</span> <span class=o>===</span> <span class=nx>Student</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>jay</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Student</span><span class=p>(</span><span class=s2>&#34;Jay&#34;</span><span class=p>,</span> <span class=s2>&#34;Chen&#34;</span><span class=p>);</span>
+</span></span></code></pre></div><h1 id=inheritance>Inheritance</h1><p>一個 <code>class</code> 能傳送 methods 和 properties 給其它 <code>class</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>Person</span><span class=p>(</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>this</span><span class=p>.</span><span class=nx>firstName</span> <span class=o>=</span> <span class=nx>firstName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>this</span><span class=p>.</span><span class=nx>lastName</span> <span class=o>=</span> <span class=nx>lastName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>Person</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>sayHello</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=sb>`Hello </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>firstName</span><span class=si>}</span><span class=sb> </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>lastName</span><span class=si>}</span><span class=sb>`</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>Student</span><span class=p>(</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>this</span><span class=p>.</span><span class=nx>firstName</span> <span class=o>=</span> <span class=nx>firstName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>this</span><span class=p>.</span><span class=nx>lastName</span> <span class=o>=</span> <span class=nx>lastName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Use Apply
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>Student</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>Person</span><span class=p>.</span><span class=nx>apply</span><span class=p>(</span><span class=k>this</span><span class=p>,</span> <span class=nx>arguments</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>Student</span><span class=p>.</span><span class=nx>prototype</span> <span class=o>=</span> <span class=nb>Object</span><span class=p>.</span><span class=nx>create</span><span class=p>(</span><span class=nx>Person</span><span class=p>.</span><span class=nx>prototype</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>Student</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>constructor</span> <span class=o>=</span> <span class=nx>Student</span><span class=p>;</span>
+</span></span></code></pre></div><h2 id=super><code>super</code></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>class</span> <span class=nx>Person</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>constructor</span><span class=p>(</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>firstName</span> <span class=o>=</span> <span class=nx>firstName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>this</span><span class=p>.</span><span class=nx>lastName</span> <span class=o>=</span> <span class=nx>lastName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayHello</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=sb>`Hello </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>firstName</span><span class=si>}</span><span class=sb> </span><span class=si>${</span><span class=k>this</span><span class=p>.</span><span class=nx>lastName</span><span class=si>}</span><span class=sb>`</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>class</span> <span class=nx>Student</span> <span class=kr>extends</span> <span class=nx>Person</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>constructor</span><span class=p>(</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// you must use super here!
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kr>super</span><span class=p>(</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>lastName</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h1 id=map><code>Map</code></h1><ul><li>在其它語言常被稱做 &ldquo;hash map&rdquo;</li><li>和物件（object）很像，但 keys 可以是任何資料形別</li><li>使用 <code>new</code> 關鍵字</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>myMap</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Map</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=s2>&#34;Jay&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=kc>false</span><span class=p>,</span> <span class=s2>&#34;a boolean&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=s2>&#34;nice&#34;</span><span class=p>,</span> <span class=s2>&#34;a string&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=k>delete</span><span class=p>(</span><span class=s2>&#34;nice&#34;</span><span class=p>);</span> <span class=c1>// true
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>myMap</span><span class=p>.</span><span class=nx>size</span><span class=p>;</span> <span class=c1>// 2
+</span></span></span></code></pre></div><p>Key 可以是任何資料形別！</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>arrayKey</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>arrayKey</span><span class=p>,</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>objectKey</span> <span class=o>=</span> <span class=p>{};</span>
+</span></span><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=nx>objectKey</span><span class=p>,</span> <span class=p>{</span> <span class=nx>a</span><span class=o>:</span> <span class=mi>1</span> <span class=p>});</span>
+</span></span></code></pre></div><h2 id=extracting-values>Extracting values</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span> <span class=c1>// &#39;Jay&#39;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>myMap</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=kc>false</span><span class=p>);</span> <span class=c1>// &#39;a boolean&#39;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>myMap</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>arrayKey</span><span class=p>);</span> <span class=c1>// [1, 2, 3, 4, 5]
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>myMap</span><span class=p>.</span><span class=nx>get</span><span class=p>(</span><span class=nx>objectKey</span><span class=p>);</span> <span class=c1>// { a: 1 }
+</span></span></span></code></pre></div><p>我們可以很輕鬆的遍歷整個 <code>Map</code>！</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>forEach</span><span class=p>((</span><span class=nx>v</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>v</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// Elie
+</span></span></span><span class=line><span class=cl><span class=c1>// a boolean
+</span></span></span><span class=line><span class=cl><span class=c1>// [1, 2, 3, 4, 5]
+</span></span></span><span class=line><span class=cl><span class=c1>// { a: 1 }
+</span></span></span></code></pre></div><h2 id=iterating-over-a-map>Iterating over a <code>Map</code></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nx>myMap</span><span class=p>.</span><span class=nx>values</span><span class=p>();</span> <span class=c1>// MapIterator of values
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>myMap</span><span class=p>.</span><span class=nx>keys</span><span class=p>();</span> <span class=c1>// MapIterator of keys
+</span></span></span></code></pre></div><h2 id=accessing-keys-and-values-in-a-map>Accessing keys and values in a <code>Map</code></h2><p>我們可以藉由 <code>.entries()</code> 和 destructuring 去取得任何值！</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>m</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Map</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>m</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=s2>&#34;Jay&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>m</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=s2>&#34;BB&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>m</span><span class=p>.</span><span class=nx>set</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=s2>&#34;Disney&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kr>const</span> <span class=p>[</span><span class=nx>key</span><span class=p>,</span> <span class=nx>value</span><span class=p>]</span> <span class=k>of</span> <span class=nx>m</span><span class=p>.</span><span class=nx>entries</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>key</span><span class=p>,</span> <span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 1 &#39;Jay&#39;
+</span></span></span><span class=line><span class=cl><span class=c1>// 2 &#39;BB&#39;
+</span></span></span><span class=line><span class=cl><span class=c1>// 3 &#39;Disney&#39;
+</span></span></span></code></pre></div><h2 id=weakmap><code>WeakMap</code></h2><ul><li>和 <code>Map</code> 很像，但所有 keys 必需是 objects</li><li>在 <code>WeakMap</code> 中的 values 會在他們不在被需要時從記憶體中清空</li><li>比 <code>Map</code> 更有效率，但是無法被遍歷</li></ul><h1 id=set><code>Set</code></h1><ul><li>所有的 values 是獨一無二的</li><li>value 可以是任何資料形別</li><li>使用 <code>new</code> 關鍵字</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>s</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Set</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>s2</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Set</span><span class=p>([</span><span class=mi>3</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>5</span><span class=p>]);</span> <span class=c1>// { 3, 1, 4, 2, 5 }
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=nx>s</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=mi>10</span><span class=p>);</span> <span class=c1>// { 10 }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>s</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=mi>20</span><span class=p>);</span> <span class=c1>// { 20, 10 }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>s</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=mi>10</span><span class=p>);</span> <span class=c1>// { 20, 10 }
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=p>;</span> <span class=c1>// 2
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=nx>s</span><span class=p>.</span><span class=nx>has</span><span class=p>(</span><span class=mi>10</span><span class=p>);</span> <span class=c1>// true
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>s</span><span class=p>.</span><span class=k>delete</span><span class=p>(</span><span class=mi>20</span><span class=p>);</span> <span class=c1>// true
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>s</span><span class=p>.</span><span class=nx>size</span><span class=p>;</span> <span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=nx>s2</span><span class=p>[</span><span class=nx>Symbol</span><span class=p>.</span><span class=nx>iterator</span><span class=p>];</span> <span class=c1>// function() {}...
+</span></span></span></code></pre></div><h2 id=weakset><code>WeakSet</code></h2><ul><li>和 <code>Set</code> 很像，但所有 values 必需是 objects</li><li>在 <code>WeakSet</code> 中的 values 會在他們不在被需要時從記憶體中清空</li><li>比 <code>Set</code> 更有效率，但是無法被遍歷</li></ul><h1 id=promise><code>Promise</code></h1><ul><li>只有一次機會的未來 return value</li><li>當 value 被弄清楚時，<code>Promise</code> 會被<ul><li>resolved/fulfilled</li><li>rejected</li></ul></li><li>可以友善地重新改寫 callback 程式碼</li></ul><h2 id=create-your-own-promise>Create your own <code>Promise</code></h2><ul><li>使用 <code>new</code> 關鍵字</li><li>每一個 <code>Promise</code> constructor 接受了一個擁有兩個參數（resolve 和 reject）的
+callback 函式</li></ul><p>每一個由 <code>Promise</code> 所回傳的值會由 <code>.then</code> (resolved) 和 <code>.catch</code> (rejected) 來執
+行。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>displayAtRandomTime</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=k>new</span> <span class=nb>Promise</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>resolve</span><span class=p>,</span> <span class=nx>reject</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>setTimeout</span><span class=p>(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>if</span> <span class=p>(</span><span class=nb>Math</span><span class=p>.</span><span class=nx>random</span><span class=p>()</span> <span class=o>&gt;</span> <span class=mf>0.5</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>resolve</span><span class=p>(</span><span class=s2>&#34;Yes!&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nx>reject</span><span class=p>(</span><span class=s2>&#34;No!&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>      <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span> <span class=mi>1000</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>displayAtRandomTime</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>value</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>value</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>})</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=k>catch</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>error</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>error</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span></code></pre></div><p>我們可以將 <code>Promises</code> 串接在一起，即它們是 <em>thenable</em> 的</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>years</span> <span class=o>=</span> <span class=p>[];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>fetch</span><span class=p>(</span><span class=s2>&#34;https://omdbapi.com?t=titanic&amp;apikey=thewdb&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nx>then</span><span class=p>((</span><span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>movie</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>years</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>movie</span><span class=p>.</span><span class=nx>Year</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>fetch</span><span class=p>(</span><span class=s2>&#34;https://omdbapi.com?t=titanic&amp;apikey=thewdb&#34;</span><span class=p>).</span><span class=nx>then</span><span class=p>((</span><span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>})</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>movie</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>years</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=nx>movie</span><span class=p>.</span><span class=nx>Year</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>years</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;ALL DONE!&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// &#34;ALL DONE!&#34;
+</span></span></span><span class=line><span class=cl><span class=c1>// [&#34;1997&#34;, &#34;1997&#34;]
+</span></span></span></code></pre></div><h2 id=promiseall><code>Promise.all</code></h2><ul><li><code>Promise</code> 不是 sequential，但 <code>Promise.all</code> 會 waits 他們。</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>getMovie</span><span class=p>(</span><span class=nx>title</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>fetch</span><span class=p>(</span><span class=sb>`https://omdbapi.com?t=</span><span class=si>${</span><span class=nx>title</span><span class=si>}</span><span class=sb>&amp;apikey=thewdb`</span><span class=p>).</span><span class=nx>then</span><span class=p>((</span><span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>titanicPromise</span> <span class=o>=</span> <span class=nx>getMovie</span><span class=p>(</span><span class=s2>&#34;titanic&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>shrekPromise</span> <span class=o>=</span> <span class=nx>getMovie</span><span class=p>(</span><span class=s2>&#34;shrek&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>braveheartPromise</span> <span class=o>=</span> <span class=nx>getMovie</span><span class=p>(</span><span class=s2>&#34;braveheart&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>Promise</span><span class=p>.</span><span class=nx>all</span><span class=p>([</span><span class=nx>titanicPromise</span><span class=p>,</span> <span class=nx>shrekPromise</span><span class=p>,</span> <span class=nx>braveheartPromise</span><span class=p>]).</span><span class=nx>then</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>  <span class=nx>movies</span>
+</span></span><span class=line><span class=cl><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>movies</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>movie</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>movie</span><span class=p>.</span><span class=nx>Year</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 1997
+</span></span></span><span class=line><span class=cl><span class=c1>// 2001
+</span></span></span><span class=line><span class=cl><span class=c1>// 1995
+</span></span></span></code></pre></div><h1 id=generator>Generator</h1><ul><li>可以在任何時間 pause 執行和 resume</li><li>使用 <code>*</code></li><li>當被呼叫時，會回傳一個 generator object、keys of value 和 done</li><li>Value 透過 <code>yield</code> 從 paused 函式回傳</li><li>Done 則是一個布林值，當函式完成時回傳 <code>true</code></li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span><span class=o>*</span> <span class=nx>pauseAndReturnValues</span><span class=p>(</span><span class=nx>num</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>num</span><span class=p>;</span> <span class=o>++</span><span class=nx>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>yield</span> <span class=nx>i</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>gen</span> <span class=o>=</span> <span class=nx>pauseAndReturnValues</span><span class=p>(</span><span class=mi>5</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>gen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: 0, done: false }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>gen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: 1, done: false }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>gen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: 2, done: false }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>gen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: 3, done: false }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>gen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: 4, done: false }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>gen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: undefined, done: true }
+</span></span></span></code></pre></div><h2 id=yield-multiple-values>Yield multiple values</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span><span class=o>*</span> <span class=nx>printValues</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>yield</span> <span class=s2>&#34;First&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>yield</span> <span class=s2>&#34;Second&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=k>yield</span> <span class=s2>&#34;Third&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>g</span> <span class=o>=</span> <span class=nx>printValues</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>g</span><span class=p>.</span><span class=nx>next</span><span class=p>().</span><span class=nx>value</span><span class=p>;</span> <span class=c1>// &#34;First&#34;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>g</span><span class=p>.</span><span class=nx>next</span><span class=p>().</span><span class=nx>value</span><span class=p>;</span> <span class=c1>// &#34;Second&#34;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=nx>g</span><span class=p>.</span><span class=nx>next</span><span class=p>().</span><span class=nx>value</span><span class=p>;</span> <span class=c1>// &#34;Third&#34;
+</span></span></span></code></pre></div><h2 id=iterating-over-a-generator>Iterating over a generator</h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span><span class=o>*</span> <span class=nx>pauseAndReturnValues</span><span class=p>(</span><span class=nx>num</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=nx>i</span> <span class=o>&lt;</span> <span class=nx>num</span><span class=p>;</span> <span class=o>++</span><span class=nx>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>yield</span> <span class=nx>i</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>for</span> <span class=p>(</span><span class=kr>const</span> <span class=nx>val</span> <span class=k>of</span> <span class=nx>pauseAndReturnValues</span><span class=p>(</span><span class=mi>3</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 0
+</span></span></span><span class=line><span class=cl><span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=c1>// 2
+</span></span></span></code></pre></div><h2 id=async-generators>Async Generators</h2><p>我們可以利用 generators 去暫停 asynchronous 程式碼！</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span><span class=o>*</span> <span class=nx>getMovieData</span><span class=p>(</span><span class=nx>movieName</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;starting&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>yield</span> <span class=nx>fetch</span><span class=p>(</span><span class=sb>`https://omdbapi.com?t=</span><span class=si>${</span><span class=nx>movieName</span><span class=si>}</span><span class=sb>&amp;apikey=thewdb`</span><span class=p>).</span><span class=nx>then</span><span class=p>((</span><span class=nx>res</span><span class=p>)</span> <span class=p>=&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nx>res</span><span class=p>.</span><span class=nx>json</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;ending&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>movieGetter</span> <span class=o>=</span> <span class=nx>getMovieData</span><span class=p>(</span><span class=s2>&#34;titanic&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>movieGetter</span><span class=p>.</span><span class=nx>next</span><span class=p>().</span><span class=nx>value</span><span class=p>.</span><span class=nx>then</span><span class=p>((</span><span class=nx>val</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>val</span><span class=p>));</span>
+</span></span></code></pre></div><h1 id=objectassign><code>Object.assign</code></h1><p>ES2015 是「真的」新增了一個 <code>Object</code>。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>o</span> <span class=o>=</span> <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>o2</span> <span class=o>=</span> <span class=nx>o</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>o2</span><span class=p>.</span><span class=nx>name</span> <span class=o>=</span> <span class=s2>&#34;BB&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>o</span><span class=p>.</span><span class=nx>name</span><span class=p>;</span> <span class=c1>// &#34;BB&#34;
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>o</span> <span class=o>=</span> <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>o2</span> <span class=o>=</span> <span class=nb>Object</span><span class=p>.</span><span class=nx>assign</span><span class=p>({},</span> <span class=nx>o</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>o2</span><span class=p>.</span><span class=nx>name</span> <span class=o>=</span> <span class=s2>&#34;BB&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>o</span><span class=p>.</span><span class=nx>name</span><span class=p>;</span> <span class=c1>// &#34;Jay&#34;
+</span></span></span></code></pre></div><p>但不是完整的複製一份新的，仍有 reference！</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>o</span> <span class=o>=</span> <span class=p>{</span> <span class=nx>names</span><span class=o>:</span> <span class=p>[</span><span class=s2>&#34;Jay&#34;</span><span class=p>,</span> <span class=s2>&#34;BB&#34;</span><span class=p>]</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>o2</span> <span class=o>=</span> <span class=nb>Object</span><span class=p>.</span><span class=nx>assign</span><span class=p>({},</span> <span class=nx>o</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>o2</span><span class=p>.</span><span class=nx>names</span><span class=p>.</span><span class=nx>push</span><span class=p>(</span><span class=s2>&#34;Disney&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=nx>o</span><span class=p>.</span><span class=nx>names</span><span class=p>;</span> <span class=c1>// [&#34;Jay&#34;, &#34;BB&#34;, &#34;Disney&#34;];
+</span></span></span></code></pre></div><h1 id=arrayfrom><code>Array.from</code></h1><p>將其它資料型別轉入 arrays</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>divs</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>getElementsByTagName</span><span class=p>(</span><span class=s2>&#34;div&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>converted</span> <span class=o>=</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>from</span><span class=p>(</span><span class=nx>divs</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>firstSet</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>Set</span><span class=p>([</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>3</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>1</span><span class=p>]);</span> <span class=c1>// { 1, 2, 3, 4 }
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kr>const</span> <span class=nx>arrayFromSet</span> <span class=o>=</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>from</span><span class=p>(</span><span class=nx>firstSet</span><span class=p>);</span> <span class=c1>// [1, 2, 3, 4]
+</span></span></span></code></pre></div><h1 id=find><code>find</code></h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>names</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;BB&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Disney&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Benjamin&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>names</span><span class=p>.</span><span class=nx>find</span><span class=p>((</span><span class=nx>val</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>val</span><span class=p>.</span><span class=nx>name</span> <span class=o>===</span> <span class=s2>&#34;BB&#34;</span><span class=p>);</span> <span class=c1>// { name: &#34;BB&#34; }
+</span></span></span></code></pre></div><h1 id=findindex><code>findIndex</code></h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>names</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Jay&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;BB&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Disney&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=p>{</span> <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Benjamin&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>names</span><span class=p>.</span><span class=nx>findIndex</span><span class=p>((</span><span class=nx>val</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>val</span><span class=p>.</span><span class=nx>name</span> <span class=o>===</span> <span class=s2>&#34;BB&#34;</span><span class=p>);</span> <span class=c1>// 1
+</span></span></span></code></pre></div><h1 id=includes><code>includes</code></h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=s2>&#34;awesome&#34;</span><span class=p>.</span><span class=nx>indexOf</span><span class=p>(</span><span class=s2>&#34;some&#34;</span><span class=p>);</span> <span class=c1>// 3
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=s2>&#34;awesome&#34;</span><span class=p>.</span><span class=nx>includes</span><span class=p>(</span><span class=s2>&#34;some&#34;</span><span class=p>);</span> <span class=c1>// true
+</span></span></span></code></pre></div><h1 id=numberisfinite><code>Number.isFinite</code></h1><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=c1>// ES5
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>seeIfNumber</span><span class=p>(</span><span class=nx>val</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>if</span> <span class=p>(</span><span class=k>typeof</span> <span class=nx>val</span> <span class=o>===</span> <span class=s2>&#34;number&#34;</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=nb>isNaN</span><span class=p>(</span><span class=nx>val</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s2>&#34;It is a number!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// ES2015
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kd>function</span> <span class=nx>seeIfNumber</span><span class=p>(</span><span class=nx>val</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>if</span> <span class=p>(</span><span class=nb>Number</span><span class=p>.</span><span class=nb>isFinite</span><span class=p>(</span><span class=nx>val</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s2>&#34;It is a number!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></div></article></main></div><footer class=footer><span class=footer_item></span>&nbsp;<div class=footer_social-icons><a href=https://www.linkedin.com/in/pengyuc target=_blank rel="noopener noreferrer me" title=Linkedin><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href=https://github.com/walkccc target=_blank rel="noopener noreferrer me" title=Github><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div><small class=footer_copyright>© 2023 Peng-Yu Chen.
+Powered by <a href=https://github.com/hugo-sid/hugo-blog-awesome target=_blank rel="noreferrer noopener">Hugo blog awesome</a>
+theme on
+<a href=https://gohugo.io target=_blank rel="noreferrer noopener">Hugo</a>.</small></footer><script src=http://blog.pengyuc.com/js/themeSwitchnMenu.min.2a402288242b6930b175a0722c267e2353055739b3975834df35e56d00dd8f50.js></script></body></html>

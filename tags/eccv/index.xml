@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ECCV on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/eccv/</link><description>Recent content in ECCV on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/eccv/index.xml" rel="self" type="application/rss+xml"/><item><title>論文筆記 Highly-Economized Multi-View Binary Compression for Scalable Image Clustering</title><link>http://blog.pengyuc.com/posts/paper/paper-hsic/</link><pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-hsic/</guid><description>Paper Link
+講到 image clustering，就必需先來談談什麼是 cluster analysis（聚類分析），在維基 百科上給出了下列一段的定義：
+聚類分析（英語：Cluster analysis，亦稱為群集分析）是對於統計數據分析的一門技術 ，在許多領域受到廣泛應用，包括機器學習，數據挖掘，模式識別，圖像分析以及生物信 息。聚類是把相似的對象通過靜態分類的方法分成不同的組別或者更多的子集（subset） ，這樣讓在同一個子集中的成員對象都有相似的一些屬性，常見的包括在坐標系中更加短 的空間距離等。
+一般把數據聚類歸納為一種非監督式學習。
+為避免混淆，此篇文章一律使用原文 image clustering，而不多做無謂的翻譯。
+1 Introduction Image clustering 的主要目的為：
+發現圖片表示的自然和可解釋結構 將彼此相似的圖片分組到同一個群集中 現有的 clustering methods 主要有以下兩種：
+single-view image clustering (SVIC) multi-view image clustering (MVIC) 而現在 MVIC 較廣泛的被使用，因為他有「從單張圖片中提取多個不同特徵的靈活性」。
+再更細分下去，現有的 MVIC 可再被分成三類：
+multi-view spectral clusting multi-view subspace clustering multi-view matrix factorization 這是整個 paper 所提到的流程：
+透過 paper 中的方法，能夠將本來的資料從「歐基里德距離時間複雜度 $O(Nd)$」降到 「$O(1)$」（因為編碼成 Binary Codes 後只需做 XOR operations）！
+其中，
+$N$: data size（例如一張圖有幾個 pixels） $d$: dimension（例如使用 R、G、B 三個維度來描述一個 pixel） 另外補充一下 LBP 和 HOG 的用途：</description></item></channel></rss>

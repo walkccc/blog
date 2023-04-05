@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Turing on Blog | Peng-Yu Chen</title><link>http://blog.pengyuc.com/tags/turing/</link><description>Recent content in Turing on Blog | Peng-Yu Chen</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 25 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.pengyuc.com/tags/turing/index.xml" rel="self" type="application/rss+xml"/><item><title>論文筆記 Computing Machinery and Intelligence</title><link>http://blog.pengyuc.com/posts/paper/paper-turing/</link><pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate><guid>http://blog.pengyuc.com/posts/paper/paper-turing/</guid><description>Paper Link
+今天是台灣九合一縣市長選舉隔天，決定要來看一篇 1950 年，由計算機科學之父 A.M. Turing 所寫的 Computing Machinery and Intelligence。
+這篇 paper 提出了電腦智能當中幾個重要的想法，數學描述不多，主要著重在理論上的描 述。
+圖靈測試（Turing test）是 AI 領域中，一項著名且具爭議的測試方法。這是以 Alan Turing 在 1950 第一份論文「運算機器與智能」（Computing Machinery and Intelligence）為基礎所設計的問答，目標在分辨機器是否具備人類所具有的智能 （Intelligence）。
+文本很長，又是 1950 年的英式英文，但我會試著去翻譯並整理這經典的 paper。
+1. The Imitation Game 首先圖靈提出了一個問題：
+&amp;ldquo;Can machines think?&amp;rdquo;
+這個應該要從主詞（machines）和動詞（think）的定義出發。
+但圖靈認為重新給 machines 和 think 定義是危險的，所以他選擇了提出另一個問題，而 這個問題和原問題緊密相關，最重要的是明確性。
+新的問題稱之為 imitation game（模仿遊戲）。需要三個人來玩這個遊戲：
+A：一個男人 B：一個女人 C：一個詢問人（男女皆可） C 待在一個與另外兩人隔離的屋子裡。
+遊戲的目標是：C 判斷出外面的人哪個是 A？哪個是 B？
+C 用標籤 X、Y 代表外面的兩個人。
+遊戲結束時，他要說出「X 是 A，Y 是 B」或者「X 是 B，Y 是 A」。</description></item></channel></rss>
