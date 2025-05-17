@@ -18,7 +18,7 @@
 [[main]]
  name = "About"
  weight = 20
- pageRef = "about"
+ url = "https://pengyuc.com"
 
 [[main]]
  name = "Links"
