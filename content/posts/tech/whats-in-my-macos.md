@@ -1,5 +1,5 @@
 ---
-title: [2025] What's inside my macOS?
+title: What's in my macOS?
 date: 2025-05-17
 tags:
   - macOS
