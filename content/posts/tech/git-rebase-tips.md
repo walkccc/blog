@@ -4,7 +4,6 @@ author: Peng-Yu Chen
 date: 2022-08-17
 tags:
   - Git
-math: true
 ---
 
 # 前言

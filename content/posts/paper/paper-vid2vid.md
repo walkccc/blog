@@ -5,7 +5,6 @@ date: 2018-11-26
 tags:
   - NIPS
   - paper
-math: true
 ---
 
 [Paper Link](https://arxiv.org/pdf/1808.06601.pdf)
@@ -50,28 +49,26 @@ conditional GAN。此篇 paper 的方法不只是預測未來影片對當前觀�
 
 # 3 Video-to-Video Synthesis
 
-令
-$\textbf s\_1^T \equiv \\{\textbf s\_1, \textbf s\_2, \dots, \textbf s\_T\\}$：
-一系列用於視頻合成的源圖像。例如：semantic segmentation masks。
+令 \\(\\textbf s_1^T \equiv \\{\\textbf s_1, \\textbf s_2, \dots, \\textbf
+s_T\\}\\)：一系列用於視頻合成的源圖像。例如：semantic segmentation masks。
 
-令
-$\textbf x\_1^T \equiv \\{\textbf x\_1, \textbf x\_2, \dots, \textbf x\_T\\}$：
-對應的真實圖片。
+令 \\(\\textbf x_1^T \equiv \\{\\textbf x_1, \\textbf x_2, \dots, \\textbf
+x_T\\}\\)：對應的真實圖片。
 
-Video-to-video synthesis 的目標是學習一個：從 $\text s\_1^T$ mapping 到
-$\tilde{\textbf x}\_1^T \equiv \\{\tilde{\textbf x}\_1, \tilde{\textbf x}\_2, \dots, \tilde{\textbf x}\_T\\}$
-的 function，因此給定 $\textbf s\_1^T$ 所產生的條件分佈
-，$\tilde{\textbf x}\_1^T$ 要和給定 $\textbf s\_1^T$ 所產生的條件分佈
-$\textbf x\_1^T$ 相同。
+Video-to-video synthesis 的目標是學習一個：從 \\(\\text s_1^T\\) mapping 到
+\\(\\tilde{\\textbf x}\_1^T \equiv \\{\\tilde{\\textbf x}\_1, \\tilde{\\textbf
+x}\_2, \dots, \\tilde{\\textbf x}\_T\\}\\) 的 function，因此給定 \\(\\textbf
+s_1^T\\) 所產生的條件分佈，\\(\\tilde{\\textbf x}\_1^T\\) 要和給定 \\(\\textbf
+s_1^T\\) 所產生的條件分佈 \\(\\textbf x_1^T\\) 相同。
 
 $$
-p(\tilde{\textbf x}\_1^T \mid \textbf s\_1^T) = p(\textbf x\_1^T \mid \textbf s\_1^T). \tag{1}
+p(\tilde{\\textbf x}\_1^T \mid \\textbf s\_1^T) = p(\\textbf x\_1^T \mid \\textbf s\_1^T). \tag{1}
 $$
 
 本篇 paper 使用的架構為 [conditional GAN](https://arxiv.org/pdf/1411.1784.pdf)。
 
-令 $G$（generator）：將 input source sequence 映射到對應的 output image
-sequence，即 $\textbf x\_1^T = G(\textbf s\_1^T)$，我們藉由底下的 minimax
+令 \\(G\\)（generator）：將 input source sequence 映射到對應的 output image
+sequence，即 \\(\\textbf x_1^T = G(\\textbf s_1^T)\\)，我們藉由底下的 minimax
 optimization problem 來訓練 generator：
 
 $$
@@ -84,27 +81,28 @@ $$
 
 [圖片來源](https://www.youtube.com/watch?v=GrP_aOSXt5U)
 
-為了簡化 video-to-video 合成問題，我們做了 Markov 假設，將條件分佈
-$p \left( \tilde { \mathbf { x } } _ { 1 } ^ { T } | \mathbf { s } _ { 1 } ^ { T } \right)$
-分解為以下的乘積形式：
+為了簡化 video-to-video 合成問題，我們做了 Markov 假設，將條件分佈 \\(p \left(
+\tilde { \mathbf { x } } _ { 1 } ^ { T } | \mathbf { s } _ { 1 } ^ { T }
+\right)\\) 分解為以下的乘積形式：
 
 $$
 p(\tilde{\textbf x}\_1^T \mid \textbf s\_1^T) = \prod\_{t = 1}^T p(\tilde{\textbf x}\_t \mid \tilde{\textbf x}\_{t - L}^{t - 1}, \textbf s\_{t - L}^t). \tag{3}
 $$
 
-也就是說，我們假定這些影片的的每一幀可以按順序生成，而 $t$-th frame
-$\tilde{\textbf x}\_t$ 只被以下三件事所決定：
+也就是說，我們假定這些影片的的每一幀可以按順序生成，而 \\(t\\)-th frame
+\\(\\tilde{\\textbf x}\_t\\) 只被以下三件事所決定：
 
-1. 目前的 source image $\textbf s\_t$
-1. 過去 $t - L$ 到 $t - 1$ 共 $L$ 個 source image $\textbf s\_{t - L}^{t - 1}$
-1. 過去 $t - L$ 到 $t - 1$ 共 $L$ 個生成的圖片
-   $\tilde{\textbf x}\_{t - L}^{t - 1}$
+1. 目前的 source image \\(\\textbf s_t\\)
+1. 過去 \\(t - L\\) 到 \\(t - 1\\) 共 \\(L\\) 個 source image \\(\\textbf
+   s\_{t - L}^{t - 1}\\)
+1. 過去 \\(t - L\\) 到 \\(t - 1\\) 共 \\(L\\) 個生成的圖片 \\(\\tilde{\\textbf
+   x}\_{t - L}^{t - 1}\\)
 
-這篇論文透過實驗決定了 $L = 2$。
+這篇論文透過實驗決定了 \\(L = 2\\)。
 
 視頻訊號在連續幀中包含大量冗餘訊息。如果從當前幀到下一幀的光流是已知的，我們可以
 用它來扭曲當前幀以估計下一幀。除了遮擋區域外，這種估計在很大程度上是正確的。基於
-這種觀察，我們將 $F$ 模型化為
+這種觀察，我們將 \\(F\\) 模型化為
 
 $$
 \tilde{\textbf x}\_t = F(\tilde{\textbf x}\_{t - L}^{t - 1}, \tilde{\textbf s}\_{t - L}^t) = (\textbf 1 - \tilde{\textbf m}\_t) \odot \tilde{\textbf w}\_{t - 1} (\tilde{\textbf x}\_{t - 1}) + \tilde{\textbf m}\_t \odot \tilde{\textbf h}\_t, \tag{4}
@@ -112,19 +110,21 @@ $$
 
 其中：
 
-- $\odot$：element-wise 相乘 operator
-- $\textbf 1$：全為 $1$ 的 image
-- 第一項：前一幀扭曲的像素（估計由 $t - 1$th frame 到 $t$th frame 透過 warping
-  的改變）
+- \\(\\odot\\)：element-wise 相乘 operator
+- \\(\\textbf 1\\)：全為 \\(1\\) 的 image
+- 第一項：前一幀扭曲的像素（估計由 \\(t - 1\\)th frame 到 \\(t\\)th frame 透過
+  warping 的改變）
 - 第二項：模糊新的像素（會有比較大的變動）
-- $\tilde{\textbf w}\_{t - 1} = W(\tilde{\textbf x}\_{t - L}^{t - 1}, \tilde{\textbf s}\_{t - L}^t)$：
-  由 $\tilde{\textbf x}\_{t - 1}$ 到 $\tilde{\textbf x}\_t$ 的估計光流
-  - $W$：optical flow prediction function
-- $\tilde{\textbf h}\_t = H(\tilde{\textbf x}\_{t - L}^{t - 1}, \textbf s\_{t - L}^t)$：
-  模糊後的圖片（generated from scratch）。
-- $\tilde{\textbf m}\_t = M(\tilde{\textbf x}\_{t - L}^{t - 1}, \tilde{\textbf s}\_{t - L}^t)$：
-  遮擋 mask，其中值為 $0$ 到 $1$ 之間
-  - $M$：mask prediction function
+- \\(\\tilde{\\textbf w}\_{t - 1} = W(\\tilde{\\textbf x}\_{t - L}^{t - 1},
+  \\tilde{\\textbf s}\_{t - L}^t)\\)：由 \\(\\tilde{\\textbf x}\_{t - 1}\\) 到
+  \\(\\tilde{\\textbf x}\_t\\) 的估計光流
+  - \\(W\\)：optical flow prediction function
+- \\(\\tilde{\\textbf h}\_t = H(\\tilde{\\textbf x}\_{t - L}^{t - 1}, \\textbf
+  s\_{t - L}^t)\\)：模糊後的圖片（generated from scratch）。
+- \\(\\tilde{\\textbf m}\_t = M(\\tilde{\\textbf x}\_{t - L}^{t - 1},
+  \\tilde{\\textbf s}\_{t - L}^t)\\)：遮擋 mask，其中值為 \\(0\\) 到 \\(1\\) 之
+  間
+  - \\(M\\)：mask prediction function
 
 ## Conditional image discriminator
 

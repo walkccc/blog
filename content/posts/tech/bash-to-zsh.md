@@ -11,7 +11,7 @@ tags:
 因為朋友推薦，前陣子開始轉移使用
 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)，起初覺得用了很久的 bash
 已經夠好用了，真的有需要轉移到 zsh 上嗎？但經過使用一個月的心得，我能告訴您
-，zsh >>> bash。
+，zsh > bash。
 
 本身是使用 macOS，不確定使用 Windows 的朋友是否能夠如法砲製，zsh 相比 bash 有許
 多的優點，像是：

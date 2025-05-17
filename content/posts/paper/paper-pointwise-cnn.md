@@ -5,8 +5,9 @@ date: 2018-09-27
 tags:
   - CVPR
   - paper
-math: true
 ---
+
+{{< katex >}}
 
 [Paper Link](https://arxiv.org/pdf/1712.05245.pdf)
 
@@ -98,9 +99,9 @@ RGB-D 圖片其實是兩張圖片：
 
 # 3. Pointwise Convolution
 
-先來談談要麼**描述**一個 3D 物件，[VoxNet]() 使用了 $64 \times 64 \times 64$ 的
-解析度去描述一個物件，但這有一個很大的缺點，很耗費記憶體，因為其實大部分的像素（
-立體三維空間中的）皆是 $0$，但這可以被
+先來談談要麼**描述**一個 3D 物件，[VoxNet]() 使用了 \\(64 \times 64 \times 64\\)
+的解析度去描述一個物件，但這有一個很大的缺點，很耗費記憶體，因為其實大部分的像素
+（立體三維空間中的）皆是 \\(0\\)，但這可以被
 [sparse representation](https://arxiv.org/abs/1611.05009) 解決。
 
 Point clouds 能夠被 RGB-D reconstruction 和 CAD modeling 的特性，因此也是一個不
@@ -127,17 +128,18 @@ $$
 
 其中，
 
-- $k$：所有 sub-domains
-- $\Omega\_i(k)$：當 kernel 以 point $i$ 為中心時，第 $k$-th sub-domain
-- $p\_i$：point $i$ 的座標
-- $|\cdot|$：計算所有 sub-domain 裡的 points 數量
-- $w\_k$：$k$-th sub-domain 的 kernel weight
-- $x\_i$ 和 $x\_j$：point $i$ 和 $j$ 的值
-- $\ell - 1$ 和 $\ell$：input 和 output index
+- \\(k\\)：所有 sub-domains
+- \\(\Omega_i(k)\\)：當 kernel 以 point \\(i\\) 為中心時，第 \\(k\\)-th
+  sub-domain
+- \\(p_i\\)：point \\(i\\) 的座標
+- \\(|\cdot|\\)：計算所有 sub-domain 裡的 points 數量
+- \\(w_k\\)：\\(k\\)-th sub-domain 的 kernel weight
+- \\(x_i\\) 和 \\(x_j\\)：point \\(i\\) 和 \\(j\\) 的值
+- \\(\ell - 1\\) 和 \\(\ell\\)：input 和 output index
 
 ## Gradient backpropagation
 
-令 $L$ 為 loss function，gradient 可被表示成：
+令 \\(L\\) 為 loss function，gradient 可被表示成：
 
 $$
 \frac{\partial L}{\partial x\_j^{\ell - 1}} =
@@ -147,8 +149,8 @@ $$
 \tag{2}
 $$
 
-我們遍歷所有點 $j$ 的 鄰居點 $i$，同時
-$\partial x\_i^\ell / \partial x\_j^{\ell - 1}$ 可被寫成：
+我們遍歷所有點 \\(j\\) 的 鄰居點 \\(i\\)，同時 \\(\partial x_i^\ell / \partial
+x_j^{\ell - 1}\\) 可被寫成：
 
 $$
 \frac{\partial x\_i^\ell}{\partial x\_j^{\ell - 1}} =
@@ -177,8 +179,8 @@ x\_j^{\ell - 1}
 $$
 
 上方的公式並沒有假定 convolution kernel 有固定的形狀，在此篇 paper 中，所有的
-convolution kernels 大小皆為 $3 \times 3 \times 3$，而所有點的 weights 皆一樣大
-。
+convolution kernels 大小皆為 \\(3 \times 3 \times 3\\)，而所有點的 weights 皆一
+樣大。
 
 和傳統立體 convolution 不同的是，他不使用 pooling。paper 提出以下的優點：
 

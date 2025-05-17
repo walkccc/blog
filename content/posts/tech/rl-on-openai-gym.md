@@ -5,8 +5,9 @@ date: 2018-12-06
 tags:
   - Reinforcement Learning
   - Python
-math: true
 ---
+
+{{< katex >}}
 
 # Reinforcement Learning: OpenAI Gym
 
@@ -93,8 +94,8 @@ env.close()
 
 再來我們引進一個簡單的 policy：
 
-- 如果柱子向左傾（角度 $<   0$），則小車左移以維持平衡。
-- 如果柱子向左傾（角度 $\ge 0$），則小車右移以維持平衡。
+- 如果柱子向左傾（角度 \\(< 0\\)），則小車左移以維持平衡。
+- 如果柱子向左傾（角度 \\(\\ge 0\\)），則小車右移以維持平衡。
 
 ```python
 """
@@ -134,10 +135,10 @@ $$Q ^ { \* } ( s , a ) = \sum _ { s ^ { \prime } } T \left( s , a , s ^ { \prime
 
 其中：
 
-- $T$：transition function，$0 \le T \le 1$ 表發生機率
-- $R$：reward function
-- $\gamma$：discount factor，通常會是一個 $< 1$ 的值，可能是 $0.9$、$0.8$ 之類，
-  代表的是對未來 reward 的重視程度。
+- \\(T\\)：transition function，\\(0 \le T \le 1\\) 表發生機率
+- \\(R\\)：reward function
+- \\(\gamma\\)：discount factor，通常會是一個 \\(< 1\\) 的值，可能是
+  \\(0.9\\)、\\(0.8\\) 之類，代表的是對未來 reward 的重視程度。
 
 <!-- $$Q(s, a) = r + \gamma\max_{a'} Q(s', a').$$ -->
 
@@ -155,8 +156,8 @@ $$
 
 其中，
 
-- $t$：不同的時間點
-- $\alpha$：learning rate
+- \\(t\\)：不同的時間點
+- \\(\alpha\\)：learning rate
 
 pseudo code 如下：
 
@@ -173,15 +174,15 @@ for each episode
   until s is terminal
 ```
 
-$\epsilon$-greedy 是一種在 exploration 和 exploitation 間取得平衡的方法。
+\\(\epsilon\\)-greedy 是一種在 exploration 和 exploitation 間取得平衡的方法。
 
 - exploration 嘗試不同 action
 - exploitation 沿用現有 policy
 
 方法很簡單：
 
-- $\epsilon$ 時間，agent 嘗試新 action
-- $(1 - \epsilon)$ 時間，agent 沿用現有 policy
+- \\(\epsilon\\) 時間，agent 嘗試新 action
+- \\((1 - \epsilon)\\) 時間，agent 沿用現有 policy
 
 ```python
 """
