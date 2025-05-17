@@ -15,48 +15,46 @@
  pageRef = "posts"
  weight = 10
 
-#[[main]]
-#  name = "Parent"
-#  weight = 20
+[[main]]
+ name = "About"
+ weight = 20
+ pageRef = "about"
 
-#[[main]]
-#  name = "example sub-menu 1"
-#  parent = "Parent"
-#  pageRef = "posts"
-#  weight = 20
+[[main]]
+ name = "Links"
+ weight = 30
 
-#[[main]]
-#  name = "example sub-menu 2"
-#  parent = "Parent"
-#  pageRef = "posts"
-#  weight = 20
+[[main]]
+ name = "LeetCode Solutions"
+ parent = "Links"
+ url = "https://walkccc.me/LeetCode/"
+ weight = 30
 
-#[[subnavigation]]
-#  name = "An interesting topic"
-#  pageRef = "tags/interesting-topic"
-#  weight = 10
+[[main]]
+ name = "PokémonTCGP.ai"
+ parent = "Links"
+ url = "https://www.pokemontcgp.ai"
+ weight = 30
 
-#[[subnavigation]]
-#  name = "My Awesome Category"
-#  pre = "github"
-#  pageRef = "categories/awesome"
-#  weight = 20
+[[main]]
+ name = ""
+ weight = 40
+ url = "https://github.com/walkccc"
+ pre = "github"
 
-#[[main]]
-#  name = "Categories"
-#  pageRef = "categories"
-#  weight = 20
+[[subnavigation]]
+ name = "Tags"
+ pageRef = "tags"
+ weight = 10
 
-#[[main]]
-#  name = "Tags"
-#  pageRef = "tags"
-#  weight = 30
-
+[[subnavigation]]
+ name = "Categories"
+ pageRef = "categories"
+ weight = 20
 
 # -- Footer Menu --
 # The footer menu is displayed at the bottom of the page, just before
 # the copyright notice. Configure as per the main menu above.
-
 
 # [[footer]]
 #   name = "Tags"
