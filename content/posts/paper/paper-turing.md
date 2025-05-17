@@ -5,6 +5,9 @@ date: 2018-11-25
 tags:
   - paper
   - Turing
+categories:
+  - paper
+  - Chinese
 ---
 
 [Paper Link](https://www.csee.umbc.edu/courses/471/papers/turing.pdf)

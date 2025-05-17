@@ -5,6 +5,9 @@ date: 2018-12-13
 tags:
   - ICLR
   - paper
+categories:
+  - paper
+  - Chinese
 ---
 
 {{< katex >}}

@@ -5,6 +5,9 @@ date: 2018-11-26
 tags:
   - NIPS
   - paper
+categories:
+  - paper
+  - Chinese
 ---
 
 [Paper Link](https://arxiv.org/pdf/1808.06601.pdf)

@@ -6,6 +6,9 @@ date: 2018-08-31
 tags:
   - CVPR
   - paper
+categories:
+  - paper
+  - Chinese
 ---
 
 {{< katex >}}

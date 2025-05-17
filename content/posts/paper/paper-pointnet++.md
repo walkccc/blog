@@ -7,6 +7,9 @@ date: 2018-10-14
 tags:
   - NIPS
   - paper
+categories:
+  - paper
+  - Chinese
 ---
 
 [Paper Link](http://papers.nips.cc/paper/7095-pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space.pdf)

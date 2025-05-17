@@ -7,6 +7,9 @@ date: 2018-09-19
 tags:
   - ECCV
   - paper
+categories:
+  - paper
+  - Chinese
 ---
 
 {{< katex >}}
