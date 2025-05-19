@@ -166,23 +166,19 @@ mathjax: true
 
 來試試簡單的幾行數學式：
 
-$$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+$$\\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$
 
 $$
-y =
-\begin{cases}
-\min\{c, a, t\} & \mbox{ if $y < 0$} \\
-\max\{d, o, g\} & \mbox{ if $y \ge 0$}
-\end{cases}
+\\begin{aligned}
+\\min\\{c, a, t\\} & \\mbox{ if \\(y < 0\\)} \\\\
+\\max\\{d, o, g\\} & \\mbox{ if \\(y \\ge 0\\)}
+\\end{aligned}
 $$
 
 在這我發現了在換行時，`\\`, `{}` 等跳脫字元（escape character），會和 html 語法
 相衝，所以我們要做點處理。
 
 # 數學式渲染跳脫字元處理
-
-引用我學長
-的[文章](https://hsins.github.io/2018/01/05/Built-Personal-Website-with-Hexo/)：
 
 Hexo 預設使用 `hexo-renderer-marked` 引擎進行渲染，但對於底線、反斜線、中括號定
 義了轉義，容易與 MathJax 數學公式渲染時所處理的字符造成衝突，建議可以變更渲染引
