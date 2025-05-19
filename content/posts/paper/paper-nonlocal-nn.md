@@ -5,8 +5,12 @@ date: 2018-10-27
 tags:
   - CVPR
   - paper
-math: true
+categories:
+  - paper
+  - Chinese
 ---
+
+{{< katex >}}
 
 [Paper Link](http://openaccess.thecvf.com/content_cvpr_2018/papers/Wang_Non-Local_Neural_Networks_CVPR_2018_paper.pdf)
 ss Convolutional 和 recurrent operations 都是一次處理一個 local 鄰域，此篇 paper
@@ -41,8 +45,8 @@ ss Convolutional 和 recurrent operations 都是一次處理一個 local 鄰域�
 本篇 paper 就是要解決上述問題，所以提出了 _non-local_ operations 這個概念，直觀
 來說：
 
-一個 non-local 的值（$\textbf x\_i$）來自於，作為輸入 input feature maps 中**所
-有**位置（$\textbf x\_j$）的加權和，如下圖 Figure 1。
+一個 non-local 的值（\\(\textbf x_i\\)）來自於，作為輸入 input feature maps
+中**所有**位置（\\(\textbf x_j\\)）的加權和，如下圖 Figure 1。
 
 |                                                                                                                                                                                                        ![](https://i.imgur.com/mk4NicC.png)                                                                                                                                                                                                        |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -77,16 +81,16 @@ $$
 
 其中，
 
-- $i$：輸出位置的 index（in space, time, or spacetime）
-- $j$：所有 enumerates 出來可能位置的 index
-- $\textbf x$：輸入信號（image, sequence, video; often their features）
-- $\textbf y$：輸出信號，大小和 $\textbf x$ 相同
-- $f$：計算 $i$ 和所有 $j$ 之間的 affinity
-- $g$：計算位置 $j$ 處的輸入信號表示方法
-- $\mathcal C$：normalizer
+- \\(i\\)：輸出位置的 index（in space, time, or spacetime）
+- \\(j\\)：所有 enumerates 出來可能位置的 index
+- \\(\textbf x\\)：輸入信號（image, sequence, video; often their features）
+- \\(\textbf y\\)：輸出信號，大小和 \\(\textbf x\\) 相同
+- \\(f\\)：計算 \\(i\\) 和所有 \\(j\\) 之間的 affinity
+- \\(g\\)：計算位置 \\(j\\) 處的輸入信號表示方法
+- \\(\mathcal C\\)：normalizer
 
-從上述的式 (1) ，我們可以清楚看出 non-local 的特性，因為所有位置（$\forall j$）
-在每一個 operation 中都會被考慮。
+從上述的式 (1) ，我們可以清楚看出 non-local 的特性，因為所有位置（\\(\forall
+j\\）在每一個 operation 中都會被考慮。
 
 相比 convolutional operation 只關心鄰居和 recurrent operation 只關心前一個時間點
 。

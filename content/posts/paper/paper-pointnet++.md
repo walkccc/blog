@@ -7,7 +7,9 @@ date: 2018-10-14
 tags:
   - NIPS
   - paper
-math: true
+categories:
+  - paper
+  - Chinese
 ---
 
 [Paper Link](http://papers.nips.cc/paper/7095-pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space.pdf)
@@ -29,12 +31,12 @@ concatenate 在單點特徵後面，中間忽略了局部特徵的步驟，於�
 
 # 2 Problem Statement
 
-假設 $X = (M, d)$ 是繼承歐基里德空間 $\mathbb R^n$ 的離散度量空間，
+假設 \\(X = (M, d)\\) 是繼承歐基里德空間 \\(\mathbb R^n\\) 的離散度量空間，
 
 其中：
 
-- $M \subseteq \mathbb R^n$：點集
-- $d$：是距離度量。
+- \\(M \subseteq \mathbb R^n\\)：點集
+- \\(d\\)：是距離度量。
 
 另外，歐基里德空間中的 $M$ 密度在各處可能不均勻。我們感興趣的是學習 set function
 $f$，$f$ 的輸入為 $\mathcal X$（以及每個點的附加特徵）並產生重新劃分
