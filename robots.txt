@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://blog.pengyuc.com/sitemap.xml
