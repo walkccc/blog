@@ -40,14 +40,15 @@
   src: url(/fonts/ibm-plex-sans-latin-600.woff2) format("woff2");
 }
 
-/* Design tokens mirrored from pengyuc.com */
+/* Design tokens mirrored from pengyuc.com — identical HSL values to the
+   portfolio's, so the black/white and neutrals render pixel-for-pixel. */
 :root {
-  --bg: #fafaf8;
-  --fg: #18181b;
-  --soft: rgba(24, 24, 27, 0.8);
-  --muted: #71717a;
-  --border: rgba(24, 24, 27, 0.12);
-  --code-bg: rgba(24, 24, 27, 0.05);
+  --bg: hsl(40 14% 98%);
+  --fg: hsl(220 12% 10%);
+  --soft: hsl(220 12% 10% / 0.8);
+  --muted: hsl(220 6% 45%);
+  --border: hsl(220 10% 90%);
+  --code-bg: hsl(220 12% 10% / 0.05);
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo,
     Consolas, "Liberation Mono", monospace;
   --font-sans: "IBM Plex Sans", -apple-system, system-ui, "Segoe UI", Roboto,
@@ -56,23 +57,23 @@
 }
 
 html.dark {
-  --bg: #0b0c0e;
-  --fg: #f4f4f5;
-  --soft: rgba(244, 244, 245, 0.82);
-  --muted: #9f9fa8;
-  --border: rgba(244, 244, 245, 0.14);
-  --code-bg: rgba(244, 244, 245, 0.06);
+  --bg: hsl(220 14% 5%);
+  --fg: hsl(220 8% 91%);
+  --soft: hsl(220 8% 91% / 0.82);
+  --muted: hsl(220 6% 55%);
+  --border: hsl(220 10% 15%);
+  --code-bg: hsl(220 8% 91% / 0.06);
 }
 
 /* No-JS fallback: follow the system scheme. */
 @media (prefers-color-scheme: dark) {
   html:not(.light):not(.dark) {
-    --bg: #0b0c0e;
-    --fg: #f4f4f5;
-    --soft: rgba(244, 244, 245, 0.82);
-    --muted: #9f9fa8;
-    --border: rgba(244, 244, 245, 0.14);
-    --code-bg: rgba(244, 244, 245, 0.06);
+    --bg: hsl(220 14% 5%);
+    --fg: hsl(220 8% 91%);
+    --soft: hsl(220 8% 91% / 0.82);
+    --muted: hsl(220 6% 55%);
+    --border: hsl(220 10% 15%);
+    --code-bg: hsl(220 8% 91% / 0.06);
     color-scheme: dark;
   }
 }
