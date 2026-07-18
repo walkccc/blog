@@ -7,3 +7,11 @@ description = "Engineering notes by Peng-Yu Chen — iOS, algorithms, and softwa
 
 # Absolute URL of the personal site the header links back to.
 aboutURL = "https://pengyuc.com"
+
+# -- Social profiles (footer icons) --
+# Mirrors siteConfig.links on pengyuc.com so the footer matches the portfolio.
+[social]
+  github = "https://github.com/walkccc"
+  threads = "https://www.threads.com/@walkccc"
+  twitter = "https://twitter.com/pengyuc_"
+  linkedin = "https://www.linkedin.com/in/pengyuc"

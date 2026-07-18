@@ -40,14 +40,15 @@
   src: url(/fonts/ibm-plex-sans-latin-600.woff2) format("woff2");
 }
 
-/* Design tokens mirrored from pengyuc.com */
+/* Design tokens mirrored from pengyuc.com — identical HSL values to the
+   portfolio's, so the black/white and neutrals render pixel-for-pixel. */
 :root {
-  --bg: #fafaf8;
-  --fg: #18181b;
-  --soft: rgba(24, 24, 27, 0.8);
-  --muted: #71717a;
-  --border: rgba(24, 24, 27, 0.12);
-  --code-bg: rgba(24, 24, 27, 0.05);
+  --bg: hsl(40 14% 98%);
+  --fg: hsl(220 12% 10%);
+  --soft: hsl(220 12% 10% / 0.8);
+  --muted: hsl(220 6% 45%);
+  --border: hsl(220 10% 90%);
+  --code-bg: hsl(220 12% 10% / 0.05);
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo,
     Consolas, "Liberation Mono", monospace;
   --font-sans: "IBM Plex Sans", -apple-system, system-ui, "Segoe UI", Roboto,
@@ -56,23 +57,23 @@
 }
 
 html.dark {
-  --bg: #0b0c0e;
-  --fg: #f4f4f5;
-  --soft: rgba(244, 244, 245, 0.82);
-  --muted: #9f9fa8;
-  --border: rgba(244, 244, 245, 0.14);
-  --code-bg: rgba(244, 244, 245, 0.06);
+  --bg: hsl(220 14% 5%);
+  --fg: hsl(220 8% 91%);
+  --soft: hsl(220 8% 91% / 0.8);
+  --muted: hsl(220 6% 55%);
+  --border: hsl(220 10% 15%);
+  --code-bg: hsl(220 8% 91% / 0.06);
 }
 
 /* No-JS fallback: follow the system scheme. */
 @media (prefers-color-scheme: dark) {
   html:not(.light):not(.dark) {
-    --bg: #0b0c0e;
-    --fg: #f4f4f5;
-    --soft: rgba(244, 244, 245, 0.82);
-    --muted: #9f9fa8;
-    --border: rgba(244, 244, 245, 0.14);
-    --code-bg: rgba(244, 244, 245, 0.06);
+    --bg: hsl(220 14% 5%);
+    --fg: hsl(220 8% 91%);
+    --soft: hsl(220 8% 91% / 0.8);
+    --muted: hsl(220 6% 55%);
+    --border: hsl(220 10% 15%);
+    --code-bg: hsl(220 8% 91% / 0.06);
     color-scheme: dark;
   }
 }
@@ -115,8 +116,8 @@ a {
   z-index: 40;
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--bg) 80%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .site-header .container {
@@ -129,7 +130,7 @@ a {
 .site-header .logo {
   font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   transition: color 0.15s;
 }
 
@@ -140,8 +141,8 @@ a {
 .site-header nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  font-size: 0.75rem;
+  gap: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .site-header nav a {
@@ -170,17 +171,20 @@ a {
 
 /* -- Intro (home) -- */
 .intro {
-  padding: 4rem 0 3rem;
+  padding: 4rem 0 5rem;
 }
 
 .intro h1 {
   font-size: 1.875rem;
+  line-height: 2.25rem;
   font-weight: 500;
   letter-spacing: -0.025em;
 }
 
 .intro .tagline {
   margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--muted);
 }
 
@@ -456,20 +460,29 @@ html.dark .prose pre {
 .site-footer .container {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   font-size: 0.75rem;
+  line-height: 1rem;
   color: var(--muted);
 }
 
 .site-footer nav {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1.25rem;
 }
 
+/* Match the portfolio, whose icons are block-level via Tailwind's preflight;
+   inline SVGs would add a baseline gap and grow the footer's row height. */
+.site-footer nav svg {
+  display: block;
+}
+
 .site-footer a {
+  display: flex;
   transition: color 0.15s;
 }
 
@@ -478,12 +491,9 @@ html.dark .prose pre {
 }
 
 @media (min-width: 640px) {
-  .intro {
-    padding: 6rem 0 4rem;
-  }
-
   .intro h1 {
     font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .post-header {
@@ -498,5 +508,13 @@ html.dark .prose pre {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+/* Hero vertical rhythm bumps at md (768px) to mirror the portfolio's
+   `md:pt-24 md:pb-28`, while the h1 size steps up at sm (640px) above. */
+@media (min-width: 768px) {
+  .intro {
+    padding: 6rem 0 7rem;
   }
 }
