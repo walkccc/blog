@@ -71,8 +71,7 @@ describe("Earth", () => {
 
 ## Matchers
 
-Jasmine 提供了很多種 matchers，
-在[這裡](https://jasmine.github.io/2.0/introduction)可以看到官方詳細的介紹
+Jasmine 提供了很多種 matchers，在[這裡](https://jasmine.github.io/2.0/introduction)可以看到官方詳細的介紹
 
 - `toBe` / `not.toBe`
 - `toBeCloseTo`

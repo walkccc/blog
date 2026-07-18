@@ -1,0 +1,502 @@
+/* Fonts matched to pengyuc.com: IBM Plex Mono + IBM Plex Sans (latin subset,
+   self-hosted; CJK falls back to the system stack) */
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-latin-400.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-latin-500.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-mono-latin-600.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-sans-latin-400.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/ibm-plex-sans-latin-600.woff2) format("woff2");
+}
+
+/* Design tokens mirrored from pengyuc.com */
+:root {
+  --bg: #fafaf8;
+  --fg: #18181b;
+  --soft: rgba(24, 24, 27, 0.8);
+  --muted: #71717a;
+  --border: rgba(24, 24, 27, 0.12);
+  --code-bg: rgba(24, 24, 27, 0.05);
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo,
+    Consolas, "Liberation Mono", monospace;
+  --font-sans: "IBM Plex Sans", -apple-system, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "PingFang TC", "Hiragino Sans",
+    "Microsoft JhengHei", sans-serif;
+}
+
+html.dark {
+  --bg: #0b0c0e;
+  --fg: #f4f4f5;
+  --soft: rgba(244, 244, 245, 0.82);
+  --muted: #9f9fa8;
+  --border: rgba(244, 244, 245, 0.14);
+  --code-bg: rgba(244, 244, 245, 0.06);
+}
+
+/* No-JS fallback: follow the system scheme. */
+@media (prefers-color-scheme: dark) {
+  html:not(.light):not(.dark) {
+    --bg: #0b0c0e;
+    --fg: #f4f4f5;
+    --soft: rgba(244, 244, 245, 0.82);
+    --muted: #9f9fa8;
+    --border: rgba(244, 244, 245, 0.14);
+    --code-bg: rgba(244, 244, 245, 0.06);
+    color-scheme: dark;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* -- Header -- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.5rem;
+}
+
+.site-header .logo {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 0.15s;
+}
+
+.site-header .logo:hover {
+  color: var(--muted);
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.75rem;
+}
+
+.site-header nav a {
+  color: var(--muted);
+  transition: color 0.15s;
+}
+
+.site-header nav a:hover {
+  color: var(--fg);
+}
+
+#theme-toggle {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+#theme-toggle:hover {
+  color: var(--fg);
+}
+
+/* -- Intro (home) -- */
+.intro {
+  padding: 4rem 0 3rem;
+}
+
+.intro h1 {
+  font-size: 1.875rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.intro .tagline {
+  margin-top: 0.75rem;
+  color: var(--muted);
+}
+
+.intro a {
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 4px;
+}
+
+/* -- Post list -- */
+.year-group {
+  margin-bottom: 3rem;
+}
+
+.label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.post-list {
+  list-style: none;
+}
+
+.post-list li {
+  border-top: 1px solid var(--border);
+}
+
+.post-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.875rem 0;
+}
+
+.post-list .post-title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.post-list a:hover .post-title {
+  color: var(--muted);
+}
+
+.post-list time {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -- Projects -- */
+.projects {
+  margin-bottom: 3rem;
+}
+
+.projects ul {
+  list-style: none;
+}
+
+.projects li {
+  border-top: 1px solid var(--border);
+}
+
+.projects a {
+  display: block;
+  padding: 0.875rem 0;
+}
+
+.project-name {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.projects a:hover .project-name {
+  color: var(--muted);
+}
+
+.project-name .ext {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.project-desc {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* -- Single post -- */
+.post-header {
+  padding: 4rem 0 0;
+}
+
+.post-header h1 {
+  font-size: 1.625rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.post-header time {
+  display: block;
+  margin-top: 0.875rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -- Prose -- */
+.prose {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--soft);
+}
+
+.prose > * + * {
+  margin-top: 1em;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-mono);
+  color: var(--fg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  margin-top: 2.25em;
+}
+
+.prose h2 {
+  font-size: 1.125rem;
+}
+
+.prose h3 {
+  font-size: 1rem;
+}
+
+.prose h4 {
+  font-size: 0.9375rem;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.15s;
+}
+
+.prose a:hover {
+  text-decoration-color: var(--fg);
+}
+
+.prose strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+}
+
+.prose li + li {
+  margin-top: 0.375em;
+}
+
+.prose li::marker {
+  color: var(--muted);
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--border);
+  padding-left: 1rem;
+  color: var(--muted);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+/* Inline code */
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+}
+
+/* Code blocks (chroma) */
+/* One background for every code block — with or without a chroma class.
+   The html.dark variant outranks chroma's own `html.dark .chroma` rule. */
+.prose pre,
+html.dark .prose pre {
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+.prose pre code {
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 0.8125rem;
+}
+
+.prose .highlight {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+/* KaTeX display math can overflow on mobile */
+.prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* -- Footer -- */
+.site-footer {
+  margin-top: 6rem;
+  border-top: 1px solid var(--border);
+}
+
+.site-footer .container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.site-footer a {
+  transition: color 0.15s;
+}
+
+.site-footer a:hover {
+  color: var(--fg);
+}
+
+@media (min-width: 640px) {
+  .intro {
+    padding: 6rem 0 4rem;
+  }
+
+  .intro h1 {
+    font-size: 2.25rem;
+  }
+
+  .post-header {
+    padding-top: 5rem;
+  }
+
+  .post-header h1 {
+    font-size: 1.875rem;
+  }
+
+  .site-footer .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

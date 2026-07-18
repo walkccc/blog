@@ -17,12 +17,11 @@ categories:
 # 1 Introduction
 
 PointNet 對局部特徵的處理並不完善，在 3D Object Part Segmentation 和 Semantic
-Segmentation in Scenes 中（即：需要得到每一個點的分數時），原方法是將全局特徵
-concatenate 在單點特徵後面，中間忽略了局部特徵的步驟，於是作者提出了 PointNet++
-採用分層神經網路（hierarchical neural network）來對此改善。
+Segmentation in
+Scenes 中（即：需要得到每一個點的分數時），原方法是將全局特徵 concatenate 在單點特徵後面，中間忽略了局部特徵的步驟，於是作者提出了 PointNet++ 採用分層神經網路（hierarchical
+neural network）來對此改善。
 
-另外，點雲的密度是不固定的，因此作者也在 PointNet++ 中提出了**密度適應**的網路結
-構。
+另外，點雲的密度是不固定的，因此作者也在 PointNet++ 中提出了**密度適應**的網路結構。
 
 就全局來看，PointNet++ 比 PointNet 多了：
 
@@ -63,8 +62,8 @@ $\mathcal X$ 的 semantic 訊息。
 
 ### Sampling layer
 
-藉由 farthes point sampling (FPS) 來選取一 points 子集，相較與隨機選取，FPS 能更
-好的覆蓋給定 centroid 的點集。
+藉由 farthes point sampling
+(FPS) 來選取一 points 子集，相較與隨機選取，FPS 能更好的覆蓋給定 centroid 的點集。
 
 ### Grouping layer
 
@@ -78,8 +77,7 @@ $\mathcal X$ 的 semantic 訊息。
 
 ### Multi-scale grouping (MSG)
 
-把每種不同半徑的特徵到抓出來，但 MSG 有一個運算效能上的問題，因此作者提出了
-MRG。
+把每種不同半徑的特徵到抓出來，但 MSG 有一個運算效能上的問題，因此作者提出了 MRG。
 
 ### Multi-resolution grouping (MRG)
 
@@ -91,7 +89,8 @@ MRG 由兩部分向量構成：
 權重調配方式：
 
 - 點稀疏時，給從點雲提取的特徵較高權重
-- 點稠密時，則給 $L\_{i - 1}$ 層提取的向量較高的權重，因為此時點雲的抽象程度可能
-  不夠，而從 $L\_{i - 1}$ 層能讓我們看的更廣些。
+- 點稠密時，則給 $L\_{i - 1}$
+  層提取的向量較高的權重，因為此時點雲的抽象程度可能不夠，而從 $L\_{i - 1}$
+  層能讓我們看的更廣些。
 
 ## 3.4 Point Feature Propagation for Set Segmentation

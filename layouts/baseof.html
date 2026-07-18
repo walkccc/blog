@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ or site.Language.Lang "en" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <script>
+      // Resolve theme before first paint to avoid a flash of the wrong scheme.
+      (function () {
+        try {
+          var d = document.documentElement;
+          var saved = localStorage.getItem("theme");
+          var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var t = saved === "light" || saved === "dark" ? saved : dark ? "dark" : "light";
+          d.classList.add(t);
+          d.style.colorScheme = t;
+        } catch (e) {}
+      })();
+    </script>
+    {{ partial "header.html" . }}
+    <main class="container">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "footer.html" . }}
+    <script>
+      (function () {
+        var btn = document.getElementById("theme-toggle");
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          var d = document.documentElement;
+          var t = d.classList.contains("dark") ? "light" : "dark";
+          d.classList.remove("light", "dark");
+          d.classList.add(t);
+          d.style.colorScheme = t;
+          try {
+            localStorage.setItem("theme", t);
+          } catch (e) {}
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -8,17 +8,15 @@ tags:
 
 # 前言
 
-近日有感沒有花些心思去整理平時的一些思緒、札記等等，於是決定要開始著手寫部落格。
-在網路上查了許多資料後，決定使用 [Hexo](https://hexo.io) 所提供的服務，裡面也有
-許多主題可供挑選，而我使用的這個是
-[NexT](https://github.com/theme-next/hexo-theme-next)，一款由中國人所設計，非常
-精緻典雅的主題。
+近日有感沒有花些心思去整理平時的一些思緒、札記等等，於是決定要開始著手寫部落格。在網路上查了許多資料後，決定使用
+[Hexo](https://hexo.io) 所提供的服務，裡面也有許多主題可供挑選，而我使用的這個是
+[NexT](https://github.com/theme-next/hexo-theme-next)，一款由中國人所設計，非常精緻典雅的主題。
 
 # 使用 [Hexo](https://hexo.io) 來建立個人網站
 
-網誌中的第一篇文章，我想要談談我在使用 [Hexo](https://hexo.io) 建立個人網站時並
-且發布到 [GitHub Pages](https://pages.github.com) 時所遇到的問題，以及我是怎麼解
-決的。
+網誌中的第一篇文章，我想要談談我在使用 [Hexo](https://hexo.io)
+建立個人網站時並且發布到 [GitHub Pages](https://pages.github.com)
+時所遇到的問題，以及我是怎麼解決的。
 
 # 環境需求
 
@@ -39,8 +37,8 @@ npm install hexo-cli -g
 # 初始化倉庫（repository）
 
 你必需先在你的 github 帳戶底下建立一個新的倉庫，名字必需是
-`<username>.github.io` 或是 `<username>.github.io/<project>`，否則你將無法成功發
-佈文章。
+`<username>.github.io` 或是
+`<username>.github.io/<project>`，否則你將無法成功發佈文章。
 
 # 初始化 Hexo 資料夾
 
@@ -59,8 +57,8 @@ npm install             # update something
 
 # 安裝佈署器
 
-不像其它靜態頁面生產器，[Hexo](https://hexo.io) 提供了官方的佈署器（deployer），
-我們可由下列指令安裝之：
+不像其它靜態頁面生產器，[Hexo](https://hexo.io)
+提供了官方的佈署器（deployer），我們可由下列指令安裝之：
 
 ```bash
 npm install hexo-deployer-git --save
@@ -96,8 +94,8 @@ git push -u master
 
 # 修改設定
 
-在資料夾的根目錄，打開 `/_config.yml` 並且修改如以下（在這裡我用我的帳號來做示範
-）
+在資料夾的根目錄，打開 `/_config.yml`
+並且修改如以下（在這裡我用我的帳號來做示範）
 
 ```
 title: Jay's Blog
@@ -111,10 +109,10 @@ deploy:
   branch: gh-pages
 ```
 
-確保你的 branch 屬性填寫的是 `master`（非常重要！）GitHub 不允許使用分支（如
-：gh-pages）發布網頁在 `<username>.github.io`（但如果你是發布在例如
-：`<username>.github.io/blog` 下便可以），兄弟我就是不知道這點，所以在這耗費了許
-久時間 ⋯⋯ 囧。
+確保你的 branch 屬性填寫的是
+`master`（非常重要！）GitHub 不允許使用分支（如：gh-pages）發布網頁在
+`<username>.github.io`（但如果你是發布在例如：`<username>.github.io/blog`
+下便可以），兄弟我就是不知道這點，所以在這耗費了許久時間 ⋯⋯ 囧。
 
 # 準備佈署網頁！
 
@@ -136,8 +134,8 @@ hexo deploy -g
 hexo --help
 ```
 
-文章所使用的 .md 檔位置是在 `/source/_posts` 中，排序的方式會根據 `date` 來決定
-。稍候片刻，你的網頁將會被發佈在：`https://<username>.github.io/` 或是
+文章所使用的 .md 檔位置是在 `/source/_posts` 中，排序的方式會根據 `date`
+來決定。稍候片刻，你的網頁將會被發佈在：`https://<username>.github.io/` 或是
 `https://<username>.github.io/<project>` 上！
 
 恭喜你，但先別急，讓我們來做點優化。
@@ -153,8 +151,8 @@ math:
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 ```
 
-有一點要特別注意的是 `per_page` 屬性在這我是維持原本的 `true`，這樣的話我只在我
-想要加入數學式的頁面才載入 javascript，例如像這頁的標題就會長的像：
+有一點要特別注意的是 `per_page` 屬性在這我是維持原本的
+`true`，這樣的話我只在我想要加入數學式的頁面才載入 javascript，例如像這頁的標題就會長的像：
 
 ```
 ---
@@ -175,14 +173,13 @@ $$
 \\end{aligned}
 $$
 
-在這我發現了在換行時，`\\`, `{}` 等跳脫字元（escape character），會和 html 語法
-相衝，所以我們要做點處理。
+在這我發現了在換行時，`\\`, `{}` 等跳脫字元（escape
+character），會和 html 語法相衝，所以我們要做點處理。
 
 # 數學式渲染跳脫字元處理
 
-Hexo 預設使用 `hexo-renderer-marked` 引擎進行渲染，但對於底線、反斜線、中括號定
-義了轉義，容易與 MathJax 數學公式渲染時所處理的字符造成衝突，建議可以變更渲染引
-擎為下列選項中其中一個：
+Hexo 預設使用 `hexo-renderer-marked`
+引擎進行渲染，但對於底線、反斜線、中括號定義了轉義，容易與 MathJax 數學公式渲染時所處理的字符造成衝突，建議可以變更渲染引擎為下列選項中其中一個：
 
 - hexo-renderer-kramed
 - hexo-renderer-pandoc
@@ -215,8 +212,7 @@ hexo clean
 
 # 備份本機上的資料夾
 
-在我功佈署我們的網頁後，GitHub 上有的只有網頁所需要的檔案，但如果哪天換了電腦，
-想要在別台電腦上修改，事情就會變得非常麻煩。
+在我功佈署我們的網頁後，GitHub 上有的只有網頁所需要的檔案，但如果哪天換了電腦，想要在別台電腦上修改，事情就會變得非常麻煩。
 
 我們可以運用 GitHub 的分支（branch）功能來備份根目錄資料夾。
 

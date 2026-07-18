@@ -12,9 +12,9 @@ tags:
 
 # 預備環境
 
-要開始使用 [Hugo](https://gohugo.io)，若您的環境跟我一樣是 macOS 的話，可以使用
-套件管理工具 [Homebrew](https://brew.sh/index_zh-tw.html)：在終端機輸入以下指令
-後，便會開始下載需要的套件。
+要開始使用
+[Hugo](https://gohugo.io)，若您的環境跟我一樣是 macOS 的話，可以使用套件管理工具
+[Homebrew](https://brew.sh/index_zh-tw.html)：在終端機輸入以下指令後，便會開始下載需要的套件。
 
 ```bash
 brew install hugo

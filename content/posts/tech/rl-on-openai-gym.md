@@ -16,25 +16,18 @@ Learning）與要 end-to-end 的資料訓練。
 
 ## Reinforcement Learning 介紹
 
-> Agent 在某個 state 做了一個 action，而移到下一個 state，環境此時給了 agent 一
-> 個 reward，而 agent 則根據這個 reward 調整他的腳步。
+> Agent 在某個 state 做了一個 action，而移到下一個 state，環境此時給了 agent 一個 reward，而 agent 則根據這個 reward 調整他的腳步。
 
 聽起來有點抽象？比喻來說：
 
-你是 agent，而環境是家（包括：爸爸、媽媽等），action 是你的行為舉止，state 是你
-所在的地點，reward 是媽媽給你的獎勵（可能是負的，即：負回饋）。
+你是 agent，而環境是家（包括：爸爸、媽媽等），action 是你的行為舉止，state 是你所在的地點，reward 是媽媽給你的獎勵（可能是負的，即：負回饋）。
 
-- 若你（agent）在客廳（state），打破了一個杯子（action），而媽媽斥責你（reward）
-  ，你就會透過這次的不小心，去避免下次在客廳時不要再打破杯子。
-- 相反地，若你（agent）在廚房（state），洗了碗筷（action），而媽媽說你很棒
-  （reward），你就會知道，洗碗可以幫忙分擔家事並得到正回饋，所以以後一樣到了廚房
-  看到有碗筷時，就會增加想洗碗的機率。
+- 若你（agent）在客廳（state），打破了一個杯子（action），而媽媽斥責你（reward），你就會透過這次的不小心，去避免下次在客廳時不要再打破杯子。
+- 相反地，若你（agent）在廚房（state），洗了碗筷（action），而媽媽說你很棒（reward），你就會知道，洗碗可以幫忙分擔家事並得到正回饋，所以以後一樣到了廚房看到有碗筷時，就會增加想洗碗的機率。
 
 ---
 
-由上可知，RL 是 ML 家族中的一員，而我個人覺得他更有 AI 的感覺，他是一種目標導向
-（goal-oriented）的學習方法，透過 agent 與環境間的互動獲得更種獎勵或懲罰，學會如
-何做「最好的」決策（policy）。
+由上可知，RL 是 ML 家族中的一員，而我個人覺得他更有 AI 的感覺，他是一種目標導向（goal-oriented）的學習方法，透過 agent 與環境間的互動獲得更種獎勵或懲罰，學會如何做「最好的」決策（policy）。
 
 整個決策決定過程可由以下 5 個要素組成：
 
@@ -46,8 +39,8 @@ Learning）與要 end-to-end 的資料訓練。
 
 # Algorithm Implementation
 
-我們使用 OpenAI Gym 當中的 `CartPole-v0` 來實作 RL 演算法，OpenAL Gym 提供了各種
-不同的 environment 來做 RL 的訓練。
+我們使用 OpenAI Gym 當中的 `CartPole-v0` 來實作 RL 演算法，OpenAL
+Gym 提供了各種不同的 environment 來做 RL 的訓練。
 
 為了避免跨平台上安裝的問題，我使用 Google Colab 的雲端平台來
 [demo](https://colab.research.google.com/drive/1nellAKykrJOwySQZqZ8eagTmkR0PSXEE)。
@@ -56,8 +49,7 @@ Learning）與要 end-to-end 的資料訓練。
 
 ## Random Action
 
-先從最簡單的例子來了解相關變數，無論 environment 如何，隨機挑選一個可行的
-action，即：隨機決定左移或右移。
+先從最簡單的例子來了解相關變數，無論 environment 如何，隨機挑選一個可行的 action，即：隨機決定左移或右移。
 
 ```python
 """
@@ -87,8 +79,8 @@ ipythondisplay.clear_output(wait=True)
 env.close()
 ```
 
-因為 agent 在這個 random choosing action 時，並沒有任何學習，所以 reward 普遍不
-高。
+因為 agent 在這個 random choosing
+action 時，並沒有任何學習，所以 reward 普遍不高。
 
 ## Hand-Made Policy
 
@@ -137,8 +129,8 @@ $$Q ^ { \* } ( s , a ) = \sum _ { s ^ { \prime } } T \left( s , a , s ^ { \prime
 
 - \\(T\\)：transition function，\\(0 \le T \le 1\\) 表發生機率
 - \\(R\\)：reward function
-- \\(\gamma\\)：discount factor，通常會是一個 \\(< 1\\) 的值，可能是
-  \\(0.9\\)、\\(0.8\\) 之類，代表的是對未來 reward 的重視程度。
+- \\(\gamma\\)：discount factor，通常會是一個 \\(<
+  1\\) 的值，可能是 \\(0.9\\)、\\(0.8\\) 之類，代表的是對未來 reward 的重視程度。
 
 <!-- $$Q(s, a) = r + \gamma\max_{a'} Q(s', a').$$ -->
 
@@ -279,11 +271,11 @@ env.close()
 
 在 CartPole 的 task 中，state 只有 4 個 features，action 只有 0 和 1 兩個值。
 
-但若 state 今天是來自整個環境（例如：整個螢幕、Alpha Go 圍棋棋盤），因為 states
-過多，這時用 table 來表示就不太妥當。
+但若 state 今天是來自整個環境（例如：整個螢幕、Alpha
+Go 圍棋棋盤），因為 states 過多，這時用 table 來表示就不太妥當。
 
-Deep Q-Leanring（以下簡稱 DQN）：我們可以用 deep neural network 幫我們提取
-features 並逼近 Q function。
+Deep Q-Leanring（以下簡稱 DQN）：我們可以用 deep neural
+network 幫我們提取 features 並逼近 Q function。
 
 NN 藉由大量的 input-output end-to-end 訓練，找出：
 
@@ -299,19 +291,19 @@ $$\pi(state) = action.$$
 [Human-level control through deep reinforcement learning](https://web.stanford.edu/class/psych209/Readings/MnihEtAlHassibis15NatureControlDeepRL.pdf)
 中，提供了三種訓練 DQN 的 tips：
 
-1. Use experience replay：把 experience 存在 memory，訓練時隨機抽樣。優點是可以
-   打亂不同 experience 之間不存在的時間關係。
+1. Use experience
+   replay：把 experience 存在 memory，訓練時隨機抽樣。優點是可以打亂不同 experience 之間不存在的時間關係。
 1. Freeze target Q-network：即建立兩種 Q-network，
    - 實際進行訓練的 evaluation network
    - 訓練目標 target network 若只訓練一個 nn，每更新一次時，不但正在訓練的
      $Q(s, a)$ 在變，目標 $Q(s', a')$ 也在變，這樣是無法收斂的！
-1. Clip rewards：限縮 reward 的值，以利 backpropagation 中能穩定地計算
-   gradient。
+1. Clip
+   rewards：限縮 reward 的值，以利 backpropagation 中能穩定地計算 gradient。
 
 #### Step 1: 建立 Network
 
-先建立一層 hidden layer，把 state 傳入後，得出每個 action 的分數，分數越高的
-action 越容易被挑選。
+先建立一層 hidden
+layer，把 state 傳入後，得出每個 action 的分數，分數越高的 action 越容易被挑選。
 
 目標：對未來越有利的 action 分數越高。
 

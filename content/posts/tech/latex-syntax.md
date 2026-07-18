@@ -10,9 +10,8 @@ tags:
 
 # 前言
 
-使用 [LaTeX](https://www.latex-project.org) 這款排版工具也有 1 年多了，有鑑於在
-查語法時常重複查詢造成效率下降，加上朋友的建議，於是就來整理份常用的 LaTeX 語法
-吧！
+使用 [LaTeX](https://www.latex-project.org)
+這款排版工具也有 1 年多了，有鑑於在查語法時常重複查詢造成效率下降，加上朋友的建議，於是就來整理份常用的 LaTeX 語法吧！
 
 # 基本
 

@@ -1,13 +1,18 @@
 # -- Markup --
-# These settings are required for the theme to function.
 
 [goldmark]
-[goldmark.renderer]
-  unsafe = true
+  [goldmark.renderer]
+    unsafe = true
+
+  # Joins hard-wrapped lines in CJK text without inserting spaces
+  # (source markdown is prose-wrapped at 80 columns by Prettier).
+  [goldmark.extensions.cjk]
+    enable = true
+    eastAsianLineBreaks = true
+    # NOTE: keep the default "simple" style. "css3draft" also swallows soft
+    # line breaks in pure-Latin text (e.g. right after a link), gluing
+    # English words together.
 
 [highlight]
   noClasses = false
-
-[tableOfContents]
-  startLevel = 2
-  endLevel = 4
+  guessSyntax = true
