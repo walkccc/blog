@@ -175,12 +175,15 @@ a {
 
 .intro h1 {
   font-size: 1.875rem;
+  line-height: 2.25rem;
   font-weight: 500;
   letter-spacing: -0.025em;
 }
 
 .intro .tagline {
   margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--muted);
 }
 
@@ -460,6 +463,7 @@ html.dark .prose pre {
   padding-top: 2rem;
   padding-bottom: 2rem;
   font-size: 0.75rem;
+  line-height: 1rem;
   color: var(--muted);
 }
 
@@ -470,7 +474,14 @@ html.dark .prose pre {
   gap: 1.25rem;
 }
 
+/* Match the portfolio, whose icons are block-level via Tailwind's preflight;
+   inline SVGs would add a baseline gap and grow the footer's row height. */
+.site-footer nav svg {
+  display: block;
+}
+
 .site-footer a {
+  display: flex;
   transition: color 0.15s;
 }
 
@@ -481,6 +492,7 @@ html.dark .prose pre {
 @media (min-width: 640px) {
   .intro h1 {
     font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .post-header {
