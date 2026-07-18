@@ -115,8 +115,8 @@ a {
   z-index: 40;
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--bg) 80%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .site-header .container {
@@ -129,7 +129,7 @@ a {
 .site-header .logo {
   font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   transition: color 0.15s;
 }
 
@@ -140,8 +140,8 @@ a {
 .site-header nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  font-size: 0.75rem;
+  gap: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .site-header nav a {
@@ -170,7 +170,7 @@ a {
 
 /* -- Intro (home) -- */
 .intro {
-  padding: 4rem 0 3rem;
+  padding: 4rem 0 5rem;
 }
 
 .intro h1 {
@@ -456,7 +456,7 @@ html.dark .prose pre {
 .site-footer .container {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   font-size: 0.75rem;
@@ -465,6 +465,7 @@ html.dark .prose pre {
 
 .site-footer nav {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1.25rem;
 }
@@ -478,10 +479,6 @@ html.dark .prose pre {
 }
 
 @media (min-width: 640px) {
-  .intro {
-    padding: 6rem 0 4rem;
-  }
-
   .intro h1 {
     font-size: 2.25rem;
   }
@@ -498,5 +495,13 @@ html.dark .prose pre {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+/* Hero vertical rhythm bumps at md (768px) to mirror the portfolio's
+   `md:pt-24 md:pb-28`, while the h1 size steps up at sm (640px) above. */
+@media (min-width: 768px) {
+  .intro {
+    padding: 6rem 0 7rem;
   }
 }
