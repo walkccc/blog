@@ -1,67 +1,13 @@
-# -- Main Menu --
-# The main menu is displayed in the header at the top of the page.
-# Acceptable parameters are name, pageRef, page, url, title, weight.
-#
-# The simplest menu configuration is to provide:
-#   name = The name to be displayed for this menu link
-#   pageRef = The identifier of the page or section to link to
-#
-# By default the menu is ordered alphabetically. This can be
-# overridden by providing a weight value. The menu will then be
-# ordered by weight from lowest to highest.
+# -- Main Menu (header, right side) --
 
 [[main]]
- name = "Posts"
- pageRef = "posts"
- weight = 10
+  name = "About"
+  url = "https://pengyuc.com"
+  weight = 10
 
-[[main]]
- name = "About"
- weight = 20
- url = "https://pengyuc.com"
+# -- Footer Menu (small muted links) --
 
-[[main]]
- name = "Links"
- weight = 30
-
-[[main]]
- name = "LeetCode Solutions"
- parent = "Links"
- url = "https://walkccc.me/LeetCode/"
- weight = 30
-
-[[main]]
- name = "PokémonTCGP.ai"
- parent = "Links"
- url = "https://www.pokemontcgp.ai"
- weight = 30
-
-[[main]]
- name = ""
- weight = 40
- url = "https://github.com/walkccc"
- pre = "github"
-
-[[subnavigation]]
- name = "Tags"
- pageRef = "tags"
- weight = 10
-
-[[subnavigation]]
- name = "Categories"
- pageRef = "categories"
- weight = 20
-
-# -- Footer Menu --
-# The footer menu is displayed at the bottom of the page, just before
-# the copyright notice. Configure as per the main menu above.
-
-# [[footer]]
-#   name = "Tags"
-#   pageRef = "tags"
-#   weight = 10
-
-# [[footer]]
-#   name = "Categories"
-#   pageRef = "categories"
-#   weight = 20
+[[footer]]
+  name = "GitHub"
+  url = "https://github.com/walkccc"
+  weight = 10

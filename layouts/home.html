@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="intro">
+  <h1>{{ site.Params.author }}</h1>
+  <p class="tagline">{{ site.Params.tagline }}</p>
+</section>
+{{ partial "post-list.html" site.RegularPages }}
+{{ with site.Params.projects }}
+<section class="projects">
+  <h2 class="label">Projects</h2>
+  <ul>
+    {{- range . }}
+    <li>
+      <a href="{{ .url }}" target="_blank" rel="noreferrer">
+        <span class="project-name">{{ .name }} <span class="ext">↗</span></span>
+        <span class="project-desc">{{ .description }}</span>
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+</section>
+{{ end }}
+{{ end }}

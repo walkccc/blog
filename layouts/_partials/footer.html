@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="container">
+    <p>© {{ now.Year }} {{ site.Params.author }}</p>
+    <nav>
+      {{- range site.Menus.footer }}
+      <a href="{{ .URL }}" target="_blank" rel="noreferrer">{{ .Name }}</a>
+      {{- end }}
+    </nav>
+  </div>
+</footer>
