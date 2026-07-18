@@ -1,13 +1,30 @@
 # -- Markup --
-# These settings are required for the theme to function.
 
 [goldmark]
-[goldmark.renderer]
-  unsafe = true
+  [goldmark.renderer]
+    unsafe = true
+
+  # Safety net for CJK: joins a hard-wrapped line without inserting a space.
+  # Posts are no longer prose-wrapped — .prettierrc sets proseWrap "never", so
+  # one paragraph is one source line and there are no soft breaks left to join.
+  # This stays enabled so a hand-inserted break inside a Chinese paragraph
+  # still renders correctly instead of leaking a stray space.
+  #
+  # NOTE: keep the default "simple" style. "css3draft" also swallows soft
+  # line breaks in pure-Latin text (e.g. right after a link), gluing English
+  # words together.
+  [goldmark.extensions.cjk]
+    enable = true
+    eastAsianLineBreaks = true
+
+# startLevel 1 because the posts migrated from Hexo use h1 for their top-level
+# sections; newer posts start at h2. Posts starting at h2 get a linkless
+# wrapper <li> around the list; layouts/page.html unwraps it.
+[tableOfContents]
+  startLevel = 1
+  endLevel = 3
+  ordered = false
 
 [highlight]
   noClasses = false
-
-[tableOfContents]
-  startLevel = 2
-  endLevel = 4
+  guessSyntax = true

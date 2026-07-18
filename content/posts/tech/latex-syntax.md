@@ -10,39 +10,37 @@ tags:
 
 # 前言
 
-使用 [LaTeX](https://www.latex-project.org) 這款排版工具也有 1 年多了，有鑑於在
-查語法時常重複查詢造成效率下降，加上朋友的建議，於是就來整理份常用的 LaTeX 語法
-吧！
+使用 [LaTeX](https://www.latex-project.org) 這款排版工具也有 1 年多了，有鑑於在查語法時常重複查詢造成效率下降，加上朋友的建議，於是就來整理份常用的 LaTeX 語法吧！
 
 # 基本
 
-|       程式碼        |           LaTeX           |       程式碼        |           LaTeX           |
-| :-----------------: | :-----------------------: | :-----------------: | :-----------------------: |
-|         a_1         |         \\(a_1\\)         |      x^{2018}       |      \\(x^{2018}\\)       |
-|    e^{-\alpha t}    |    \\(e^{-\alpha t}\\)    |      a^3\_{ij}      |      \\(a^3\_{ij}\\)      |
+| 程式碼 | LaTeX | 程式碼 | LaTeX |
+| :-: | :-: | :-: | :-: |
+| a_1 | \\(a_1\\) | x^{2018} | \\(x^{2018}\\) |
+| e^{-\alpha t} | \\(e^{-\alpha t}\\) | a^3\_{ij} | \\(a^3\_{ij}\\) |
 | e^{x^2} \ne {e^x}^2 | \\(e^{x^2} \ne {e^x}^2\\) | 94 \times 87 = 8178 | \\(94 \times 87 = 8178\\) |
 
 # 根號
 
-|   程式碼    |       LaTeX       |        程式碼        |           LaTeX            |
-| :---------: | :---------------: | :------------------: | :------------------------: |
-|   \sqrt x   |   \\(\sqrt x\\)   | \sqrt{x^2 + \sqrt y} | \\(\sqrt{x^2 + \sqrt y}\\) |
-| \sqrt[3]{2} | \\(\sqrt[3]{2}\\) |   \surd[x^2 + y^2]   |   \\(\surd[x^2 + y^2]\\)   |
+| 程式碼 | LaTeX | 程式碼 | LaTeX |
+| :-: | :-: | :-: | :-: |
+| \sqrt x | \\(\sqrt x\\) | \sqrt{x^2 + \sqrt y} | \\(\sqrt{x^2 + \sqrt y}\\) |
+| \sqrt[3]{2} | \\(\sqrt[3]{2}\\) | \surd[x^2 + y^2] | \\(\surd[x^2 + y^2]\\) |
 
 # 線、向量
 
-|      程式碼      |         LaTeX          |       程式碼        |           LaTeX           |
-| :--------------: | :--------------------: | :-----------------: | :-----------------------: |
-| \overline{m + n} | \\(\overline{m + n}\\) |  \underline{m + n}  |  \\(\underline{m + n}\\)  |
-|      \vec a      |      \\(\vec a\\)      | \overrightarrow{AB} | \\(\overrightarrow{AB}\\) |
+| 程式碼 | LaTeX | 程式碼 | LaTeX |
+| :-: | :-: | :-: | :-: |
+| \overline{m + n} | \\(\overline{m + n}\\) | \underline{m + n} | \\(\underline{m + n}\\) |
+| \vec a | \\(\vec a\\) | \overrightarrow{AB} | \\(\overrightarrow{AB}\\) |
 
 # 其它
 
-|                程式碼                 |                    LaTeX                    |                  程式碼                   |                      LaTeX                      |
-| :-----------------------------------: | :-----------------------------------------: | :---------------------------------------: | :---------------------------------------------: |
+| 程式碼 | LaTeX | 程式碼 | LaTeX |
+| :-: | :-: | :-: | :-: |
 | \underbrace{a + b + \cdots + z}\_{26} | \\(\underbrace{a + b + \cdots + z}\_{26}\\) | \int_0^{\frac{\pi}{2}} \cos\theta d\theta | \\(\int_0^{\frac{\pi}{2}} \cos\theta d\theta\\) |
-|   \frac{x^2}{1 + x + \cdots + x^n}    |   \\(\frac{x^2}{1 + x + \cdots + x^n}\\)    |            x^{\frac{2}{k + 1}}            |            \\(x^{\frac{2}{k + 1}}\\)            |
-|           \sum\_{i = 1}^{n}           |           \\(\sum\_{i = 1}^{n}\\)           |              \prod\_\epsilon              |              \\(\prod\_\epsilon\\)              |
+| \frac{x^2}{1 + x + \cdots + x^n} | \\(\frac{x^2}{1 + x + \cdots + x^n}\\) | x^{\frac{2}{k + 1}} | \\(x^{\frac{2}{k + 1}}\\) |
+| \sum\_{i = 1}^{n} | \\(\sum\_{i = 1}^{n}\\) | \prod\_\epsilon | \\(\prod\_\epsilon\\) |
 
 # 數學符號
 

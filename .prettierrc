@@ -1,6 +1,7 @@
 {
   "printWidth": 80,
-  "proseWrap": "always",
+  "proseWrap": "never",
+  "embeddedLanguageFormatting": "off",
   "overrides": [
     {
       "files": "*.md",
