@@ -59,7 +59,7 @@
 html.dark {
   --bg: hsl(220 14% 5%);
   --fg: hsl(220 8% 91%);
-  --soft: hsl(220 8% 91% / 0.82);
+  --soft: hsl(220 8% 91% / 0.8);
   --muted: hsl(220 6% 55%);
   --border: hsl(220 10% 15%);
   --code-bg: hsl(220 8% 91% / 0.06);
@@ -70,7 +70,7 @@ html.dark {
   html:not(.light):not(.dark) {
     --bg: hsl(220 14% 5%);
     --fg: hsl(220 8% 91%);
-    --soft: hsl(220 8% 91% / 0.82);
+    --soft: hsl(220 8% 91% / 0.8);
     --muted: hsl(220 6% 55%);
     --border: hsl(220 10% 15%);
     --code-bg: hsl(220 8% 91% / 0.06);
