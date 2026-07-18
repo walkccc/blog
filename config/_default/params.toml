@@ -7,14 +7,3 @@ description = "Engineering notes by Peng-Yu Chen — iOS, algorithms, and softwa
 
 # Absolute URL of the personal site the header links back to.
 aboutURL = "https://pengyuc.com"
-
-# Indie projects shown at the bottom of the homepage.
-[[projects]]
-  name = "PokémonTCGP.ai"
-  url = "https://pokemontcgp.ai"
-  description = "Pokémon TCG Pocket card database, trending decks, and an AI deck builder."
-
-[[projects]]
-  name = "LeetCode Solutions"
-  url = "https://walkccc.me/LeetCode/"
-  description = "Readable solutions to 3,500+ LeetCode problems in C++, Java, and Python."
