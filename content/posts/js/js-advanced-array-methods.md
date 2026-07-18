@@ -11,8 +11,7 @@ tags:
 
 # 陣列迭代
 
-在 JavaScript 中，callback 是一種常見的函式，這篇文章想要對 JS 中幾種常見迭代
-（iterate）陣列的方式做個初步的介紹。
+在 JavaScript 中，callback 是一種常見的函式，這篇文章想要對 JS 中幾種常見迭代（iterate）陣列的方式做個初步的介紹。
 
 主要函式有以下幾種，使用它們可以使程式碼變得更加整潔、清楚！
 
@@ -127,7 +126,7 @@ tags:
      addKeyAndValue(
        [{ name: "Elie" }, { name: "Colt" }],
        "title",
-       "instructor"
+       "instructor",
      );
      // [{ name: 'Elie', title: 'instructor' },
      //  { name: 'Colt', title: 'instructor' }]
@@ -207,8 +206,8 @@ tags:
   }
   ```
 
-我們可以發現，透過 map，我們不需要再自行建立陣列，這會使的程式碼變得非常潔簡，由
-其是搭配 1-line arrow function 時！
+我們可以發現，透過 map，我們不需要再自行建立陣列，這會使的程式碼變得非常潔簡，由其是搭配 1-line
+arrow function 時！
 
 一樣透過以下幾個例子，讓大家細細品嘗 `map` 比 `forEach` 強大的地方！
 
@@ -334,7 +333,7 @@ tags:
          { first: "Elie", last: "Schoppik" },
          { first: "Colt", last: "Steele", isCatOwner: true },
        ],
-       "isCatOwner"
+       "isCatOwner",
      );
      // [{ first: 'Colt', last: 'Steele', isCatOwner: true }]
      ```
@@ -382,7 +381,7 @@ tags:
          { first: "Colt", last: "Steele", isCatOwner: true },
        ],
        "isCatOwner",
-       true
+       true,
      );
      // { first: 'Tim', last: 'Garcia', isCatOwner: true}
      ```
@@ -659,8 +658,8 @@ tags:
      - 通常我們稱呼 callback 的第一個參數為 'accumulator'，常用縮寫為 acc
   1. 每次從 callback 回傳的值，變成為新的 accumulator！
 
-本文最後介紹的 `reduce` 和前面任何一個函式執行方式有著很大的差異，需要透過不停的
-練習才能熟能生巧，因為難度較高，讓我們先看幾個範例：
+本文最後介紹的 `reduce`
+和前面任何一個函式執行方式有著很大的差異，需要透過不停的練習才能熟能生巧，因為難度較高，讓我們先看幾個範例：
 
 1. 無 optional parameter，最後回傳結果為 `6`。
 
@@ -765,7 +764,7 @@ tags:
      addKeyAndValue(
        [{ name: "Elie" }, { name: "Colt" }],
        "title",
-       "instructor"
+       "instructor",
      );
      // [{ name: 'Elie', title: 'instructor' },
      //  { name: 'Colt', title: 'instructor' }]
@@ -820,7 +819,7 @@ tags:
            }
            return acc;
          },
-         [[], []]
+         [[], []],
        );
      }
      ```

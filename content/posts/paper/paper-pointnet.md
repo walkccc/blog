@@ -18,8 +18,9 @@ categories:
 
 # 1. Introduction
 
-這篇是 Stanford 在 CVPR 2017 所發表的 PointNet，從名字中可以知道是有關處理 3D 資
-料的論文。全文目標就是要對點雲（point cloud）做各種分類，最關鍵的方法為：
+這篇是 Stanford 在 CVPR
+2017 所發表的 PointNet，從名字中可以知道是有關處理 3D 資料的論文。全文目標就是要對點雲（point
+cloud）做各種分類，最關鍵的方法為：
 
 - single symmetric function
 - max pooling（解決無序性）
@@ -46,8 +47,8 @@ categories:
 
 以 Classification 來說：
 
-- 輸入：\\(\\{P_i \mid i = 1, \dots, n\\}\\)，其中 \\(P_i\\) 為每個點的座標
-  \\((x, y, z)\\)
+- 輸入：\\(\\{P_i \mid i = 1, \dots,
+  n\\}\\)，其中 \\(P_i\\) 為每個點的座標 \\((x, y, z)\\)
 - 輸出：分類每一個點 \\(P_i\\) 到 class \\(k\\)
 
 # 4. Deep Learning on Point Sets
@@ -55,17 +56,13 @@ categories:
 ## 4.1. Properties of Point Sets in \\(\mathbb R^n\\)
 
 本文網路中輸入資料的是 3D 空間中的點雲（point cloud），在
-[Pointwise Convolutional Neural Networks](./2018/09/27/Papers/pointwise-cnn/) 中
-，已經有對點雲做了基本介紹，這裡重新簡單提一次點雲的幾個重要特性：
+[Pointwise Convolutional Neural Networks](./2018/09/27/Papers/pointwise-cnn/)
+中，已經有對點雲做了基本介紹，這裡重新簡單提一次點雲的幾個重要特性：
 
-1. **無序性**：可以理解點雲為一 \\(n \times 3\\) 的矩陣（\\(n\\)：點數）。因為相
-   同的點雲可以由兩個不同的矩陣所表示。要知道，雖然輸入進來的資料是無序性的，但
-   在表示一張立體圖時，每個點之間其實是有順序關係的，而且會選擇使用卷積，也是要
-   考量**有序**的特徵才有意義。
+1. **無序性**：可以理解點雲為一 \\(n \times
+   3\\) 的矩陣（\\(n\\)：點數）。因為相同的點雲可以由兩個不同的矩陣所表示。要知道，雖然輸入進來的資料是無序性的，但在表示一張立體圖時，每個點之間其實是有順序關係的，而且會選擇使用卷積，也是要考量**有序**的特徵才有意義。
 
-1. **點與點之間的關係**：這些點在歐式空間中，彼此有固定的距離。這意味著點不是孤
-   立的，相鄰點形成一個有意義的子集。因此，模型需要能夠捕獲附近點的局部結構，以
-   及局部結構之間的組合相互關係。
+1. **點與點之間的關係**：這些點在歐式空間中，彼此有固定的距離。這意味著點不是孤立的，相鄰點形成一個有意義的子集。因此，模型需要能夠捕獲附近點的局部結構，以及局部結構之間的組合相互關係。
 
 1. **轉換不變性**：同一旋轉和平移不應影響任何點的分類結果。
 
@@ -85,10 +82,9 @@ categories:
 
 此篇 paper 有提到方法 1. 和方法 2. 的兩個主要缺點，以致於不大可行：
 
-1. sorting 的缺點：noise，若 noise 數量過多，則會降低 sorting 後，資料有序的意義
-   性！
-1. RNN：在 [OrderMatters](https://arxiv.org/pdf/1511.06391.pdf) 中，作者提到順序
-   性還是有必要的，而且不能被完美的刪去。
+1. sorting 的缺點：noise，若 noise 數量過多，則會降低 sorting 後，資料有序的意義性！
+1. RNN：在 [OrderMatters](https://arxiv.org/pdf/1511.06391.pdf)
+   中，作者提到順序性還是有必要的，而且不能被完美的刪去。
 
 為了解決 4.1. 中所提到無序性的問題，作者便提出了使用 max pooling 的方法：
 
@@ -107,27 +103,26 @@ $$
 
 - \\(N\\)：每一個點的維度，在這裡是 \\(3\\)，即 \\((x, y, z)\\) 三維。
 - \\(h\\)：mlp (multi-layer perceptron) 要逼近的 function，即：特徵提取，將 \\(N
-  (3)\\) 維 mapping 到 \\(K (1024)\\) 維，這裡的 \\(1024\\) 是作者選取一個**足夠
-  大**的數字，來降低誤差。
-- \\(g\\)：代表的是對稱函數，在離散數學的**關係**（Relation）中，symmetric 是一
-  個雙向的表示，透過對 \\(K (1024)\\) 個 features 中，每 \\(n\\) 個點做 max
-  pool，全部做完後會得到維度為 \\(K (1024)\\) 的 global feature。作者在附錄中有
-  對此處：「為何 mlp 提取夠多 features 誤差就會低」做數學證明，網路上許多文章沒
-  有對此做詳細的解讀，本文會試著盡量解釋之。
+  (3)\\) 維 mapping 到 \\(K
+  (1024)\\) 維，這裡的 \\(1024\\) 是作者選取一個**足夠大**的數字，來降低誤差。
+- \\(g\\)：代表的是對稱函數，在離散數學的**關係**（Relation）中，symmetric 是一個雙向的表示，透過對 \\(K
+  (1024)\\) 個 features 中，每 \\(n\\) 個點做 max
+  pool，全部做完後會得到維度為 \\(K (1024)\\) 的 global
+  feature。作者在附錄中有對此處：「為何 mlp 提取夠多 features 誤差就會低」做數學證明，網路上許多文章沒有對此做詳細的解讀，本文會試著盡量解釋之。
 
-paper 提到透過實驗，可以藉由 mlp 去逼近 \\(h\\) 和透過 single variable function
-及 max poolinig function 去逼近對稱函數 \\(g\\)，透過一連串的 \\(h\\)，我們可以
-學習到一個不錯的 \\(f\\)，其中
+paper 提到透過實驗，可以藉由 mlp 去逼近 \\(h\\) 和透過 single variable
+function 及 max poolinig
+function 去逼近對稱函數 \\(g\\)，透過一連串的 \\(h\\)，我們可以學習到一個不錯的 \\(f\\)，其中
 
 $$f = [f\_1, \dots, f\_K].$$
 
 ### Local and Global Information Aggregation
 
-由 Fig 2 可以看出，global feature 只能做 Classification。透過式 (1)，可以得到一
-個向量 \\([f\_1, \dots, f\_K]\\)，透過 Fig 2（Segmentation Network），我們將
-global 點雲特徵（\\(1024\\)）接在每一個點本來的 \\(64\\) 個特徵維度，就可以得到
-per point 的新 feature，而這個新 feature 能夠同時表 local 和 global 的訊息，並且
-能被應用在 Segmentation 上。
+由 Fig 2 可以看出，global
+feature 只能做 Classification。透過式 (1)，可以得到一個向量 \\([f\_1, \dots,
+f\_K]\\)，透過 Fig 2（Segmentation
+Network），我們將 global 點雲特徵（\\(1024\\)）接在每一個點本來的 \\(64\\) 個特徵維度，就可以得到 per
+point 的新 feature，而這個新 feature 能夠同時表 local 和 global 的訊息，並且能被應用在 Segmentation 上。
 
 ### Joint Alignment Network
 
@@ -149,17 +144,17 @@ $$
   - 第一層的 kernel size 為 \\(1 \times 3\\)，因為每個點 \\((x, y, z)\\)
   - 後面每一層的 kernel 大小都是 \\(1 \times 1\\)
 
-  即：特徵提取層只是把每個點連接起來而已。經過兩組 T-net + mlp 後，對每一個點提
-  取 \\(1024\\) 維特徵，經過 max pool 後，變成 \\(1 \times 1024\\) 的全域特徵。
-  再經過一個 mlp 得到 \\(k\\) 個 score。
+  即：特徵提取層只是把每個點連接起來而已。經過兩組 T-net +
+  mlp 後，對每一個點提取 \\(1024\\) 維特徵，經過 max pool 後，變成 \\(1 \times
+  1024\\) 的全域特徵。再經過一個 mlp 得到 \\(k\\) 個 score。
 
 ## 4.3. Theoretical Analysis
 
 ### Universal approximation
 
-此 paper 首先展示了神經網絡對連續 set functions 的逼近能力。通過 set functions
-的連續性，輸入 point set 的小誤差不會嚴重的影響到函數值，例如 classification 或
-segmentation 的分數。
+此 paper 首先展示了神經網絡對連續 set functions 的逼近能力。通過 set
+functions 的連續性，輸入 point
+set 的小誤差不會嚴重的影響到函數值，例如 classification 或 segmentation 的分數。
 
 > **Theorem 1.** Suppose \\(f: \mathcal X \to \mathbb R\\) is a continuous set
 > function w.r.t Hausdorff distance \\(d_H(\cdot, \cdot)\\). \\(\forall
@@ -178,8 +173,8 @@ segmentation 的分數。
 
 ### Bottleneck dimension and stability
 
-理論上和實驗上，透過 max pooling，都會影響到網路的表達能力，但透過以下定理可以分
-析出此網路的穩定性：
+理論上和實驗上，透過 max
+pooling，都會影響到網路的表達能力，但透過以下定理可以分析出此網路的穩定性：
 
 > **Theorem 2.** Suppose \\(\textbf u: \mathcal X \to \mathbb R^K\\) such that
 > \\(\textbf u = MAX\_{x_i \in S} \\{h(x_i)\\}\\) and \\(f = \gamma \circ
