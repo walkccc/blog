@@ -1,6 +1,5 @@
 +++
 date = 2026-07-02T00:00:00-04:00
-draft = false
 title = "Fixing Black Flashes in SwiftUI Zoom Transitions"
 tags = ["SwiftUI", "iOS", "Animation"]
 categories = ["Engineering"]

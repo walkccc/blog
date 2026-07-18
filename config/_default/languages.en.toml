@@ -1,29 +1,4 @@
-disabled = false
-languageCode = "en"
-languageName = "English"
+locale = "en"
+label = "English"
 weight = 1
-title = "Peng-Yu's Blog"
-
-[params]
-  displayName = "EN"
-  isoCode = "en"
-  rtl = false
-  dateFormat = "2 January 2006"
-  # logo = "img/logo.png"
-  # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
-  # copyright = "Copy, _right?_ :thinking_face:"
-
-[params.author]
-  name = "Peng-Yu Chen"
-  email = "me@pengyuc.com"
-  image = "img/blowfish_logo.png"
-  imageQuality = 96
-  headline = "I'm only human"
-  bio = "A little bit about you"
-  links = [
-    { email = "mailto:me@pengyuc.com" },
-    { link = "https://pengyuc.com" },
-    { github = "https://github.com/walkccc" },
-    { linkedin = "https://linkedin.com/in/pengyuc" },
-  ]
+title = "Peng-Yu Chen"

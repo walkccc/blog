@@ -6,13 +6,11 @@ tags:
   - JavaScript
 ---
 
-在此附上 Elie Schoppik 講師的
-[slides](http://webdev.slides.com/eschoppik/advanced-array-methods#/)
+在此附上 Elie Schoppik 講師的 [slides](http://webdev.slides.com/eschoppik/advanced-array-methods#/)
 
 # 陣列迭代
 
-在 JavaScript 中，callback 是一種常見的函式，這篇文章想要對 JS 中幾種常見迭代
-（iterate）陣列的方式做個初步的介紹。
+在 JavaScript 中，callback 是一種常見的函式，這篇文章想要對 JS 中幾種常見迭代（iterate）陣列的方式做個初步的介紹。
 
 主要函式有以下幾種，使用它們可以使程式碼變得更加整潔、清楚！
 
@@ -43,8 +41,7 @@ tags:
 
 以下讓我們透過例子來深入了解 `forEach` 的奧妙！
 
-1. Write a function called `doubleValues` which accepts an array and returns a
-   new array with all the values in the array passed to the function doubled.
+1. Write a function called `doubleValues` which accepts an array and returns a new array with all the values in the array passed to the function doubled.
 
    - Examples:
 
@@ -66,8 +63,7 @@ tags:
      }
      ```
 
-1. Write a function called `onlyEvenValues` which accepts an array and returns a
-   new array with only the even values in the array passed to the function.
+1. Write a function called `onlyEvenValues` which accepts an array and returns a new array with only the even values in the array passed to the function.
 
    - Examples:
 
@@ -93,9 +89,7 @@ tags:
      }
      ```
 
-1. Write a function called `showFirstAndLast` which accepts an array of strings
-   and returns a new array with only the first and last character of each
-   string.
+1. Write a function called `showFirstAndLast` which accepts an array of strings and returns a new array with only the first and last character of each string.
 
    - Examples:
 
@@ -117,9 +111,7 @@ tags:
      }
      ```
 
-1. Write a function called `addKeyAndValue` which accepts an array of objects, a
-   key, and a value and returns the array passed to the function with the new
-   key and value added for each object.
+1. Write a function called `addKeyAndValue` which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object.
 
    - Examples:
 
@@ -127,7 +119,7 @@ tags:
      addKeyAndValue(
        [{ name: "Elie" }, { name: "Colt" }],
        "title",
-       "instructor"
+       "instructor",
      );
      // [{ name: 'Elie', title: 'instructor' },
      //  { name: 'Colt', title: 'instructor' }]
@@ -142,10 +134,7 @@ tags:
      }
      ```
 
-1. Write a function called `vowelCount` which accepts a string and returns an
-   object with the keys as the vowel and the values as the number of times the
-   vowel appears in the string. This function should be case insensitive so a
-   lowercase letter and uppercase letter should count.
+1. Write a function called `vowelCount` which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count.
 
    - Examples:
 
@@ -207,13 +196,11 @@ tags:
   }
   ```
 
-我們可以發現，透過 map，我們不需要再自行建立陣列，這會使的程式碼變得非常潔簡，由
-其是搭配 1-line arrow function 時！
+我們可以發現，透過 map，我們不需要再自行建立陣列，這會使的程式碼變得非常潔簡，由其是搭配 1-line arrow function 時！
 
 一樣透過以下幾個例子，讓大家細細品嘗 `map` 比 `forEach` 強大的地方！
 
-1. Write a function called `doubleValues` which accepts an array and returns a
-   new array with all the values in the array passed to the function doubled.
+1. Write a function called `doubleValues` which accepts an array and returns a new array with all the values in the array passed to the function doubled.
 
    - Examples:
 
@@ -233,9 +220,7 @@ tags:
      }
      ```
 
-1. Write a function called `valTimesIndex` which accepts an array and returns a
-   new array with each value multiplied by the index it is currently at in the
-   array.
+1. Write a function called `valTimesIndex` which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
 
    - Examples:
 
@@ -255,8 +240,7 @@ tags:
      }
      ```
 
-1. Write a function called `extractKey` which accepts an array of objects and
-   some key and returns a new array with the value of that key in each object.
+1. Write a function called `extractKey` which accepts an array of objects and some key and returns a new array with the value of that key in each object.
 
    - Examples:
 
@@ -273,10 +257,7 @@ tags:
      }
      ```
 
-1. Write a function called `extractFullName` which accepts an array of objects
-   and returns a new array with the value of the key with a name of 'first' and
-   the value of a key with the name of 'last' in each object, concatenated
-   together with a space.
+1. Write a function called `extractFullName` which accepts an array of objects and returns a new array with the value of the key with a name of 'first' and the value of a key with the name of 'last' in each object, concatenated together with a space.
 
    - Examples:
 
@@ -323,8 +304,7 @@ tags:
 
 例子：
 
-1. Write a function called `filterByValue` which accepts an array of objects and
-   a key and returns a new array with all the objects that contain that key.
+1. Write a function called `filterByValue` which accepts an array of objects and a key and returns a new array with all the objects that contain that key.
 
    - Examples:
 
@@ -334,7 +314,7 @@ tags:
          { first: "Elie", last: "Schoppik" },
          { first: "Colt", last: "Steele", isCatOwner: true },
        ],
-       "isCatOwner"
+       "isCatOwner",
      );
      // [{ first: 'Colt', last: 'Steele', isCatOwner: true }]
      ```
@@ -347,9 +327,7 @@ tags:
      }
      ```
 
-1. Write a function called `find` which accepts an array and a value and returns
-   the first element in the array that has the same value as the second
-   parameter or undefined if the value is not found in the array.
+1. Write a function called `find` which accepts an array and a value and returns the first element in the array that has the same value as the second parameter or undefined if the value is not found in the array.
 
    - Examples:
 
@@ -369,8 +347,7 @@ tags:
      }
      ```
 
-1. Write a function called `findInObj` which accepts an array of objects, a key,
-   and some value to search for and returns the first found value in the array.
+1. Write a function called `findInObj` which accepts an array of objects, a key, and some value to search for and returns the first found value in the array.
 
    - Examples:
 
@@ -382,7 +359,7 @@ tags:
          { first: "Colt", last: "Steele", isCatOwner: true },
        ],
        "isCatOwner",
-       true
+       true,
      );
      // { first: 'Tim', last: 'Garcia', isCatOwner: true}
      ```
@@ -395,9 +372,7 @@ tags:
      }
      ```
 
-1. Write a function called `removeVowels` which accepts a string and returns a
-   new string with all of the vowels (both uppercased and lowercased) removed.
-   Every character in the new string should be lowercased.
+1. Write a function called `removeVowels` which accepts a string and returns a new string with all of the vowels (both uppercased and lowercased) removed. Every character in the new string should be lowercased.
 
    - Examples:
 
@@ -425,9 +400,7 @@ tags:
      }
      ```
 
-1. Write a function called `doubleOddNumbers` which accepts an array and returns
-   a new array with all of the odd numbers doubled (HINT - you can use map and
-   fitler to double and then filter the odd numbers).
+1. Write a function called `doubleOddNumbers` which accepts an array and returns a new array with all of the odd numbers doubled (HINT - you can use map and fitler to double and then filter the odd numbers).
 
    - Examples:
 
@@ -493,9 +466,7 @@ tags:
 
 以下我們一樣透過例子來看如何實作 `some` 和 `every`：
 
-1. Write a function called `hasOddNumber` which accepts an array and returns
-   `true` if the array contains at least one odd number, otherwise it returns
-   `false`.
+1. Write a function called `hasOddNumber` which accepts an array and returns `true` if the array contains at least one odd number, otherwise it returns `false`.
 
    - Examples:
 
@@ -515,9 +486,7 @@ tags:
      }
      ```
 
-1. Write a function called `hasAZero` which accepts a number and returns `true`
-   if that number contains at least one zero. Otherwise, the function should
-   return `false`.
+1. Write a function called `hasAZero` which accepts a number and returns `true` if that number contains at least one zero. Otherwise, the function should return `false`.
 
    - Examples:
 
@@ -540,9 +509,7 @@ tags:
      }
      ```
 
-1. Write a function called `hasOnlyOddNumbers` which accepts an array and
-   returns `true` if every single number in the array is odd. If any of the
-   values in the array are not odd, the function should return `false`.
+1. Write a function called `hasOnlyOddNumbers` which accepts an array and returns `true` if every single number in the array is odd. If any of the values in the array are not odd, the function should return `false`.
 
    - Examples:
 
@@ -562,10 +529,7 @@ tags:
      }
      ```
 
-1. Write a function called `hasNoDuplicates` which accepts an array and returns
-   `true` if there are no duplicate values (more than one element in the array
-   that has the same value as another). If there are any duplicates, the
-   function should return `false`.
+1. Write a function called `hasNoDuplicates` which accepts an array and returns `true` if there are no duplicate values (more than one element in the array that has the same value as another). If there are any duplicates, the function should return `false`.
 
    - Examples:
 
@@ -585,9 +549,7 @@ tags:
      }
      ```
 
-1. Write a function called `hasCertainKey` which accepts an array of objects and
-   a key, and returns `true` if every single object in the array contains that
-   key. Otherwise it should return `false`.
+1. Write a function called `hasCertainKey` which accepts an array of objects and a key, and returns `true` if every single object in the array contains that key. Otherwise it should return `false`.
 
    - Examples:
 
@@ -614,10 +576,7 @@ tags:
      }
      ```
 
-1. Write a function called `hasCertainValue` which accepts an array of objects
-   and a key, and a value, and returns `true` if every single object in the
-   array contains that value for the specific key. Otherwise it should return
-   `false`.
+1. Write a function called `hasCertainValue` which accepts an array of objects and a key, and a value, and returns `true` if every single object in the array contains that value for the specific key. Otherwise it should return `false`.
 
    - Examples:
 
@@ -653,14 +612,12 @@ tags:
      - 1.（可有可無）第二個參數（optional parameter）
   1. 迭代原本的陣列（`arr`）
   1. 對每一個值（value）執行一次 callback
-     - 若有提供 optional parameter 的話，callback 的第一個參數便是該 optional
-       parameter
+     - 若有提供 optional parameter 的話，callback 的第一個參數便是該 optional parameter
      - 否則，則是 `arr[0]`，也就是第 0 個 value
      - 通常我們稱呼 callback 的第一個參數為 'accumulator'，常用縮寫為 acc
   1. 每次從 callback 回傳的值，變成為新的 accumulator！
 
-本文最後介紹的 `reduce` 和前面任何一個函式執行方式有著很大的差異，需要透過不停的
-練習才能熟能生巧，因為難度較高，讓我們先看幾個範例：
+本文最後介紹的 `reduce` 和前面任何一個函式執行方式有著很大的差異，需要透過不停的練習才能熟能生巧，因為難度較高，讓我們先看幾個範例：
 
 1. 無 optional parameter，最後回傳結果為 `6`。
 
@@ -691,8 +648,7 @@ tags:
 
 以下再多看幾題練習題吧！
 
-1. Write a function called `extractValue` which accepts an array of objects and
-   a key and returns a new array with the value of each object at the key.
+1. Write a function called `extractValue` which accepts an array of objects and a key and returns a new array with the value of each object at the key.
 
    - Examples:
 
@@ -713,10 +669,7 @@ tags:
      }
      ```
 
-1. Write a function called `vowelCount` which accepts a string and returns an
-   object with the keys as the vowel and the values as the number of times the
-   vowel appears in the string. This function should be case insensitive so a
-   lowercase letter and uppercase letter should count
+1. Write a function called `vowelCount` which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
 
    - Examples:
 
@@ -755,9 +708,7 @@ tags:
      }
      ```
 
-1. Write a function called `addKeyAndValue` which accepts an array of objects, a
-   key, and a value and returns the array passed to the function with the new
-   key and value added for each object.
+1. Write a function called `addKeyAndValue` which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object.
 
    - Examples:
 
@@ -765,7 +716,7 @@ tags:
      addKeyAndValue(
        [{ name: "Elie" }, { name: "Colt" }],
        "title",
-       "instructor"
+       "instructor",
      );
      // [{ name: 'Elie', title: 'instructor' },
      //  { name: 'Colt', title: 'instructor' }]
@@ -782,12 +733,7 @@ tags:
      }
      ```
 
-1. Write a function called `partition` which accepts an array and a callback and
-   returns an array with two arrays inside of it. The partition function should
-   run the callback function on each value in the array and if the result of the
-   callback function at that specific value is true, the value should be placed
-   in the first subarray. If the result of the callback function at that
-   specific value is false, the value should be placed in the second subarray.
+1. Write a function called `partition` which accepts an array and a callback and returns an array with two arrays inside of it. The partition function should run the callback function on each value in the array and if the result of the callback function at that specific value is true, the value should be placed in the first subarray. If the result of the callback function at that specific value is false, the value should be placed in the second subarray.
 
    - Examples:
 
@@ -820,7 +766,7 @@ tags:
            }
            return acc;
          },
-         [[], []]
+         [[], []],
        );
      }
      ```

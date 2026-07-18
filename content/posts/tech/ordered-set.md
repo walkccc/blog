@@ -44,13 +44,11 @@ map.upper_bound(7); //           ^
 
 ## Java
 
-- `ceilingEntry`: return a (key, value), where key is the minimum number >=
-  target.
+- `ceilingEntry`: return a (key, value), where key is the minimum number >= target.
 
   Similar to `lower_bound` in C++.
 
-- `floorEntry`: return a (key, value), where key is the maximum number <=
-  target.
+- `floorEntry`: return a (key, value), where key is the maximum number <= target.
 
   Similar to `prev(map.upper_bound(val))` in C++.
 

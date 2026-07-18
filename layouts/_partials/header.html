@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="{{ "/" | relURL }}">PC</a>
+    <nav>
+      {{- range site.Menus.main }}
+      <a href="{{ .URL }}"{{ if hasPrefix .URL "http" }} target="_blank" rel="noreferrer"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+      <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M12 3a9 9 0 0 0 0 18V3z" fill="currentColor" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>

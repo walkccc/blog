@@ -5,8 +5,7 @@ tags:
   - JavaScript
 ---
 
-在此附上 Elie Schoppik 講師的
-[slides](http://webdev.slides.com/eschoppik/testing-with-jasmine#/)
+在此附上 Elie Schoppik 講師的 [slides](http://webdev.slides.com/eschoppik/testing-with-jasmine#/)
 
 # 為什麼要用 Jasmine？
 
@@ -71,8 +70,7 @@ describe("Earth", () => {
 
 ## Matchers
 
-Jasmine 提供了很多種 matchers，
-在[這裡](https://jasmine.github.io/2.0/introduction)可以看到官方詳細的介紹
+Jasmine 提供了很多種 matchers，在[這裡](https://jasmine.github.io/2.0/introduction)可以看到官方詳細的介紹
 
 - `toBe` / `not.toBe`
 - `toBeCloseTo`
