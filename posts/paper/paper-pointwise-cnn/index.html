@@ -1,0 +1,73 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=preload href=/fonts/ibm-plex-mono-latin-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/ibm-plex-mono-latin-500.woff2 as=font type=font/woff2 crossorigin><title>論文筆記 Pointwise Convolutional Neural Networks · Peng-Yu Chen</title><meta name=theme-color media="(prefers-color-scheme: light)" content="#FAFAF8"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#0B0C0E"><meta name=description content=" Paper Link
+在這篇 paper 中，展示了使用 CNNs 去處理 3D point clouds，並且應用在 semantic segmentation 和 object recognition 中。
+MathWorks 官網有對 Semantic Segmantation 做了一個基礎的介紹：
+分割 …"><meta name=author content="Peng-Yu Chen"><link rel=canonical href=https://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/><meta property="og:title" content="論文筆記 Pointwise Convolutional Neural Networks · Peng-Yu Chen"><meta property="og:description" content=" Paper Link
+在這篇 paper 中，展示了使用 CNNs 去處理 3D point clouds，並且應用在 semantic segmentation 和 object recognition 中。
+MathWorks 官網有對 Semantic Segmantation 做了一個基礎的介紹：
+分割 …"><meta property="og:url" content="https://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/"><meta property="og:site_name" content="Peng-Yu Chen"><meta property="og:type" content="article"><link rel=alternate type=application/rss+xml title="Peng-Yu Chen" href=/index.xml><link rel=icon href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjMEIwQzBFIi8+PHRleHQgeD0iNTAiIHk9IjY5IiBmb250LXNpemU9IjUyIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmaWxsPSIjRkFGQUY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QQzwvdGV4dD48L3N2Zz4="><link rel=stylesheet href=/css/bundle.min.eb5893e1364e4b4e12e7d8808d7fa2093f0ec115eb5ba6eb4c853e799618594a.css></head><body><script>(function(){try{var n=document.documentElement,e=localStorage.getItem("theme"),s=window.matchMedia("(prefers-color-scheme: dark)").matches,t=e==="light"||e==="dark"?e:s?"dark":"light";n.classList.add(t),n.style.colorScheme=t}catch{}})()</script><header class=site-header><div class=container><a class=logo href=/>PC</a><nav><a href=https://pengyuc.com target=_blank rel=noreferrer>About</a>
+<button id=theme-toggle aria-label="Toggle theme" title="Toggle theme">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 000 18V3z" fill="currentColor"/></svg></button></nav></div></header><main class=container><article class=post><header class=post-header><h1>論文筆記 Pointwise Convolutional Neural Networks</h1><time datetime=2018-09-27>September 27, 2018</time></header><div class=prose><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"\\(",right:"\\)",display:!1}]})'></script><p><a href=https://arxiv.org/pdf/1712.05245.pdf>Paper Link</a></p><p>在這篇 paper 中，展示了使用 CNNs 去處理 3D point clouds，並且應用在 semantic
+segmentation 和 object recognition 中。</p><p>MathWorks 官網有對 Semantic
+Segmantation 做了一個基礎的<a href=https://www.mathworks.com/help/vision/ug/semantic-segmentation-basics.html>介紹</a>：</p><p>分割（Segmantation）對於圖像分析任務非常重要。語義分割（Segmantic
+Segmantation）描述了將圖片中的每個像素與類標籤（class
+label），例如：花、人、道路、天空、海洋或汽車，相關聯的過程。</p><p><img src=https://i.imgur.com/o9O4kU3.png alt></p><h1 id=1-introduction>1. Introduction</h1><p>現有的深度學習在處理 3D 資料，像是體積、point
+clouds、或 multi-view 圖片仍有不少困難。</p><ul><li>Volume
+representation 最能夠「完整地」描述一張圖片，直觀上也是最容易實做的，但是礙於硬體資源（記憶體、容量等），所以不大可行。</li><li>Multi-view
+representation 雖然不是最真實的描述方式，但能夠透過事先訓練好的 2D 模型來加以實現。</li><li>Point clouds 不但資訊量較小，而且較為彈性，但 point
+clouds 與神經網路的應用還未被深入挖掘，這也是此篇 paper 誕生的原因。</li></ul><p>綜合來說，整篇 paper 的重點在於：</p><ul><li>A pointwise convolution operator that can output features at each point in a
+point cloud;</li><li>Two pointwise convolutional neural networks for semantic scene segmentation
+and object recognition.</li></ul><p><img src=https://i.imgur.com/Y99QhI5.png alt></p><h1 id=2-related-works>2. Related Works</h1><h2 id=21-shape-descriptors>2.1. Shape descriptors</h2><p>Hand-crafted 的 shape
+descriptors 在深度學習誕生以前，時常被運用在各種不同的 computer
+vision 應用上，直到深度學習的出現，傳統方法的眼淚也滴下來了。</p><h2 id=22-object-recognition>2.2. Object recognition</h2><p>結語：CNNs 被廣泛運用在 CV 和 AI 領域已經不是一兩天的事了。</p><p>像 <a href=http://image-net.org>ImageNet</a> 就是一個著名的大型 RGB 3 維 image
+dataset，CNNs 能夠從中成功地學習到 image descriptors 並大勝傳統方法。</p><p>而 <a href=https://arxiv.org/abs/1612.00593>PointNet</a> 是第一個能夠處理 point cloud
+data 的網路架構，他能夠學習到順序不變性（order-invariance）的函式。</p><p>此外，<a href=https://arxiv.org/abs/1801.07791>PointCNN</a>
+也探索了 equivariance 而不是 invariance 的觀點，並且得到和 PointNet 可比的效能。</p><p>為了達成縮放的目的，通過建立計算圖型，例如：</p><ul><li><a href=https://zh.wikipedia.org/zh-tw/%E5%85%AB%E5%8F%89%E6%A8%B9>octree</a></li><li><a href=https://zh.wikipedia.org/zh-tw/K-d%E6%A8%B9>kd-tree</a></li></ul><p>也很常見。</p><p>Stanford 提出的 PointNet 雖然效能很猛，但網路複雜，這篇 paper 提出了相對簡單的 pointwise
+convolution，且能達到和 PointNet、PointCNN 等相仿的準確度。</p><h2 id=23-semantic-segmentation>2.3. Semantic segmentation</h2><p>由 Silberman 所提出<a href=https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html>NYUv2</a>
+dataset，帶來了 RGB-D semantic segmentation 的風潮。</p><p>RGB-D 圖片其實是兩張圖片：</p><ul><li>普通的 RGB 3 維圖片</li><li>Depth 圖片（類似灰階圖片，只是每個像素值是距離物體的實際距離）</li></ul><p><a href=https://arxiv.org/abs/1511.00561>SegNet</a>
+就在此 dataset 得到不錯的效果，他使用的方法為：</p><ul><li>encoder-decoder</li><li>dilation filter</li></ul><p><a href=https://arxiv.org/abs/1609.05130>McCormac</a> 則能透過 2D 預測 3D
+domain，但這些預測並無法被直接應用在 3D domain。</p><p><a href=http://www.cs.toronto.edu/~rjliao/papers/iccv_2017_3DGNN.pdf>SSCNet</a>
+應用 CNN 在 3D volume representation 去分類每個像素。</p><h1 id=3-pointwise-convolution>3. Pointwise Convolution</h1><p>先來談談要麼<strong>描述</strong>一個 3D 物件，<a href>VoxNet</a> 使用了 \(64 \times 64 \times
+64\) 的解析度去描述一個物件，但這有一個很大的缺點，很耗費記憶體，因為其實大部分的像素（立體三維空間中的）皆是 \(0\)，但這可以被<a href=https://arxiv.org/abs/1611.05009>sparse representation</a> 解決。</p><p>Point clouds 能夠被 RGB-D reconstruction 和 CAD
+modeling 的特性，因此也是一個不錯的表示法，PointNet 就是基於此產生的，但將 point
+cloud 餵給神經網路是不自然的，因為傳統的 convolution
+operators 只設計給 grid 和 volumes。</p><h2 id=convolution>Convolution</h2><p>每一個 kernel</p><ul><li>以 point cloud 中每一個點為中心</li><li>有一個 size 或 radius value（可被調整）</li></ul><p><img src=https://i.imgur.com/Phxw1Mi.png alt></p><p>數學示可表示成：</p><p>$$
+x_i^\ell =
+\sum_k w_k \frac{1}{|\Omega_i(k)|}
+\sum_{p_j \in \Omega_i(k)} x_j^{\ell - 1},
+\tag{1}
+$$</p><p>其中，</p><ul><li>\(k\)：所有 sub-domains</li><li>\(\Omega_i(k)\)：當 kernel 以 point \(i\) 為中心時，第 \(k\)-th
+sub-domain</li><li>\(p_i\)：point \(i\) 的座標</li><li>\(|\cdot|\)：計算所有 sub-domain 裡的 points 數量</li><li>\(w_k\)：\(k\)-th sub-domain 的 kernel weight</li><li>\(x_i\) 和 \(x_j\)：point \(i\) 和 \(j\) 的值</li><li>\(\ell - 1\) 和 \(\ell\)：input 和 output index</li></ul><h2 id=gradient-backpropagation>Gradient backpropagation</h2><p>令 \(L\) 為 loss function，gradient 可被表示成：</p><p>$$
+\frac{\partial L}{\partial x_j^{\ell - 1}} =
+\sum_{i \in \Omega_j}
+\frac{\partial L}{\partial x_i^\ell}
+\frac{\partial x_i^\ell}{\partial x_j^{\ell - 1}},
+\tag{2}
+$$</p><p>我們遍歷所有點 \(j\) 的 鄰居點 \(i\)，同時 \(\partial x_i^\ell / \partial
+x_j^{\ell - 1}\) 可被寫成：</p><p>$$
+\frac{\partial x_i^\ell}{\partial x_j^{\ell - 1}} =
+\sum_k w_k
+\frac{1}{|\Omega_i(k)|}
+\sum_{p_j \in \Omega_i(k)} 1
+\tag{3}
+$$</p><p>$$
+\frac{\partial L}{\partial w_k} =
+\sum_i
+\frac{\partial L}{\partial x_i^\ell}
+\frac{\partial x_i^\ell}{\partial w_k}
+\tag{4}
+$$</p><p>其中，</p><p>$$
+\frac{\partial x_i^\ell}{\partial x_k} =
+\frac{1}{|\Omega_i(k)|}
+\sum_{p_j \in \Omega_i(k)}
+x_j^{\ell - 1}
+\tag{5}
+$$</p><p>上方的公式並沒有假定 convolution
+kernel 有固定的形狀，在此篇 paper 中，所有的 convolution kernels 大小皆為 \(3
+\times 3 \times 3\)，而所有點的 weights 皆一樣大。</p><p>和傳統立體 convolution 不同的是，他不使用 pooling。paper 提出以下的優點：</p><ol><li>不再需要處理 downsampling 和 upsampling</li><li>鄰居 query 的加速結構只需要建構一次</li></ol><h2 id=point-order>Point order</h2><p>和 PointNet 顯著不同的是，如何將點餵進網路中？</p><p>在 PointNet 中，point
+cloud 是沒有順序性的，但在此篇 paper 中，他認為順序是有必要的。他將 input
+points 根據特定的 order 做排序，例如：XYZ 或<a href=https://en.wikipedia.org/wiki/Z-order_curve>Morton curve</a>。</p><p><img src=https://i.imgur.com/jXhD9vZ.jpg alt></p><p>在 object recognition 中，順序性是必要的，但在 semantic
+segmentation 中，利用每個點的局部特徵，因此不需要點順序。</p><h2 id=à-trous-convolution>À-trous convolution</h2><p>透過新增一項 stride 參數，可以將原始逐點卷積擴展到 à-trous
+(dilated) 卷積。透過增大 kernel size，感知範圍了，這有助於加度訓練卻不失精度。</p><p><a href=https://github.com/vdumoulin/conv_arithmetic>GIF 來源</a></p><table><thead><tr><th style=text-align:center><img src=https://raw.githubusercontent.com/vdumoulin/conv_arithmetic/master/gif/padding_strides.gif alt></th><th style=text-align:center><img src=https://raw.githubusercontent.com/vdumoulin/conv_arithmetic/master/gif/dilation.gif alt></th></tr></thead><tbody><tr><td style=text-align:center>Padding, strides</td><td style=text-align:center>No padding, no stride, dilation</td></tr></tbody></table><h2 id=point-attributes>Point attributes</h2><p>為了方便實現卷積，我們分別儲存點坐標和其他點屬性，例如顏色、法線或從先前卷積層輸出的其他高維特徵。</p><h1 id=4-evaluations>4. Evaluations</h1><h2 id=semantic-segmantation>Semantic segmantation</h2><table><thead><tr><th style=text-align:center><img src=https://i.imgur.com/R3vdK5V.png alt></th><th style=text-align:center><img src=https://i.imgur.com/fCDEoRe.png alt></th><th style=text-align:center><img src=https://i.imgur.com/pNtepqQ.png alt></th></tr></thead><tbody><tr><td style=text-align:center>Table 1: Comparison of scene segmentation on S3DIS dataset</td><td style=text-align:center>Table 2: Per-class accuracy of semantic segmentation on S3DIS dataset</td><td style=text-align:center>Table 3: Per-class accuracy of semantic segmentation on SceneNN dataset</td></tr></tbody></table><table><thead><tr><th style=text-align:center><img src=https://i.imgur.com/KbfIQLW.png alt></th><th style=text-align:center><img src=https://i.imgur.com/gogbSN3.png alt></th></tr></thead><tbody><tr><td style=text-align:center>Semantic segmentation on the S3DIS dataset</td><td style=text-align:center>Semantic segmentation on SceneNN dataset</td></tr></tbody></table><h2 id=object-recognition>Object recognition</h2><table><thead><tr><th style=text-align:center><img src=https://i.imgur.com/uBLyVBt.png alt></th><th style=text-align:center><img src=https://i.imgur.com/5RhdvWQ.png alt></th></tr></thead><tbody><tr><td style=text-align:center>Table 4: Comparison of performance of network architectures using 3D object representations on the ModelNet40 dataset</td><td style=text-align:center>Table 5: Comparison of object recognition accuracy on the ObjectNN dataset</td></tr></tbody></table></div></article></main><footer class=site-footer><div class=container><p>© 2026 Peng-Yu Chen</p><nav aria-label="Social profiles"><a href=https://github.com/walkccc target=_blank rel=noreferrer aria-label=GitHub><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>GitHub</title><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+</a><a href=https://www.threads.com/@walkccc target=_blank rel=noreferrer aria-label=Threads><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>Threads</title><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18.0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.291 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.781 3.631 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853.0 013.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844.0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.323.145 1.514.713 2.622 1.793 3.204 3.126.812 1.86.887 4.89-1.583 7.31-1.891 1.851-4.207 2.688-7.404 2.712h-.008z"/></svg>
+</a><a href=https://twitter.com/pengyuc_ target=_blank rel=noreferrer aria-label=X><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>X</title><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+</a><a href=https://www.linkedin.com/in/pengyuc target=_blank rel=noreferrer aria-label=LinkedIn><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853.0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601.0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433A2.062 2.062.0 013.274 5.368a2.064 2.064.0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225.0H1.771C.792.0.0.774.0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2.0 22.225.0z"/></svg></a></nav></div></footer><script>(function(){var e=document.getElementById("theme-toggle");if(!e)return;e.addEventListener("click",function(){var e=document.documentElement,t=e.classList.contains("dark")?"light":"dark";e.classList.remove("light","dark"),e.classList.add(t),e.style.colorScheme=t;try{localStorage.setItem("theme",t)}catch{}})})()</script></body></html>

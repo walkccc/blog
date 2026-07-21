@@ -1,0 +1,133 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=preload href=/fonts/ibm-plex-mono-latin-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/ibm-plex-mono-latin-500.woff2 as=font type=font/woff2 crossorigin><title>克服 JS 的奇怪部分 - 2. 執行環境與詞彙環境 · Peng-Yu Chen</title><meta name=theme-color media="(prefers-color-scheme: light)" content="#FAFAF8"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#0B0C0E"><meta name=description content="7. 觀念小叮嚀：名稱/值配對與物件 Conceptual Aside: Name/Value Pairs & Objects
+Name/Value Pair: A name which maps to a unique value.
+The name may be defined more than …"><meta name=author content="Peng-Yu Chen"><link rel=canonical href=https://blog.pengyuc.com/posts/js/js-weird/><meta property="og:title" content="克服 JS 的奇怪部分 - 2. 執行環境與詞彙環境 · Peng-Yu Chen"><meta property="og:description" content="7. 觀念小叮嚀：名稱/值配對與物件 Conceptual Aside: Name/Value Pairs & Objects
+Name/Value Pair: A name which maps to a unique value.
+The name may be defined more than …"><meta property="og:url" content="https://blog.pengyuc.com/posts/js/js-weird/"><meta property="og:site_name" content="Peng-Yu Chen"><meta property="og:type" content="article"><link rel=alternate type=application/rss+xml title="Peng-Yu Chen" href=/index.xml><link rel=icon href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjMEIwQzBFIi8+PHRleHQgeD0iNTAiIHk9IjY5IiBmb250LXNpemU9IjUyIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmaWxsPSIjRkFGQUY4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QQzwvdGV4dD48L3N2Zz4="><link rel=stylesheet href=/css/bundle.min.eb5893e1364e4b4e12e7d8808d7fa2093f0ec115eb5ba6eb4c853e799618594a.css></head><body><script>(function(){try{var n=document.documentElement,e=localStorage.getItem("theme"),s=window.matchMedia("(prefers-color-scheme: dark)").matches,t=e==="light"||e==="dark"?e:s?"dark":"light";n.classList.add(t),n.style.colorScheme=t}catch{}})()</script><header class=site-header><div class=container><a class=logo href=/>PC</a><nav><a href=https://pengyuc.com target=_blank rel=noreferrer>About</a>
+<button id=theme-toggle aria-label="Toggle theme" title="Toggle theme">
+<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 000 18V3z" fill="currentColor"/></svg></button></nav></div></header><main class=container><article class=post><header class=post-header><h1>克服 JS 的奇怪部分 - 2. 執行環境與詞彙環境</h1><time datetime=2019-03-10>March 10, 2019</time></header><div class=prose><h1 id=7-觀念小叮嚀名稱值配對與物件>7. 觀念小叮嚀：名稱/值配對與物件</h1><p><code>Conceptual Aside: Name/Value Pairs & Objects</code></p><blockquote><p><strong>Name/Value Pair</strong>: A name which maps to a unique value.</p><blockquote><p>The name may be defined more than once, but only can have one value in any
+given <strong>context</strong>. That value may be more name/value pairs.</p></blockquote></blockquote><p>JS 中的物件，單純的是 Key-Value 的關係，而物件中也可以再包含物件，像 <code>Address</code>
+包含 <code>Apartment</code>。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kr>const</span> <span class=nx>Address</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>Street</span><span class=o>:</span> <span class=s2>&#34;Main&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nb>Number</span><span class=o>:</span> <span class=mi>100</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>Apartment</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Floor</span><span class=o>:</span> <span class=mi>3</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nb>Number</span><span class=o>:</span> <span class=mi>301</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><blockquote><p>Object: a collection of name value pairs</p></blockquote><h1 id=9-全域環境與全域變數>9. 全域環境與全域變數</h1><p><code>The Global Environment & The Global Object</code></p><p>JS 都是在「Execution Context」中執行的，而 global execution
+context 會為你創建兩個東西：</p><ol><li>Global Object</li><li><code>this</code></li></ol><p>我們可以透過以下的代碼來實驗，或是直接將 js 代碼打在 Google
+Chrome 的 Console 中：</p><ul><li><p><code>index.html</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>html</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>&lt;</span><span class=nt>head</span><span class=p>&gt;</span> <span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>&lt;</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;app.js&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=p>&lt;/</span><span class=nt>body</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>html</span><span class=p>&gt;</span>
+</span></span></code></pre></div></li><li><p><code>app.js</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js></code></pre></div></li></ul><p>是的，我們的 <code>app.js</code> 是空的，但 JS engine 一樣會在此處創建一個 global execution
+context，所以當我們在 Console 打 <code>this</code> 或 <code>window</code> 時會如下方所示：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>&gt; this
+</span></span><span class=line><span class=cl>&lt; Window {postMessage: f, blur: f, focus: f, close: f, parent: Window, ...}
+</span></span><span class=line><span class=cl>&gt; window
+</span></span><span class=line><span class=cl>&lt; Window {postMessage: f, blur: f, focus: f, close: f, parent: Window, ...}
+</span></span></code></pre></div><hr><p>若我們試著寫一些代碼在 <code>app.js</code> 中：</p><p>注意：若用 ES6 之後的 <code>const</code> 或 <code>let</code> 取代 <code>var</code> 宣告則不會有此現象。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span> <span class=o>=</span> <span class=s2>&#34;Hello World!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>b</span><span class=p>()</span> <span class=p>{}</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>&gt; a
+</span></span><span class=line><span class=cl>&lt; &#34;Hello World!&#34;
+</span></span><span class=line><span class=cl>&gt; window.a
+</span></span><span class=line><span class=cl>&lt; &#34;a&#34;
+</span></span></code></pre></div><h1 id=10-執行環境創造與提升>10. 執行環境：創造與提升</h1><p><code>The Execution Context: Creation & 'Hoisting'</code></p><p>在同一個執行環境中，會優先將使用到的變數存到記憶體中。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=nx>b</span><span class=p>();</span> <span class=c1>// Called b!
+</span></span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span> <span class=c1>// undefined
+</span></span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span> <span class=o>=</span> <span class=s2>&#34;Hello World!&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>b</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;Called b!&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p><code>b()</code> 的內容會先優先存進記憶體內，所以我們可以在第 1 行優先呼叫第 5 行的 <code>b()</code></p><p>而在使用等號賦值時，只會先將變數放至記憶體，<code>var a = 'Hello World!;</code>
+在這裡只會先將 <code>a</code> 放入記憶體中，再依執行順序將等號的值填入。</p><p>可想像代碼變成這樣：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>b</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;Called b!&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>b</span><span class=p>();</span> <span class=c1>// Called b!
+</span></span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>a</span><span class=p>);</span> <span class=c1>// undefined
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>a</span> <span class=o>=</span> <span class=s2>&#34;Hello World!&#34;</span><span class=p>;</span>
+</span></span></code></pre></div><p><code>var a</code> 被移到最前面，但還未賦值，所以 JS engine 會在一開始賦於<code>a = undefined</code>（所有值一開始都是 <code>undefined</code>），<code>b()</code>
+則是連內容都移到前面去了。</p><hr><p>總結一下這節：</p><p>執行環境會分成兩個階段被創造：</p><ol><li>Creation Phase<ul><li>在記憶體中，設定 Global Object</li><li>在記憶體中，設定 <code>this</code></li><li>設定 Outer Environment</li><li>設定好變數和函數的記憶體空間（<strong>Hoisting</strong>）</li></ul></li><li>Execution Phase<ul><li>Line by line 執行代碼</li></ul></li></ol><p>註：Hoisting 不代表 JS engine 真的揶動了你的代碼，而是先在 Creation
+Phase 時，先設定好變數和函數的記憶體空間。</p><h1 id=11-觀念小叮嚀javascript-與-undefined>11. 觀念小叮嚀：JavaScript 與 &lsquo;undefined&rsquo;</h1><p><code>Conceptual Aside: JavaScript & undefined</code></p><ul><li><p><code>undefined</code> 是 JS 的特殊值，表該值有被存在記憶體中，但當未賦值</p></li><li><p>not defined 代表該值不存在記憶體中</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>var</span> <span class=nx>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=nx>a</span> <span class=o>===</span> <span class=kc>undefined</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;a is undefined&#34;</span><span class=p>);</span> <span class=c1>// a is undefined
+</span></span></span><span class=line><span class=cl><span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;a is defined&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ul><p>我們可以刻意讓 <code>a = undefined</code>，但這是一個 bad practice，應該讓 <code>undefined</code>
+就代表還沒賦值的變數。</p><h1 id=12-執行環境程式執行>12. 執行環境：程式執行</h1><p><code>The Execution Context: Code Execution</code></p><p>在 10. 我們提到了執行環境的第一步驟是 creation，第二步驟很簡單，JS
+engine 就一行一行的執行你的代碼。</p><h1 id=13-觀念小叮嚀單執行緒同步執行>13. 觀念小叮嚀：單執行緒、同步執行</h1><p><code>Conceptual Aside: Single Threaded, Synchronous Execution</code></p><blockquote><p><strong>Single Threaded</strong>: one command at a time.</p><blockquote><p>Under the hood of the browser, maybe not.</p></blockquote></blockquote><blockquote><p><strong>Synchronous</strong>: one at a time and in order.</p></blockquote><h1 id=14-函數呼叫與執行堆>14. 函數呼叫與執行堆</h1><p><code>Function Invocation & The Execution Stack</code></p><p>這程式的普世價值，就不多做贅述。</p><h1 id=15-函數環境與變數環境>15. 函數、環境與變數環境</h1><p><code>Functions, Context, & Variable Environments</code></p><blockquote><p><strong>Variable Environment</strong>: where the variables live.</p><blockquote><p>and how they related to each other in memory.</p></blockquote></blockquote><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>b</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>myVar</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>myVar</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>a</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>myVar</span> <span class=o>=</span> <span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>myVar</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>b</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>myVar</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>myVar</span><span class=p>);</span> <span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=nx>a</span><span class=p>();</span> <span class=c1>// 2 \n undefined
+</span></span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>myVar</span><span class=p>);</span> <span class=c1>// 1
+</span></span></span></code></pre></div><p>此例子和大多數的程式語言一樣，每個變數會有他的「域」。</p><h1 id=16-範圍鏈>16. 範圍鏈</h1><p><code>The Scope Chain</code></p><p>接下來這個例子，我們將 <code>b()</code> 裡面的 <code>var myVar</code> 註解掉，這時第 2 行會是 not
+defined 嗎？</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>b</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// lexically (phsically) sits at the global level
+</span></span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>myVar</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>a</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>myVar</span> <span class=o>=</span> <span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>b</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>myVar</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=p>();</span> <span class=c1>// 1
+</span></span></span></code></pre></div><p>不是的，由於 lexical environment 的關係，而 <code>b()</code> 「lexically sits at the global
+level」，因此 <code>b()</code> 的 reference to outer environment 會指向 Global Execution
+Context，所以在執行 <code>b()</code> 時，當我們在 <code>b()</code> 的執行環境中找不到 <code>myVar</code>
+定義時，就會到外部環境找（<code>b()</code> 的外部環境是 global），這就是 Scope
+Chain 的概念。</p><hr><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>a</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kd>function</span> <span class=nx>b</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>myVar</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kd>var</span> <span class=nx>myVar</span> <span class=o>=</span> <span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>b</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>var</span> <span class=nx>myVar</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=nx>a</span><span class=p>();</span> <span class=c1>// 2
+</span></span></span></code></pre></div><h1 id=17-範圍es6-與-let>17. 範圍、ES6 與 <code>let</code></h1><p><code>Scope, ES6, & let</code></p><blockquote><p><strong>Scope</strong>: where a variable is available in your code.</p><blockquote><p>and if it&rsquo;s truly the same variable, or a new copy.</p></blockquote></blockquote><h1 id=18-關於異步回呼>18. 關於異步回呼</h1><p><code>What About Asynchronous Callbacks?</code></p><blockquote><p><strong>Asynchronous</strong>: more than one at a time.</p></blockquote><p>JS engine 是單執行緒、同步的，那是如何達到異步執行的效果呢？</p><p>在瀏覽器中除了執行 JS engine 外，還會執行 rendering enginer、HTTP request 等。</p><p>雖然 JS
+engine 本身是同步的，但其他事件是可以異步執行的（這並不是真的異步，而是瀏覽器異步的把東西放到事件佇列（Event
+Queue），但原本的程式仍然繼續一行一行執行。</p><p><strong>當執行完後，執行堆空了，才會處理事件。</strong></p><hr><p>來看看以下的例子：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl><span class=kd>function</span> <span class=nx>waitThreeSeconds</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>ms</span> <span class=o>=</span> <span class=mi>3000</span> <span class=o>+</span> <span class=k>new</span> <span class=nb>Date</span><span class=p>().</span><span class=nx>getTime</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>  <span class=k>while</span> <span class=p>(</span><span class=k>new</span> <span class=nb>Date</span><span class=p>()</span> <span class=o>&lt;</span> <span class=nx>ms</span><span class=p>)</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;finished function&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>function</span> <span class=nx>clickHandler</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;click event!&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>document</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s2>&#34;click&#34;</span><span class=p>,</span> <span class=nx>clickHandler</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>waitThreeSeconds</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=s2>&#34;finished execution&#34;</span><span class=p>);</span>
+</span></span></code></pre></div><p>當在執行 <code>waitThreeSeconds()</code> 時，然後點頁面（<code>document</code>），試著去觸發<code>clickHandler()</code> 會發生什麼事？</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>&gt; fninished function
+</span></span><span class=line><span class=cl>&gt; finished execution
+</span></span><span class=line><span class=cl>&gt; click event!
+</span></span></code></pre></div><p>我看發現 click event! 在最後才會印出來，因為 JS
+engine 直到執行堆是空的才會看事件佇列，這表示長時間函數可以干擾事件，這就是 JS 如何同步處理在瀏覽器別處異步的事件發生。</p><p>JS 不斷執行原先的程式，當全部完成後，它會到事件佇列看看，並不停的檢查（continous
+check）。</p></div></article></main><footer class=site-footer><div class=container><p>© 2026 Peng-Yu Chen</p><nav aria-label="Social profiles"><a href=https://github.com/walkccc target=_blank rel=noreferrer aria-label=GitHub><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>GitHub</title><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+</a><a href=https://www.threads.com/@walkccc target=_blank rel=noreferrer aria-label=Threads><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>Threads</title><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18.0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.291 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.781 3.631 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853.0 013.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844.0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.323.145 1.514.713 2.622 1.793 3.204 3.126.812 1.86.887 4.89-1.583 7.31-1.891 1.851-4.207 2.688-7.404 2.712h-.008z"/></svg>
+</a><a href=https://twitter.com/pengyuc_ target=_blank rel=noreferrer aria-label=X><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>X</title><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+</a><a href=https://www.linkedin.com/in/pengyuc target=_blank rel=noreferrer aria-label=LinkedIn><svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853.0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601.0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433A2.062 2.062.0 013.274 5.368a2.064 2.064.0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225.0H1.771C.792.0.0.774.0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2.0 22.225.0z"/></svg></a></nav></div></footer><script>(function(){var e=document.getElementById("theme-toggle");if(!e)return;e.addEventListener("click",function(){var e=document.documentElement,t=e.classList.contains("dark")?"light":"dark";e.classList.remove("light","dark"),e.classList.add(t),e.style.colorScheme=t;try{localStorage.setItem("theme",t)}catch{}})})()</script></body></html>

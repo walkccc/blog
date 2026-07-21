@@ -1,0 +1,1301 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Peng-Yu Chen</title><link>https://blog.pengyuc.com/posts/</link><description>Recent content in Posts on Peng-Yu Chen</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 21 Jul 2026 00:00:00 -0400</lastBuildDate><atom:link href="https://blog.pengyuc.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>The Free Screenshot Robot: App Store Assets in Ten Languages, Zero Clicks</title><link>https://blog.pengyuc.com/posts/free-app-store-screenshot-robot/</link><pubDate>Tue, 21 Jul 2026 00:00:00 -0400</pubDate><guid>https://blog.pengyuc.com/posts/free-app-store-screenshot-robot/</guid><description>&lt;p&gt;&lt;em&gt;&lt;a href="https://blog.pengyuc.com/posts/free-app-store-screenshot-robot/#en"&gt;English&lt;/a&gt; · &lt;a href="https://blog.pengyuc.com/posts/free-app-store-screenshot-robot/#zh"&gt;中文&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a id="en"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="english"&gt;English&lt;/h2&gt;
+&lt;p&gt;App Store screenshots are the chore nobody warns you about. A finished iOS app
+needs a set per language, a set per device family, and a fresh set every time
+you nudge a color. For &lt;a href="https://zestimer.com"&gt;Zestimer&lt;/a&gt; that is ten languages ×
+about ten scenes × iPhone-plus-Watch — call it a hundred and fifty images —
+and the moment I touched the design system, all of them were wrong.&lt;/p&gt;</description></item><item><title>Where 271 GB of "System Data" Went on My Mac</title><link>https://blog.pengyuc.com/posts/where-macos-system-data-went/</link><pubDate>Sat, 18 Jul 2026 00:00:00 -0400</pubDate><guid>https://blog.pengyuc.com/posts/where-macos-system-data-went/</guid><description>&lt;p&gt;macOS Storage settings told me I had &lt;strong&gt;271 GB of &amp;ldquo;System Data.&amp;rdquo;&lt;/strong&gt; That number
+made no sense. My whole life on this machine is Claude Code, &lt;code&gt;xcodebuild&lt;/code&gt;, and&lt;code&gt;adb install&lt;/code&gt; — I don&amp;rsquo;t hoard 4K movies, I don&amp;rsquo;t run a fleet of VMs, and I
+certainly can&amp;rsquo;t point at a quarter-terabyte of anything I&amp;rsquo;d call &amp;ldquo;system.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;The short version: &lt;strong&gt;&amp;ldquo;System Data&amp;rdquo; is a lie of omission.&lt;/strong&gt; It&amp;rsquo;s the bucket macOS
+drops everything it can&amp;rsquo;t neatly label into, and for a developer that bucket
+fills up with build caches you forgot exist. This is the note I wish I&amp;rsquo;d had
+before I started deleting things.&lt;/p&gt;</description></item><item><title>2026 Is the Cheapest Year Yet to Start Indie Hacking</title><link>https://blog.pengyuc.com/posts/indie-hacking-2026/</link><pubDate>Fri, 17 Jul 2026 00:01:00 -0400</pubDate><guid>https://blog.pengyuc.com/posts/indie-hacking-2026/</guid><description>&lt;p&gt;Between January and July this year, I shipped two apps by myself. If you had
+told me that three years ago, I would have assumed you were describing a team.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://zestimer.com"&gt;Zestimer&lt;/a&gt;, started in January, is an interval workout
+timer: a library of 212 illustrated exercises, an AI workout builder, a
+paste-a-YouTube-link-get-a-circuit importer, an Apple Watch app, widgets, eight
+languages, now at v1.3.4. &lt;a href="https://furioke.com"&gt;Furioke&lt;/a&gt;, started at the end of
+May, is a sing-to-learn-Japanese app: it drives your own Spotify, Apple Music,
+or YouTube account while showing synced lyrics with furigana and translations,
+and turns long-pressed words into spaced-repetition flashcards. iOS plus a full
+web app, five languages, on the App Store seven weeks after the first commit.&lt;/p&gt;</description></item><item><title>Two Apps, One Philosophy: the Stacks Behind Zestimer and Furioke</title><link>https://blog.pengyuc.com/posts/engineering-zestimer-and-furioke/</link><pubDate>Fri, 17 Jul 2026 00:00:00 -0400</pubDate><guid>https://blog.pengyuc.com/posts/engineering-zestimer-and-furioke/</guid><description>&lt;p&gt;This year I shipped two indie apps: &lt;a href="https://zestimer.com"&gt;Zestimer&lt;/a&gt;, an
+interval workout timer I started in January, and &lt;a href="https://furioke.com"&gt;Furioke&lt;/a&gt;,
+a karaoke lyrics companion for learning Japanese that I started at the end of
+May. Different products, same person, and — it turns out — mostly the same
+opinions.&lt;/p&gt;
+&lt;p&gt;This post is about the stack and architecture choices behind both: what I
+deliberately kept identical, what I deliberately made different, and the
+decisions I would repeat.&lt;/p&gt;</description></item><item><title>Fixing Black Flashes in SwiftUI Zoom Transitions</title><link>https://blog.pengyuc.com/posts/fixing-black-flashes-in-swiftui-zoom-transitions/</link><pubDate>Thu, 02 Jul 2026 00:00:00 -0400</pubDate><guid>https://blog.pengyuc.com/posts/fixing-black-flashes-in-swiftui-zoom-transitions/</guid><description>&lt;p&gt;SwiftUI&amp;rsquo;s zoom navigation transition can look wonderful when it works: a card or
+thumbnail stays visually connected to the detail screen, and dismissal feels
+like the screen knows exactly where it came from.&lt;/p&gt;
+&lt;p&gt;The failure mode is just as memorable. During the first or last frame of the
+transition, the source card suddenly turns black. Then, a beat later, it
+resolves back to the app background or card color.&lt;/p&gt;
+&lt;p&gt;This post is the debugging note I wish I had started with.&lt;/p&gt;</description></item><item><title>What's in my macOS?</title><link>https://blog.pengyuc.com/posts/tech/whats-in-my-macos/</link><pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/whats-in-my-macos/</guid><description>&lt;p&gt;After completely reinstalling macOS, here&amp;rsquo;s how I like to set up a clean,
+powerful, and personalized development environment.&lt;/p&gt;
+&lt;h2 id="1-initial-macos-configuration"&gt;1. Initial macOS Configuration&lt;/h2&gt;
+&lt;h3 id="-user-account-setup"&gt;🧑‍💻 User Account Setup&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Create a temporary Admin user&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Name it &lt;code&gt;Temp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Login with Temp&lt;/strong&gt;, then:
+&lt;ul&gt;
+&lt;li&gt;Rename your home folder from &lt;code&gt;jay&lt;/code&gt; to &lt;code&gt;Jay&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Open &lt;strong&gt;System Settings &amp;gt; Users &amp;amp; Groups&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Change &lt;strong&gt;Account Name&lt;/strong&gt;: &lt;code&gt;jay&lt;/code&gt; → &lt;code&gt;Jay&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Change &lt;strong&gt;Home Directory&lt;/strong&gt;: &lt;code&gt;/Users/jay&lt;/code&gt; → &lt;code&gt;/Users/Jay&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Log out and log in as &lt;code&gt;Jay&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete &lt;code&gt;Temp&lt;/code&gt; user&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="-system--workflow-enhancements"&gt;⚡️ System &amp;amp; Workflow Enhancements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Install &lt;a href="https://apps.apple.com/us/app/magnet/id441258766?mt=12"&gt;Magnet&lt;/a&gt;&lt;/strong&gt;
+from the App Store (window manager)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Increase keyboard repeat speed&lt;/strong&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;defaults write NSGlobalDomain KeyRepeat -int &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;defaults write NSGlobalDomain InitialKeyRepeat -int &lt;span class="m"&gt;20&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;em&gt;(You may need to log out and log back in for these changes to take full
+effect.)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;(Optional)&lt;a href="https://www.reddit.com/r/MacOS/comments/8z2wo8/can_i_set_a_password_less_than_4_characters/"&gt;Set a password shorter than 4 characters&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2-essential-command-line-tools"&gt;2. Essential Command-Line Tools&lt;/h2&gt;
+&lt;h3 id="-homebrew"&gt;🍺 &lt;a href="https://brew.sh"&gt;Homebrew&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;/bin/bash -c &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(Follow the on-screen instructions, which may include adding Homebrew to your
+PATH.)&lt;/em&gt;&lt;/p&gt;</description></item><item><title>macOS Developer Tips</title><link>https://blog.pengyuc.com/posts/tech/macos-dev-tips/</link><pubDate>Sat, 17 May 2025 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/macos-dev-tips/</guid><description>&lt;p&gt;These are handy tools and tweaks that aren&amp;rsquo;t required for a clean install, but
+can improve workflow or handle specific tasks.&lt;/p&gt;
+&lt;h2 id="-git-utilities"&gt;🔧 Git Utilities&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/4114095/how-to-revert-a-git-repository-to-a-previous-commit"&gt;Revert repo to a previous commit&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/2973996/git-rebase-without-changing-commit-timestamps"&gt;Rebase without changing timestamps&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git rebase -i --root
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Change pick → edit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;GIT_COMMITTER_DATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;YYYY-MM-DDTHH:MM:SS&amp;#34;&lt;/span&gt; git commit --amend --date&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;YYYY-MM-DDTHH:MM:SS&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git rebase --committer-date-is-author-date &amp;lt;NEW_SHA&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="-other-custom-tweaks"&gt;🛠 Other Custom Tweaks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Remove &lt;code&gt;.DS_Store&lt;/code&gt; files&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo find / -name .DS_Store -exec rm &lt;span class="o"&gt;{}&lt;/span&gt; +
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Make Dock appear instantly&lt;/strong&gt;:&lt;/p&gt;</description></item><item><title>AWS CLI</title><link>https://blog.pengyuc.com/posts/tech/aws-cli/</link><pubDate>Sun, 02 Apr 2023 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/aws-cli/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Learn how to set up AWS CLI for your AWS account in a few easy steps! This
+comprehensive guide walks you through enabling IAM Identity Center, adding a
+user to your AWS account, installing and configuring AWS CLI V2, and setting
+AWS environment variables. You&amp;rsquo;ll even get to test your AWS CLI skills by
+creating a role using AWS CLI V2. Follow along and become an AWS CLI pro!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="enable-iam-identity-center"&gt;Enable IAM identity center&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Sign in as root user&lt;/li&gt;
+&lt;li&gt;Go to&lt;a href="https://console.aws.amazon.com/singlesignon"&gt;IAM Identity Center console&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Under &lt;strong&gt;Enable IAM Identity Center&lt;/strong&gt;, click &lt;strong&gt;Enable&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;Create AWS organization&lt;/strong&gt; in the popup window.&lt;img src="https://i.imgur.com/q7Y2Cnh.png" alt=""&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="add-user-in-iam-identity-center"&gt;Add User in IAM Identity Center&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Click &lt;strong&gt;Add user&lt;/strong&gt; in &amp;ldquo;IAM Identity Center &amp;gt; Users&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Fill the required information. &lt;img src="https://i.imgur.com/wkIaRJg.png" alt=""&gt;&lt;/li&gt;
+&lt;li&gt;Review the information and click &lt;strong&gt;Add user&lt;/strong&gt; in the bottom right. You can
+also create a group for this user if you like.&lt;img src="https://i.imgur.com/5qLbS9S.png" alt=""&gt;&lt;/li&gt;
+&lt;li&gt;Hooray! The user &amp;ldquo;buildwebapp2023&amp;rdquo; was successfully added!&lt;img src="https://i.imgur.com/gLK97Op.png" alt=""&gt;&lt;/li&gt;
+&lt;li&gt;Finally, navigate to your mail and click Accept invitation.&lt;img src="https://i.imgur.com/krJQ7Ph.png" alt=""&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="add-user-to-an-aws-account"&gt;Add User to an AWS account&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;In &amp;ldquo;IAM Identity Center &amp;gt; AWS Organizations: AWS accounts&amp;rdquo;, click one of the
+organization then click &lt;strong&gt;Assign users or groups&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Select the newly added user and &amp;ldquo;AdministratorAccess&amp;rdquo; permission sets (We&amp;rsquo;ll
+need to create a role programmatically it later).&lt;/li&gt;
+&lt;li&gt;Review and click &lt;strong&gt;Submit&lt;/strong&gt;. Wait a second&amp;hellip;&lt;/li&gt;
+&lt;li&gt;The user with selected permission sets is assigned to this AWS account!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="install-and-configure-aws-cli-v2"&gt;Install and Configure AWS CLI V2&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install AWS CLI via Homebrew&lt;/p&gt;</description></item><item><title>LeetCode 1453. Maximum Number of Darts Inside of a Circular Dartboard</title><link>https://blog.pengyuc.com/posts/algo/lc-1453/</link><pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/algo/lc-1453/</guid><description>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous" /&gt;
+&lt;script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;script
+ defer
+ src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+ crossorigin="anonymous"
+ onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"
+&gt;&lt;/script&gt;
+&lt;p&gt;正在把之前沒做的一些題做一做，剛好看到了這題滿有趣的，因此決定寫篇文章。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://leetcode.com/problems/maximum-number-of-darts-inside-of-a-circular-dartboard/"&gt;題目連結&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id="on3-數學解"&gt;\(O(n^3)\) 數學解&lt;/h2&gt;
+&lt;p&gt;這題就不討論暴力解了，這題用到了一些國中教的數學知識，做起來還是滿有趣的。&lt;/p&gt;
+&lt;p&gt;以下提供的解法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;枚舉所有點對 \((P,
+Q)\)，找出與 \(P\)、\(Q\) 相切的兩個圓 \(C_1\) 和 \(C_2\)：\(O(n^2)\)&lt;/li&gt;
+&lt;li&gt;檢查其它所有點是否在 \(C_1\) 和 \(C_2\) 間：\(O(n)\)&lt;/li&gt;
+&lt;li&gt;總時間：\(O(n^3)\)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以此題的重點在於求出圓心 \(C_1\) 和 \(C_2\)。&lt;/p&gt;
+&lt;h3 id="示意圖"&gt;示意圖&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/QBIMIVT.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;由圖中可得：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\alpha_1 + \theta &amp;amp;= \alpha_2 + \theta = 90^{\circ} \\
+\alpha_1 &amp;amp;= \alpha_2 \\
+\vartriangle AMC_1 &amp;amp; \cong \vartriangle BQP
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;又知：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\tan\alpha_1 &amp;amp;= \tan\alpha_2 = \frac{P_y - Q_y}{Q_x - P_x} \\
+\alpha_1 &amp;amp;= \alpha_2 = \arctan (\frac{P_y - Q_y}{Q_x - P_x})
+\end{aligned}
+$$&lt;/p&gt;</description></item><item><title>Digit DP</title><link>https://blog.pengyuc.com/posts/algo/digit-dp/</link><pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/algo/digit-dp/</guid><description>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous" /&gt;
+&lt;script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;script
+ defer
+ src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+ crossorigin="anonymous"
+ onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"
+&gt;&lt;/script&gt;
+&lt;p&gt;第一篇記錄算法的文章，來介紹下新學到的算法：Digit DP。&lt;/p&gt;
+&lt;h2 id="暴力解"&gt;暴力解&lt;/h2&gt;
+&lt;p&gt;題目模版一般會長的像這樣：給定區間 \([L, R]\) 和一個函數 \(f(x) \to
+\{\texttt{True}, \texttt{False}\}\)，問在 \([L,
+R]\) 之間的正整數，滿足 \(f(x)\) 的數量有多少？&lt;/p&gt;
+&lt;p&gt;現在我們可以帶入一個真實的例子，在 \([L = 19, R =
+9999]\) 區間，每一位數的總合為 \(k = 23\) 的數字共有幾個？&lt;/p&gt;
+&lt;p&gt;暴力解用 C++ 代碼演示如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kt"&gt;bool&lt;/span&gt; &lt;span class="nf"&gt;DigitSum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;sum&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;/=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;GetSatisfiedCount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;satisfied_count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;num&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DigitSum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;satisfied_count&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;satisfied_count&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;constexpr&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;19&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;constexpr&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;9&amp;#39;999&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;constexpr&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;cout&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;GetSatisfiedCount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;start&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;而這樣的時間複雜度為：&lt;/p&gt;
+&lt;p&gt;$$
+O(r - l) \cdot O(|\texttt{f}|) = O(r - l) \cdot \log(\texttt{num}),
+$$&lt;/p&gt;</description></item><item><title>科技人的各種縮寫</title><link>https://blog.pengyuc.com/posts/tech/tech-terms/</link><pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/tech-terms/</guid><description>&lt;p&gt;各行各業都有許多屬於他們自己的行話，科技業當然也不例外，還記得初來美國時，聽到各種五花八門的縮寫，總是覺得心好累，無法跟上大家，本文就讓筆者來列舉幾個打字常用的縮寫吧！&lt;/p&gt;
+&lt;h1 id="職位"&gt;職位&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;DS（Data Scientist）：資料科學家&lt;/li&gt;
+&lt;li&gt;EM（Engineering Manager）：工程主管&lt;/li&gt;
+&lt;li&gt;PE (Principle Engineer）：首席工程師&lt;/li&gt;
+&lt;li&gt;PM (Product Manager or Program Manager）：產品經理或專案經理&lt;/li&gt;
+&lt;li&gt;SA (Solutions Architect）：方案架構師&lt;/li&gt;
+&lt;li&gt;SWE (Software Engineer）：軟體工程師&lt;/li&gt;
+&lt;li&gt;TPM（Technical Program Manager）：技術專案經理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="科技業常用"&gt;科技業常用&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;NG（New Grad）：畢業生&lt;/li&gt;
+&lt;li&gt;PIP（Performance Improvement Plan）：積效改善計畫&lt;/li&gt;
+&lt;li&gt;TC (Total
+Compensation)：薪水總包，通常指的包括本薪（base）、股票（RSU）、簽字費（sign-on
+bonus）和年終獎金（bonus）&lt;/li&gt;
+&lt;li&gt;TM（Team Match）&lt;/li&gt;
+&lt;li&gt;YOE（Years of Experience）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="工作常用"&gt;工作常用&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;LGTM (Looks Good to Me)&lt;/li&gt;
+&lt;li&gt;SG (Sounds Good)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="美國"&gt;美國&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;NRA（Nonresident Alien）&lt;/li&gt;
+&lt;li&gt;RA（Resident Alien）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="專業"&gt;專業&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;CE（Computer Engineering）：電腦工程&lt;/li&gt;
+&lt;li&gt;CS（Computer Science）：電腦科學&lt;/li&gt;
+&lt;li&gt;ECE（Electrical Computing Engineering）：電機電腦工程&lt;/li&gt;
+&lt;li&gt;EE（Electrical Engineering）：電機工程&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Git Rebase 妙用</title><link>https://blog.pengyuc.com/posts/tech/git-rebase-tips/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/git-rebase-tips/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;Git 能夠有效地幫助你為一份專案寫下對應的日誌。良好、明確的提交歷史（Commit
+History）能讓日後回來追蹤代碼時，事半功倍，因此筆者認為學習有效地使用 Git，尤其是&lt;a href="https://git-scm.com/docs/git-rebase"&gt;rebase&lt;/a&gt; 這個功能是尤為重要的。&lt;/p&gt;
+&lt;p&gt;在終端機中輸入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git rebase --help
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;就能看到許多 &lt;code&gt;git rebase&lt;/code&gt;
+的用法，本文將會專注在筆者最常使用的幾個指令中，並談談如何高效地整理提交歷史。&lt;/p&gt;
+&lt;h1 id="手把手範例"&gt;手把手範例&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;範例會帶讀者實際的操作 &lt;code&gt;git rebase&lt;/code&gt; 的用法，並且所有指令設皆能複製貼上。&lt;/li&gt;
+&lt;li&gt;本範例假設讀者有一定的 &lt;code&gt;git&lt;/code&gt; 基礎。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="正文開始"&gt;正文開始&lt;/h2&gt;
+&lt;p&gt;首先，建立我們的測試工作環境 &lt;code&gt;git-rebase-demo&lt;/code&gt;，以下所有操作都會在此路徑下完成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir ~/git-rebase-demo &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$_&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;新增帶有錯別字的 &lt;code&gt;A.txt&lt;/code&gt; 並提交（commit）&lt;code&gt;A.txt&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;I am fil A.&amp;#39;&lt;/span&gt; &amp;gt; A.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add A.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -m &lt;span class="s1"&gt;&amp;#39;Create A.txt&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;新增檔案 &lt;code&gt;B.txt&lt;/code&gt; 並提交 &lt;code&gt;B.txt&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;I am file B.&amp;#39;&lt;/span&gt; &amp;gt; B.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add B.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -m &lt;span class="s1"&gt;&amp;#39;Create B.txt&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看歷史記錄：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git log --oneline
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;def4567 (HEAD -&amp;gt; main) Create B.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;abc1234 Create A.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下會用 &lt;code&gt;def4567&lt;/code&gt; 和 &lt;code&gt;abc1234&lt;/code&gt; 指代，讀者請自行帶換。&lt;/p&gt;</description></item><item><title>用 Hugo 搭建，並用 GitHub Actions 佈署你的個人博客！</title><link>https://blog.pengyuc.com/posts/tech/hugo/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/hugo/</guid><description>&lt;h1 id="遇見-hugo"&gt;遇見 Hugo&lt;/h1&gt;
+&lt;p&gt;今天來談談 &lt;a href="https://gohugo.io"&gt;Hugo&lt;/a&gt; 環境設定時所遇到的一些問題及解決辦法。&lt;/p&gt;
+&lt;h1 id="預備環境"&gt;預備環境&lt;/h1&gt;
+&lt;p&gt;要開始使用&lt;a href="https://gohugo.io"&gt;Hugo&lt;/a&gt;，若您的環境跟我一樣是 macOS 的話，可以使用套件管理工具&lt;a href="https://brew.sh/index_zh-tw.html"&gt;Homebrew&lt;/a&gt;：在終端機輸入以下指令後，便會開始下載需要的套件。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install hugo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="設定本地端"&gt;設定本地端&lt;/h1&gt;
+&lt;h2 id="初始化並創建-git-倉庫"&gt;初始化並創建 Git 倉庫&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;REPO_NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;blog
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hugo new site &lt;span class="nv"&gt;$REPO_NAME&lt;/span&gt; -f yaml
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &lt;span class="nv"&gt;$REPO_NAME&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -m &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;$&lt;span class="s2"&gt; hugo new site blog -f yaml&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="使用-git-submodules-新增主題"&gt;使用 Git submodules 新增主題&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git submodule add --depth&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git submodule update --init --recursive
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -m &lt;span class="s2"&gt;&amp;#34;Add PaperMod submodule&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="修改預設-configyaml-檔"&gt;修改預設 config.yaml 檔&lt;/h2&gt;
+&lt;p&gt;複製貼上&lt;a href="https://github.com/walkccc/blog/blob/main/config.yaml"&gt;&lt;code&gt;config.yaml&lt;/code&gt;&lt;/a&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add .
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -m &lt;span class="s2"&gt;&amp;#34;Update default config.yaml&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="新增彙總archives"&gt;新增彙總（Archives）&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;---
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;title: 彙總
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;layout: archives
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;url: /archives/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;summary: archives
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s2"&gt;---&amp;#34;&lt;/span&gt; &amp;gt; content/archives.md
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="設定-github-actions"&gt;設定 GitHub Actions&lt;/h1&gt;
+&lt;p&gt;複製貼上&lt;a href="https://github.com/walkccc/blog/blob/main/.github/workflows/main.yaml"&gt;&lt;code&gt;.github/workflows/main.yaml&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;</description></item><item><title>lower_bound and upper_bound vs floorEntry and ceilingEntry</title><link>https://blog.pengyuc.com/posts/tech/ordered-set/</link><pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/ordered-set/</guid><description>&lt;h1 id="example"&gt;Example&lt;/h1&gt;
+&lt;h2 id="c"&gt;C++&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lower_bound&lt;/code&gt;: iterator that points to the first (minimum) number &amp;gt;= target.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;upper_bound&lt;/code&gt;: iterator that points to the first (minimum) number &amp;gt; target.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;one&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;two&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;three&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;five&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#34;six&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// 1 2 3 5 6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// 1 2 3 5 6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// 1 2 3 5 6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// 1 2 3 5 6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// 1 2 3 5 6
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lower_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^ (null)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;map&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper_bound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// ^
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="java"&gt;Java&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ceilingEntry&lt;/code&gt;: return a (key, value), where key is the minimum number &amp;gt;=
+target.&lt;/p&gt;</description></item><item><title>Swift Style Guide</title><link>https://blog.pengyuc.com/posts/tech/swift-style-guide/</link><pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/swift-style-guide/</guid><description>&lt;h1 id="swift-style-guide"&gt;Swift Style Guide&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Updated for Swift 5.0&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The goals are &lt;strong&gt;clarity&lt;/strong&gt;, &lt;strong&gt;consistency&lt;/strong&gt; and &lt;strong&gt;brevity&lt;/strong&gt;, in that order.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clarity&lt;/strong&gt; at the point of use.&lt;/li&gt;
+&lt;li&gt;Codes should always be &lt;strong&gt;consistent&lt;/strong&gt; within one data set. Pay attention to
+spelling and case; most frequent problems are with abbreviations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clarity&lt;/strong&gt; is more important than brevity.&lt;/li&gt;
+&lt;li&gt;Write a documentation comment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="references"&gt;References&lt;/h1&gt;
+&lt;p&gt;This guide mainly follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://swift.org/documentation/api-design-guidelines/"&gt;Swift.org - API Design Guidelines&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/raywenderlich/swift-style-guide"&gt;raywenderlich/swift-style-guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://google.github.io/swift/"&gt;Swift Style Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="formatting"&gt;Formatting&lt;/h1&gt;
+&lt;h2 id="column-limit"&gt;Column Limit&lt;/h2&gt;
+&lt;p&gt;Swift code has a column limit of 100 characters. Except as noted below, any line
+that would exceed this limit must be line-wrapped as described in Line-Wrapping.&lt;/p&gt;</description></item><item><title>Anaconda 完美解決 Python 2 和 Python 3 並存問題</title><link>https://blog.pengyuc.com/posts/tech/anaconda-setup/</link><pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/anaconda-setup/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://www.python.org/download/releases/3.0/"&gt;Python 3&lt;/a&gt; 已經逐漸取代 Python
+2，成為普遍開發者所使用的語言，但最囧的是，很多老舊的專案、系統仍然運行著由 Python
+2 所編成的環境中，有時為了在舊版本（Python
+2）中開發，必需要有一個很好的環境控制方式。&lt;/p&gt;
+&lt;h2 id="anaconda"&gt;Anaconda&lt;/h2&gt;
+&lt;p&gt;引用維基百科上有關&lt;a href="https://en.wikipedia.org/wiki/Anaconda_%28Python_distribution%29"&gt;Anaconda&lt;/a&gt;
+的敘述：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Anaconda 是一種 Python 語言的免費增值開源發行版，用於進行大規模數據處理，預測分析，和科學計算，致力於簡化包的管理和部署。Anaconda 使用軟體包管理系統 Conda 進行包管理。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;使用 Anaconda 可以幫我解決以下兩個大問題：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提供 package management：功能類似 pip&lt;/li&gt;
+&lt;li&gt;提供 virtual environment：解決了 Python 多版本並存問題&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;你可以在&lt;a href="https://www.anaconda.com/download/#macos"&gt;這裡&lt;/a&gt;下載 macOS 的 Anaconda 最新版本，其它作業系統也能在分頁當中找到。&lt;/p&gt;
+&lt;h2 id="更新套件"&gt;更新套件&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;conda update --all
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="建立環境"&gt;建立環境&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Create the environment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;conda create --name python3 &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;3.7
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;conda create --name python2 &lt;span class="nv"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;2.7
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Activate the environment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;source&lt;/span&gt; activate python3 &lt;span class="c1"&gt;# Linux/macOS&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;activate python3 &lt;span class="c1"&gt;# Windows&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;更多的指令，可以查看&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;conda -h
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="管理-packages"&gt;管理 packages&lt;/h2&gt;
+&lt;p&gt;conda 的 package
+management 是對 pip 功能的擴充，如果已經啟動了某個 Python 環境，便可以在該環境開始安裝第三方的 package，例如：&lt;/p&gt;</description></item><item><title>克服 JS 的奇怪部分 - 2. 執行環境與詞彙環境</title><link>https://blog.pengyuc.com/posts/js/js-weird/</link><pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/js/js-weird/</guid><description>&lt;h1 id="7-觀念小叮嚀名稱值配對與物件"&gt;7. 觀念小叮嚀：名稱/值配對與物件&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Conceptual Aside: Name/Value Pairs &amp;amp; Objects&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Name/Value Pair&lt;/strong&gt;: A name which maps to a unique value.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The name may be defined more than once, but only can have one value in any
+given &lt;strong&gt;context&lt;/strong&gt;. That value may be more name/value pairs.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;JS 中的物件，單純的是 Key-Value 的關係，而物件中也可以再包含物件，像 &lt;code&gt;Address&lt;/code&gt;
+包含 &lt;code&gt;Apartment&lt;/code&gt;。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;Address&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;Street&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Main&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;Number&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;Apartment&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;Floor&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nb"&gt;Number&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;301&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Object: a collection of name value pairs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="9-全域環境與全域變數"&gt;9. 全域環境與全域變數&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;The Global Environment &amp;amp; The Global Object&lt;/code&gt;&lt;/p&gt;</description></item><item><title>論文筆記 Prioritized Experience Reply</title><link>https://blog.pengyuc.com/posts/paper/paper-exp-replay/</link><pubDate>Thu, 13 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-exp-replay/</guid><description>&lt;p&gt;&lt;a href="https://arxiv.org/pdf/1511.05952.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Experience replay 使得 RL agents 能夠記住並重用過去的經驗。&lt;/p&gt;
+&lt;p&gt;以前的做法是，從 replay memory 中均勻的 sample experience
+transition。但這種方法只根據他們最初被體驗到的頻率，而不管它們的重要性。&lt;/p&gt;
+&lt;p&gt;在本文中，開發了一個優先驗體的框架，以便更頻繁地重放重要的 transition，從而更有效地學習。&lt;/p&gt;
+&lt;p&gt;本文表示，採用此種經驗回放的算法，能夠在 49 種遊戲中，打贏傳統算法 41 次。&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;p&gt;RL
+agents 在觀察到一連串的經驗時，增量地更新其參數。最簡單的做法，即：在更新後，立刻扔掉到來的數據，但這有幾下兩種問題：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;強烈的相關性更性破壞了許多隨機梯度下降為基礎的演算法所假設的 i.i.d.。&lt;/li&gt;
+&lt;li&gt;快速的忘記罕見，但可能會再用到的經驗。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Experience replay 解決了上述問題：在一個 replay
+memory 中儲存 experience，通過混合或多或少的最近經驗來更新就有可能破壞 temporal
+correlation，rare experience 將會被用來不止一次更新，這就被用在 NeurIPS
+2013 和 Nature 2015 的論文中。&lt;/p&gt;
+&lt;p&gt;DQN 利用一個大的滑動窗口 replay
+memory，隨機的從中均勻採樣，平均重複訪問一個 transition 8 次。&lt;/p&gt;
+&lt;p&gt;Experience
+replay 可以大量的降低需要去學習的經驗，而是用更多的計算和更多的 memory 來替換，這樣在計算資源上是比該 RL
+agents 和環境互動還便宜的。&lt;/p&gt;
+&lt;p&gt;註：在這裡的一次 transition 指的是：agent 在環境中一次性的操作，即 tuple：&lt;/p&gt;
+&lt;p&gt;$$
+(\text{state} S_{t - 1}, \text{action} A_{t - 1}, \text{reward} R_t, \text{discount} \gamma_t, \text{next state} S_t).
+$$&lt;/p&gt;</description></item><item><title>Reinforcement Learning on OpenAI Gym</title><link>https://blog.pengyuc.com/posts/tech/rl-on-openai-gym/</link><pubDate>Thu, 06 Dec 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/rl-on-openai-gym/</guid><description>&lt;h1 id="reinforcement-learning-openai-gym"&gt;Reinforcement Learning: OpenAI Gym&lt;/h1&gt;
+&lt;p&gt;強化學習（Reinforcement Learning，以下簡稱 RL）有別與一般監督式學習（Supervised
+Learning）與要 end-to-end 的資料訓練。&lt;/p&gt;
+&lt;h2 id="reinforcement-learning-介紹"&gt;Reinforcement Learning 介紹&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Agent 在某個 state 做了一個 action，而移到下一個 state，環境此時給了 agent 一個 reward，而 agent 則根據這個 reward 調整他的腳步。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;聽起來有點抽象？比喻來說：&lt;/p&gt;
+&lt;p&gt;你是 agent，而環境是家（包括：爸爸、媽媽等），action 是你的行為舉止，state 是你所在的地點，reward 是媽媽給你的獎勵（可能是負的，即：負回饋）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若你（agent）在客廳（state），打破了一個杯子（action），而媽媽斥責你（reward），你就會透過這次的不小心，去避免下次在客廳時不要再打破杯子。&lt;/li&gt;
+&lt;li&gt;相反地，若你（agent）在廚房（state），洗了碗筷（action），而媽媽說你很棒（reward），你就會知道，洗碗可以幫忙分擔家事並得到正回饋，所以以後一樣到了廚房看到有碗筷時，就會增加想洗碗的機率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;由上可知，RL 是 ML 家族中的一員，而我個人覺得他更有 AI 的感覺，他是一種目標導向（goal-oriented）的學習方法，透過 agent 與環境間的互動獲得更種獎勵或懲罰，學會如何做「最好的」決策（policy）。&lt;/p&gt;
+&lt;p&gt;整個決策決定過程可由以下 5 個要素組成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Agent：與 environment 互動（action）。&lt;/li&gt;
+&lt;li&gt;Action：agent 藉由自己的 policy 所做的動作。&lt;/li&gt;
+&lt;li&gt;Environment：agent 的行動範圍，根據 agent 的 action 給予不同的 reward。&lt;/li&gt;
+&lt;li&gt;State：agent 在特定時間處的狀態。&lt;/li&gt;
+&lt;li&gt;Reward：environment 根據 agent 的 action 給的獎勵或懲罰。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="algorithm-implementation"&gt;Algorithm Implementation&lt;/h1&gt;
+&lt;p&gt;我們使用 OpenAI Gym 當中的 &lt;code&gt;CartPole-v0&lt;/code&gt; 來實作 RL 演算法，OpenAL
+Gym 提供了各種不同的 environment 來做 RL 的訓練。&lt;/p&gt;</description></item><item><title>論文筆記 Video-to-Video Synthesis</title><link>https://blog.pengyuc.com/posts/paper/paper-vid2vid/</link><pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-vid2vid/</guid><description>&lt;p&gt;&lt;a href="https://arxiv.org/pdf/1808.06601.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;現在 image to image 的 tasks 已經是當紅炸子雞，NVIDIA 這回和 MIT
+CSAIL 直接更上一層樓，開發出了 video to
+video 的轉換系統，並且能夠支援到 2K 的解析度，就讓我們來看看這篇 vid2vid 吧！&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;p&gt;建模和動態地重建視覺世界的能力對於構建 intelligent
+agents 是至關重要的。除了科學興趣導向外，學習連續視覺經驗在計算機視覺、機器人和計算機圖形學中有廣泛的應用。&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;&lt;img src="https://tcwang0509.github.io/vid2vid/paper_gifs/cityscapes_comparison.gif" alt=""&gt;&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;Figure 1: Generating a photorealistic video from an input segmentation map video on Cityscapes. Top left: input. Top right: &lt;code&gt;pix2pixHD&lt;/code&gt;. Bottom left: &lt;code&gt;COVST&lt;/code&gt;. Bottom right: &lt;code&gt;vid2vid&lt;/code&gt; (ours).&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="2-related-work"&gt;2 Related Work&lt;/h1&gt;
+&lt;h2 id="generative-adversarial-networks-gans"&gt;Generative Adversarial Networks (GANs)&lt;/h2&gt;
+&lt;p&gt;Generator 和 discriminator 要儘量達成 zero-sum。本篇 paper 使用的主要方法為 conditional
+GAN。此篇 paper 的方法不只是預測未來影片對當前觀察到圖片，並且在可操作的語義表示上合成照片般逼真的影片，例如 segmentation
+masks、草圖、姿勢。&lt;/p&gt;</description></item><item><title>論文筆記 Computing Machinery and Intelligence</title><link>https://blog.pengyuc.com/posts/paper/paper-turing/</link><pubDate>Sun, 25 Nov 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-turing/</guid><description>&lt;p&gt;&lt;a href="https://www.csee.umbc.edu/courses/471/papers/turing.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;今天是台灣九合一縣市長選舉隔天，決定要來看一篇 1950 年，由計算機科學之父 A.M.
+Turing 所寫的 Computing Machinery and Intelligence。&lt;/p&gt;
+&lt;p&gt;這篇 paper 提出了電腦智能當中幾個重要的想法，數學描述不多，主要著重在理論上的描述。&lt;/p&gt;
+&lt;p&gt;圖靈測試（Turing test）是 AI 領域中，一項著名且具爭議的測試方法。這是以 Alan
+Turing 在 1950 第一份論文「運算機器與智能」（Computing Machinery and
+Intelligence）為基礎所設計的問答，目標在分辨機器是否具備人類所具有的智能（Intelligence）。&lt;/p&gt;
+&lt;p&gt;文本很長，又是 1950 年的英式英文，但我會試著去翻譯並整理這經典的 paper。&lt;/p&gt;
+&lt;h1 id="1-the-imitation-game"&gt;1. The Imitation Game&lt;/h1&gt;
+&lt;p&gt;首先圖靈提出了一個問題：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Can machines think?&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;這個應該要從主詞（machines）和動詞（think）的定義出發。&lt;/p&gt;
+&lt;p&gt;但圖靈認為重新給 machines 和 think 定義是危險的，所以他選擇了提出另一個問題，而這個問題和原問題緊密相關，最重要的是&lt;strong&gt;明確性&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;新的問題稱之為 imitation game（模仿遊戲）。需要三個人來玩這個遊戲：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A：一個男人&lt;/li&gt;
+&lt;li&gt;B：一個女人&lt;/li&gt;
+&lt;li&gt;C：一個詢問人（男女皆可）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;C 待在一個與另外兩人隔離的屋子裡。&lt;/p&gt;
+&lt;p&gt;遊戲的目標是：C 判斷出外面的人哪個是 A？哪個是 B？&lt;/p&gt;
+&lt;p&gt;C 用標籤 X、Y 代表外面的兩個人。&lt;/p&gt;
+&lt;p&gt;遊戲結束時，他要說出「X 是 A，Y 是 B」或者「X 是 B，Y 是 A」。&lt;/p&gt;</description></item><item><title>論文筆記 Non-local Neural Networks</title><link>https://blog.pengyuc.com/posts/paper/paper-nonlocal-nn/</link><pubDate>Sat, 27 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-nonlocal-nn/</guid><description>&lt;p&gt;&lt;a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Wang_Non-Local_Neural_Networks_CVPR_2018_paper.pdf"&gt;Paper Link&lt;/a&gt;
+ss Convolutional 和 recurrent
+operations 都是一次處理一個 local 鄰域，此篇 paper 提出了 non-local
+operations 的想法，目的就是要解決即使相距很遠的的 blocks，仍然有可能是彼此有關聯的。&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1. Introduction&lt;/h1&gt;
+&lt;p&gt;為什麼要使用深層神經網路？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;補捉 &lt;strong&gt;long-range&lt;/strong&gt; dependencies&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可能是一個大家會常給出的答案。&lt;/p&gt;
+&lt;p&gt;舉例來說：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sequential data (e.g., in speech, language) 一般來說會採用 recurrent
+operations，也是為了達成 long-range dependency modeling&lt;/li&gt;
+&lt;li&gt;image data 則常常採用深層的 convolutional operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因為 convolutional 和 recurrent
+operations 都只會對 local 鄰域資料做運算（距離、時間），因此要傳遞訊息到較遠處就只能透過&lt;strong&gt;重複地&lt;/strong&gt;操作。&lt;/p&gt;
+&lt;p&gt;重複地做 local operations 有幾個限制：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;計算上沒有效率&lt;/li&gt;
+&lt;li&gt;難以優化&lt;/li&gt;
+&lt;li&gt;non-local 特徵訊息傳遞不靈活&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;當然，CNN 和 RNN 的初衷本來就不是來處理 non-local 訊息的。&lt;/p&gt;
+&lt;p&gt;本篇 paper 就是要解決上述問題，所以提出了 &lt;em&gt;non-local&lt;/em&gt;
+operations 這個概念，直觀來說：&lt;/p&gt;
+&lt;p&gt;一個 non-local 的值（\(\textbf x_i\)）來自於，作為輸入 input feature
+maps 中&lt;strong&gt;所有&lt;/strong&gt;位置（\(\textbf x_j\)）的加權和，如下圖 Figure 1。&lt;/p&gt;</description></item><item><title>論文筆記 PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space</title><link>https://blog.pengyuc.com/posts/paper/paper-pointnet++/</link><pubDate>Sun, 14 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-pointnet++/</guid><description>&lt;p&gt;&lt;a href="http://papers.nips.cc/paper/7095-pointnet-deep-hierarchical-feature-learning-on-point-sets-in-a-metric-space.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;p&gt;PointNet 對局部特徵的處理並不完善，在 3D Object Part Segmentation 和 Semantic
+Segmentation in
+Scenes 中（即：需要得到每一個點的分數時），原方法是將全局特徵 concatenate 在單點特徵後面，中間忽略了局部特徵的步驟，於是作者提出了 PointNet++ 採用分層神經網路（hierarchical
+neural network）來對此改善。&lt;/p&gt;
+&lt;p&gt;另外，點雲的密度是不固定的，因此作者也在 PointNet++ 中提出了&lt;strong&gt;密度適應&lt;/strong&gt;的網路結構。&lt;/p&gt;
+&lt;p&gt;就全局來看，PointNet++ 比 PointNet 多了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;局部特徵提取&lt;/li&gt;
+&lt;li&gt;密度適應網路&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="2-problem-statement"&gt;2 Problem Statement&lt;/h1&gt;
+&lt;p&gt;假設 \(X = (M, d)\) 是繼承歐基里德空間 \(\mathbb R^n\) 的離散度量空間，&lt;/p&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\(M \subseteq \mathbb R^n\)：點集&lt;/li&gt;
+&lt;li&gt;\(d\)：是距離度量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外，歐基里德空間中的 $M$ 密度在各處可能不均勻。我們感興趣的是學習 set function
+$f$，$f$ 的輸入為 $\mathcal X$（以及每個點的附加特徵）並產生重新劃分
+$\mathcal X$ 的 semantic 訊息。&lt;/p&gt;
+&lt;h1 id="3-method"&gt;3 Method&lt;/h1&gt;
+&lt;h2 id="31-review-of-pointnet-20-a-universal-continuous-set-function-approximator"&gt;3.1 Review of PointNet [20]: A Universal Continuous Set Function Approximator&lt;/h2&gt;
+&lt;h2 id="32-hierarchical-point-set-feature-learning"&gt;3.2 Hierarchical Point Set Feature Learning&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;&lt;img src="https://i.imgur.com/QTaXC0n.png" alt=""&gt;&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;Figure 2: Illustration of our hierarchical feature learning architecture and its application for set segmentation and classiﬁcation using points in 2D Euclidean space as an example. Single scale point grouping is visualized here. For details on density adaptive grouping, see Fig. 3&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;這裡簡單說明一下網路架構：&lt;/p&gt;</description></item><item><title>論文筆記 PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</title><link>https://blog.pengyuc.com/posts/paper/paper-pointnet/</link><pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-pointnet/</guid><description>&lt;p&gt;&lt;a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Qi_PointNet_Deep_Learning_CVPR_2017_paper.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1. Introduction&lt;/h1&gt;
+&lt;p&gt;這篇是 Stanford 在 CVPR
+2017 所發表的 PointNet，從名字中可以知道是有關處理 3D 資料的論文。全文目標就是要對點雲（point
+cloud）做各種分類，最關鍵的方法為：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;single symmetric function&lt;/li&gt;
+&lt;li&gt;max pooling（解決無序性）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;&lt;img src="https://i.imgur.com/JzCGYq8.png" alt=""&gt;&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;Figure 1. &lt;strong&gt;Applications of PointNet.&lt;/strong&gt; We propose a novel deep net architecture that consumes raw point cloud (set of points) without voxelization or rendering. It is a unified architecture that learns both global and local point features, providing a simple, efficient and effective approach for a number of 3D recognition tasks.&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="2-related-work"&gt;2. Related Work&lt;/h1&gt;
+&lt;h2 id="point-cloud-features"&gt;Point Cloud Features&lt;/h2&gt;
+&lt;p&gt;點雲有 local 和 global features，而找尋適恰的特徵組合方式是很重要的。&lt;/p&gt;</description></item><item><title>論文筆記 OctNet: Learning Deep 3D Representations at High Resolutions</title><link>https://blog.pengyuc.com/posts/paper/paper-octnet/</link><pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-octnet/</guid><description>&lt;p&gt;&lt;a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Riegler_OctNet_Learning_Deep_CVPR_2017_paper.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;此篇 paper 的主要目的是要解決，但送進網路 training 的 3D 資料是稀疏的（sparse），用原本的描述方式會太耗費記憶體而難以實作，因為實際上很多地方都是沒有值的，本篇 paper 重點是：使用 octree 的方法來表示高解析度的「立體圖像」，卻又不失本來「完整地」表示方式。&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1. Introduction&lt;/h1&gt;
+&lt;p&gt;現有的 3D 網路架構，大多會用像類似 2D
+pixels 的表示方示，在 2D 我們稱之為 pixel，在 3D 的話就稱之為 voxel。同理，在 2D 世界的 convolution
+kernel 在 3D 就會變成一個長方體，大小可能是 \(3 \times 3 \times 3\) 之類。&lt;/p&gt;
+&lt;p&gt;引述原 paper 中的描述：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;a dense and regular 3D voxel grid, and process this grid using 3D convolution
+and pooling operations.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;並且現今的 3D networks 受限於記憶體大小，數量級數通常大約在 \(30^3\) voxels。&lt;/p&gt;
+&lt;p&gt;從下圖中可以看到，OctNet 可以用「明顯較少」的位元數去表示到一模一樣的 notation（圖中每 1 個小正方型耗費的記憶體為 1 單位）&lt;/p&gt;</description></item><item><title>論文筆記 Pointwise Convolutional Neural Networks</title><link>https://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/</link><pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-pointwise-cnn/</guid><description>&lt;p&gt;&lt;a href="https://arxiv.org/pdf/1712.05245.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在這篇 paper 中，展示了使用 CNNs 去處理 3D point clouds，並且應用在 semantic
+segmentation 和 object recognition 中。&lt;/p&gt;
+&lt;p&gt;MathWorks 官網有對 Semantic
+Segmantation 做了一個基礎的&lt;a href="https://www.mathworks.com/help/vision/ug/semantic-segmentation-basics.html"&gt;介紹&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;分割（Segmantation）對於圖像分析任務非常重要。語義分割（Segmantic
+Segmantation）描述了將圖片中的每個像素與類標籤（class
+label），例如：花、人、道路、天空、海洋或汽車，相關聯的過程。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/o9O4kU3.png" alt=""&gt;&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1. Introduction&lt;/h1&gt;
+&lt;p&gt;現有的深度學習在處理 3D 資料，像是體積、point
+clouds、或 multi-view 圖片仍有不少困難。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Volume
+representation 最能夠「完整地」描述一張圖片，直觀上也是最容易實做的，但是礙於硬體資源（記憶體、容量等），所以不大可行。&lt;/li&gt;
+&lt;li&gt;Multi-view
+representation 雖然不是最真實的描述方式，但能夠透過事先訓練好的 2D 模型來加以實現。&lt;/li&gt;
+&lt;li&gt;Point clouds 不但資訊量較小，而且較為彈性，但 point
+clouds 與神經網路的應用還未被深入挖掘，這也是此篇 paper 誕生的原因。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;綜合來說，整篇 paper 的重點在於：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A pointwise convolution operator that can output features at each point in a
+point cloud;&lt;/li&gt;
+&lt;li&gt;Two pointwise convolutional neural networks for semantic scene segmentation
+and object recognition.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/Y99QhI5.png" alt=""&gt;&lt;/p&gt;</description></item><item><title>論文筆記 Highly-Economized Multi-View Binary Compression for Scalable Image Clustering</title><link>https://blog.pengyuc.com/posts/paper/paper-hsic/</link><pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-hsic/</guid><description>&lt;p&gt;&lt;a href="https://arxiv.org/pdf/1809.05992.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;講到 image clustering，就必需先來談談什麼是 cluster
+analysis（聚類分析），在維基百科上給出了下列一段的&lt;a href="https://zh.wikipedia.org/zh-tw/%E8%81%9A%E9%A1%9E%E5%88%86%E6%9E%90"&gt;定義&lt;/a&gt;：&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;聚類分析（英語：Cluster
+analysis，亦稱為群集分析）是對於統計數據分析的一門技術，在許多領域受到廣泛應用，包括機器學習，數據挖掘，模式識別，圖像分析以及生物信息。聚類是把相似的對象通過靜態分類的方法分成不同的組別或者更多的子集（subset），這樣讓在同一個子集中的成員對象都有相似的一些屬性，常見的包括在坐標系中更加短的空間距離等。&lt;/p&gt;
+&lt;p&gt;一般把數據聚類歸納為一種非監督式學習。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;為避免混淆，此篇文章一律使用原文 image clustering，而不多做無謂的翻譯。&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1 Introduction&lt;/h1&gt;
+&lt;p&gt;Image clustering 的主要目的為：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;發現圖片表示的&lt;strong&gt;自然&lt;/strong&gt;和&lt;strong&gt;可解釋結構&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;將彼此相似的圖片分組到同一個群集中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;現有的 clustering methods 主要有以下兩種：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;single-view image clustering (SVIC)&lt;/li&gt;
+&lt;li&gt;multi-view image clustering (MVIC)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;而現在 MVIC 較廣泛的被使用，因為他有「從單張圖片中提取多個不同特徵的靈活性」。&lt;/p&gt;
+&lt;p&gt;再更細分下去，現有的 MVIC 可再被分成三類：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;multi-view spectral clusting&lt;/li&gt;
+&lt;li&gt;multi-view subspace clustering&lt;/li&gt;
+&lt;li&gt;multi-view matrix factorization&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;這是整個 paper 所提到的流程：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/qeHbf9A.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;透過 paper 中的方法，能夠將本來的資料從「歐基里德距離時間複雜度 \(O(Nd)\)」降到「\(O(1)\)」（因為編碼成 Binary
+Codes 後只需做 XOR operations）！&lt;/p&gt;
+&lt;p&gt;其中，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\(N\): data size（例如一張圖有幾個 pixels）&lt;/li&gt;
+&lt;li&gt;\(d\): dimension（例如使用 R、G、B 三個維度來描述一個 pixel）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;另外補充一下 LBP 和 HOG 的用途：&lt;/p&gt;</description></item><item><title>論文筆記 Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields</title><link>https://blog.pengyuc.com/posts/paper/paper-realtime-pose-estimation/</link><pubDate>Fri, 31 Aug 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/paper/paper-realtime-pose-estimation/</guid><description>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous" /&gt;
+&lt;script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"&gt;&lt;/script&gt;
+&lt;script
+ defer
+ src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+ crossorigin="anonymous"
+ onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"
+&gt;&lt;/script&gt;
+&lt;p&gt;&lt;a href="https://arxiv.org/pdf/1611.08050.pdf"&gt;Paper Link&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="1-introduction"&gt;1. Introduction&lt;/h1&gt;
+&lt;p&gt;這篇 paper 是卡內基美隆大學（Carnegie Mellon University）在&lt;a href="https://cvpr2017.thecvf.com"&gt;CVPR 2017&lt;/a&gt; 所發表的，論文中首先指出了 Pose
+Estimation 中三個具挑戰性的關鍵：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;一張圖片裡有多少人，而這些人擺什麼姿勢和人的大小？&lt;/li&gt;
+&lt;li&gt;有幾個人是相互疊在一起（overlap）的，他們彼此摭蓋面積？&lt;/li&gt;
+&lt;li&gt;無法即時（realtime）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;另外論文中也提到了一些現有方法存在的瓶頸，現有方法主要是透過 top-down 的方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;person detector&lt;/li&gt;
+&lt;li&gt;single-person pose estimation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;來解決此類問題，而這很依賴效能，如果 person
+detector 失敗了，那方法就沒用了，另外時間也是一項考驗。&lt;/p&gt;
+&lt;h1 id="2-method"&gt;2. Method&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Figure 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/eHuzvJM.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Fig. 2 給出了模型的整個處理過程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;讀進一張圖片大小為 \(w \times h\) 的圖片 \(\textbf I\)。&lt;/li&gt;
+&lt;li&gt;送進 model VGG-19 的前 10 層 layer train 出大小一樣為 \(w \times
+h\) 的 features \(\textbf F\)。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;\(\textbf S = (\textbf S_1, \textbf S_2, \dots, \textbf
+S_J)\)，其中 \(J\) 代表人體共有 \(J\) 個部位（part）。&lt;/p&gt;</description></item><item><title>ES2015</title><link>https://blog.pengyuc.com/posts/js/js-es2015/</link><pubDate>Tue, 07 Aug 2018 23:08:13 +0000</pubDate><guid>https://blog.pengyuc.com/posts/js/js-es2015/</guid><description>&lt;p&gt;在這篇文章中，會紀錄各種 ES2015 的標準！&lt;/p&gt;
+&lt;h1 id="const"&gt;&lt;code&gt;const&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;由 &lt;code&gt;var&lt;/code&gt; 宣告的變數，可重新賦值：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Jay&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Peng-Yu&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// no problem here!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;而由 &lt;code&gt;const&lt;/code&gt; 宣告的變數，不能被重新賦值，也不能被重新宣告：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Jay&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Peng-Yu&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// TypeError
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Peng-Yu&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// SyntaxError
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但是可以新增元素：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;// 5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;numbers&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// [1, 2, 3, 4, 10]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;numbers&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;no!&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// TypeError
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="let"&gt;&lt;code&gt;let&lt;/code&gt;&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Jay&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Peng-Yu&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// no problems here!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Peng-Yu&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// SyntaxError
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;let&lt;/code&gt; 與 &lt;code&gt;const&lt;/code&gt; 不同的是，可以重新賦與新值，但一樣無法重新宣告。&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;method&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;&lt;code&gt;let&lt;/code&gt;&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;&lt;code&gt;const&lt;/code&gt;&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;reassign&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;✔&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;✖&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;redeclare&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;✖&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;✖&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;let&lt;/code&gt; 有 scope 限制：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Jay&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;myName&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Jay&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;funFact&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Plays the piano&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;funFact&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// ReferenceError
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Hoisting with &lt;code&gt;let&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;helloJay&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;jay&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;jay&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ME!&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;helloJay&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;// undefined
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;helloJay&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;jay&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;jay&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;ME!&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;helloJay&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="c1"&gt;// ReferenceError
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;setTimeout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 5 (five times)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;setTimeout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// 4
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="template-strings"&gt;Template Strings&lt;/h1&gt;
+&lt;p&gt;ES2015 對於字串的處理也有較優的方式，舊的寫法易出錯，新的標準清楚明了&lt;/p&gt;</description></item><item><title>Advanced Array Methods</title><link>https://blog.pengyuc.com/posts/js/js-advanced-array-methods/</link><pubDate>Fri, 20 Jul 2018 04:26:39 +0000</pubDate><guid>https://blog.pengyuc.com/posts/js/js-advanced-array-methods/</guid><description>&lt;p&gt;在此附上 Elie Schoppik 講師的&lt;a href="http://webdev.slides.com/eschoppik/advanced-array-methods#/"&gt;slides&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="陣列迭代"&gt;陣列迭代&lt;/h1&gt;
+&lt;p&gt;在 JavaScript 中，callback 是一種常見的函式，這篇文章想要對 JS 中幾種常見迭代（iterate）陣列的方式做個初步的介紹。&lt;/p&gt;
+&lt;p&gt;主要函式有以下幾種，使用它們可以使程式碼變得更加整潔、清楚！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;forEach&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;map&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;some&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;every&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reduce&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="foreach"&gt;forEach&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;執行步驟：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;迭代整個陣列&lt;/li&gt;
+&lt;li&gt;對每一個值（value）執行一次 callback&lt;/li&gt;
+&lt;li&gt;回傳 &lt;code&gt;undefined&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;運行機制：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;callback&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;callback&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;arr&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下讓我們透過例子來深入了解 &lt;code&gt;forEach&lt;/code&gt; 的奧妙！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Write a function called &lt;code&gt;doubleValues&lt;/code&gt; which accepts an array and returns a
+new array with all the values in the array passed to the function doubled.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;doubleValues&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// [2, 4, 6]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;doubleValues&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// [10, 2, 4, 6, 20]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solution:&lt;/p&gt;</description></item><item><title>Testing with Jasmine</title><link>https://blog.pengyuc.com/posts/tech/testing-with-jasmine/</link><pubDate>Tue, 17 Jul 2018 19:11:13 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/testing-with-jasmine/</guid><description>&lt;p&gt;在此附上 Elie Schoppik 講師的&lt;a href="http://webdev.slides.com/eschoppik/testing-with-jasmine#/"&gt;slides&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="為什麼要用-jasmine"&gt;為什麼要用 Jasmine？&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Jasming 提供了各式各樣不同的測試方式&lt;/li&gt;
+&lt;li&gt;在各種 JavaScript 環境下都能順利運行！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="getting-started"&gt;Getting Started&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;新增 html 檔。&lt;/li&gt;
+&lt;li&gt;連結 CSS、JavaScript 檔。&lt;/li&gt;
+&lt;li&gt;開始寫測試程式碼！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt; &lt;span class="na"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meta&lt;/span&gt; &lt;span class="na"&gt;charset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;Jasmine Tests&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine.css&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;head&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine.js&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/jasmine-html.js&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.6.2/boot.js&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;html&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="一些-keywords"&gt;一些 keywords&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;describe&lt;/code&gt; - &amp;ldquo;let me describt __ to you.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;it&lt;/code&gt; - &amp;ldquo;let me tell you about __.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;expect&lt;/code&gt; - &amp;ldquo;here&amp;rsquo;s what I expect.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="概念化"&gt;概念化&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;describe('Earth')&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;it('is round')&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;expect(earth.isRound.toBe(true))&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;it('is the third planet from the sun')&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;expect(earth.numberFromSun).toBe(3)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="寫成程式碼的話"&gt;寫成程式碼的話&lt;/h2&gt;
+&lt;p&gt;在這裡，我一律使用 ES2015 的 arrow function 來使程式碼更加簡潔！&lt;/p&gt;</description></item><item><title>bash -&gt; zsh</title><link>https://blog.pengyuc.com/posts/tech/bash-to-zsh/</link><pubDate>Sat, 30 Jun 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/bash-to-zsh/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;因為朋友推薦，前陣子開始轉移使用&lt;a href="https://github.com/robbyrussell/oh-my-zsh"&gt;oh-my-zsh&lt;/a&gt;，起初覺得用了很久的 bash 已經夠好用了，真的有需要轉移到 zsh 上嗎？但經過使用一個月的心得，我能告訴您，zsh &amp;gt;
+bash。&lt;/p&gt;
+&lt;p&gt;本身是使用 macOS，不確定使用 Windows 的朋友是否能夠如法砲製，zsh 相比 bash 有許多的優點，像是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不區分大小寫（方便 tab 補齊路徑名）&lt;/li&gt;
+&lt;li&gt;能夠上色，有多種主題&lt;/li&gt;
+&lt;li&gt;能夠顯示 git branch 分支狀態&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;接下來就來說 zsh 的安裝方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安裝 &lt;code&gt;zsh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安裝 &lt;code&gt;oh-my-zsh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安裝 &lt;code&gt;zsh-completions&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;修改設定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="安裝流程"&gt;安裝流程&lt;/h1&gt;
+&lt;h2 id="安裝-zsh"&gt;安裝 zsh&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;brew install zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;並且將預設的 bash 修改為 zsh：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chsh -s /usr/local/bin/zsh &lt;span class="c1"&gt;# change shell to zsh&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若日後要換回原廠預設的 bash：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;chsh -s /bin/bash &lt;span class="c1"&gt;# change shell to default bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="安裝-oh-my-zsh"&gt;安裝 oh-my-zsh&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;預設路徑是在 &lt;code&gt;~/.oh-my-zsh&lt;/code&gt;，若想裝在別處要修改 &lt;code&gt;~/.zshrc&lt;/code&gt;。&lt;/p&gt;</description></item><item><title>LaTeX 語法整理</title><link>https://blog.pengyuc.com/posts/tech/latex-syntax/</link><pubDate>Sat, 17 Feb 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/latex-syntax/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;使用 &lt;a href="https://www.latex-project.org"&gt;LaTeX&lt;/a&gt;
+這款排版工具也有 1 年多了，有鑑於在查語法時常重複查詢造成效率下降，加上朋友的建議，於是就來整理份常用的 LaTeX 語法吧！&lt;/p&gt;
+&lt;h1 id="基本"&gt;基本&lt;/h1&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;a_1&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(a_1\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;x^{2018}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(x^{2018}\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;e^{-\alpha t}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(e^{-\alpha t}\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;a^3_{ij}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(a^3_{ij}\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;e^{x^2} \ne {e^x}^2&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(e^{x^2} \ne {e^x}^2\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;94 \times 87 = 8178&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(94 \times 87 = 8178\)&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="根號"&gt;根號&lt;/h1&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\sqrt x&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\sqrt x\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\sqrt{x^2 + \sqrt y}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\sqrt{x^2 + \sqrt y}\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\sqrt[3]{2}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\sqrt[3]{2}\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\surd[x^2 + y^2]&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\surd[x^2 + y^2]\)&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="線向量"&gt;線、向量&lt;/h1&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\overline{m + n}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\overline{m + n}\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\underline{m + n}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\underline{m + n}\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\vec a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\vec a\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\overrightarrow{AB}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\overrightarrow{AB}\)&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="其它"&gt;其它&lt;/h1&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\underbrace{a + b + \cdots + z}_{26}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\underbrace{a + b + \cdots + z}_{26}\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\int_0^{\frac{\pi}{2}} \cos\theta d\theta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\int_0^{\frac{\pi}{2}} \cos\theta d\theta\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\frac{x^2}{1 + x + \cdots + x^n}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\frac{x^2}{1 + x + \cdots + x^n}\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;x^{\frac{2}{k + 1}}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(x^{\frac{2}{k + 1}}\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\sum_{i = 1}^{n}&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\sum_{i = 1}^{n}\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\prod_\epsilon&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\prod_\epsilon\)&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id="數學符號"&gt;數學符號&lt;/h1&gt;
+&lt;h2 id="數學模式上標"&gt;數學模式上標&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\hat a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\hat a\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\tilde a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\tilde a\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\widehat a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\widehat a\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\widetilde a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\widetilde a\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\acute a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\acute a\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\grave a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\grave a\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\dot a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\dot a\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\ddot a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\ddot a\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\check a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\check a\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\breve a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\breve a\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\bar a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\bar a\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\vec a&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\vec a\)&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="小寫希臘字母"&gt;小寫希臘字母&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\alpha&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\alpha\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\xi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\xi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\beta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\beta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;o&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(o\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\gamma&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\gamma\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\pi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\pi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\delta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\delta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\varpi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\varpi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\epsilon&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\epsilon\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\rho&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\rho\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\varepsilon&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\varepsilon\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\varrho&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\varrho\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\zeta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\zeta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\sigma&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\sigma\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\eta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\eta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\varsigma&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\varsigma\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\theta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\theta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\tau&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\tau\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\vartheta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\vartheta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\upsilon&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\upsilon\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\iota&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\iota\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\phi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\phi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\kappa&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\kappa\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\varphi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\varphi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\lambda&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\lambda\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\chi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\chi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\mu&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\mu\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\psi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\psi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\nu&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\nu\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\omega&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\omega\)&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="大寫希臘字母"&gt;大寫希臘字母&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;程式碼&lt;/th&gt;
+					&lt;th style="text-align: center"&gt;LaTeX&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\Gamma&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Gamma\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\Sigma&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Sigma\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\Delta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Delta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\Upsilon&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Upsilon\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\Theta&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Theta\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\Phi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Phi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\Lambda&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Lambda\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\Psi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Psi\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\Xi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Xi\)&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\Omega&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Omega\)&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td style="text-align: center"&gt;\Pi&lt;/td&gt;
+					&lt;td style="text-align: center"&gt;\(\Pi\)&lt;/td&gt;
+					&lt;td&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;</description></item><item><title>刪除 Git 提交記錄</title><link>https://blog.pengyuc.com/posts/tech/delete-git-history/</link><pubDate>Fri, 16 Feb 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/delete-git-history/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;在使用 Git 時，我們可能會有些「不那麼整齊」的提交記錄（commit
+history），這時創建一個新的倉庫（repository），並且將原有資料整份移植過去是個有效的解決方式，但似乎不太聰明，於是我開始尋找是否有更有效率的方法，好在&lt;a href="https://stackoverflow.com/"&gt;Stack Overflow&lt;/a&gt;
+上&lt;a href="https://stackoverflow.com/questions/13716658/how-to-delete-all-commit-history-in-github"&gt;這篇文章&lt;/a&gt;給出了一個可用的解答。&lt;/p&gt;
+&lt;h1 id="刪除提交記錄"&gt;刪除提交記錄&lt;/h1&gt;
+&lt;p&gt;若直接刪除 &lt;code&gt;.git&lt;/code&gt;
+資料夾的話，可能會導致你 git 倉庫出現問題。如果想要刪除所有的提交記錄，且保留目前程式碼的狀態，以下的步驟是安全且可行的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# create a temporary branch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git checkout --orphan TEMPORARY_BRANCH
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# add all files&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git add -A
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# commit the changes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git commit -am &lt;span class="s2"&gt;&amp;#34;Reset Commit History&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# delete the &amp;#34;main&amp;#34; branch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git branch -D main
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# rename the current branch to &amp;#34;main&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git branch -m main
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# forcely update your &amp;#34;main&amp;#34; branch&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git push -f origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果想要刪除的是分支，那麼將上述指令中的 &lt;code&gt;main&lt;/code&gt; 換成預刪除分支的名字即可。&lt;/p&gt;</description></item><item><title>Hexo Building</title><link>https://blog.pengyuc.com/posts/tech/hexo-building/</link><pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate><guid>https://blog.pengyuc.com/posts/tech/hexo-building/</guid><description>&lt;h1 id="前言"&gt;前言&lt;/h1&gt;
+&lt;p&gt;近日有感沒有花些心思去整理平時的一些思緒、札記等等，於是決定要開始著手寫部落格。在網路上查了許多資料後，決定使用&lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt; 所提供的服務，裡面也有許多主題可供挑選，而我使用的這個是&lt;a href="https://github.com/theme-next/hexo-theme-next"&gt;NexT&lt;/a&gt;，一款由中國人所設計，非常精緻典雅的主題。&lt;/p&gt;
+&lt;h1 id="使用-hexo-來建立個人網站"&gt;使用 &lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt; 來建立個人網站&lt;/h1&gt;
+&lt;p&gt;網誌中的第一篇文章，我想要談談我在使用 &lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt;
+建立個人網站時並且發布到 &lt;a href="https://pages.github.com"&gt;GitHub Pages&lt;/a&gt;
+時所遇到的問題，以及我是怎麼解決的。&lt;/p&gt;
+&lt;h1 id="環境需求"&gt;環境需求&lt;/h1&gt;
+&lt;p&gt;要開始使用 &lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt;，必需先確保你的電腦有以下的插件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://zh.wikipedia.org/wiki/Git"&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://nodejs.org/en/"&gt;Node.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="安裝-hexo"&gt;安裝 &lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;我們可以藉由 &lt;a href="https://nodejs.org/en/"&gt;Node.js&lt;/a&gt; 輕鬆的安裝&lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm install hexo-cli -g
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="初始化倉庫repository"&gt;初始化倉庫（repository）&lt;/h1&gt;
+&lt;p&gt;你必需先在你的 github 帳戶底下建立一個新的倉庫，名字必需是&lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 或是&lt;code&gt;&amp;lt;username&amp;gt;.github.io/&amp;lt;project&amp;gt;&lt;/code&gt;，否則你將無法成功發佈文章。&lt;/p&gt;
+&lt;h1 id="初始化-hexo-資料夾"&gt;初始化 Hexo 資料夾&lt;/h1&gt;
+&lt;p&gt;再來，藉由以下指令初始化 Hexo 資料夾：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;hexo init &amp;lt;project&amp;gt; &lt;span class="c1"&gt;# create a Hexo project&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; &amp;lt;project&amp;gt; &lt;span class="c1"&gt;# change directory&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm install &lt;span class="c1"&gt;# update something&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;&amp;lt;project&amp;gt;&lt;/code&gt; 的名稱有兩個選擇：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;和 GitHub 上的名稱（&lt;code&gt;walkccc.github.io&lt;/code&gt;）一樣&lt;/li&gt;
+&lt;li&gt;任意名稱&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id="安裝佈署器"&gt;安裝佈署器&lt;/h1&gt;
+&lt;p&gt;不像其它靜態頁面生產器，&lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt;
+提供了官方的佈署器（deployer），我們可由下列指令安裝之：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm install hexo-deployer-git --save
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="安裝美麗的主題"&gt;安裝美麗的主題&lt;/h1&gt;
+&lt;p&gt;我刪除了 &lt;a href="https://hexo.io"&gt;Hexo&lt;/a&gt; 預設的主題 landscape，並且安裝&lt;a href="https://github.com/theme-next/hexo-theme-next"&gt;NexT&lt;/a&gt; 主題。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# delete the default theme&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -rf themes/landscape
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# clone the theme next&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;git clone https://github.com/theme-next/hexo-theme-next themes/next
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# delete the .git files in the subdirectory to prevent unwanted conflicts&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;rm -rf themes/next/.git*
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id="連結本機資料夾與-github-上的倉庫"&gt;連結本機資料夾與 GitHub 上的倉庫&lt;/h1&gt;
+&lt;p&gt;跟著 GitHub 上新建新倉庫的導覽（這裡會做一些修改）：&lt;/p&gt;</description></item></channel></rss>
