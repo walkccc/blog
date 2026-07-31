@@ -8,9 +8,7 @@ tags:
 
 # 前言
 
-因為朋友推薦，前陣子開始轉移使用
-[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)，起初覺得用了很久的 bash 已經夠好用了，真的有需要轉移到 zsh 上嗎？但經過使用一個月的心得，我能告訴您，zsh >
-bash。
+因為朋友推薦，前陣子開始轉移使用 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)，起初覺得用了很久的 bash 已經夠好用了，真的有需要轉移到 zsh 上嗎？但經過使用一個月的心得，我能告訴您，zsh > bash。
 
 本身是使用 macOS，不確定使用 Windows 的朋友是否能夠如法砲製，zsh 相比 bash 有許多的優點，像是：
 
@@ -53,8 +51,7 @@ git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 預設路徑是在 `~/.oh-my-zsh`，若想裝在別處要修改 `~/.zshrc`。
 
-zsh 的設定檔放在 `~/.zshrc` 就像 bash 的設定檔放在 `~/.bashrc`
-一樣，而這個檔案需要我們自己產生，這裡建議使用 oh-my-zsh 的模版比較簡單：
+zsh 的設定檔放在 `~/.zshrc` 就像 bash 的設定檔放在 `~/.bashrc` 一樣，而這個檔案需要我們自己產生，這裡建議使用 oh-my-zsh 的模版比較簡單：
 
 ```bash
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
@@ -91,8 +88,7 @@ rm -f ~/.zcompdump; compinit
 
 ### 切換主題
 
-主題們在 `~/.oh-my-zsh/themes` 中，切換主題的方式是修改 `~/.zshrc` 的
-`ZSH_THEME`，預設是 `robbyrussell`，像我就改成 `agnoster`
+主題們在 `~/.oh-my-zsh/themes` 中，切換主題的方式是修改 `~/.zshrc` 的 `ZSH_THEME`，預設是 `robbyrussell`，像我就改成 `agnoster`
 
 ```bash
 # THEME Config
@@ -102,13 +98,11 @@ rm -f ~/.zcompdump; compinit
 
 重新登入看看，zsh 的主題應該已被更換！
 
-agnoster 這個主題需要將 Terminal 的字體換成
-[Monoco for Powerline](https://gist.github.com/baopham/1838072)，原廠是沒有的，他可以顯示 git 狀態及有美麗的顏色主題。
+agnoster 這個主題需要將 Terminal 的字體換成 [Monoco for Powerline](https://gist.github.com/baopham/1838072)，原廠是沒有的，他可以顯示 git 狀態及有美麗的顏色主題。
 
 ### 啟用插件
 
-插件們在 `~/.oh-my-zsh/plugins` 中，啟用方式和主題類似，修改 `~/.zshrc` 的
-`plugins`，例如要啟用 brew，只要修改預設只有 git 成：
+插件們在 `~/.oh-my-zsh/plugins` 中，啟用方式和主題類似，修改 `~/.zshrc` 的 `plugins`，例如要啟用 brew，只要修改預設只有 git 成：
 
 ```bash
 -plugins=(git)

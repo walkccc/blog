@@ -199,7 +199,11 @@ a {
   margin-bottom: 3rem;
 }
 
-.label {
+/* Scoped to the year heading it was written for, and it has to stay scoped:
+   mermaid puts class="label" on every label in a diagram, and it measures those
+   in an off-screen element on <body> — so an unscoped rule here reaches them
+   there, and the boxes come out sized for a font nothing is drawn in. */
+.year-group .label {
   font-size: 0.6875rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -402,6 +406,7 @@ a {
   border: 1px solid var(--border);
   padding: 0.5rem 0.75rem;
   text-align: left;
+  word-break: keep-all;
 }
 
 .prose th {
@@ -449,6 +454,80 @@ html.dark .prose pre {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.25rem 0;
+}
+
+/* -- Mermaid diagrams --
+   Mermaid scopes its own stylesheet with an #id selector, so every colour
+   below has to be !important to outrank it. What that buys is worth the
+   shouting: each one resolves to the same token the rest of the page uses, so
+   a diagram follows the theme toggle instantly and nothing has to be
+   re-rendered. Fonts are deliberately NOT set here — mermaid measures a label
+   box in the font it was configured with, and baseof.html hands it
+   --font-mono for exactly that reason. */
+
+/* Only while the module is in flight, and only once it has started: no JS, or
+   a blocked CDN, leaves the source visible rather than an empty gap. */
+.mermaid-loading pre.mermaid {
+  visibility: hidden;
+}
+
+.prose pre.mermaid {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 1.75em 0;
+  line-height: normal;
+}
+
+.prose pre.mermaid svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Boxes carry the same fill and hairline as a code block. */
+.prose .mermaid .node rect,
+.prose .mermaid .node circle,
+.prose .mermaid .node ellipse,
+.prose .mermaid .node polygon,
+.prose .mermaid .node path {
+  fill: var(--code-bg) !important;
+  stroke: var(--border) !important;
+  stroke-width: 1px !important;
+}
+
+/* Lines, and the arrowheads on them. */
+.prose .mermaid .flowchart-link {
+  stroke: var(--muted) !important;
+}
+
+.prose .mermaid .marker {
+  fill: var(--muted) !important;
+  stroke: var(--muted) !important;
+}
+
+.prose .mermaid .label,
+.prose .mermaid .nodeLabel,
+.prose .mermaid .nodeLabel p,
+.prose .mermaid svg text {
+  color: var(--fg) !important;
+  fill: var(--fg) !important;
+}
+
+/* After the rule above, so an edge label wins where the two overlap. It sits
+   ON the line it labels, so it needs the page colour behind it, not a tint. */
+.prose .mermaid .edgeLabel,
+.prose .mermaid .edgeLabel p,
+.prose .mermaid .labelBkg {
+  color: var(--muted) !important;
+  background: var(--bg) !important;
+}
+
+.prose .mermaid .edgeLabel rect {
+  fill: var(--bg) !important;
+  opacity: 1 !important;
 }
 
 /* -- Footer -- */

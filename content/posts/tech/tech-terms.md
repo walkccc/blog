@@ -22,9 +22,7 @@ tags:
 
 - NG（New Grad）：畢業生
 - PIP（Performance Improvement Plan）：積效改善計畫
-- TC (Total
-  Compensation)：薪水總包，通常指的包括本薪（base）、股票（RSU）、簽字費（sign-on
-  bonus）和年終獎金（bonus）
+- TC (Total Compensation)：薪水總包，通常指的包括本薪（base）、股票（RSU）、簽字費（sign-on bonus）和年終獎金（bonus）
 - TM（Team Match）
 - YOE（Years of Experience）
 

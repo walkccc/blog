@@ -6,39 +6,27 @@ tags:
   - AWS
 ---
 
-> Learn how to set up AWS CLI for your AWS account in a few easy steps! This
-> comprehensive guide walks you through enabling IAM Identity Center, adding a
-> user to your AWS account, installing and configuring AWS CLI V2, and setting
-> AWS environment variables. You'll even get to test your AWS CLI skills by
-> creating a role using AWS CLI V2. Follow along and become an AWS CLI pro!
+> Learn how to set up AWS CLI for your AWS account in a few easy steps! This comprehensive guide walks you through enabling IAM Identity Center, adding a user to your AWS account, installing and configuring AWS CLI V2, and setting AWS environment variables. You'll even get to test your AWS CLI skills by creating a role using AWS CLI V2. Follow along and become an AWS CLI pro!
 
 ## Enable IAM identity center
 
 1. Sign in as root user
-1. Go to
-   [IAM Identity Center console](https://console.aws.amazon.com/singlesignon).
+1. Go to [IAM Identity Center console](https://console.aws.amazon.com/singlesignon).
 1. Under **Enable IAM Identity Center**, click **Enable**.
-1. Click **Create AWS organization** in the popup window.
-   ![](https://i.imgur.com/q7Y2Cnh.png)
+1. Click **Create AWS organization** in the popup window. ![](https://i.imgur.com/q7Y2Cnh.png)
 
 ## Add User in IAM Identity Center
 
 1. Click **Add user** in "IAM Identity Center > Users".
 1. Fill the required information. ![](https://i.imgur.com/wkIaRJg.png)
-1. Review the information and click **Add user** in the bottom right. You can
-   also create a group for this user if you like.
-   ![](https://i.imgur.com/5qLbS9S.png)
-1. Hooray! The user "buildwebapp2023" was successfully added!
-   ![](https://i.imgur.com/gLK97Op.png)
-1. Finally, navigate to your mail and click Accept invitation.
-   ![](https://i.imgur.com/krJQ7Ph.png)
+1. Review the information and click **Add user** in the bottom right. You can also create a group for this user if you like. ![](https://i.imgur.com/5qLbS9S.png)
+1. Hooray! The user "buildwebapp2023" was successfully added! ![](https://i.imgur.com/gLK97Op.png)
+1. Finally, navigate to your mail and click Accept invitation. ![](https://i.imgur.com/krJQ7Ph.png)
 
 ## Add User to an AWS account
 
-1. In "IAM Identity Center > AWS Organizations: AWS accounts", click one of the
-   organization then click **Assign users or groups**.
-1. Select the newly added user and "AdministratorAccess" permission sets (We'll
-   need to create a role programmatically it later).
+1. In "IAM Identity Center > AWS Organizations: AWS accounts", click one of the organization then click **Assign users or groups**.
+1. Select the newly added user and "AdministratorAccess" permission sets (We'll need to create a role programmatically it later).
 1. Review and click **Submit**. Wait a second...
 1. The user with selected permission sets is assigned to this AWS account!
 
@@ -50,21 +38,14 @@ tags:
    brew install awscli
    ```
 
-1. Specify an alternate location to store AWS config and credentials following
-   the
-   [XDG Base Directory](https://wiki.archlinux.org/title/XDG_Base_Directory). I
-   use zsh, so I'll do
+1. Specify an alternate location to store AWS config and credentials following the [XDG Base Directory](https://wiki.archlinux.org/title/XDG_Base_Directory). I use zsh, so I'll do
 
    ```bash
    echo 'export AWS_CONFIG_FILE=$HOME/.config/aws/config
    export AWS_SHARED_CREDENTIALS_FILE=$HOME/.config/aws/credentials' > ~/.config/zsh/init/aws.zshrc
    ```
 
-1. Generate the config file for `sso-session` and `profile` by grabbing the
-   information in "IAM Identity Center > Dashboard", clicking the AWS access
-   portal URL under **Settings summary**, and copying and pasting the **SSO
-   Start URL** and **SSO Region** to proper fields. Alternatively, use the
-   `aws configure sso` wizard.
+1. Generate the config file for `sso-session` and `profile` by grabbing the information in "IAM Identity Center > Dashboard", clicking the AWS access portal URL under **Settings summary**, and copying and pasting the **SSO Start URL** and **SSO Region** to proper fields. Alternatively, use the `aws configure sso` wizard.
 
    ```bash
    AWS_ACCOUNT_ID=123456789012
@@ -83,8 +64,7 @@ tags:
 
 ## Set AWS environment variables
 
-To set AWS environment variables, copy the export statements from the same place
-as above.
+To set AWS environment variables, copy the export statements from the same place as above.
 
 ```bash
 echo 'export AWS_ACCESS_KEY_ID="XXX"
@@ -94,8 +74,7 @@ export AWS_SESSION_TOKEN="ZZZ"' >> ~/.config/zsh/init/aws.zshrc
 
 ## Test your AWS CLI
 
-To test your AWS CLI, you can create a role and attach a policy for it
-programmatically. The command is:
+To test your AWS CLI, you can create a role and attach a policy for it programmatically. The command is:
 
 ```bash
 AWS_ACCOUNT_ID=123456789012

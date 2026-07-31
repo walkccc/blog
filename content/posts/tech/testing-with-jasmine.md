@@ -5,8 +5,7 @@ tags:
   - JavaScript
 ---
 
-在此附上 Elie Schoppik 講師的
-[slides](http://webdev.slides.com/eschoppik/testing-with-jasmine#/)
+在此附上 Elie Schoppik 講師的 [slides](http://webdev.slides.com/eschoppik/testing-with-jasmine#/)
 
 # 為什麼要用 Jasmine？
 

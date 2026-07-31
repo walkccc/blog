@@ -12,11 +12,9 @@ tags:
 
 > **Name/Value Pair**: A name which maps to a unique value.
 >
-> > The name may be defined more than once, but only can have one value in any
-> > given **context**. That value may be more name/value pairs.
+> > The name may be defined more than once, but only can have one value in any given **context**. That value may be more name/value pairs.
 
-JS 中的物件，單純的是 Key-Value 的關係，而物件中也可以再包含物件，像 `Address`
-包含 `Apartment`。
+JS 中的物件，單純的是 Key-Value 的關係，而物件中也可以再包含物件，像 `Address` 包含 `Apartment`。
 
 ```js
 const Address = {
@@ -35,14 +33,12 @@ const Address = {
 
 `The Global Environment & The Global Object`
 
-JS 都是在「Execution Context」中執行的，而 global execution
-context 會為你創建兩個東西：
+JS 都是在「Execution Context」中執行的，而 global execution context 會為你創建兩個東西：
 
 1. Global Object
 1. `this`
 
-我們可以透過以下的代碼來實驗，或是直接將 js 代碼打在 Google
-Chrome 的 Console 中：
+我們可以透過以下的代碼來實驗，或是直接將 js 代碼打在 Google Chrome 的 Console 中：
 
 - `index.html`
 
@@ -61,8 +57,7 @@ Chrome 的 Console 中：
 
   ```
 
-是的，我們的 `app.js` 是空的，但 JS engine 一樣會在此處創建一個 global execution
-context，所以當我們在 Console 打 `this` 或 `window` 時會如下方所示：
+是的，我們的 `app.js` 是空的，但 JS engine 一樣會在此處創建一個 global execution context，所以當我們在 Console 打 `this` 或 `window` 時會如下方所示：
 
 ```
 > this
@@ -108,8 +103,7 @@ function b() {
 
 `b()` 的內容會先優先存進記憶體內，所以我們可以在第 1 行優先呼叫第 5 行的 `b()`
 
-而在使用等號賦值時，只會先將變數放至記憶體，`var a = 'Hello World!;`
-在這裡只會先將 `a` 放入記憶體中，再依執行順序將等號的值填入。
+而在使用等號賦值時，只會先將變數放至記憶體，`var a = 'Hello World!;` 在這裡只會先將 `a` 放入記憶體中，再依執行順序將等號的值填入。
 
 可想像代碼變成這樣：
 
@@ -126,9 +120,7 @@ console.log(a); // undefined
 a = "Hello World!";
 ```
 
-`var a` 被移到最前面，但還未賦值，所以 JS engine 會在一開始賦於
-`a = undefined`（所有值一開始都是 `undefined`），`b()`
-則是連內容都移到前面去了。
+`var a` 被移到最前面，但還未賦值，所以 JS engine 會在一開始賦於 `a = undefined`（所有值一開始都是 `undefined`），`b()` 則是連內容都移到前面去了。
 
 ---
 
@@ -144,8 +136,7 @@ a = "Hello World!";
 1. Execution Phase
    - Line by line 執行代碼
 
-註：Hoisting 不代表 JS engine 真的揶動了你的代碼，而是先在 Creation
-Phase 時，先設定好變數和函數的記憶體空間。
+註：Hoisting 不代表 JS engine 真的揶動了你的代碼，而是先在 Creation Phase 時，先設定好變數和函數的記憶體空間。
 
 # 11. 觀念小叮嚀：JavaScript 與 'undefined'
 
@@ -164,15 +155,13 @@ Phase 時，先設定好變數和函數的記憶體空間。
   }
   ```
 
-我們可以刻意讓 `a = undefined`，但這是一個 bad practice，應該讓 `undefined`
-就代表還沒賦值的變數。
+我們可以刻意讓 `a = undefined`，但這是一個 bad practice，應該讓 `undefined` 就代表還沒賦值的變數。
 
 # 12. 執行環境：程式執行
 
 `The Execution Context: Code Execution`
 
-在 10. 我們提到了執行環境的第一步驟是 creation，第二步驟很簡單，JS
-engine 就一行一行的執行你的代碼。
+在 10. 我們提到了執行環境的第一步驟是 creation，第二步驟很簡單，JS engine 就一行一行的執行你的代碼。
 
 # 13. 觀念小叮嚀：單執行緒、同步執行
 
@@ -222,8 +211,7 @@ console.log(myVar); // 1
 
 `The Scope Chain`
 
-接下來這個例子，我們將 `b()` 裡面的 `var myVar` 註解掉，這時第 2 行會是 not
-defined 嗎？
+接下來這個例子，我們將 `b()` 裡面的 `var myVar` 註解掉，這時第 2 行會是 not defined 嗎？
 
 ```js
 function b() {
@@ -240,11 +228,7 @@ var myVar = 1;
 a(); // 1
 ```
 
-不是的，由於 lexical environment 的關係，而 `b()` 「lexically sits at the global
-level」，因此 `b()` 的 reference to outer environment 會指向 Global Execution
-Context，所以在執行 `b()` 時，當我們在 `b()` 的執行環境中找不到 `myVar`
-定義時，就會到外部環境找（`b()` 的外部環境是 global），這就是 Scope
-Chain 的概念。
+不是的，由於 lexical environment 的關係，而 `b()` 「lexically sits at the global level」，因此 `b()` 的 reference to outer environment 會指向 Global Execution Context，所以在執行 `b()` 時，當我們在 `b()` 的執行環境中找不到 `myVar` 定義時，就會到外部環境找（`b()` 的外部環境是 global），這就是 Scope Chain 的概念。
 
 ---
 
@@ -280,9 +264,7 @@ JS engine 是單執行緒、同步的，那是如何達到異步執行的效果�
 
 在瀏覽器中除了執行 JS engine 外，還會執行 rendering enginer、HTTP request 等。
 
-雖然 JS
-engine 本身是同步的，但其他事件是可以異步執行的（這並不是真的異步，而是瀏覽器異步的把東西放到事件佇列（Event
-Queue），但原本的程式仍然繼續一行一行執行。
+雖然 JS engine 本身是同步的，但其他事件是可以異步執行的（這並不是真的異步，而是瀏覽器異步的把東西放到事件佇列（Event Queue），但原本的程式仍然繼續一行一行執行。
 
 **當執行完後，執行堆空了，才會處理事件。**
 
@@ -307,8 +289,7 @@ waitThreeSeconds();
 console.log("finished execution");
 ```
 
-當在執行 `waitThreeSeconds()` 時，然後點頁面（`document`），試著去觸發
-`clickHandler()` 會發生什麼事？
+當在執行 `waitThreeSeconds()` 時，然後點頁面（`document`），試著去觸發 `clickHandler()` 會發生什麼事？
 
 ```
 > fninished function
@@ -316,8 +297,6 @@ console.log("finished execution");
 > click event!
 ```
 
-我看發現 click event! 在最後才會印出來，因為 JS
-engine 直到執行堆是空的才會看事件佇列，這表示長時間函數可以干擾事件，這就是 JS 如何同步處理在瀏覽器別處異步的事件發生。
+我看發現 click event! 在最後才會印出來，因為 JS engine 直到執行堆是空的才會看事件佇列，這表示長時間函數可以干擾事件，這就是 JS 如何同步處理在瀏覽器別處異步的事件發生。
 
-JS 不斷執行原先的程式，當全部完成後，它會到事件佇列看看，並不停的檢查（continous
-check）。
+JS 不斷執行原先的程式，當全部完成後，它會到事件佇列看看，並不停的檢查（continous check）。

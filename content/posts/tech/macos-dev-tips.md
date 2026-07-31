@@ -5,8 +5,7 @@ tags:
   - macOS
 ---
 
-These are handy tools and tweaks that aren't required for a clean install, but
-can improve workflow or handle specific tasks.
+These are handy tools and tweaks that aren't required for a clean install, but can improve workflow or handle specific tasks.
 
 ## 🔧 Git Utilities
 

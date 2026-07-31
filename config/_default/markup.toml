@@ -4,14 +4,18 @@
   [goldmark.renderer]
     unsafe = true
 
-  # Joins hard-wrapped lines in CJK text without inserting spaces
-  # (source markdown is prose-wrapped at 80 columns by Prettier).
+  # Safety net for CJK: joins a hard-wrapped line without inserting a space.
+  # Posts are no longer prose-wrapped — .prettierrc sets proseWrap "never", so
+  # one paragraph is one source line and there are no soft breaks left to join.
+  # This stays enabled so a hand-inserted break inside a Chinese paragraph
+  # still renders correctly instead of leaking a stray space.
+  #
+  # NOTE: keep the default "simple" style. "css3draft" also swallows soft
+  # line breaks in pure-Latin text (e.g. right after a link), gluing English
+  # words together.
   [goldmark.extensions.cjk]
     enable = true
     eastAsianLineBreaks = true
-    # NOTE: keep the default "simple" style. "css3draft" also swallows soft
-    # line breaks in pure-Latin text (e.g. right after a link), gluing
-    # English words together.
 
 [highlight]
   noClasses = false

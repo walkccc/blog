@@ -12,9 +12,7 @@ tags:
 
 # 預備環境
 
-要開始使用
-[Hugo](https://gohugo.io)，若您的環境跟我一樣是 macOS 的話，可以使用套件管理工具
-[Homebrew](https://brew.sh/index_zh-tw.html)：在終端機輸入以下指令後，便會開始下載需要的套件。
+要開始使用 [Hugo](https://gohugo.io)，若您的環境跟我一樣是 macOS 的話，可以使用套件管理工具 [Homebrew](https://brew.sh/index_zh-tw.html)：在終端機輸入以下指令後，便會開始下載需要的套件。
 
 ```bash
 brew install hugo
@@ -44,8 +42,7 @@ git commit -m "Add PaperMod submodule"
 
 ## 修改預設 config.yaml 檔
 
-複製貼上
-[`config.yaml`](https://github.com/walkccc/blog/blob/main/config.yaml)。
+複製貼上 [`config.yaml`](https://github.com/walkccc/blog/blob/main/config.yaml)。
 
 ```bash
 git add .
@@ -65,8 +62,7 @@ summary: archives
 
 # 設定 GitHub Actions
 
-複製貼上
-[`.github/workflows/main.yaml`](https://github.com/walkccc/blog/blob/main/.github/workflows/main.yaml)
+複製貼上 [`.github/workflows/main.yaml`](https://github.com/walkccc/blog/blob/main/.github/workflows/main.yaml)
 
 ```bash
 git add .

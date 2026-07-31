@@ -2,7 +2,7 @@
 # Consumed by the custom layouts in layouts/.
 
 author = "Peng-Yu Chen"
-tagline = "Engineering notes · New York"
+tagline = "Engineering notes"
 description = "Engineering notes by Peng-Yu Chen — iOS, algorithms, and software practice."
 
 # Absolute URL of the personal site the header links back to.
