@@ -310,7 +310,7 @@ The question I get asked most: since the engine is just JavaScript, why doesn't 
 
 So the copy built into the app is the **floor** and the one on the server is the **ceiling**. The floor is just as playable and just as leaderboard-eligible, because the server replays under whatever version that run declares (section 8).
 
-This is the same shape as CodePush or Expo Updates: a baseline in the binary, a background fetch, applied on the next launch. The only difference is that most of them default to blocking the splash screen on the download; Tefuda doesn't — a 12 KB rules diff isn't worth making anyone stare at a loading screen one second longer. And to scope it honestly: this isn't a code-push framework, it's **one hash comparison plus one file download**.
+This is the same shape as CodePush or Expo Updates: a baseline in the binary, a background fetch, applied on the next launch. The only difference is that most of them default to blocking the splash screen on the download; Tefuda doesn't — a 12 KB rules diff isn't worth making anyone stare at a loading screen one second longer. And to scope it honestly: this isn't a code-push framework, it's **one integer comparison plus one file download**.
 
 #### The flow, including every branch where it decides not to update
 
@@ -318,18 +318,19 @@ This is the same shape as CodePush or Expo Updates: a baseline in the binary, a 
 flowchart TD
   DEV["I change lib/game"] --> BUILD["Build: derive ENGINE_VERSION,<br/>bundle engine.js, archive a copy"]
   BUILD --> DEPLOY["Deploy, engine.js becomes a static asset"]
-  DEPLOY --> MANIFEST("GET /api/engine<br/>version · build · minUI · path")
+  DEPLOY --> MANIFEST("GET /api/engine<br/>version · serial · minUI · path")
 
   APP["App launches with its current engine<br/>table already drawn, already playable"] --> MANIFEST
-  MANIFEST --> SAME{"Same build hash as what I have?"}
-  SAME -->|"same"| STOP["Do nothing<br/>almost every launch stops here"]
-  SAME -->|"different"| UI{"Does it need a newer table than I can draw?"}
+  MANIFEST --> SAME{"Higher serial than anything I hold?"}
+  SAME -->|"no"| STOP["Do nothing<br/>almost every launch stops here"]
+  SAME -->|"yes"| UI{"Is my table below its floor?"}
   UI -->|"yes"| HOLD["Keep the current engine<br/>still playable, still leaderboard-eligible"]
   UI -->|"no"| DL["Download engine.js"]
-  DL --> PROBE{"Evaluate it in a throwaway context —<br/>does it start? What version does it claim?"}
-  PROBE -->|"fails, or version mismatch"| DROP["Discard it, this attempt never happened"]
+  DL --> PROBE{"Evaluate it in a throwaway context —<br/>does it start? Is it the version and<br/>the serial the manifest promised?"}
+  PROBE -->|"fails, or doesn't match"| DROP["Discard it, this attempt never happened"]
   PROBE -->|"starts and matches"| STAGE["Write to Application Support,<br/>mark for adoption on next launch"]
   STAGE --> COLD["Swapped in on next cold start"]
+  COLD --> BOARD["Boot tells it which table this is —<br/>anything this one can't draw stays undealt"]
 ```
 
 What the server hands back is a pointer, not the content — almost every launch, it's just a hundred-odd bytes:
@@ -337,16 +338,24 @@ What the server hands back is a pointer, not the content — almost every launch
 ```ts
 {
   version: ENGINE_VERSION,    // which ruleset
-  build: sha256(servedBytes), // which bytes
-  minUI: MIN_APP_UI,          // oldest UI version that can draw the table
+  serial: ENGINE_SERIAL,      // which bundle, as an order
+  minUI: MIN_APP_UI,          // the oldest table this may be handed to at all
   path: '/engine.js',         // a path, not an absolute URL
   accepts: ENGINE_HISTORY,    // every version the archive can still replay
 }
 ```
 
-**Why `version` alone isn't enough.** `ENGINE_VERSION` only hashes the replay closure, but the bundle holds more than that closure: `lib/wire`, the tutorial, and the bridge interface are all in there. So changing the wire protocol produces different bytes under the same version string; an app that only checks `version` would stay stuck on the old bundle forever, with zero symptoms, because everything it used to be able to do it still can. This isn't hypothetical: that's exactly how the new `wire.enginePath` shipped — before `build` was added, an already-installed app never picked it up at all. **The version says which ruleset; the hash says which bytes.**
+**Why `version` isn't enough, and why a hash isn't either.** `ENGINE_VERSION` only hashes the replay closure, but the bundle holds more than that closure: `lib/wire`, the tutorial, and the bridge interface are all in there. So changing the wire protocol produces different bytes under the same version string; an app that only checks `version` would stay stuck on the old bundle forever, with zero symptoms, because everything it used to be able to do it still can. This isn't hypothetical: that's exactly how the new `wire.enginePath` shipped — before the manifest described the bytes at all, an already-installed app never picked it up.
 
-**What OTA can update**: anything in the bundle that's JavaScript — the scoring table, deck composition, what a move does, daily-challenge variants, the wire protocol, the tutorial script. **What it can't update**: Swift. A bundle can teach the app new numbers, but it can't teach it to draw a control that doesn't exist in the binary. That's what `minUI` is for. Concretely: zen mode has no clock and no discarding, so a table built before zen existed would print "−1 placements remaining" next to a goal that can no longer time out, with a button beside it that does nothing when tapped. Nothing crashes — the screen is just describing a different game. An app below `minUI` keeps its current engine and keeps submitting scores just fine; this is a caution, not a cliff.
+Hashing the bytes fixes that, and I shipped it, and it is still not enough — because a hash answers "is this the same?" and the question the app actually has is **"which of these is newer?"** It holds two engines at once, the one compiled into it and the one it downloaded last, and no pair of hashes can be ranked. So the serial: a count of how many distinct bundles the build has ever produced, stamped on the bundle's first line, higher is newer, and that is the entire comparison. **The version says which ruleset; the serial says which bundle, and in what order.**
+
+It counts bundles rather than commits or builds, which is what keeps it reproducible: what gets hashed to decide whether to increment is the bundle *before* the serial is stamped onto it. Rebuild an unchanged `lib/game` and you get the same hash, the same serial, the same bytes. A commit count would move for a change that touched no rules; a timestamp would move on every build and leave the committed copy permanently, uselessly stale.
+
+**What OTA can update**: anything in the bundle that's JavaScript — the scoring table, deck composition, what a move does, daily-challenge variants, the wire protocol, the tutorial script. **What it can't update**: Swift. A bundle can teach the app new numbers, but it can't teach it to draw a control that doesn't exist in the binary.
+
+There are two ways to say that, and I've now used both. The first is to refuse the whole bundle: that's `minUI`, raised in the same commit as a rules change the shipped table can't render, and every older app keeps the engine it has. It works, and it is far blunter than it looks — the held-back app loses the balance patch along with the feature it couldn't draw, and it loses every patch after that too, because no later build ever declares the old number again. One release, and that slice of the fleet is frozen permanently, invisibly.
+
+The second is to let the engine decide per feature. At boot the app tells the bundle which table it is, and rules needing something this table hasn't got simply aren't dealt to it. One bundle for everyone, every app takes every balance change forever, and a feature ships dark until the binary that draws it is out — the ordinary shape of a feature flag, except the flag lives in the rules, which is where everything else about this game already lives. `minUI` stays as a floor for the levels gated the old way (a table built before zen has no case to decode a suit perk into, and would stop the run rather than draw it), and it isn't expected to move again.
 
 **Security, honestly stated.** This bundle isn't signed. Transport is HTTPS to the same origin the app already talks to, and the server returns a **path**, not an absolute URL, so nothing on the server can point the device at a different host. Integrity is checked by trying it: a downloaded bundle is evaluated in a throwaway context and asked what version it is, and only gets stored if it starts up and matches the manifest. None of this has to carry much weight, because **the server never trusted the client's engine to begin with** — tampering with the bundle on your own phone changes only what shows up on your own screen. What signing would protect here is a player not fooling themselves.
 
@@ -355,7 +364,7 @@ What the server hands back is a pointer, not the content — almost every launch
 - Offline, 500, 404 → this update attempt is silently skipped, retried next launch.
 - Bundle fails to start → discarded before it's ever stored.
 - A stored bundle turns out not to start at launch → the app falls back to the engine built into the binary and discards the stored one. That fallback is the difference between "this update didn't take" and "the app won't open."
-- **The app itself ships a newer engine than what's stored** → the stored one gets discarded. This is the rollback case, and the one I got wrong twice. There's no inherent ordering between two version hashes, so the app compares "the bytes of the engine currently built into the binary" against "which one the stored copy was staged on top of." It used to compare build numbers instead — a local rebuild never touches that number, so a stored bundle would outrank every rebuild, and the JavaScript running on the phone ended up months older than the app surrounding it.
+- **The app itself ships a newer engine than what's stored** → the older one gets discarded. This is the rollback case, and the one I got wrong three times, each time by trying to build an ordering out of something that hasn't got one. First it compared build numbers: a local rebuild never touches `CFBundleVersion`, so a stored bundle outranked every rebuild, and the JavaScript on the phone ended up months older than the app around it. Then it compared the bytes of the compiled-in engine against a record of which bytes each download had been staged on top of — three stored values, all in service of working out which of two copies was newer, and still wrong at the edges: shipping a release threw away a *newer* staged download and fell back to the binary's older copy, then re-fetched it. Then I stopped being clever and put a number on the bundle. `max(running, staged)` versus what the server offers, strictly greater so a rolled-back server can't push anyone backwards, and the whole class of bug goes with it.
 
 **Web's OTA is just a reload**, and the design question is entirely **when**. No prompt, no mid-run swap: it reloads at the one moment there's genuinely nothing to lose — a table that's been dealt but never touched. That covers exactly the cases that actually happen: a tab left open overnight, a deploy landing while you're sitting on the results screen. The native app makes the same trade-off, just moving that moment to the next cold start.
 
@@ -445,14 +454,14 @@ type DeleteScoreRequest = { id: string; playerId: string };
 
 type EngineManifest = {
   version: string; // which ruleset
-  build: string; // which bytes
-  minUI: number; // oldest UI version that can draw the table
+  serial: number; // which bundle, as an order
+  minUI: number; // the oldest UI version this may be handed to at all
   path: string; // a path, not an absolute URL
   accepts: string[]; // every version the archive can still replay
 };
 ```
 
-`ScoreRequest` has no `score` field, and that's not an omission — it's what all of section 4 was about. `DeleteScoreRequest` scopes itself with `(id, player)` together, the deletion rule from section 10. And `version` and `build` existing as separate fields is the distinction from section 9: one names the ruleset, the other names the bytes.
+`ScoreRequest` has no `score` field, and that's not an omission — it's what all of section 4 was about. `DeleteScoreRequest` scopes itself with `(id, player)` together, the deletion rule from section 10. And `version` and `serial` existing as separate fields is the distinction from section 9: one names the ruleset, the other names the bundle and can be compared.
 
 ---
 
@@ -763,7 +772,7 @@ e99a0a3e2210      0    no row needs it — droppable
 
 所以編進 app 的那份是**地板**，伺服器上的是**天花板**。地板一樣能玩、能上榜，因為伺服器是用那一局宣告的版本重播的（第 8 節）。
 
-這其實就是 CodePush、Expo Updates 那類 OTA 的形狀：binary 裡一份 baseline ＋ 背景抓更新 ＋ 下次啟動套用。差別只在它們多半會在 splash 期間等下載完成，Tefuda 不等，12 KB 的遊戲引擎差異不值得任何人多看一秒的載入畫面。規模也要講清楚：這不是什麼 code push 框架，就是**一次雜湊比對加一次檔案下載**。
+這其實就是 CodePush、Expo Updates 那類 OTA 的形狀：binary 裡一份 baseline ＋ 背景抓更新 ＋ 下次啟動套用。差別只在它們多半會在 splash 期間等下載完成，Tefuda 不等，12 KB 的遊戲引擎差異不值得任何人多看一秒的載入畫面。規模也要講清楚：這不是什麼 code push 框架，就是**一次整數比對加一次檔案下載**。
 
 #### 流程，包含它決定「不更新」的每個岔路
 
@@ -771,18 +780,19 @@ e99a0a3e2210      0    no row needs it — droppable
 flowchart TD
   DEV["我改了 lib/game"] --> BUILD["建置：推導 ENGINE_VERSION、<br/>打包 engine.js、封存一份"]
   BUILD --> DEPLOY["部署，engine.js 成為靜態資源"]
-  DEPLOY --> MANIFEST("GET /api/engine<br/>version · build · minUI · path")
+  DEPLOY --> MANIFEST("GET /api/engine<br/>version · serial · minUI · path")
 
   APP["app 用手上的引擎啟動<br/>牌桌已經畫好，可以玩了"] --> MANIFEST
-  MANIFEST --> SAME{"build 雜湊和我手上的一樣？"}
-  SAME -->|"一樣"| STOP["什麼都不做<br/>幾乎每次啟動都停在這"]
-  SAME -->|"不一樣"| UI{"它需要比我畫得出來更新的牌桌嗎？"}
-  UI -->|"需要"| HOLD["留著現有引擎<br/>照樣能玩、能上榜"]
-  UI -->|"不需要"| DL["下載 engine.js"]
-  DL --> PROBE{"丟進臨時 context 跑起來——<br/>起得來嗎？它說自己是哪個版本？"}
+  MANIFEST --> SAME{"serial 比我手上任何一份都高？"}
+  SAME -->|"沒有"| STOP["什麼都不做<br/>幾乎每次啟動都停在這"]
+  SAME -->|"有"| UI{"我的牌桌低於它的地板嗎？"}
+  UI -->|"是"| HOLD["留著現有引擎<br/>照樣能玩、能上榜"]
+  UI -->|"否"| DL["下載 engine.js"]
+  DL --> PROBE{"丟進臨時 context 跑起來——<br/>起得來嗎？版本和 serial<br/>跟 manifest 說好的一樣嗎？"}
   PROBE -->|"起不來或對不上"| DROP["丟掉，這次當沒發生"]
   PROBE -->|"起得來且對得上"| STAGE["寫進 Application Support，<br/>標記為下次啟動採用"]
   STAGE --> COLD["下次冷啟動時換上"]
+  COLD --> BOARD["啟動時告訴它這是哪張牌桌——<br/>這張畫不出來的就不發"]
 ```
 
 伺服器給的是一個指標，不是內容，幾乎每次啟動都只是一百多個位元組：
@@ -790,16 +800,24 @@ flowchart TD
 ```ts
 {
   version: ENGINE_VERSION,    // 哪一套遊戲引擎
-  build: sha256(servedBytes), // 哪一份位元組
-  minUI: MIN_APP_UI,          // 最舊哪一版牌桌畫得出來
+  serial: ENGINE_SERIAL,      // 哪一份 bundle，而且分得出先後
+  minUI: MIN_APP_UI,          // 最舊哪一版牌桌收得了這份
   path: '/engine.js',         // 一條路徑，不是絕對網址
   accepts: ENGINE_HISTORY,    // 封存還重播得了的每一個版本
 }
 ```
 
-**為什麼光有 `version` 不夠。** `ENGINE_VERSION` 只雜湊重播閉包，但 bundle 裡裝的比那個閉包多：`lib/wire`、新手教學、橋接介面都在裡面。改一次通訊協定會產生不同的位元組、卻是同一個版本字串；只看 `version` 的 app 就會永遠停在舊 bundle 上，而且沒有任何症狀，因為它本來會的事情都還能做。這不是假設：新的 `wire.enginePath` 就是這樣上線的，在 `build` 加進來之前，一台裝好的 app 都沒收到。**版本說的是哪套遊戲引擎，雜湊說的是哪份位元組。**
+**為什麼光有 `version` 不夠，而雜湊也還是不夠。** `ENGINE_VERSION` 只雜湊重播閉包，但 bundle 裡裝的比那個閉包多：`lib/wire`、新手教學、橋接介面都在裡面。改一次通訊協定會產生不同的位元組、卻是同一個版本字串；只看 `version` 的 app 就會永遠停在舊 bundle 上，而且沒有任何症狀，因為它本來會的事情都還能做。這不是假設：新的 `wire.enginePath` 就是這樣上線的，在 manifest 開始描述位元組之前，一台裝好的 app 都沒收到。
 
-**更新得了什麼**：分數表、牌組組成、一步棋做什麼、每日挑戰的變化、通訊協定、新手教學腳本，bundle 裡是 JavaScript 的東西都行。**更新不了什麼**：Swift。一份 bundle 教得會 app 新的數字，教不會它畫出一個二進位檔裡根本不存在的控制項，`minUI` 就是講這件事的。具體一點：禪模式沒有時鐘也不能棄牌，所以一張在 zen 出現之前做好的牌桌，會在一個再也不會超時的目標旁邊印出「還剩 −1 次擺放」，旁邊還擺一個按了沒反應的按鈕。什麼都不會當掉，畫面只是在描述另一款遊戲。低於 `minUI` 的 app 因此留著手上的引擎，照樣送得出成績。這是提醒，不是斷崖。
+改成雜湊位元組修好了那個，我也真的上線了，然後發現它還是不夠——因為雜湊回答的是「這兩份一不一樣」，而 app 真正要問的是**「這兩份哪一份比較新」**。它手上永遠同時有兩份引擎，編進二進位檔的那份和上次下載的那份，而兩個雜湊之間沒有先後可言。所以有了 serial：這個 repo 一共產出過幾份不同的 bundle，蓋在 bundle 第一行，數字大的就是新的，比較就這樣結束了。**版本說的是哪套遊戲引擎，serial 說的是哪一份 bundle，而且分得出先後。**
+
+它數的是 bundle，不是 commit 也不是建置次數，這正是它能重現的原因：拿去決定要不要加一的雜湊，算的是**還沒蓋上 serial 之前**的 bundle。同一份 `lib/game` 重建，會得到同樣的雜湊、同樣的 serial、同樣的位元組。用 commit 數的話，一個沒動到規則的改動也會讓它移動；用時間戳的話，每次建置都移動，committed 的那份就永遠是過期的，而且過期得毫無意義。
+
+**更新得了什麼**：分數表、牌組組成、一步棋做什麼、每日挑戰的變化、通訊協定、新手教學腳本，bundle 裡是 JavaScript 的東西都行。**更新不了什麼**：Swift。一份 bundle 教得會 app 新的數字，教不會它畫出一個二進位檔裡根本不存在的控制項。
+
+這件事有兩種講法，而我兩種都用過了。第一種是整份 bundle 拒收：那就是 `minUI`，跟著畫不出來的規則改動一起往上推，比它舊的 app 全部留著手上的引擎。這能動，而且比看起來鈍得多——被擋下來的 app 連同它畫不出來的那個功能，一起失去了那次的平衡調整，而且之後每一次也都失去，因為後面的建置再也不會宣告舊的那個數字。一次發版，那一片 app 就永久凍住了，而且從裡面完全看不出來。
+
+第二種是讓引擎自己按功能決定。啟動時 app 告訴 bundle 它是哪張牌桌，需要這張牌桌沒有的東西的規則，就不發給它。一份 bundle 給所有人，每一台 app 永遠收得到每一次平衡調整，而一個功能會先暗著上線，等畫得出來的那版二進位檔出去為止——就是 feature flag 的老形狀，只是這個 flag 住在規則裡，而這款遊戲的其他每一件事本來就住在那裡。`minUI` 留下來當地板，記錄用舊方法擋掉的那幾級（一張在 zen 出現之前做好的牌桌，沒有 case 可以解出花色 perk，只會讓那局停住而不是把它畫出來），而且不打算再動了。
 
 **安全性，老實講。** 這份 bundle 沒有簽章。傳輸是 HTTPS，連的是 app 本來就在連的同一個 origin，而伺服器回的是一條**路徑**不是絕對網址，所以伺服器上的東西沒辦法把裝置指到別台主機去。完整性用「跑跑看」檢查：下載回來的 bundle 先在用完即丟的 context 裡求值，再問它自己是哪個版本，起得來又跟 manifest 一致才會存起來。這些不必扛太重的責任，是因為**伺服器本來就不信任用戶端的引擎**。有人去改自己手機上那份，改到的只有自己螢幕上的數字。簽章在這裡要保護的，是玩家不要騙自己。
 
@@ -808,7 +826,7 @@ flowchart TD
 - 離線、500、404 → 這次更新安靜跳過，下次啟動再試。
 - Bundle 起不來 → 在存檔之前就被丟掉。
 - 存起來的 bundle 在啟動時起不來 → app 退回編進二進位檔的那份，並把存起來的丟掉。這個退路就是「這次更新沒用」和「app 開不起來」之間的差別。
-- **app 自己送了一份比存起來更新的引擎** → 把存起來的丟掉。這是 rollback 的情況，也是我做錯兩次的地方。兩個版本雜湊之間沒有先後可言，所以 app 比的是「目前二進位檔裡那份引擎的**位元組**」和「當初是蓋在哪份上面存的」。以前比的是 build number，而本機重建永遠不會動到它，於是一份存起來的 bundle 蓋過了每一次重建，最後手機上跑的 JavaScript 比它外面那個 app 還舊了好幾個月。
+- **app 自己送了一份比存起來更新的引擎** → 把舊的那份丟掉。這是 rollback 的情況，也是我做錯三次的地方，每一次都是想從一個本來就沒有先後的東西上面生出先後來。第一次比的是 build number，而本機重建永遠不會動到 `CFBundleVersion`，於是一份存起來的 bundle 蓋過了每一次重建，最後手機上跑的 JavaScript 比它外面那個 app 還舊了好幾個月。第二次比的是「編進二進位檔那份引擎的位元組」和「每份下載當初是蓋在哪份位元組上面存的」——三個存起來的值，全都只是為了算出兩份之中哪份比較新，而且邊角上還是錯的：發一次版會把一份**更新的**已下載 bundle 丟掉，退回二進位檔裡比較舊的那份，然後再抓一次。第三次我不聰明了，直接在 bundle 上面寫一個數字。`max(手上跑的, 存起來的)` 對上伺服器給的，嚴格大於才換，所以一台回退過的伺服器推不了任何人往後走，整類 bug 也跟著一起沒了。
 
 **網頁那邊的 OTA 就是重新載入**，設計問題在**什麼時候**。不跳提示，也不在局中抽換：在唯一沒有東西可失去的那一刻重新載入，也就是牌已經發好、但還沒動過的盤面。這剛好涵蓋了真正會發生的情況（分頁開著過了一夜、你停在結算畫面時剛好有一次部署）。原生 app 是同一個取捨，只是把那一刻挪到下次冷啟動。
 
@@ -898,11 +916,11 @@ type DeleteScoreRequest = { id: string; playerId: string };
 
 type EngineManifest = {
   version: string; // 哪一套遊戲引擎
-  build: string; // 哪一份位元組
-  minUI: number; // 最舊哪一版牌桌畫得出來
+  serial: number; // 哪一份 bundle，而且分得出先後
+  minUI: number; // 最舊哪一版牌桌收得了這份
   path: string; // 一條路徑，不是絕對網址
   accepts: string[]; // 封存還重播得了的每一個版本
 };
 ```
 
-`ScoreRequest` 沒有 `score` 欄位不是省略，那正是第 4 節在講的事；`DeleteScoreRequest` 靠 `(id, player)` 一起限定範圍，是第 10 節那條刪除規則；`EngineManifest` 把 `version` 和 `build` 分開，是第 9 節那個區別：一個說遊戲引擎，一個說位元組。
+`ScoreRequest` 沒有 `score` 欄位不是省略，那正是第 4 節在講的事；`DeleteScoreRequest` 靠 `(id, player)` 一起限定範圍，是第 10 節那條刪除規則；`EngineManifest` 把 `version` 和 `serial` 分開，是第 9 節那個區別：一個說遊戲引擎，一個說哪份 bundle，而且比得出先後。

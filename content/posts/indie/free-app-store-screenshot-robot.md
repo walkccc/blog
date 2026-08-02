@@ -11,125 +11,123 @@ _[English](#en) · [中文](#zh)_
 
 ## English
 
-App Store screenshots are the chore nobody warns you about. A finished iOS app needs a set per language, a set per device family, and a fresh set every time you nudge a color. For [Zestimer](https://zestimer.com) that is ten languages × about ten scenes × iPhone-plus-Watch — call it a hundred and fifty images — and the moment I touched the design system, all of them were wrong.
+> **Updated 6 August 2026.** The shape below is the one I still use; the parts underneath it changed. The pipeline is now one installed program, [appkit](https://github.com/walkccc/appkit) — the stage-by-stage sections have been rewritten to match, and the fastlane and NumPy versions are gone. If you want the engineering rather than the blueprint, that's [appkit: One Installed Program](/posts/indie/appkit-one-installed-program/).
 
-So I did what any tired solo developer does: I built a robot. The whole pipeline now runs from one command, ships to App Store Connect in ten languages, and costs nothing to reproduce. This post is the blueprint — every stage, the one genuinely clever trick, and the free parts list, so you can lift it wholesale.
+App Store screenshots are the chore nobody warns you about. A finished iOS app needs a set per language, a set per device family, and a fresh set every time you nudge a color. For [Zestimer](https://zestimer.com) that is ten languages × about ten scenes × iPhone-plus-Watch — a hundred and forty-three images — and the moment I touched the design system, all of them were wrong.
+
+So I did what any tired solo developer does: I built a robot. This post is the blueprint — every stage, and the free parts list, so you can lift it wholesale.
 
 ### The Shape of It
 
-A screenshot pipeline is four jobs pretending to be one:
+A screenshot pipeline looks like four jobs pretending to be one:
 
-1. **Capture** — get clean pixels of each screen, in each language.
-2. **Render** — drop those pixels into framed, captioned marketing cards.
+1. **Capture** — clean pixels of each screen, in each language.
+2. **Render** — those pixels, in framed and captioned marketing cards.
 3. **Stabilize** — know, reliably, whether anything actually changed.
-4. **Upload** — push the final set to App Store Connect.
+4. **Upload** — push the final set to the store.
 
-Most people wire these together with UI-test recordings and a pile of manual Figma work. I wanted none of that. Every stage below is a plain script, and one Claude Code _skill_ drives all four so I never have to remember the order.
+It took me a year to notice there is a fifth, and that I had been doing it with my eyes. More on that below.
 
 ### Stage 1: Capture Inside the App, Not the UI
 
-The standard advice is to drive `XCUITest` — launch the app, tap through to each screen, snapshot. I find UI tests for screenshots miserable: they're slow, flaky, and they break every time a button moves.
+The standard advice is to drive `XCUITest` — launch the app, tap through to each screen, snapshot. I find UI tests for screenshots miserable: slow, flaky, and broken every time a button moves.
 
-The trick that made this pleasant is to make the screenshots a _feature of the app_, reachable by a launch argument. Zestimer ships a `-ScreenshotMode` that swaps in an in-memory SwiftData store, seeds deterministic demo data, and reads a `-ScreenshotScene` argument to jump straight to one surface. No tapping, no navigation, no waiting for animations. Each screen is one launch:
+The trick is to make screenshots a _feature of the app_, reachable by a launch argument. Zestimer ships a `-ScreenshotMode` that swaps in an in-memory SwiftData store, seeds deterministic demo data, and reads `-ScreenshotScene` to jump straight to one surface. No tapping, no navigation. Each screen is one launch:
 
 ```sh
-xcrun simctl launch --terminate-running-process "$UDID" com.your.app \
-  -ScreenshotMode -ScreenshotScene activeWorkout -ScreenshotLanguage japanese
-xcrun simctl io "$UDID" screenshot --type=png out/ja/active.png
+Zestimer -ScreenshotMode -ScreenshotScene activeWorkout -AppleLanguages "(ja)"
 ```
 
-Loop that over `{scene} × {language}` and the whole set falls out in a couple of minutes. A full pass for me is a hundred launches, and because the data is seeded (not live), the Japanese card and the German card show the _same_ workout — which is exactly what you want when the store reviewer compares locales. The one rule that saved me: an unknown `-ScreenshotLanguage` should **trap** — not silently fall back to English, or you'll ship an English card in a Korean listing and never notice.
+Loop that over `{scene} × {language}` and the set falls out in a couple of minutes. Because the data is seeded rather than live, the Japanese card and the German card show the _same_ workout — which is what you want when a reviewer compares locales. The one rule that saved me: an unknown scene should **trap**, not silently fall back, or you ship an English card in a Korean listing and never notice.
 
-Everything here is free and Apple-native: `simctl` for boot, appearance, status-bar override (pin it to 9:41), and capture. No third-party runner.
+The other half is knowing when the screen is ready. Don't sleep for a guessed number of seconds — snap until two consecutive frames are byte-identical. A screen nobody is animating renders the same bytes every frame, so the shutter can ask the screen instead of guessing.
+
+Everything here is free and Apple-native: `simctl` for boot, appearance, status-bar override (pin it to 9:41), and capture.
 
 ### Stage 2: Render the Cards — Screenshots Are Ads
 
-Raw simulator captures are documentation. The store wants _advertisements_: a device frame, a headline that sells one idea, a background that's on-brand. That framing is its own tool, and it's the one stage I used to pay for.
+Raw simulator captures are documentation. The store wants _advertisements_: a device frame, a headline that sells one idea, an on-brand background.
 
-Here's the important update. There's now a free Claude Code skill, `app-store-screenshots`, that scaffolds a complete Next.js editor into your project: live preview at true resolution, drag-to-reorder, inline caption editing, per-locale text, light/dark variants, cross-screen "panoramic" composition, and one-click bulk export at every Apple and Google resolution via `html-to-image`. It writes an `app-store-screenshots.json` you can commit, so your card layouts live in git alongside the app.
+I compose them with CoreGraphics and CoreText, driven by a JSON storyboard the app repo owns — not a headless browser. Two reasons, and the second is the one that matters:
 
-That means the expensive-looking part of this pipeline — the framed marketing cards — is now a `npm run` away, for free, running entirely on your machine. My own renderer feeds captions per language and exports one folder per locale; the skill's template does the same job out of the box.
+- **CoreText is the only thing on the machine that lays out Japanese and Korean beside Latin from an explicit font cascade** rather than a guess. Ten languages, one renderer, no font-per-script.
+- **It is byte-deterministic.** Same storyboard and same captures in, same bytes out, every run, on every machine. Which sets up the next stage.
+
+The storyboard is JSON rather than code so that it stays _data_ — a preview, a second renderer, or a checker can read the same file.
 
 ### Stage 3: Make Git the Source of Truth
 
-This is the trick I'm proudest of, and it's five lines of Python.
+This is the idea I am proudest of, and it survived every rewrite of everything around it.
 
-The problem: the rendered cards are committed to git, but a headless Chromium render isn't byte-stable. Glass materials and anti-aliasing dither by a pixel or two between runs. If you commit every render, `git status` is always dirty and you can never answer the only question that matters: _did a screenshot actually change?_
+The rendered cards are committed to git. If every render rewrites every file, `git status` is always dirty and you can never answer the only question that matters: _did a screenshot actually change?_
 
-The fix is a diff gate. After each render, compare the new PNG against the committed one. If they differ only within rendering noise, **keep the old bytes**:
+So after each render, compare each new card against the committed one, and where the **picture** did not change, put the old bytes back. Picture, not bytes: the simulator lays a faint dither over glass and gradients, so two captures of a screen nobody touched come back differing by a level or two in a few thousand pixels — invisible on any display, and enough to rewrite a card and put it in `git status`. The gate compares per channel with a small tolerance and restores anything under it.
 
-```python
-old = numpy.asarray(Image.open(previous).convert("RGB"), dtype=numpy.int16)
-new = numpy.asarray(Image.open(fresh).convert("RGB"), dtype=numpy.int16)
-# Dither lands in the low tens per pixel; a real change (a redrawn digit,
-# moved text) lands in the hundreds. 32 splits them cleanly.
-changed = int((numpy.abs(old - new).sum(axis=2) > 32).sum())
-if changed < 48:
-    shutil.copy(previous, fresh)   # unchanged: restore committed bytes
+Now a clean `git status` on the screenshots folder _is_ the answer: nothing changed, skip the upload. No manifest, no hashes, no state file. The version control you already have becomes the change-detection system you didn't want to build.
+
+And it is worth saying out loud what a restored card means: a card held at the old bytes is a card that will not be uploaded. So a run that puts _any_ back had a scene that would not hold still, and that is worth chasing rather than tolerating.
+
+### Stage 4: The Fifth Job — Look at Them
+
+Here is the stage I had for a year without noticing it was one.
+
+`git status` tells you _whether_ a card changed. It cannot tell you **which**, because a PNG diff in a terminal is a line saying the bytes differ. So every release ended the same way: open the folder, click through forty images, decide if the German one still fits, and hope. That is not review. That is squinting.
+
+So the pipeline now draws itself a contact sheet — one row per locale, one column per card, a red frame where git says a card changed and a green one where it is new:
+
+```sh
+appkit review screenshots
 ```
 
-Now a clean `git status` on the screenshots folder _is_ the answer: nothing changed, skip the upload. A dirty status is a real diff you can eyeball before it ships. The whole "did I need to recapture?" decision collapses into `git diff` — no manifest, no hashes, no state file. The version control you already have becomes the change-detection system you didn't want to build.
+![A contact sheet of 143 store cards across 11 locales, one row per language](/images/appkit-contact-sheet.png)
 
-### Stage 4: Upload With Fastlane
+One picture, a hundred and forty-three cards, eleven languages. Three things fall out of it that no per-file diff ever showed me:
 
-The last mile is [fastlane](https://fastlane.tools) `deliver`, which is free and open source. It uploads a folder of screenshots per locale to App Store Connect over the API. Two details worth stealing:
+- **A hole in the grid is a locale short of a scene.** It is the single most common way a set goes wrong and the hardest to see one file at a time.
+- **A row that looks different from every other row** is usually a language whose text overflowed, and you see it at a glance instead of at review time.
+- **A card framed red for no reason you can name** is a screen that would not hold still. Chase it now, not after the upload.
 
-- **deliver assigns each image to a device family by its pixel dimensions.** So the 416-px-wide Apple Watch captures and the 1242-px iPhone cards can live in the _same_ locale folder — deliver sorts them onto the right device automatically. Numeric filename prefixes (`1-list`, `2-active`) set the on-store order.
-- **One capture set can feed two listings.** Spanish ships as `es-ES` and `es-MX` on the store, but the screenshots are identical — so I render `es-ES` once and mirror the folder to `es-MX` before upload.
+The cost of finding out used to be opening App Store Connect and squinting. Now it is one command and one look.
 
-Split the pipeline into three scripts — `generate` (capture + render + stage), `publish-screenshots`, `publish-metadata` — so the slow, serialized upload is its own step you only run when Stage 3 says something changed.
+### Stage 5: Upload
 
-### The Skill That Runs the Whole Thing
+The last mile is the store's own API — [`asc`](https://github.com/rork-labs/asc) for the App Store, the Publishing API for Play — wrapped so I never hold their flags in my head:
 
-Four scripts is still four things to remember, in order, with the right arguments. The layer that makes it feel like a robot is a Claude Code **skill**.
-
-Two primitives do the work, and they're worth distinguishing:
-
-- An **`AGENTS.md`** (or `CLAUDE.md`) is the _harness_ — the standing rules your AI pair follows on every task: architecture, design tokens, tone, the ban on compiling the app unless it's a release. It's the constitution.
-- A **skill** is a _packaged procedure_ — a Markdown file with front matter that the agent invokes on demand. It's a runbook you write once and trigger with a slash command.
-
-My `/release` skill is the runbook for shipping. Its front matter tells the agent when to fire; its body is the checklist:
-
-```markdown
----
-name: release
-description: Ship the App Store release end to end — draft What's New in every
-  locale from the git log, bump the version, sync the site, capture and upload
-  screenshots when a screen changed, push metadata. Use on "/release".
----
-
-1. Diff `last-release..HEAD`, keep only user-visible changes.
-2. Draft What's New in every locale (a real rewrite, never a literal
-   translation).
-3. Bump the version.
-4. If a rendered screen changed, run generate → publish-screenshots.
-5. Push metadata. Report which path you took — never claim an upload
-   succeeded unless the command did.
+```sh
+appkit upload screenshots 1.3.0
 ```
 
-When I type `/release 1.4`, the agent reads the git log since the last release, writes the release notes in eleven locales, bumps the version, decides from the diff whether any _rendered_ screen changed, and — only if it did — runs the capture-render-upload chain in the background. It hands me back exactly two things Apple gates behind a signed build: the Xcode archive and the final Submit. The judgment ("does this diff touch a screen?", "is this note honest?") lives in the skill's prose; the mechanics live in the scripts it calls.
+Two details worth stealing whatever you use:
 
-That's the real unlock. The scripts made the work _possible_; the skill made it _delegable_.
+- **Images are filed to a device family by their pixel dimensions**, and on the App Store `--device-type` is a _filter_. A set whose pixels match none of your declared types uploads **zero files and reports success**. I have shipped that bug. Check your card size against your declared display type on every run.
+- **One capture set can feed two listings.** Spanish ships as `es-ES` and `es-MX`, with identical screenshots — render once, upload twice.
+
+### The Command Is the Mechanism, the Skill Is the Judgement
+
+Scripts are still things to remember, in order, with the right arguments. The layer that makes it a robot is a Claude Code **skill** — and the split between the two is the part worth copying.
+
+A **command** writes files and moves bytes. A **skill** carries the judgement a script does not have: whether a settle floor reaches past an animation's start, whether this is the release where submitting is safe, whether a caption should be borrowed verbatim from the app's own strings. `/appkit-release` is the runbook; `appkit ship` is the mechanism.
+
+That's the real unlock. The scripts made the work _possible_; the skill made it _delegable_ — and unlike my memory of "what did I do last time", a skill does not degrade between releases.
 
 ### Copy This, For Free
 
-Here's the full parts list. Every line is free or open source:
+| Stage     | Tool                                   | Cost         |
+| --------- | -------------------------------------- | ------------ |
+| Capture   | `simctl` + an in-app `-ScreenshotMode` | free (Apple) |
+| Render    | CoreGraphics + CoreText                | free (Apple) |
+| Stabilize | a same-picture gate over git           | free         |
+| Review    | a contact sheet                        | free         |
+| Upload    | `asc` / the Play Publishing API        | free         |
+| Orchestr. | a Claude Code skill + `AGENTS.md`      | free         |
 
-| Stage       | Tool                                   | Cost               |
-| ----------- | -------------------------------------- | ------------------ |
-| Capture     | `simctl` + an in-app `-ScreenshotMode` | free (Apple)       |
-| Render      | `app-store-screenshots` Claude skill   | free, local        |
-| Stabilize   | ~10 lines of Python + NumPy/Pillow     | free               |
-| Upload      | fastlane `deliver`                     | free (open source) |
-| Orchestrate | a Claude Code skill + `AGENTS.md`      | free               |
-
-The only piece that ever cost money — the marketing-card renderer — is now the free skill. So the honest summary is: **the entire pipeline is reproducible for zero dollars.** Add `-ScreenshotMode` to your app, scaffold the renderer with the skill, drop in the diff gate, point fastlane at the folders, and write a `/release` runbook that ties them together.
+Every line is free or open source, and all of it is [appkit](https://github.com/walkccc/appkit), which is one `brew install`.
 
 ### The Takeaway
 
-The screenshots were never the hard part. The hard part was the _loop_ — that every design change silently invalidated a hundred images, and the cost of finding out was opening App Store Connect and squinting. Automating the capture saved minutes. Making git the source of truth saved the loop. And writing the whole thing down as a skill meant the robot could run it, not just me.
+The screenshots were never the hard part. The hard part was the _loop_ — that every design change silently invalidated a hundred images, and the cost of finding out was your own eyes.
 
-The best tools a solo developer builds aren't features. They're the machines that let one person keep shipping like a team — and, increasingly, they're free.
+Automating the capture saved minutes. Making git the source of truth saved the loop. Drawing the contact sheet was the one that surprised me: the stage I had never automated was the one I was doing manually every single release without ever calling it work.
 
 ---
 
@@ -137,119 +135,120 @@ The best tools a solo developer builds aren't features. They're the machines tha
 
 ## 中文
 
-App Store 截圖是沒人事先警告你的雜事。一個做完的 iOS App，每種語言要一組、每個裝置家族要一組，而且每次只是微調一個顏色，就得重做一次。以 [Zestimer](https://zestimer.com) 來說，那是十種語言 × 大約十個畫面 × iPhone 加 Apple Watch——大概一百五十張圖——而我只要一動到設計系統，這一百五十張就全部過時了。
+> **2026 年 8 月 6 日更新。** 下面的「形狀」我到今天還在用；底下的零件全換過了。整條流程現在是一個安裝好的程式 [appkit](https://github.com/walkccc/appkit)，各階段的內容已改寫成現況，fastlane 和 NumPy 那兩版都拿掉了。想看工程細節而不是藍圖的話，看 [appkit：一個安裝好的程式](/posts/indie/appkit-one-installed-program/)。
 
-於是我做了任何一個累壞的獨立開發者都會做的事：寫了一隻機器人。現在整條流程一個指令跑完，用十種語言上傳到 App Store Connect，而且要重現它不用花半毛錢。這篇文章就是藍圖——每個階段、那個真正聰明的小技巧，還有一份全免費的清單，讓你可以整套搬走。
+App Store 截圖是沒人事先警告你的雜事。一個做完的 iOS App，每種語言要一組、每個裝置家族要一組，而且只是微調一個顏色，就得重做一次。以 [Zestimer](https://zestimer.com) 來說，那是十種語言 × 大約十個畫面 × iPhone 加 Apple Watch——143 張圖——而我只要一動到設計系統，這 143 張就全部過時了。
+
+於是我做了任何一個累壞的獨立開發者都會做的事：寫了一隻機器人。這篇是藍圖——每個階段，還有一份全免費的零件清單，讓你整套搬走。
 
 ### 全貌
 
-一條截圖流程，其實是四件事假裝成一件：
+一條截圖流程，看起來是四件事假裝成一件：
 
-1. **擷取（Capture）**——把每個畫面、每種語言，拍成乾淨的像素。
-2. **渲染（Render）**——把那些像素放進有裝置外框、有標語的行銷卡。
-3. **穩定（Stabilize）**——可靠地知道「到底有沒有東西真的變了」。
-4. **上傳（Upload）**——把最終成品推上 App Store Connect。
+1. **擷取**——把每個畫面、每種語言拍成乾淨的像素。
+2. **渲染**——把那些像素放進有外框、有標語的行銷卡。
+3. **穩定**——可靠地知道「到底有沒有東西真的變了」。
+4. **上傳**——把成品推上商店。
 
-多數人會用 UI 測試錄影加上一堆手動 Figma 把這些接起來。我一樣都不想要。下面每個階段都是一支單純的腳本，再由一個 Claude Code **skill** 統一驅動這四步，我就永遠不用記順序。
+我花了一年才發現還有第五件，而且我一直是用眼睛在做它。下面會講。
 
 ### 第一步：在 App 內截圖，而不是驅動 UI
 
-標準做法是驅動 `XCUITest`——啟動 App、一路點進每個畫面、截圖。我覺得用 UI 測試來截圖很痛苦：又慢、又不穩，而且只要有顆按鈕移動就會壞掉。
+標準做法是驅動 `XCUITest`——啟動 App、一路點進每個畫面、截圖。我覺得用 UI 測試截圖很痛苦：又慢、又不穩，只要有顆按鈕移動就會壞掉。
 
-讓這件事變得愉快的關鍵，是把截圖做成 **App 本身的一個功能**，用啟動參數就能到達。Zestimer 內建一個 `-ScreenshotMode`：它換上一個記憶體內的 SwiftData store、塞入固定不變的示範資料，再讀 `-ScreenshotScene` 參數直接跳到某個畫面。不用點、不用導覽、不用等動畫。每個畫面就是一次啟動：
+關鍵是把截圖做成 **App 本身的一個功能**，用啟動參數就能到達。Zestimer 內建一個 `-ScreenshotMode`：換上記憶體內的 SwiftData store、塞入固定的示範資料，再讀 `-ScreenshotScene` 直接跳到某個畫面。不用點、不用導覽。每個畫面就是一次啟動：
 
 ```sh
-xcrun simctl launch --terminate-running-process "$UDID" com.your.app \
-  -ScreenshotMode -ScreenshotScene activeWorkout -ScreenshotLanguage japanese
-xcrun simctl io "$UDID" screenshot --type=png out/ja/active.png
+Zestimer -ScreenshotMode -ScreenshotScene activeWorkout -AppleLanguages "(ja)"
 ```
 
-把它在 `{畫面} × {語言}` 上跑一圈，整組圖幾分鐘就出來了。我的完整一輪是一百次啟動，而因為資料是「種」進去的（不是真實資料），日文卡和德文卡顯示的是**同一組**訓練——這正是審查人員比對各語系時你會想要的效果。有一條規則救了我：碰到未知的 `-ScreenshotLanguage` 應該直接 **trap（崩掉）**，而不是默默退回英文，否則你會在韓文 listing 裡放一張英文卡，卻永遠不會發現。
+在 `{畫面} × {語言}` 上跑一圈，整組圖幾分鐘就出來。因為資料是「種」進去的而不是真實資料，日文卡和德文卡顯示的是**同一組**訓練——這正是審查人員比對各語系時你會想要的。有一條規則救了我：碰到未知的畫面名稱應該直接 **trap**，而不是默默退回預設，否則你會在韓文 listing 裡放一張英文卡，卻永遠不會發現。
 
-這裡的一切都免費、而且是 Apple 原生：用 `simctl` 開機、切外觀、覆寫狀態列（把時間釘在 9:41）、截圖。沒有任何第三方跑腿工具。
+另一半是「畫面什麼時候好了」。不要 sleep 一個猜出來的秒數——**一直拍到連續兩張畫格 byte 完全相同為止**。沒有人在動畫的畫面，每一格都渲染出同樣的 bytes，所以快門可以「問畫面」，而不是用猜的。
+
+這裡的一切都免費、而且是 Apple 原生的。
 
 ### 第二步：把截圖做成廣告卡
 
-模擬器的原始截圖是「說明書」。商店要的是**廣告**：一個裝置外框、一句只賣一個賣點的標題、一個符合品牌調性的背景。這層「包裝」本身是一個獨立的工具，也是我以前唯一要付費的階段。
+模擬器的原始截圖是「說明書」。商店要的是**廣告**：一個裝置外框、一句只賣一個賣點的標題、一個符合品牌調性的背景。
 
-這裡有個重要更新。現在有一個免費的 Claude Code skill：`app-store-screenshots`，它會在你的專案裡骨架化（scaffold）出一套完整的 Next.js 編輯器：真實解析度的即時預覽、拖曳排序、行內編輯標語、每個語系各自的文案、明暗色變體、跨畫面的「全景式」排版，還有透過 `html-to-image` 一鍵匯出所有 Apple 與 Google 要求的尺寸。它會寫出一份你可以 commit 的 `app-store-screenshots.json`，於是你的卡片排版就跟 App 一起存在 git 裡。
+我用 CoreGraphics + CoreText 來合成，由 App repo 自己擁有的一份 JSON 分鏡表驅動——不是無頭瀏覽器。兩個理由，第二個才是重點：
 
-換句話說，這條流程裡看起來最貴的部分——那些有外框、有標語的行銷卡——現在只差一個 `npm run`，免費，而且完全跑在你自己的機器上。我自己的渲染器會依語言餵入標語、每個語系匯出成一個資料夾；這個 skill 的模板開箱即用，做的是同一件事。
+- **CoreText 是這台機器上唯一能用「明確的字型 cascade」把日文、韓文跟拉丁文排在一起的東西**，而不是用猜的。十種語言、一個渲染器、不用每種文字配一套字型。
+- **它逐位元組決定性（byte-deterministic）。** 同樣的分鏡表加同樣的擷取，每次、每台機器都產生同樣的 bytes。這就接到下一步。
+
+分鏡表是 JSON 而不是程式碼，是為了讓它保持是**資料**——預覽、第二個渲染器、或一個檢查器都能讀同一份檔案。
 
 ### 第三步：讓 Git 成為真相來源
 
-這是我最得意的技巧，而它只有五行 Python。
+這是我最得意的想法，而且它撐過了周圍所有東西的每一次重寫。
 
-問題是：渲染出來的卡片會 commit 進 git，但無頭 Chromium 的渲染並不是每個位元組都穩定的。玻璃材質和抗鋸齒會在每次執行之間抖動個一兩像素。如果你把每次渲染都 commit， `git status` 就永遠是髒的，你也就永遠回答不了那個唯一重要的問題：**到底有沒有哪張截圖真的變了？**
+渲染出來的卡片會 commit 進 git。如果每次渲染都重寫每個檔案，`git status` 就永遠是髒的，你也永遠回答不了那個唯一重要的問題：**到底有沒有哪張截圖真的變了？**
 
-解法是一道 diff 閘門。每次渲染後，把新的 PNG 跟已 commit 的那張比對。如果差異只落在渲染雜訊的範圍內，就**保留舊的位元組**：
+所以每次渲染後，把每張新卡跟已 commit 的那張比對，只要**畫面**沒變，就把舊的bytes 放回去。是畫面，不是 bytes：模擬器會在玻璃和漸層上鋪一層很淡的抖動（dither），所以兩張「沒人動過的畫面」的截圖，會在幾千個像素上差一兩個色階——任何螢幕上都看不出來，卻足以重寫一張卡並讓它出現在 `git status` 裡。這道閘門逐通道比對、給一個很小的容差，低於容差的就還原。
 
-```python
-old = numpy.asarray(Image.open(previous).convert("RGB"), dtype=numpy.int16)
-new = numpy.asarray(Image.open(fresh).convert("RGB"), dtype=numpy.int16)
-# 抖動每像素落在十幾的量級；真正的改動（重畫的數字、位移的文字）落在數百。
-# 用 32 就能把兩者乾淨地切開。
-changed = int((numpy.abs(old - new).sum(axis=2) > 32).sum())
-if changed < 48:
-    shutil.copy(previous, fresh)   # 沒變：還原成已 commit 的位元組
+於是截圖資料夾一個乾淨的 `git status` **本身就是答案**：什麼都沒變，跳過上傳。不用清單、不用 hash、不用狀態檔。你早就有的版本控制，變成了那個你本來不想自己造的變更偵測系統。
+
+還有一件值得說出口的事：一張被還原成舊 bytes 的卡，就是一張不會被上傳的卡。所以一次「有還原任何一張」的執行，代表有個畫面靜不下來——那該去追，而不是把容差調大。
+
+### 第四步：第五件事——真的去看它們
+
+這就是我做了一年、卻沒發現它是一個階段的那件事。
+
+`git status` 告訴你「有沒有」卡片變了。它沒辦法告訴你**是哪一張**，因為 PNG 在終端機裡的 diff 就是一行「這兩份 bytes 不一樣」。所以每次發版都以同一件事結尾：打開資料夾，點過四十張圖，判斷德文那張還塞不塞得下，然後祈禱。那不是 review，那是瞇著眼睛看。
+
+所以現在這條流程會自己畫一張**總覽表（contact sheet）**——一列一個語系，一欄一張卡，git 說變了的框紅色，新增的框綠色：
+
+```sh
+appkit review screenshots
 ```
 
-於是截圖資料夾一個乾淨的 `git status` **本身就是答案**：什麼都沒變，跳過上傳。髒的狀態就是一個你可以在上架前親眼看過的真實 diff。整個「我到底需不需要重拍？」的判斷，坍縮成一句 `git diff`——不用清單、不用 hash、不用狀態檔。你早就有的版本控制，變成了那個你本來不想自己造的變更偵測系統。
+![143 張商店卡、11 個語系的總覽表，一列一個語言](/images/appkit-contact-sheet.png)
 
-### 第四步：用 Fastlane 上傳
+一張圖，143 張卡，11 種語言。有三件事會從裡面掉出來，而它們是任何單檔 diff 都沒讓我看見過的：
 
-最後一哩是 [fastlane](https://fastlane.tools) 的 `deliver`，它免費、開源。它會透過 API 把每個語系一個資料夾的截圖上傳到 App Store Connect。有兩個細節值得偷：
+- **格子上的一個洞，就是某個語系少了一個畫面。** 這是整組圖最常見的出錯方式，也是一張一張看時最難發現的。
+- **某一列長得跟其他列都不一樣**，通常是那個語言的文字爆版了，而你現在一眼就看到，不用等到審查時才知道。
+- **一張被框紅、但你講不出理由的卡**，就是一個靜不下來的畫面。現在去追，不要等上傳完。
 
-- **deliver 是依像素尺寸把每張圖分派到裝置家族的。** 所以 416 像素寬的 Apple Watch 截圖，跟 1242 像素的 iPhone 卡，可以放在**同一個**語系資料夾裡——deliver 會自動把它們分到正確的裝置上。檔名前面的數字（`1-list`、`2-active`）決定商店上的排序。
-- **一組擷取可以餵兩個 listing。** 西班牙文在商店上是 `es-ES` 和 `es-MX` 兩個listing，但截圖完全一樣——所以我只渲染 `es-ES` 一次，上傳前把資料夾鏡像到 `es-MX`。
+以前要發現這些事的代價，是打開 App Store Connect 瞇著眼睛比對。現在是一個指令、看一眼。
 
-把流程拆成三支腳本——`generate`（擷取 + 渲染 + 就位）、`publish-screenshots`、 `publish-metadata`——讓那個又慢又必須序列化的上傳自成一步，只有在第三步說「有東西變了」時才跑。
+### 第五步：上傳
 
-### 驅動整條流程的那個 Skill
+最後一哩是商店自己的 API——App Store 用 [`asc`](https://github.com/rork-labs/asc)，Play 用 Publishing API——包起來，讓我永遠不用把它們的參數記在腦子裡：
 
-四支腳本，仍然是四件要記的事，還得照順序、帶對參數。真正讓它「像一隻機器人」的那一層，是一個 Claude Code **skill**。
-
-有兩個基本元件在做事，值得分清楚：
-
-- **`AGENTS.md`**（或 `CLAUDE.md`）是**框架（harness）**——你的 AI 夥伴在每個任務上都遵守的常駐規則：架構、設計 token、語氣、以及「除非是發版否則禁止編譯 App」這種禁令。它是憲法。
-- **skill** 是**打包好的流程**——一份帶 front matter 的 Markdown，讓 agent 隨叫隨用。它是一份你寫一次、用一個斜線指令觸發的作業手冊（runbook）。
-
-我的 `/release` skill 就是發版的作業手冊。它的 front matter 告訴 agent 什麼時候該啟動；它的本體就是那份檢查清單：
-
-```markdown
----
-name: release
-description: 端到端完成 App Store 發版——從 git log 為每個語系草擬 What's New、
-  升版號、同步網站、當畫面有變時擷取並上傳截圖、推送 metadata。用於 "/release"。
----
-
-1. Diff `last-release..HEAD`，只留下使用者看得到的改動。
-2. 為每個語系草擬 What's New（要真正改寫，絕不逐字翻譯）。
-3. 升版號。
-4. 若有被渲染的畫面變了，跑 generate → publish-screenshots。
-5. 推送 metadata。回報你走了哪條路——指令沒成功就絕不宣稱上傳成功。
+```sh
+appkit upload screenshots 1.3.0
 ```
 
-當我打 `/release 1.4`，agent 會讀取上次發版以來的 git log、用十一種語系寫好發版說明、升版號、從 diff 判斷有沒有任何**被渲染的**畫面變了，而且——只有在真的變了時——才在背景跑「擷取—渲染—上傳」這條鏈。它最後只把 Apple 卡在「簽名建置」後面的兩件事交還給我：Xcode 封存（archive），以及最後按下 Submit。判斷（「這個 diff 有沒有動到畫面？」「這則說明誠不誠實？」）活在 skill 的文字裡；機械操作活在它呼叫的腳本裡。
+不管你用什麼，有兩個細節值得偷：
 
-這才是真正的解鎖。腳本讓工作**變得可能**；skill 讓工作**變得可以交付出去**。
+- **圖片是依像素尺寸被分派到裝置家族的**，而 App Store 的 `--device-type` 是一個 **過濾器**。一組像素對不上你宣告的任何類型的圖，會上傳**零個檔案，然後回報成功**。這個 bug 我出過。每次都該拿你的卡片尺寸去對你宣告的顯示類型。
+- **一組擷取可以餵兩個 listing。** 西班牙文在商店上是 `es-ES` 和 `es-MX`，截圖完全一樣——渲染一次，上傳兩次。
+
+### 指令是機制，skill 是判斷
+
+腳本仍然是要記的東西，還得照順序、帶對參數。真正讓它像一隻機器人的那一層，是一個Claude Code **skill**——而這兩者之間的分界，才是最值得抄的部分。
+
+**指令**寫檔案、搬 bytes。**skill** 帶的是腳本沒有的判斷：一個 settle floor 有沒有蓋過某個動畫的起手、這一版送審安不安全、某句標語該不該直接沿用 App 自己的字串。`/appkit-release` 是作業手冊，`appkit ship` 是機制。
+
+這才是真正的解鎖。腳本讓工作**變得可能**；skill 讓工作**變得可以交付出去**——而且不像我對「上次我到底做了什麼」的記憶，skill 不會在兩次發版之間衰退。
 
 ### 免費複製這一切
-
-這是完整的零件清單。每一行都免費或開源：
 
 | 階段 | 工具                                  | 費用          |
 | ---- | ------------------------------------- | ------------- |
 | 擷取 | `simctl` + App 內建 `-ScreenshotMode` | 免費（Apple） |
-| 渲染 | `app-store-screenshots` Claude skill  | 免費、在地    |
-| 穩定 | 約 10 行 Python + NumPy/Pillow        | 免費          |
-| 上傳 | fastlane `deliver`                    | 免費（開源）  |
+| 渲染 | CoreGraphics + CoreText               | 免費（Apple） |
+| 穩定 | 一道架在 git 上的「同一張畫面」閘門   | 免費          |
+| 檢視 | 一張總覽表                            | 免費          |
+| 上傳 | `asc` / Play Publishing API           | 免費          |
 | 編排 | 一個 Claude Code skill + `AGENTS.md`  | 免費          |
 
-唯一一個曾經要花錢的環節——行銷卡渲染器——現在就是那個免費的 skill。所以誠實的結論是：**整條流程可以用零元重現。** 幫你的 App 加上 `-ScreenshotMode`、用 skill 骨架化出渲染器、放進那道 diff 閘門、把 fastlane 指向那些資料夾，再寫一份 `/release` 作業手冊把它們串起來。
+每一行都免費或開源，而且全部都在 [appkit](https://github.com/walkccc/appkit) 裡，一個 `brew install` 就有。
 
 ### 結語
 
-截圖從來不是難的部分。難的是那個**迴圈**——每一次設計改動都會默默讓一百張圖失效，而要發現這件事的代價，是打開 App Store Connect 瞇著眼睛比對。把擷取自動化，省的是幾分鐘；讓 git 成為真相來源，救的是那個迴圈。而把整件事寫成一個 skill，意味著機器人可以自己跑它，而不只是我。
+截圖從來不是難的部分。難的是那個**迴圈**——每一次設計改動都會默默讓一百張圖失效，而要發現這件事的代價，是你自己的眼睛。
 
-獨立開發者做出的最好工具，往往不是功能，而是那些讓一個人能像一支團隊一樣持續出貨的機器——而且，越來越常見的是，它們是免費的。
+把擷取自動化，省的是幾分鐘；讓 git 成為真相來源，救的是那個迴圈。而畫出那張總覽表是最讓我意外的一個：我從來沒自動化的那個階段，正是我每次發版都在手動做、卻從來沒把它當成一件工作的那個。
