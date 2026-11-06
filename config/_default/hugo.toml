@@ -1,0 +1,23 @@
+# -- Site Configuration --
+baseURL = "https://blog.pengyuc.com/"
+defaultContentLanguage = "en"
+
+enableRobotsTXT = true
+enableEmoji = true
+
+buildDrafts = false
+buildFuture = false
+
+# No tag/category pages — keep the site minimal.
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+  pagerSize = 100
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "daily"
+  filename = "sitemap.xml"
+  priority = 0.5

@@ -1,0 +1,13 @@
+{
+  "printWidth": 80,
+  "proseWrap": "never",
+  "embeddedLanguageFormatting": "off",
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "parser": "markdown"
+      }
+    }
+  ]
+}

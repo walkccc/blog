@@ -1,0 +1,12 @@
+{{- /* Loads KaTeX once per page; posts opt in with the katex shortcode. */ -}}
+{{- if not (.Page.Store.Get "hasKatex") -}}
+{{- .Page.Store.Set "hasKatex" true -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous" />
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}]});"
+></script>
+{{- end -}}

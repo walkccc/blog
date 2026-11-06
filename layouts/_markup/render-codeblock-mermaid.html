@@ -1,0 +1,5 @@
+{{- /* Turned into SVG by the module in baseof.html, styled in main.css. The
+       flag is what keeps that module off every page without a diagram on it,
+       the same way the katex shortcode opts in. */ -}}
+{{- .Page.Store.Set "hasMermaid" true -}}
+<pre class="mermaid">{{ .Inner | htmlEscape | safeHTML }}</pre>

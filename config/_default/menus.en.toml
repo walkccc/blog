@@ -1,0 +1,8 @@
+# -- Main Menu (header, right side) --
+
+[[main]]
+  name = "About"
+  url = "https://pengyuc.com"
+  weight = 10
+
+# Footer links are social icons defined in params.toml ([social]).

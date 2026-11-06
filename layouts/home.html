@@ -1,0 +1,7 @@
+{{ define "main" }}
+<section class="intro">
+  <h1>{{ site.Params.author }}</h1>
+  <p class="tagline">{{ site.Params.tagline }}</p>
+</section>
+{{ partial "post-list.html" site.RegularPages }}
+{{ end }}
